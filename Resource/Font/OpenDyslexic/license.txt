@@ -1,0 +1,12 @@
+https://opendyslexic.org/
+
+OpenDyslexic is free to use: The newest version of OpenDyslexic now uses the SIL-OFL license, giving you freedom to use it for personal use, business use, education, commercial, books, ebook readers, applications, websites, and any other project or purpose you need.
+
+
+https://en.wikipedia.org/wiki/SIL_Open_Font_License
+
+Terms
+
+The Open Font License is a free software license, and as such permits the fonts to be used, modified, and distributed freely (so long as the resulting fonts remain under the Open Font License). However, the copyright holder may declare the font's name as being a "Reserved Font Name", which modified versions then cannot bear. (This includes subsetting for web fonts.) The license permits covered fonts to be freely embedded in documents under any terms. The only stipulation is that fonts cannot be sold on their own, though they may be included in software bundles for sale.[6]
+
+The license is considered free by the Free Software Foundation (FSF)[2] and the Debian project.[1] FSF states that although the requirement that the font be bundled with software rather than being distributed alone is unusual, that a simple hello world program is enough to satisfy the license's requirement, and that it is therefore harmless.[2] 

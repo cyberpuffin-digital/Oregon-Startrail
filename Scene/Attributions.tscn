@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://b0pqu44orkplc"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="FontHeaderContainer" type="PanelContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="FontHeaderLabel" type="Label" parent="ScrollContainer/VBoxContainer/FontHeaderContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "Font"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="ScrollContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="FontLabel" type="Label" parent="ScrollContainer/VBoxContainer/HBoxContainer/PanelContainer"]
+layout_mode = 2
+text = "OpenDyslexic3"
+
+[node name="FontURLLabel" type="Label" parent="ScrollContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "https://opendyslexic.org/"
+
+[node name="SFXHeaderContainer" type="PanelContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="SFXHeaderLabel" type="Label" parent="ScrollContainer/VBoxContainer/SFXHeaderContainer"]
+layout_mode = 2
+text = "Sound Effects"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="ScrollContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+
+[node name="SFXLabel" type="Label" parent="ScrollContainer/VBoxContainer/HBoxContainer2/PanelContainer"]
+layout_mode = 2
+text = "SFXR"
+
+[node name="SFXURLLabel" type="Label" parent="ScrollContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "http://www.drpetter.se/project_sfxr.html"

@@ -1,0 +1,8 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://6fwi4eidc4ky"]
+
+[ext_resource type="FontFile" uid="uid://d3jte8jtm2dg1" path="res://Resource/Font/OpenDyslexic/OpenDyslexic3-Bold.ttf" id="1_yvf7e"]
+[ext_resource type="FontFile" uid="uid://djt5kh4dbd58h" path="res://Resource/Font/OpenDyslexic/OpenDyslexic3-Regular.ttf" id="2_ure3b"]
+
+[resource]
+Fonts/fonts/large = ExtResource("1_yvf7e")
+Fonts/fonts/normal = ExtResource("2_ure3b")
