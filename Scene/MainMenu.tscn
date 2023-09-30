@@ -1,12 +1,17 @@
-[gd_scene format=3 uid="uid://buqwhd0m1l4my"]
+[gd_scene load_steps=3 format=3 uid="uid://buqwhd0m1l4my"]
 
-[node name="Control" type="Control"]
+[ext_resource type="Theme" uid="uid://6fwi4eidc4ky" path="res://Theme/MainTheme.tres" id="1_vek1m"]
+[ext_resource type="Script" path="res://Script/MainMenu.gd" id="2_f0djs"]
+
+[node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_vek1m")
+script = ExtResource("2_f0djs")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -28,19 +33,19 @@ size_flags_vertical = 3
 [node name="TitleLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_type_variation = &"HeaderLarge"
-text = "Ludum Dare 54"
+text = "TITLE"
 horizontal_alignment = 1
 
 [node name="AuthorLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_type_variation = &"HeaderSmall"
-text = "By Cyber Puffin"
+theme_type_variation = &"HeaderMedium"
+text = "AUTHOR"
 horizontal_alignment = 1
 
 [node name="ThemeLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_type_variation = &"HeaderMedium"
-text = "Theme: Limited Space"
+theme_type_variation = &"HeaderSmall"
+text = "SUBTITLE"
 horizontal_alignment = 1
 
 [node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
@@ -53,12 +58,24 @@ layout_mode = 2
 theme_override_constants/separation = 25
 
 [node name="StartGame" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-text = "Start game"
+text = "START"
+
+[node name="Options" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "OPTIONS"
+
+[node name="Attributes" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "ATTRIBUTIONS"
 
 [node name="ExitGame" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-text = "Exit game"
+text = "EXIT"
 
 [node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2

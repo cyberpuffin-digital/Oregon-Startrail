@@ -1,0 +1,275 @@
+[gd_scene load_steps=10 format=3 uid="uid://d26onhpq6ltvc"]
+
+[ext_resource type="Theme" uid="uid://6fwi4eidc4ky" path="res://Theme/MainTheme.tres" id="1_11dsx"]
+[ext_resource type="Texture2D" uid="uid://dxpdia0x5stl1" path="res://Image/Earth/Earth.04.png" id="2_6lh7c"]
+[ext_resource type="Texture2D" uid="uid://drpsahxx6vydr" path="res://Image/Earth/Earth.01.png" id="3_0jvfr"]
+[ext_resource type="Texture2D" uid="uid://dj8y8ct37ccvy" path="res://Image/Earth/Earth.02.png" id="4_dkuti"]
+[ext_resource type="Texture2D" uid="uid://ci3b05ptjdvam" path="res://Image/Earth/Earth.03.png" id="5_8qflq"]
+[ext_resource type="Texture2D" uid="uid://b6q30r45e5vth" path="res://Image/Earth/Earth.05.png" id="6_suywj"]
+[ext_resource type="Texture2D" uid="uid://dmw2bm4lybtyx" path="res://Image/Earth/Earth.06.png" id="7_ehg8v"]
+
+[sub_resource type="Animation" id="Animation_rpho0"]
+resource_name = "test"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2, 1.6, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("3_0jvfr"), ExtResource("4_dkuti"), ExtResource("5_8qflq"), ExtResource("2_6lh7c"), ExtResource("6_suywj"), ExtResource("7_ehg8v")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nkblv"]
+_data = {
+"EarthSpin": SubResource("Animation_rpho0")
+}
+
+[node name="GameWindow" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_11dsx")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TravelTabContainer" type="TabContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+tabs_visible = false
+
+[node name="EarthMarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer/TravelTabContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/TravelTabContainer/EarthMarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer/TravelTabContainer/EarthMarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer/TravelTabContainer/EarthMarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("5_8qflq")
+stretch_mode = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HBoxContainer/VBoxContainer/TravelTabContainer/EarthMarginContainer/VBoxContainer/TextureRect"]
+root_node = NodePath("../..")
+autoplay = "EarthSpin"
+libraries = {
+"": SubResource("AnimationLibrary_nkblv")
+}
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/TravelTabContainer/EarthMarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderMedium"
+text = "EARTH"
+horizontal_alignment = 1
+
+[node name="MoonMarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer/TravelTabContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CommandsTabContainer" type="TabContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+tabs_visible = false
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/VBoxContainer/CommandsTabContainer"]
+layout_mode = 2
+
+[node name="CommandsGridContainer" type="GridContainer" parent="HBoxContainer/VBoxContainer/CommandsTabContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 2
+
+[node name="DepartButton" type="Button" parent="HBoxContainer/VBoxContainer/CommandsTabContainer/ScrollContainer/CommandsGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "DEPART"
+
+[node name="TradeButton" type="Button" parent="HBoxContainer/VBoxContainer/CommandsTabContainer/ScrollContainer/CommandsGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "TRADE"
+
+[node name="SpaceDockButton" type="Button" parent="HBoxContainer/VBoxContainer/CommandsTabContainer/ScrollContainer/CommandsGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "SPACEDOCK"
+
+[node name="DataTabContainer" type="TabContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Resources" type="ScrollContainer" parent="HBoxContainer/VBoxContainer/DataTabContainer"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="HBoxContainer/VBoxContainer/DataTabContainer/Resources"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 3
+
+[node name="HumanHBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/DataTabContainer/Resources/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/DataTabContainer/Resources/GridContainer/HumanHBoxContainer"]
+layout_mode = 2
+text = "HUMANS"
+
+[node name="Value" type="Label" parent="HBoxContainer/VBoxContainer/DataTabContainer/Resources/GridContainer/HumanHBoxContainer"]
+layout_mode = 2
+text = "0"
+
+[node name="AirHBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/DataTabContainer/Resources/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/DataTabContainer/Resources/GridContainer/AirHBoxContainer"]
+layout_mode = 2
+text = "AIR"
+
+[node name="Value" type="Label" parent="HBoxContainer/VBoxContainer/DataTabContainer/Resources/GridContainer/AirHBoxContainer"]
+layout_mode = 2
+text = "0"
+
+[node name="FoodHBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/DataTabContainer/Resources/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/DataTabContainer/Resources/GridContainer/FoodHBoxContainer"]
+layout_mode = 2
+text = "FOOD"
+
+[node name="Value" type="Label" parent="HBoxContainer/VBoxContainer/DataTabContainer/Resources/GridContainer/FoodHBoxContainer"]
+layout_mode = 2
+text = "0"
+
+[node name="WasteHBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/DataTabContainer/Resources/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/DataTabContainer/Resources/GridContainer/WasteHBoxContainer"]
+layout_mode = 2
+text = "WASTE"
+
+[node name="Value" type="Label" parent="HBoxContainer/VBoxContainer/DataTabContainer/Resources/GridContainer/WasteHBoxContainer"]
+layout_mode = 2
+text = "0"
+
+[node name="BotHBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/DataTabContainer/Resources/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/DataTabContainer/Resources/GridContainer/BotHBoxContainer"]
+layout_mode = 2
+text = "BOTS"
+
+[node name="Value" type="Label" parent="HBoxContainer/VBoxContainer/DataTabContainer/Resources/GridContainer/BotHBoxContainer"]
+layout_mode = 2
+text = "0"
+
+[node name="EnergyHBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/DataTabContainer/Resources/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/DataTabContainer/Resources/GridContainer/EnergyHBoxContainer"]
+layout_mode = 2
+text = "ENERGY"
+
+[node name="Value" type="Label" parent="HBoxContainer/VBoxContainer/DataTabContainer/Resources/GridContainer/EnergyHBoxContainer"]
+layout_mode = 2
+text = "0"
+
+[node name="FishHBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/DataTabContainer/Resources/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/DataTabContainer/Resources/GridContainer/FishHBoxContainer"]
+layout_mode = 2
+text = "FISH"
+
+[node name="Value" type="Label" parent="HBoxContainer/VBoxContainer/DataTabContainer/Resources/GridContainer/FishHBoxContainer"]
+layout_mode = 2
+text = "0"
+
+[node name="WaterHBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/DataTabContainer/Resources/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/DataTabContainer/Resources/GridContainer/WaterHBoxContainer"]
+layout_mode = 2
+text = "WATER"
+
+[node name="Value" type="Label" parent="HBoxContainer/VBoxContainer/DataTabContainer/Resources/GridContainer/WaterHBoxContainer"]
+layout_mode = 2
+text = "0"
+
+[node name="PlantHBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/DataTabContainer/Resources/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/DataTabContainer/Resources/GridContainer/PlantHBoxContainer"]
+layout_mode = 2
+text = "PLANTS"
+
+[node name="Value" type="Label" parent="HBoxContainer/VBoxContainer/DataTabContainer/Resources/GridContainer/PlantHBoxContainer"]
+layout_mode = 2
+text = "0"
+
+[node name="MoneyHBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/DataTabContainer/Resources/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/DataTabContainer/Resources/GridContainer/MoneyHBoxContainer"]
+layout_mode = 2
+text = "MONEY"
+
+[node name="Value" type="Label" parent="HBoxContainer/VBoxContainer/DataTabContainer/Resources/GridContainer/MoneyHBoxContainer"]
+layout_mode = 2
+text = "0"
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="TripProgressVSlider" type="VSlider" parent="HBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"ShipProgress"
+editable = false
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2

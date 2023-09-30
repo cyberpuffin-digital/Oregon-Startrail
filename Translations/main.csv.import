@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://cuxrv3kkwncej"
+
+[deps]
+
+files=["res://Translations/main.en.translation", "res://Translations/main.en_CA.translation", "res://Translations/main.ar.translation", "res://Translations/main.cmn.translation", "res://Translations/main.cs.translation", "res://Translations/main.de.translation", "res://Translations/main.es.translation", "res://Translations/main.fi.translation", "res://Translations/main.fr.translation", "res://Translations/main.hi.translation", "res://Translations/main.it.translation", "res://Translations/main.ja.translation", "res://Translations/main.ko.translation", "res://Translations/main.pl.translation", "res://Translations/main.pt.translation", "res://Translations/main.ru.translation", "res://Translations/main.uk.translation"]
+
+source_file="res://Translations/main.csv"
+dest_files=["res://Translations/main.en.translation", "res://Translations/main.en_CA.translation", "res://Translations/main.ar.translation", "res://Translations/main.cmn.translation", "res://Translations/main.cs.translation", "res://Translations/main.de.translation", "res://Translations/main.es.translation", "res://Translations/main.fi.translation", "res://Translations/main.fr.translation", "res://Translations/main.hi.translation", "res://Translations/main.it.translation", "res://Translations/main.ja.translation", "res://Translations/main.ko.translation", "res://Translations/main.pl.translation", "res://Translations/main.pt.translation", "res://Translations/main.ru.translation", "res://Translations/main.uk.translation"]
+
+[params]
+
+compress=true
+delimiter=0

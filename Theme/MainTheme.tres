@@ -4,5 +4,9 @@
 [ext_resource type="FontFile" uid="uid://djt5kh4dbd58h" path="res://Resource/Font/OpenDyslexic/OpenDyslexic3-Regular.ttf" id="2_ure3b"]
 
 [resource]
+EvenMargin10/constants/margin_bottom = 10
+EvenMargin10/constants/margin_left = 10
+EvenMargin10/constants/margin_right = 10
+EvenMargin10/constants/margin_top = 10
 Fonts/fonts/large = ExtResource("1_yvf7e")
 Fonts/fonts/normal = ExtResource("2_ure3b")

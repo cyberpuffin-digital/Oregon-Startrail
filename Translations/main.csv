@@ -1,0 +1,44 @@
+Keys,en,en_CA,ar,cmn,cs,de,es,fi,fr,hi,it,ja,ko,pl,pt,ru,uk
+AIR,Air,Air eh?,هواء,空气,Vzduch,Luft,Aire,Ilma,Air,वायु,Aria,空気,공기,Powietrze,Ar,Воздух,Повітря
+ATTRIBUTIONS,Attributions,Attributions eh?,الصفات,归因,Atributy,Zuschreibungen,Atribuciones,Määrittelyt,Attributions,विशेषताएं,Attribuzioni,帰属,속성,Przypisania,Atribuições,Атрибуты,Атрибути
+AUTHOR,Cyber Puffin,Cyber Puffin eh?,Cyber Puffin,Cyber Puffin,Cyber Puffin,Cyber Puffin,Cyber Puffin,Cyber Puffin,Cyber Puffin,Cyber Puffin,Cyber Puffin,Cyber Puffin,Cyber Puffin,Cyber Puffin,Cyber Puffin,Cyber Puffin,Cyber Puffin
+BOTS,Bots,Bots eh?,روبوتات,机器人,Roboti,Bots,Bots,Robotti,Bots,बॉट,Robot,ボット,봇,Boty,Bots,Боты,Боти
+DEPART,Depart,Depart eh?,تغادر,离开,Odjezd,Abfahren,Salir,Lähteä,Partir,रवाना होना,Partenza,出発,출발,Odjeżdżać,Partir,Вылетать,Відходити
+EARTH,Earth,Earth eh?,أرض,地球,Země,Erde,Tierra,Maa,Terre,धरती,Terra,地球,지구,Ziemia,Terra,Земля,Земля
+ENERGY,Energy,Energy eh?,طاقة,活力,Energie,Energie,Energía,Energia,Énergie,ऊर्जा,Energia,エネルギー,에너지,Energia,Energia,Энергия,Енергія
+EXIT,Exit game,Exit game eh?,الخروج من اللعبة,退出游戏,Výstupní hra,Spiel verlassen,Salir del juego,Poistumispeli,Quitter le jeu,खेल से बाहर जाएं,Gioco di uscita,ゲームを終了します,나가 게임,Wyjdź z gry,Sair do jogo,Выходная игра,Гра виходу
+FISH,Fish,Fish eh?,سمكة,鱼,Ryba,Fisch,Pez,Kalastaa,Poisson,मछली,Pescare,魚,물고기,Ryba,Peixe,Рыба,Риба
+FONT,Font,Font eh?,الخط,字体,Písmo,Schriftart,Fuente,Fontti,Police de caractère,फ़ॉन्ट,Font,フォント,폰트,Czcionka,Fonte,Шрифт,Шрифт
+FOOD,Food,Food eh?,طعام,食物,Jídlo,Essen,Alimento,Ruoka,Nourriture,खाना,Cibo,食べ物,음식,Żywność,Comida,Еда,Їжа
+HUMANS,Humans,Humans eh?,البشر,人类,Lidé,Menschen,Humanos,Ihmiset,Humains,इंसानों,Umani,人間,인간,Ludzie,Humanos,Люди,Люди
+LOCALE,Locale,,,,,,,,,,,,,,,,
+LOCALE_AR,عربي,عربي,عربي,عربي,عربي,عربي,عربي,عربي,عربي,عربي,عربي,عربي,عربي,عربي,عربي,عربي,عربي
+LOCALE_CMN,普通话中国,普通话中国,普通话中国,普通话中国,普通话中国,普通话中国,普通话中国,普通话中国,普通话中国,普通话中国,普通话中国,普通话中国,普通话中国,普通话中国,普通话中国,普通话中国,普通话中国
+LOCALE_CS,Čeština,Čeština,Čeština,Čeština,Čeština,Čeština,Čeština,Čeština,Čeština,Čeština,Čeština,Čeština,Čeština,Čeština,Čeština,Čeština,Čeština
+LOCALE_DE,Deutsch,Deutsch,Deutsch,Deutsch,Deutsch,Deutsch,Deutsch,Deutsch,Deutsch,Deutsch,Deutsch,Deutsch,Deutsch,Deutsch,Deutsch,Deutsch,Deutsch
+LOCALE_EN,English,English,English,English,English,English,English,English,English,English,English,English,English,English,English,English,English
+LOCALE_EN_CA,English (Canadian),English (Canadian),English (Canadian),English (Canadian),English (Canadian),English (Canadian),English (Canadian),English (Canadian),English (Canadian),English (Canadian),English (Canadian),English (Canadian),English (Canadian),English (Canadian),English (Canadian),English (Canadian),English (Canadian)
+LOCALE_ES,Español,Español,Español,Español,Español,Español,Español,Español,Español,Español,Español,Español,Español,Español,Español,Español,Español
+LOCALE_FI,Suomalainen,Suomalainen,Suomalainen,Suomalainen,Suomalainen,Suomalainen,Suomalainen,Suomalainen,Suomalainen,Suomalainen,Suomalainen,Suomalainen,Suomalainen,Suomalainen,Suomalainen,Suomalainen,Suomalainen
+LOCALE_FR,Français,Français,Français,Français,Français,Français,Français,Français,Français,Français,Français,Français,Français,Français,Français,Français,Français
+LOCALE_HI,हिंदी,हिंदी,हिंदी,हिंदी,हिंदी,हिंदी,हिंदी,हिंदी,हिंदी,हिंदी,हिंदी,हिंदी,हिंदी,हिंदी,हिंदी,हिंदी,हिंदी
+LOCALE_IT,Italiano,Italiano,Italiano,Italiano,Italiano,Italiano,Italiano,Italiano,Italiano,Italiano,Italiano,Italiano,Italiano,Italiano,Italiano,Italiano,Italiano
+LOCALE_JA,日本語,日本語,日本語,日本語,日本語,日本語,日本語,日本語,日本語,日本語,日本語,日本語,日本語,日本語,日本語,日本語,日本語
+LOCALE_KO,한국인,한국인,한국인,한국인,한국인,한국인,한국인,한국인,한국인,한국인,한국인,한국인,한국인,한국인,한국인,한국인,한국인
+LOCALE_PL,Polski,Polski,Polski,Polski,Polski,Polski,Polski,Polski,Polski,Polski,Polski,Polski,Polski,Polski,Polski,Polski,Polski
+LOCALE_PT,Português,Português,Português,Português,Português,Português,Português,Português,Português,Português,Português,Português,Português,Português,Português,Português,Português
+LOCALE_RU,Русский,Русский,Русский,Русский,Русский,Русский,Русский,Русский,Русский,Русский,Русский,Русский,Русский,Русский,Русский,Русский,Русский
+LOCALE_UK,Український,Український,Український,Український,Український,Український,Український,Український,Український,Український,Український,Український,Український,Український,Український,Український,Український
+LOCALECURRENT,Current locale,Current locale eh?,اللغة الحالية,当前语言环境,Aktuální národní prostředí,Aktuelles Gebietsschema,Localidad actual,Nykyinen sijainti,Lieu actuel,वर्तमान स्थान,Locale locale,現在のロケール,현재 로케일,Obecny region,Local atual,Текущий локаль,Поточний локал
+MONEY,Money,Money eh?,مال,钱,Peníze,Geld,Dinero,Raha,Argent,धन,Soldi,お金,돈,Pieniądze,Dinheiro,Деньги,Гроші
+OPTIONS,Options,Options eh?,خيارات,选项,Možnosti,Optionen,Opción,Vaihtoehdot,Options,विकल्प,Opzioni,オプション,옵션,Opcje,Opções,Параметры,Варіанти
+PICKLOCALEFROMLIST,Choose language from list,Choose language from list eh?,اختر اللغة من القائمة,从列表中选择语言,Vyberte jazyk ze seznamu,Wählen Sie Sprache aus der Liste,Elija el idioma de la lista,Valitse kieli luettelosta,Choisissez la langue dans la liste,सूची से भाषा चुनें,Scegli la lingua dall'elenco,リストから言語を選択します,목록에서 언어를 선택하십시오,Wybierz język z listy,Escolha o idioma da lista,Выберите язык из списка,Виберіть мову зі списку
+PLANTS,Plants,Plants eh?,النباتات,植物,Rostliny,Pflanzen,Plantas,Kasvit,Plantes,पौधे,Impianti,植物,식물,Rośliny,Plantas,Растения,Рослини
+SOUNDEFFECT,Sound Effects,Sound Effects eh?,مؤثرات صوتية,声音特效,Zvukové efekty,Soundeffekte,Efectos de sonido,Ääniefektit,Effets sonores,ध्वनि प्रभाव,Effetti sonori,音響効果,음향 효과,Efekty dźwiękowe,Efeitos sonoros,Звуковые эффекты,Звукові ефекти
+SPACEDOCK,Space Dock,Space Dock eh?,رصيف الفضاء,太空码头,Space Dock,Raumdock,Muelle,Avaruustelakka,Quai d'espace,अंतरिक्ष गोदी,Dock spaziale,宇宙ドック,우주 도크,Dock kosmiczny,Dock Space,Космический док,Космічний причал
+START,Start game,Start game eh?,بدء اللعبة,开始游戏,Začít hru,Spiel beginnen,Empezar juego,Aloita peli,Démarrer jeu,खेल शुरू,Inizia il gioco,ゲームをスタート,게임을 시작하다,Rozpocząć grę,Começar o jogo,Начать игру,Почни гру
+SUBTITLE,"Ludum Dare 54, Limited Space","Ludum Dare 54, Limited Space eh?",Ludum Dare 54 ، مساحة محدودة,Ludum Dare 54，有限的空间,"Ludum Dare 54, omezený prostor","Ludum Dare 54, begrenzter Raum","Ludum Dare 54, espacio limitado","Ludum Dare 54, rajoitettu tila","Ludum Dare 54, espace limité","लुडम डेयर 54, सीमित स्थान","Ludum Dare 54, Spazio limitato",Ludum Dare 54、限られたスペース,"Ludum Dare 54, 제한된 공간","Ludum Dare 54, ograniczona przestrzeń","Ludum Dare 54, espaço limitado","Ludum Dare 54, ограниченное пространство","Ludum Dare 54, обмежений простір"
+TITLE,Oregon Startrail,Oregon Startrail eh?,أوريغون ستارترايل,俄勒冈Startrail,Oregon Startrail,Oregon Startrail,Oregon Startrail,Oregon StarTrail,Oregon Startrail,ओरेगॉन स्टारट्रिल,Oregon Startrail,オレゴンスターレール,오레곤 스타 트레일,Oregon Startrail,Oregon Startrail,Oregon Startrail,Орегон Startrail
+TRADE,Trade,Trade eh?,تجارة,贸易,Obchod,Handel,Comercio,Käydä kauppaa,Commerce,व्यापार,Commercio,貿易,거래,Handel,Troca,Торговля,Торгувати
+WASTE,Waste,Waste eh?,يضيع,浪费,Odpad,Abfall,Desperdiciar,Jätteet,Déchets,बरबाद करना,Sciupare,無駄,쓰레기,Marnować,Desperdício,Напрасно тратить,Витрачати
+WATER,Water,Water eh?,ماء,水,Voda,Wasser,Agua,Vettä,Eau,पानी,Acqua,水,물,Woda,Água,Вода,Вода

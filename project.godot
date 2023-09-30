@@ -12,8 +12,14 @@ config_version=5
 
 config/name="GameJam-LD54"
 config/description="Theme: Limited Space"
+run/main_scene="res://Scene/MainMenu.tscn"
 config/features=PackedStringArray("4.1", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Log="*res://Script/auto/Log.gd"
+Config="*res://Script/auto/Config.gd"
 
 [display]
 
@@ -21,6 +27,10 @@ window/size/viewport_width=1024
 window/size/viewport_height=1024
 window/stretch/mode="viewport"
 window/handheld/orientation=6
+
+[internationalization]
+
+locale/translations=PackedStringArray("res://Translations/main.ar.translation", "res://Translations/main.cmn.translation", "res://Translations/main.cs.translation", "res://Translations/main.de.translation", "res://Translations/main.en.translation", "res://Translations/main.en_CA.translation", "res://Translations/main.es.translation", "res://Translations/main.fi.translation", "res://Translations/main.fr.translation", "res://Translations/main.hi.translation", "res://Translations/main.it.translation", "res://Translations/main.ja.translation", "res://Translations/main.ko.translation", "res://Translations/main.pl.translation", "res://Translations/main.pt.translation", "res://Translations/main.ru.translation", "res://Translations/main.uk.translation")
 
 [rendering]
 
