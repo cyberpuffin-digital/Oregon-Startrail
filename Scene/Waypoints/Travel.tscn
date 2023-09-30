@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cqylecddk3ous"]
+
+[node name="TravelMarginContainer" type="MarginContainer"]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "TRAVELING"

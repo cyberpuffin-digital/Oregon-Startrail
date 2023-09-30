@@ -136,6 +136,13 @@ func load_file_controller() -> void:
 	if typeof(in_value) == TYPE_INT:
 		Controller.next_waypoint = in_value
 
+	# Travel state
+	in_value = Config.handler.get_value(
+		"Controller", "travel_state", State.Ready_To_Start
+	)
+	if typeof(in_value) == TYPE_INT:
+		Controller.travel_state = in_value
+
 	return
 
 ## Load general user preferences
@@ -217,6 +224,7 @@ func save_file_controller() -> void:
 		"current_waypoint": Controller.current_waypoint,
 		"last_waypoint": Controller.last_waypoint,
 		"next_waypoint": Controller.next_waypoint,
+		"travel_state": Controller.travel_state,
 	}
 
 	Config.save_to_file(fields, "Controller")

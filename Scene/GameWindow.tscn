@@ -1,8 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://d26onhpq6ltvc"]
+[gd_scene load_steps=10 format=3 uid="uid://d26onhpq6ltvc"]
 
 [ext_resource type="Script" path="res://Script/GameWindow.gd" id="1_hjc2e"]
 [ext_resource type="PackedScene" uid="uid://e3lqjtelwjpj" path="res://Scene/Waypoints/Earth.tscn" id="1_wvssu"]
-[ext_resource type="PackedScene" uid="uid://u6w1w68im386" path="res://Scene/Dialog/GameDialog.tscn" id="3_2pebf"]
+[ext_resource type="PackedScene" uid="uid://cqylecddk3ous" path="res://Scene/Waypoints/Travel.tscn" id="2_fiilq"]
+[ext_resource type="PackedScene" uid="uid://u6w1w68im386" path="res://Scene/Dialog/WaypointDialog.tscn" id="3_2pebf"]
+[ext_resource type="PackedScene" uid="uid://iy8we5rhlsg2" path="res://Scene/Waypoints/Moon.tscn" id="4_7j5hv"]
+[ext_resource type="PackedScene" uid="uid://dysk2sjj7ljgf" path="res://Scene/Waypoints/Mars.tscn" id="5_44t4a"]
+[ext_resource type="PackedScene" uid="uid://dp0g61jdbr7a2" path="res://Scene/Waypoints/Europa.tscn" id="6_n4lpd"]
+[ext_resource type="PackedScene" uid="uid://c6ehjbpcpufoh" path="res://Scene/Waypoints/KuiperBelt.tscn" id="7_hujt0"]
+[ext_resource type="PackedScene" uid="uid://4605eyxb15re" path="res://Scene/Waypoints/Wolf1061c.tscn" id="8_wk43q"]
 
 [node name="GameWindow" type="MarginContainer"]
 anchors_preset = 15
@@ -22,17 +28,37 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="TravelTabContainer" type="TabContainer" parent="HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 tabs_visible = false
 
-[node name="EarthMarginContainer" parent="HBoxContainer/VBoxContainer/TravelTabContainer" instance=ExtResource("1_wvssu")]
+[node name="TravelMarginContainer" parent="HBoxContainer/VBoxContainer/TravelTabContainer" instance=ExtResource("2_fiilq")]
 layout_mode = 2
 
-[node name="MoonMarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer/TravelTabContainer"]
+[node name="EarthMarginContainer" parent="HBoxContainer/VBoxContainer/TravelTabContainer" instance=ExtResource("1_wvssu")]
 visible = false
 layout_mode = 2
-size_flags_vertical = 3
+
+[node name="MoonMarginContainer" parent="HBoxContainer/VBoxContainer/TravelTabContainer" instance=ExtResource("4_7j5hv")]
+visible = false
+layout_mode = 2
+
+[node name="MarsMarginContainer" parent="HBoxContainer/VBoxContainer/TravelTabContainer" instance=ExtResource("5_44t4a")]
+visible = false
+layout_mode = 2
+
+[node name="EuropaMarginContainer" parent="HBoxContainer/VBoxContainer/TravelTabContainer" instance=ExtResource("6_n4lpd")]
+visible = false
+layout_mode = 2
+
+[node name="KuiperBeltMarginContainer" parent="HBoxContainer/VBoxContainer/TravelTabContainer" instance=ExtResource("7_hujt0")]
+visible = false
+layout_mode = 2
+
+[node name="Wolf1061cMarginContainer" parent="HBoxContainer/VBoxContainer/TravelTabContainer" instance=ExtResource("8_wk43q")]
+visible = false
+layout_mode = 2
 
 [node name="CommandsTabContainer" type="TabContainer" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -49,22 +75,40 @@ size_flags_vertical = 3
 columns = 2
 
 [node name="DepartButton" type="Button" parent="HBoxContainer/VBoxContainer/CommandsTabContainer/ScrollContainer/CommandsGridContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "DEPART"
 
-[node name="TradeButton" type="Button" parent="HBoxContainer/VBoxContainer/CommandsTabContainer/ScrollContainer/CommandsGridContainer"]
+[node name="PauseButton" type="Button" parent="HBoxContainer/VBoxContainer/CommandsTabContainer/ScrollContainer/CommandsGridContainer"]
+unique_name_in_owner = true
+process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "TRADE"
+text = "PAUSE"
+
+[node name="SettleButton" type="Button" parent="HBoxContainer/VBoxContainer/CommandsTabContainer/ScrollContainer/CommandsGridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "SETTLE"
 
 [node name="SpaceDockButton" type="Button" parent="HBoxContainer/VBoxContainer/CommandsTabContainer/ScrollContainer/CommandsGridContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "SPACEDOCK"
+
+[node name="TradeButton" type="Button" parent="HBoxContainer/VBoxContainer/CommandsTabContainer/ScrollContainer/CommandsGridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "TRADE"
 
 [node name="DataTabContainer" type="TabContainer" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -224,4 +268,5 @@ layout_mode = 2
 
 [node name="Dialogs" type="Node" parent="."]
 
-[node name="GameDialog" parent="Dialogs" instance=ExtResource("3_2pebf")]
+[node name="WaypointDialog" parent="Dialogs" instance=ExtResource("3_2pebf")]
+visible = false

@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://ciciv61w8qmyy" path="res://Theme/MainTheme.tres" id="1_sd8ip"]
 [ext_resource type="Script" path="res://Script/MainMenu.gd" id="2_f0djs"]
-[ext_resource type="PackedScene" uid="uid://dotoprkwi1au" path="res://Scene/Dialog/Options.tscn" id="3_wai8n"]
+[ext_resource type="PackedScene" uid="uid://dotoprkwi1au" path="res://Scene/Dialog/OptionsDialog.tscn" id="3_wai8n"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -62,6 +62,11 @@ theme_override_constants/separation = 25
 unique_name_in_owner = true
 layout_mode = 2
 text = "START"
+
+[node name="Continue" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "CONTINUE"
 
 [node name="Options" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true

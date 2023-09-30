@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://c3hwphsyo7366"]
+
+[node name="Trade" type="ConfirmationDialog"]
+visible = true

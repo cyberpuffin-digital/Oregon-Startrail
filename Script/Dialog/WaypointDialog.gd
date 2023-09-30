@@ -1,11 +1,5 @@
 extends AcceptDialog
 
-## Tab index for each dialog section
-enum DialogTabs {
-	## Starting welcome message
-	Welcome,
-}
-
 ## Main Dialog tab container
 var dialog_tab_container: TabContainer
 ## TTS read button
@@ -23,7 +17,6 @@ func _ready() -> void:
 ## Connect to relevant signals in the scene
 func connect_to_signals() -> void:
 	Audio.tts_is.connect(self.toggle_tts)
-	Controller.ready_to_start.connect(self.start_dialog)
 	self.tts_button.pressed.connect(self.read_active_tab)
 
 	return
@@ -45,17 +38,32 @@ func read_active_tab() -> void:
 
 	return
 
-## Show dialog in initial state if Controller settings are correct
-func start_dialog() -> void:
-	if Controller.travel_state == State.Ready_To_Start:
-		self.dialog_tab_container.set_current_tab(self.DialogTabs.Welcome)
-		get_ok_button().text = tr("GEETHANKS")
-		self.title = tr("EMBARKFROMEARTH")
-		popup_centered_ratio()
-	else:
-		Log.error("Invalid travel state (%s) to show welcome dialog." % [
-			Controller.travel_state
-		])
+## Set the currently visible dialog
+func set_dialog_tab(index: int = Controller.current_waypoint) -> void:
+	index = posmod(index, Controller.Waypoint.size())
+	self.dialog_tab_container.set_current_tab(index)
+
+	match index:
+		Controller.Waypoint.Earth:
+			get_ok_button().text = tr("GEETHANKS")
+			self.title = tr("DEPARTFROMEARTH")
+		Controller.Waypoint.Moon:
+			get_ok_button().text = tr("THANKSHUNGUP")
+			self.title = tr("FAREWELLMOON")
+		Controller.Waypoint.Mars:
+			get_ok_button().text = tr("THANKS")
+			self.title = tr("BYERED")
+		Controller.Waypoint.Europa:
+			get_ok_button().text = tr("NEATTHANKS")
+			self.title = tr("KEEPWARM")
+		Controller.Waypoint.KuiperBelt:
+			get_ok_button().text = tr("GREATTHANKS")
+			self.title = tr("LIVELONGANDPROSPER")
+		Controller.Waypoint.Wolf1061c:
+			get_ok_button().text = tr("DOOURBEST")
+			self.title = tr("SETTLE")
+		_:
+			Log.error("Unknown dialog tab requested: %s" % [index])
 
 	return
 

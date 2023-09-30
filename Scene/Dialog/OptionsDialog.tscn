@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://dotoprkwi1au"]
 
 [ext_resource type="Script" path="res://Script/Dialog/Options.gd" id="1_0lcvs"]
-[ext_resource type="PackedScene" uid="uid://b0pqu44orkplc" path="res://Scene/Dialog/Attributions.tscn" id="1_d4jso"]
-[ext_resource type="PackedScene" uid="uid://ba233g20j6wmu" path="res://Scene/Dialog/Locale.tscn" id="1_ryah5"]
-[ext_resource type="PackedScene" uid="uid://ctaqw3rljh11c" path="res://Scene/Dialog/General.tscn" id="2_7liwq"]
-[ext_resource type="PackedScene" uid="uid://bcygraawlrv54" path="res://Scene/Dialog/Tts.tscn" id="4_ve373"]
+[ext_resource type="PackedScene" uid="uid://b0pqu44orkplc" path="res://Scene/Dialog/AttributionsOptions.tscn" id="1_d4jso"]
+[ext_resource type="PackedScene" uid="uid://ba233g20j6wmu" path="res://Scene/Dialog/LocaleOptions.tscn" id="1_ryah5"]
+[ext_resource type="PackedScene" uid="uid://ctaqw3rljh11c" path="res://Scene/Dialog/GeneralOptions.tscn" id="2_7liwq"]
+[ext_resource type="PackedScene" uid="uid://bcygraawlrv54" path="res://Scene/Dialog/TtsOptions.tscn" id="4_ve373"]
 
 [node name="OptionsDialog" type="ConfirmationDialog"]
 size = Vector2i(600, 600)
