@@ -90,7 +90,7 @@ func configure_timer() -> void:
 	return
 
 func debug(msg: String) -> void:
-	if !Config.verbosity:
+	if !Config:
 		msg = "Deferred: %s" % [msg]
 		call_deferred("debug", msg)
 
@@ -133,12 +133,12 @@ func send_message() -> void:
 
 	# Clear message
 	Log.msg_first.queue_free()
-	Log.msg_first = Log.msg_first.new_msg
+	Log.msg_first = Log.msg_first.next_msg
 
 	return
 
 func silly(msg: String) -> void:
-	if !Config.verbosity:
+	if !Config:
 		msg = "Deferred: %s" % [msg]
 		call_deferred("silly", msg)
 
@@ -183,7 +183,7 @@ func stack_to_string(stack: Array, pretty: bool) -> String:
 	return output_msg
 
 func verbose(msg: String) -> void:
-	if !Config.verbosity:
+	if !Config:
 		msg = "Deferred: %s" % [msg]
 		call_deferred("verbose", msg)
 

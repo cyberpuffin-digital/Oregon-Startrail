@@ -1,0 +1,95 @@
+[gd_scene load_steps=3 format=3 uid="uid://ba233g20j6wmu"]
+
+[ext_resource type="Script" path="res://Script/Dialog/Locale.gd" id="1_ebysk"]
+[ext_resource type="Texture2D" uid="uid://cphaxchw0bq02" path="res://Image/arrow.png" id="1_isei8"]
+
+[node name="Locale" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_ebysk")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="LocaleHeaderContainer" type="PanelContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="LocaleTitleLabel" type="Label" parent="ScrollContainer/VBoxContainer/LocaleHeaderContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "LOCALESET"
+
+[node name="LocaleSelectMenuButton" type="MenuButton" parent="ScrollContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "PICKLOCALEFROMLIST"
+icon = ExtResource("1_isei8")
+icon_alignment = 2
+expand_icon = true
+item_count = 17
+popup/item_0/text = "LOCALE_EN"
+popup/item_0/id = 0
+popup/item_1/text = "LOCALE_EN_CA"
+popup/item_1/id = 1
+popup/item_2/text = "LOCALE_AR"
+popup/item_2/id = 2
+popup/item_3/text = "LOCALE_CMN"
+popup/item_3/id = 3
+popup/item_4/text = "LOCALE_CS"
+popup/item_4/id = 4
+popup/item_5/text = "LOCALE_DE"
+popup/item_5/id = 5
+popup/item_6/text = "LOCALE_ES"
+popup/item_6/id = 6
+popup/item_7/text = "LOCALE_FI"
+popup/item_7/id = 7
+popup/item_8/text = "LOCALE_FR"
+popup/item_8/id = 8
+popup/item_9/text = "LOCALE_HI"
+popup/item_9/id = 9
+popup/item_10/text = "LOCALE_IT"
+popup/item_10/id = 10
+popup/item_11/text = "LOCALE_JA"
+popup/item_11/id = 11
+popup/item_12/text = "LOCALE_KO"
+popup/item_12/id = 12
+popup/item_13/text = "LOCALE_PL"
+popup/item_13/id = 13
+popup/item_14/text = "LOCALE_PT"
+popup/item_14/id = 14
+popup/item_15/text = "LOCALE_RU"
+popup/item_15/id = 15
+popup/item_16/text = "LOCALE_UK"
+popup/item_16/id = 16
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "LOCALECURRENT"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+
+[node name="CurrentLocaleLabel" type="Label" parent="ScrollContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "current locale"

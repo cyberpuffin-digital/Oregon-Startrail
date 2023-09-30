@@ -1,0 +1,65 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctaqw3rljh11c"]
+
+[ext_resource type="Texture2D" uid="uid://cphaxchw0bq02" path="res://Image/arrow.png" id="1_keqfv"]
+[ext_resource type="Script" path="res://Script/Dialog/General.gd" id="1_pkjt0"]
+
+[node name="General" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pkjt0")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="GeneralHeaderContainer" type="PanelContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="GeneralTitleLabel" type="Label" parent="ScrollContainer/VBoxContainer/GeneralHeaderContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "PREFERENCE"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="VerbosityPanelContainer" type="PanelContainer" parent="ScrollContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "VERBOSITY"
+
+[node name="VerbosityMenuButton" type="MenuButton" parent="ScrollContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+text = "LEVEL"
+icon = ExtResource("1_keqfv")
+icon_alignment = 2
+item_count = 4
+popup/item_0/text = "QUIET"
+popup/item_0/id = 0
+popup/item_1/text = "VERBOSE"
+popup/item_1/id = 1
+popup/item_2/text = "DEBUG"
+popup/item_2/id = 2
+popup/item_3/text = "SILLY"
+popup/item_3/id = 3

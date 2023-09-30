@@ -1,0 +1,140 @@
+[gd_scene load_steps=4 format=3 uid="uid://u6w1w68im386"]
+
+[ext_resource type="Texture2D" uid="uid://u5s2eylugora" path="res://Image/speech.png" id="1_155gw"]
+[ext_resource type="Script" path="res://Script/Dialog/GameDialog.gd" id="1_cp7p6"]
+[ext_resource type="Theme" uid="uid://ciciv61w8qmyy" path="res://Theme/MainTheme.tres" id="1_rm4wh"]
+
+[node name="GameDialog" type="AcceptDialog"]
+position = Vector2i(0, 36)
+size = Vector2i(600, 600)
+theme = ExtResource("1_rm4wh")
+script = ExtResource("1_cp7p6")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 592.0
+offset_bottom = 542.0
+
+[node name="TTSButtonHBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 2
+
+[node name="TTSButton" type="Button" parent="VBoxContainer/TTSButtonHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "READTTS"
+icon = ExtResource("1_155gw")
+icon_alignment = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/TTSButtonHBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="DialogTabContainer" type="TabContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+tabs_visible = false
+
+[node name="WelcomeDialog" type="ScrollContainer" parent="VBoxContainer/DialogTabContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/DialogTabContainer/WelcomeDialog"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/DialogTabContainer/WelcomeDialog/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"SpokenDialog"
+text = "DIALOG001"
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label2" type="Label" parent="VBoxContainer/DialogTabContainer/WelcomeDialog/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"SpokenDialog"
+text = "DIALOG002"
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label3" type="Label" parent="VBoxContainer/DialogTabContainer/WelcomeDialog/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"SpokenDialog"
+text = "DIALOG003"
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label4" type="Label" parent="VBoxContainer/DialogTabContainer/WelcomeDialog/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"SpokenDialog"
+text = "DIALOG004"
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label5" type="Label" parent="VBoxContainer/DialogTabContainer/WelcomeDialog/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"SpokenDialog"
+text = "DIALOG005"
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label6" type="Label" parent="VBoxContainer/DialogTabContainer/WelcomeDialog/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme_type_variation = &"SpokenDialogSub"
+text = "DIALOG006"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label7" type="Label" parent="VBoxContainer/DialogTabContainer/WelcomeDialog/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"SpokenDialog"
+text = "DIALOG007"
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label8" type="Label" parent="VBoxContainer/DialogTabContainer/WelcomeDialog/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"SpokenDialogSub"
+text = "DIALOG008"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label9" type="Label" parent="VBoxContainer/DialogTabContainer/WelcomeDialog/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"SpokenDialog"
+text = "DIALOG009"
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label10" type="Label" parent="VBoxContainer/DialogTabContainer/WelcomeDialog/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"SpokenDialog"
+text = "DIALOG010"
+vertical_alignment = 1
+autowrap_mode = 3

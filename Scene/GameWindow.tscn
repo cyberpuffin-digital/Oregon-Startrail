@@ -1,34 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://d26onhpq6ltvc"]
+[gd_scene load_steps=4 format=3 uid="uid://d26onhpq6ltvc"]
 
-[ext_resource type="Theme" uid="uid://6fwi4eidc4ky" path="res://Theme/MainTheme.tres" id="1_11dsx"]
-[ext_resource type="Texture2D" uid="uid://dxpdia0x5stl1" path="res://Image/Earth/Earth.04.png" id="2_6lh7c"]
-[ext_resource type="Texture2D" uid="uid://drpsahxx6vydr" path="res://Image/Earth/Earth.01.png" id="3_0jvfr"]
-[ext_resource type="Texture2D" uid="uid://dj8y8ct37ccvy" path="res://Image/Earth/Earth.02.png" id="4_dkuti"]
-[ext_resource type="Texture2D" uid="uid://ci3b05ptjdvam" path="res://Image/Earth/Earth.03.png" id="5_8qflq"]
-[ext_resource type="Texture2D" uid="uid://b6q30r45e5vth" path="res://Image/Earth/Earth.05.png" id="6_suywj"]
-[ext_resource type="Texture2D" uid="uid://dmw2bm4lybtyx" path="res://Image/Earth/Earth.06.png" id="7_ehg8v"]
-
-[sub_resource type="Animation" id="Animation_rpho0"]
-resource_name = "test"
-length = 2.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TextureRect:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4, 0.8, 1.2, 1.6, 2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("3_0jvfr"), ExtResource("4_dkuti"), ExtResource("5_8qflq"), ExtResource("2_6lh7c"), ExtResource("6_suywj"), ExtResource("7_ehg8v")]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_nkblv"]
-_data = {
-"EarthSpin": SubResource("Animation_rpho0")
-}
+[ext_resource type="Script" path="res://Script/GameWindow.gd" id="1_hjc2e"]
+[ext_resource type="PackedScene" uid="uid://e3lqjtelwjpj" path="res://Scene/Waypoints/Earth.tscn" id="1_wvssu"]
+[ext_resource type="PackedScene" uid="uid://u6w1w68im386" path="res://Scene/Dialog/GameDialog.tscn" id="3_2pebf"]
 
 [node name="GameWindow" type="MarginContainer"]
 anchors_preset = 15
@@ -38,7 +12,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme = ExtResource("1_11dsx")
+script = ExtResource("1_hjc2e")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
@@ -52,34 +26,8 @@ layout_mode = 2
 size_flags_vertical = 3
 tabs_visible = false
 
-[node name="EarthMarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer/TravelTabContainer"]
+[node name="EarthMarginContainer" parent="HBoxContainer/VBoxContainer/TravelTabContainer" instance=ExtResource("1_wvssu")]
 layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/TravelTabContainer/EarthMarginContainer"]
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer/TravelTabContainer/EarthMarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer/TravelTabContainer/EarthMarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-texture = ExtResource("5_8qflq")
-stretch_mode = 5
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="HBoxContainer/VBoxContainer/TravelTabContainer/EarthMarginContainer/VBoxContainer/TextureRect"]
-root_node = NodePath("../..")
-autoplay = "EarthSpin"
-libraries = {
-"": SubResource("AnimationLibrary_nkblv")
-}
-
-[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/TravelTabContainer/EarthMarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_type_variation = &"HeaderMedium"
-text = "EARTH"
-horizontal_alignment = 1
 
 [node name="MoonMarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer/TravelTabContainer"]
 visible = false
@@ -267,9 +215,13 @@ layout_mode = 2
 
 [node name="TripProgressVSlider" type="VSlider" parent="HBoxContainer"]
 layout_mode = 2
-theme_type_variation = &"ShipProgress"
+theme_type_variation = &"TravelVSlider"
 editable = false
 
 [node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer"]
 custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
+
+[node name="Dialogs" type="Node" parent="."]
+
+[node name="GameDialog" parent="Dialogs" instance=ExtResource("3_2pebf")]

@@ -1,0 +1,98 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcygraawlrv54"]
+
+[ext_resource type="Script" path="res://Script/Dialog/Tts.gd" id="1_vwjlh"]
+
+[node name="TTS" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_vwjlh")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TTSHeaderContainer" type="PanelContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TTSTitleLabel" type="Label" parent="ScrollContainer/VBoxContainer/TTSHeaderContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "PREFERENCE"
+
+[node name="TTSEnabledCheckBox" type="CheckBox" parent="ScrollContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "TTSENABLED"
+
+[node name="VoicesAvailableLabel" type="Label" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "TTSVOICELABEL"
+
+[node name="TTSVoicesItemList" type="ItemList" parent="ScrollContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_vertical = 3
+item_count = 1
+item_0/text = "NOTTSVOICE"
+
+[node name="VolumeHBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VolumeLabel" type="Label" parent="ScrollContainer/VBoxContainer/VolumeHBoxContainer"]
+layout_mode = 2
+text = "TTSVOLUME"
+
+[node name="VolumeValueLabel" type="Label" parent="ScrollContainer/VBoxContainer/VolumeHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="VolumeHSlider" type="HSlider" parent="ScrollContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="PitchHBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="PitchLabel" type="Label" parent="ScrollContainer/VBoxContainer/PitchHBoxContainer"]
+layout_mode = 2
+text = "TTSPITCH"
+
+[node name="PitchValueLabel" type="Label" parent="ScrollContainer/VBoxContainer/PitchHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="PitchHSlider" type="HSlider" parent="ScrollContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 20.0
+
+[node name="RateHBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="RateLabel" type="Label" parent="ScrollContainer/VBoxContainer/RateHBoxContainer"]
+layout_mode = 2
+text = "TTSRATE"
+
+[node name="RateValueLabel" type="Label" parent="ScrollContainer/VBoxContainer/RateHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="RateHSlider" type="HSlider" parent="ScrollContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
