@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://iy8we5rhlsg2"]
+[gd_scene load_steps=2 format=3 uid="uid://iy8we5rhlsg2"]
+
+[ext_resource type="Texture2D" uid="uid://bgyhr58txe3ph" path="res://Image/moon.png" id="1_cg24m"]
 
 [node name="MoonMarginContainer" type="MarginContainer"]
 size_flags_vertical = 3
@@ -6,6 +8,13 @@ size_flags_vertical = 3
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
 
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("1_cg24m")
+stretch_mode = 5
+
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 text = "MOON"
+horizontal_alignment = 1

@@ -127,16 +127,19 @@ func process_default_resources() -> void:
 
 ## Run the numbers for the requested resource
 func process_resource(item: int) -> void:
+	var change: float = 0
 	match item:
 		Inventory.TrackedResources.Air:
-			Inventory.air -= Inventory.human
-			Inventory.air += Inventory.plant
+			change -= Inventory.human
+			change += Inventory.plant
 			if Inventory.hydroponic > 0:
-				Inventory.air += Inventory.plant * Inventory.hydroponic
+				change += Inventory.plant * Inventory.hydroponic
 				if Inventory.fishery > 0:
-					Inventory.air += roundi(
+					change += roundi(
 						Inventory.plant * min(Inventory.hydroponic, Inventory.fishery)
 					)
+			Inventory.air += change
+			Inventory.space_available -= change * Inventory.space_use[Inventory.TrackedResources.Air]
 			if Inventory.air <= 0:
 				out_of_air.emit()
 		Inventory.TrackedResources.Bot:
@@ -144,20 +147,27 @@ func process_resource(item: int) -> void:
 		Inventory.TrackedResources.Cryopod:
 			pass
 		Inventory.TrackedResources.Energy:
-			Inventory.energy -= Inventory.bot
-			Inventory.energy -= Inventory.cryopod
-			Inventory.energy -= Inventory.fishery
-			Inventory.energy += Inventory.human
-			Inventory.energy -= Inventory.hydroponic
+			change -= Inventory.bot
+			change -= Inventory.cryopod
+			change -= Inventory.fishery
+			change += Inventory.human
+			change -= Inventory.hydroponic
+			Inventory.energy += change
+			Inventory.space_available -= change * Inventory.space_use[Inventory.TrackedResources.Energy]
 			if Inventory.energy <= 0:
 				out_of_energy.emit()
 		Inventory.TrackedResources.Fish:
 			if Inventory.fish <= 0:
 				return
-			Inventory.fish -= Inventory.fish * randf_range(0, 0.1)
+			change -= Inventory.fish * randf_range(0, 0.1)
+
+			Inventory.fish += change
+			Inventory.space_available -= change * Inventory.space_use[Inventory.TrackedResources.Fish]
 		Inventory.TrackedResources.Food:
-			Inventory.food += Inventory.fish * 0.5
-			Inventory.food -= Inventory.human
+			change += Inventory.fish * 0.5
+			change -= Inventory.human
+			Inventory.food += change
+			Inventory.space_available -= change * Inventory.space_use[Inventory.TrackedResources.Food]
 			if Inventory.food <= 0:
 				out_of_food.emit()
 		Inventory.TrackedResources.Fuel:
@@ -166,33 +176,49 @@ func process_resource(item: int) -> void:
 
 				return
 			Inventory.fuel -= 1
+			Inventory.space_available -= Inventory.space_use[Inventory.TrackedResources.Fuel]
 		Inventory.TrackedResources.Human:
-			Inventory.human -= randf_range(0, 0.05)
+			change -= randf_range(0, 0.05)
+
+			Inventory.human -= change
+			Inventory.space_available -= change * Inventory.space_use[Inventory.TrackedResources.Human]
+
 			if Inventory.human <= 0:
 				if Inventory.cryopod <= 0:
 					out_of_human.emit()
 				elif Inventory.cryopod < 5:
 					Inventory.human = Inventory.cryopod
+					Inventory.space_available += Inventory.cryopod * Inventory.space_use[Inventory.TrackedResources.Human]
 					Inventory.cryopod = 0
 				else:
 					Inventory.human = 5
+					Inventory.space_available += 5 * Inventory.space_use[Inventory.TrackedResources.Human]
 					Inventory.cryopod -= 5
 		Inventory.TrackedResources.Plant:
 			if Inventory.plant <= 0:
 				return
-			Inventory.plant += Inventory.fish * 0.1
-			Inventory.plant -= Inventory.plant * randf_range(0, 0.1)
+			change += Inventory.fish * 0.1
+			change -= Inventory.plant * randf_range(0, 0.1)
+
+			Inventory.plant = change
+			Inventory.space_available -= change * Inventory.space_use[Inventory.TrackedResources.Plant]
 		Inventory.TrackedResources.Repair:
 			pass
 		Inventory.TrackedResources.Waste:
 			if Inventory.waste <= 0:
 				return
-			Inventory.waste -= Inventory.fish
-			Inventory.waste += Inventory.human
+			change -= Inventory.fish
+			change += Inventory.human
+
+			Inventory.waste += change
+			Inventory.space_available -= change * Inventory.space_use[Inventory.TrackedResources.Waste]
 		Inventory.TrackedResources.Water:
-			Inventory.water -= Inventory.fish
-			Inventory.water -= Inventory.human
-			Inventory.water -= Inventory.plant
+			change -= Inventory.fish
+			change -= Inventory.human
+			change -= Inventory.plant
+
+			Inventory.water += change
+			Inventory.space_available -= change * Inventory.space_use[Inventory.TrackedResources.Water]
 			if Inventory.water < 0:
 				out_of_water.emit()
 		Inventory.TrackedResources.Work:
@@ -254,8 +280,12 @@ func start_new_game() -> void:
 func use_fuel() -> void:
 	if Inventory.fuel >= 1:
 		Inventory.fuel -= 1
+		Inventory.space_available -= Inventory.space_use[Inventory.TrackedResources.Fuel]
 		Inventory.energy += 1000
+		Inventory.space_available += 1000 * Inventory.space_use[Inventory.TrackedResources.Energy]
 		Inventory.water += 100
+		Inventory.space_available += 100 * Inventory.space_use[Inventory.TrackedResources.Water]
 		Inventory.air += 50
+		Inventory.space_available += 50 * Inventory.space_use[Inventory.TrackedResources.Air]
 
 	return

@@ -257,6 +257,34 @@ theme_type_variation = &"SpokenDialog"
 text = "DIALOG031"
 autowrap_mode = 3
 
+[node name="Label2" type="Label" parent="VBoxContainer/DialogTabContainer/EuropaDialog/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"SpokenDialog"
+text = "DIALOG032"
+autowrap_mode = 3
+
+[node name="Label3" type="Label" parent="VBoxContainer/DialogTabContainer/EuropaDialog/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"SpokenDialog"
+text = "DIALOG033"
+autowrap_mode = 3
+
+[node name="Label4" type="Label" parent="VBoxContainer/DialogTabContainer/EuropaDialog/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"SpokenDialog"
+text = "DIALOG034"
+autowrap_mode = 3
+
+[node name="Label5" type="Label" parent="VBoxContainer/DialogTabContainer/EuropaDialog/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"SpokenDialog"
+text = "DIALOG035"
+autowrap_mode = 3
+
 [node name="KuiperBeltDialog" type="ScrollContainer" parent="VBoxContainer/DialogTabContainer"]
 visible = false
 layout_mode = 2
@@ -273,6 +301,20 @@ theme_type_variation = &"SpokenDialog"
 text = "DIALOG041"
 autowrap_mode = 3
 
+[node name="Label2" type="Label" parent="VBoxContainer/DialogTabContainer/KuiperBeltDialog/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"SpokenDialog"
+text = "DIALOG042"
+autowrap_mode = 3
+
+[node name="Label3" type="Label" parent="VBoxContainer/DialogTabContainer/KuiperBeltDialog/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"SpokenDialog"
+text = "DIALOG043"
+autowrap_mode = 3
+
 [node name="Wolf1061cDialog" type="ScrollContainer" parent="VBoxContainer/DialogTabContainer"]
 visible = false
 layout_mode = 2
@@ -287,4 +329,18 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"SpokenDialog"
 text = "DIALOG051"
+autowrap_mode = 3
+
+[node name="Label2" type="Label" parent="VBoxContainer/DialogTabContainer/Wolf1061cDialog/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"SpokenDialog"
+text = "DIALOG052"
+autowrap_mode = 3
+
+[node name="Label3" type="Label" parent="VBoxContainer/DialogTabContainer/Wolf1061cDialog/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"SpokenDialog"
+text = "DIALOG053"
 autowrap_mode = 3

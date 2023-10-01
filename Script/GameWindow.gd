@@ -60,12 +60,14 @@ func arrive_at_waypoint() -> void:
 			self.trade_button.visible = false
 			self.pause_button.visible = false
 			self.options_button.visible = false
+			self.use_fuel_button.visible = false
 		_:
 			self.depart_button.visible = true
 			self.main_menu_button.visible = true
 			self.settle_button.visible = false
 			self.space_dock_button.visible = true
 			self.trade_button.visible = true
+			self.use_fuel_button.visible = true
 
 	self.set_travel_view()
 	self.waypoint_dialog.set_dialog_tab()
