@@ -26,6 +26,7 @@ Log="*res://Script/auto/Log.gd"
 Audio="*res://Script/auto/Audio.gd"
 Controller="*res://Script/auto/Controller.gd"
 Config="*res://Script/auto/Config.gd"
+Inventory="*res://Script/auto/Inventory.gd"
 State="*res://Script/auto/State.gd"
 UserInput="*res://Script/auto/UserInput.gd"
 

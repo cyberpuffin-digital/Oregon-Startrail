@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://cet5igh22jawm"]
+
+[ext_resource type="Texture2D" uid="uid://dy71eladhmnwo" path="res://Image/star.png" id="1_psqnx"]
+[ext_resource type="Texture2D" uid="uid://bgteyxd4bdeay" path="res://Image/ship_jet_on.png" id="2_152hi"]
+
+[sub_resource type="Gradient" id="Gradient_km60s"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.2, 0.4, 0.6)
+colors = PackedColorArray(1, 0, 0, 1, 0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1)
+
+[node name="Travel2D" type="Node2D"]
+
+[node name="StarCPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(1124, 170)
+amount = 20
+lifetime = 5.0
+preprocess = 5.0
+speed_scale = 0.8
+texture = ExtResource("1_psqnx")
+emission_shape = 3
+emission_rect_extents = Vector2(1, 170)
+direction = Vector2(-1, 0)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 250.0
+initial_velocity_max = 1000.0
+scale_amount_min = 0.3
+scale_amount_max = 0.6
+color_initial_ramp = SubResource("Gradient_km60s")
+
+[node name="ShipJetOn" type="Sprite2D" parent="."]
+position = Vector2(150, 150)
+texture = ExtResource("2_152hi")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ShipJetOn"]

@@ -38,7 +38,7 @@ size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="VBoxContainer/DetailsGridContainer/SpaceHBoxContainer"]
 layout_mode = 2
-text = "SPACE"
+text = "SPACEAVAILABLE"
 
 [node name="SpaceCountLabel" type="Label" parent="VBoxContainer/DetailsGridContainer/SpaceHBoxContainer"]
 unique_name_in_owner = true

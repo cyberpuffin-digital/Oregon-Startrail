@@ -56,6 +56,12 @@ func configure_timer() -> void:
 ## Connect to relevant signals in the scene
 func connect_to_signals() -> void:
 	visibility_changed.connect(self.handle_visibility_change)
+	Controller.out_of_air.connect(self.update_resource_list)
+	Controller.out_of_energy.connect(self.update_resource_list)
+	Controller.out_of_food.connect(self.update_resource_list)
+	Controller.out_of_fuel.connect(self.update_resource_list)
+	Controller.out_of_human.connect(self.update_resource_list)
+	Controller.out_of_water.connect(self.update_resource_list)
 
 	return
 
@@ -95,20 +101,20 @@ func set_the_children() -> void:
 ## Update resource list from Controller
 func update_resource_list() -> void:
 	# Active
-	self.bot_count_label.text = str(Controller.resources.bot)
-	self.fish_count_label.text = str(Controller.resources.fish)
-	self.human_count_label.text = str(Controller.resources.human)
-	self.plant_count_label.text = str(Controller.resources.plant)
+	self.bot_count_label.text = str(Inventory.bot)
+	self.fish_count_label.text = str(Inventory.fish)
+	self.human_count_label.text = str(Inventory.human)
+	self.plant_count_label.text = str(Inventory.plant)
 
 	# Consumables
-	self.air_count_label.text = str(Controller.resources.air)
-	self.energy_count_label.text = str(Controller.resources.energy)
-	self.food_count_label.text = str(Controller.resources.food)
-	self.fuel_count_label.text = str(Controller.resources.fuel)
-	self.money_count_label.text = str(Controller.resources.money)
-	self.spare_part_count_label.text = str(Controller.resources.spare_part)
-	self.waste_count_label.text = str(Controller.resources.waste)
-	self.water_count_label.text = str(Controller.resources.water)
+	self.air_count_label.text = str(Inventory.air)
+	self.energy_count_label.text = str(Inventory.energy)
+	self.food_count_label.text = str(Inventory.food)
+	self.fuel_count_label.text = str(Inventory.fuel)
+	self.money_count_label.text = str(Inventory.money)
+	self.spare_part_count_label.text = str(Inventory.spare_part)
+	self.waste_count_label.text = str(Inventory.waste)
+	self.water_count_label.text = str(Inventory.water)
 
 	Log.silly("Resource list updated")
 

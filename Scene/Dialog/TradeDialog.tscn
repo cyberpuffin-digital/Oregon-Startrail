@@ -1,4 +1,335 @@
-[gd_scene format=3 uid="uid://c3hwphsyo7366"]
+[gd_scene load_steps=3 format=3 uid="uid://c3hwphsyo7366"]
+
+[ext_resource type="Theme" uid="uid://ciciv61w8qmyy" path="res://Theme/MainTheme.tres" id="1_c7eq5"]
+[ext_resource type="Script" path="res://Script/Dialog/TradeDialog.gd" id="2_hihif"]
 
 [node name="Trade" type="ConfirmationDialog"]
+process_mode = 3
+title = "WANTTOTRADE"
+position = Vector2i(0, 36)
+size = Vector2i(600, 600)
 visible = true
+theme = ExtResource("1_c7eq5")
+ok_button_text = "TRADE"
+cancel_button_text = "CANCEL"
+script = ExtResource("2_hihif")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 592.0
+offset_bottom = 542.0
+theme_type_variation = &"EvenMargin10"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="HeaderHBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="CurrentLabel" type="Label" parent="MarginContainer/VBoxContainer/HeaderHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "CURRENT"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/HeaderHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AvailableLabel" type="Label" parent="MarginContainer/VBoxContainer/HeaderHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "AVAILABLE"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="SpaceHBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SpaceUsedSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/SpaceHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 10000.0
+alignment = 1
+editable = false
+
+[node name="SpaceLabel" type="Label" parent="MarginContainer/VBoxContainer/SpaceHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "SPACE"
+
+[node name="SpaceAvailableSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/SpaceHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 10000.0
+alignment = 1
+editable = false
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"DecoratedContainer"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="AirHBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="AirOwnedSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/AirHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 10000.0
+alignment = 1
+
+[node name="AirLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/AirHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "AIR"
+
+[node name="AirAvailableSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/AirHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 10000.0
+alignment = 1
+editable = false
+
+[node name="EnergyHBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="EnergyOwnedSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/EnergyHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 10000.0
+alignment = 1
+
+[node name="EnergyLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/EnergyHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "ENERGY"
+
+[node name="EnergyAvailableSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/EnergyHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 10000.0
+alignment = 1
+editable = false
+
+[node name="FishHBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="FishOwnedSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/FishHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 10000.0
+alignment = 1
+
+[node name="FishLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/FishHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "FISH"
+
+[node name="FishAvailableSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/FishHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 10000.0
+alignment = 1
+editable = false
+
+[node name="FoodHBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="FoodOwnedSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/FoodHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 10000.0
+alignment = 1
+
+[node name="FoodLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/FoodHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "FOOD"
+
+[node name="FoodAvailableSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/FoodHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 10000.0
+alignment = 1
+editable = false
+
+[node name="FuelHBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="FuelOwnedSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/FuelHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 10000.0
+alignment = 1
+
+[node name="FuelLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/FuelHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "FUEL"
+
+[node name="FuelAvailableSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/FuelHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 10000.0
+alignment = 1
+editable = false
+
+[node name="PlantHBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PlantOwnedSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/PlantHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 10000.0
+alignment = 1
+
+[node name="PlantLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/PlantHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "PLANTS"
+
+[node name="PlantAvailableSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/PlantHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 10000.0
+alignment = 1
+editable = false
+
+[node name="SparePartHBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="SparePartOwnedSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/SparePartHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 10000.0
+alignment = 1
+
+[node name="SparePartLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/SparePartHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "SPAREPARTS"
+
+[node name="SparePartAvailableSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/SparePartHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 10000.0
+alignment = 1
+editable = false
+
+[node name="WasteHBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="WasteOwnedSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/WasteHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 10000.0
+alignment = 1
+
+[node name="WasteLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/WasteHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "WASTE"
+
+[node name="WasteAvailableSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/WasteHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 10000.0
+alignment = 1
+editable = false
+
+[node name="WaterHBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="WaterOwnedSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/WaterHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 10000.0
+alignment = 1
+
+[node name="WaterLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/WaterHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "WATER"
+
+[node name="WaterAvailableSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/WaterHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 10000.0
+alignment = 1
+editable = false
+
+[node name="MoneyHBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MoneyOwnedSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/MoneyHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 10000.0
+alignment = 1
+editable = false
+
+[node name="MoneyLabel" type="Label" parent="MarginContainer/VBoxContainer/MoneyHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "MONEY"
+
+[node name="MoneyAvailableSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/MoneyHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 10000.0
+alignment = 1
+editable = false

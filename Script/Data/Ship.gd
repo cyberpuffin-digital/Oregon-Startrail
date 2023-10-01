@@ -90,20 +90,20 @@ func set_the_children() -> void:
 ## Update details related to the ship
 func update_ship_details() -> void:
 	# Details
-	self.battery_count_label.text = str(Controller.resources.battery)
-	self.cryopod_count_label.text = str(Controller.resources.cryopod)
-	self.energy_capacity_label.text = str(Controller.resources.energy_capacity)
-	self.space_count_label.text = str(Controller.resources.space)
+	self.battery_count_label.text = str(Inventory.battery)
+	self.cryopod_count_label.text = str(Inventory.cryopod)
+	self.energy_capacity_label.text = str(Inventory.energy_capacity)
+	self.space_count_label.text = str(Inventory.space_available)
 
 	# Generators
-	self.fusion_generator_count_label.text = str(Controller.resources.fusion_generator)
-	self.oxygen_generator_count_label.text = str(Controller.resources.oxygen_generator)
-	self.water_generator_count_label.text = str(Controller.resources.water_generator)
+	self.fusion_generator_count_label.text = str(Inventory.fusion_generator)
+	self.oxygen_generator_count_label.text = str(Inventory.oxygen_generator)
+	self.water_generator_count_label.text = str(Inventory.water_generator)
 
 	# Workstations
 	self.aquaponic_count_label.text = str(Controller.count_aquaponic())
-	self.fishery_count_label.text = str(Controller.resources.fishery)
-	self.hydroponic_count_label.text = str(Controller.resources.hydroponic)
+	self.fishery_count_label.text = str(Inventory.fishery)
+	self.hydroponic_count_label.text = str(Inventory.hydroponic)
 
 	Log.silly("Ship detail list updated")
 

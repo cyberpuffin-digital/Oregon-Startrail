@@ -2,8 +2,10 @@ extends AcceptDialog
 
 ## Main Dialog tab container
 var dialog_tab_container: TabContainer
-## TTS read button
-var tts_button: Button
+## Start TTS reading button
+var tts_start_button: Button
+## Stop TTS reading button
+var tts_stop_button: Button
 ## TTS Button container
 var tts_button_hbox_container: HBoxContainer
 
@@ -17,14 +19,16 @@ func _ready() -> void:
 ## Connect to relevant signals in the scene
 func connect_to_signals() -> void:
 	Audio.tts_is.connect(self.toggle_tts)
-	self.tts_button.pressed.connect(self.read_active_tab)
+	self.tts_start_button.pressed.connect(self.read_active_tab)
+	self.tts_stop_button.pressed.connect(Audio.stop_tts)
 
 	return
 
 ## Get the relevant children in the scene
 func get_the_children() -> void:
 	self.dialog_tab_container = get_node("%DialogTabContainer")
-	self.tts_button = get_node("%TTSButton")
+	self.tts_start_button = get_node("%TTSButtonStart")
+	self.tts_stop_button = get_node("%TTSButtonStop")
 	self.tts_button_hbox_container = get_node("%TTSButtonHBoxContainer")
 
 	return

@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bcygraawlrv54" path="res://Scene/Dialog/TtsOptions.tscn" id="4_ve373"]
 
 [node name="OptionsDialog" type="ConfirmationDialog"]
+process_mode = 3
 size = Vector2i(600, 600)
 script = ExtResource("1_o5xqp")
 

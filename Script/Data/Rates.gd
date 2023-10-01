@@ -81,18 +81,18 @@ func set_the_children() -> void:
 
 	return
 
-## Update resource list from Controller
+## Update resource list from Inventory
 func update_rates() -> void:
-	self.air_rate_label.text = str(Controller.calculate_air_rate(1.0))
-	self.energy_rate_label.text = str(Controller.calculate_energy_rate(1.0))
-	self.fish_rate_label.text = str(Controller.calculate_fish_rate(1.0))
-	self.food_rate_label.text = str(Controller.calculate_food_rate(1.0))
-	self.fuel_rate_label.text = str(Controller.calculate_fuel_rate(1.0))
-	self.plant_rate_label.text = str(Controller.calculate_plant_rate(1.0))
-	self.repair_rate_label.text = str(Controller.calculate_repair_rate(1.0))
-	self.waste_rate_label.text = str(Controller.calculate_waste_rate(1.0))
-	self.water_rate_label.text = str(Controller.calculate_water_rate(1.0))
-	self.work_rate_label.text = str(Controller.calculate_work_rate(1.0))
+	self.air_rate_label.text = str(Inventory.calculate_air_rate(1.0))
+	self.energy_rate_label.text = str(Inventory.calculate_energy_rate(1.0))
+	self.fish_rate_label.text = str(Inventory.calculate_fish_rate(1.0))
+	self.food_rate_label.text = str(Inventory.calculate_food_rate(1.0))
+	self.fuel_rate_label.text = str(Inventory.calculate_fuel_rate(1.0))
+	self.plant_rate_label.text = str(Inventory.calculate_plant_rate(1.0))
+	self.repair_rate_label.text = str(Inventory.calculate_repair_rate(1.0))
+	self.waste_rate_label.text = str(Inventory.calculate_waste_rate(1.0))
+	self.water_rate_label.text = str(Inventory.calculate_water_rate(1.0))
+	self.work_rate_label.text = str(Inventory.calculate_work_rate(1.0))
 
 	Log.silly("Rates list updated")
 
