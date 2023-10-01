@@ -85,7 +85,7 @@ func configure_timer() -> void:
 	Log.message_timer.paused = false
 	Log.message_timer.wait_time = Log.OUTPUT_MIN_INTERVAL
 	Log.message_timer.start()
-	Log.message_timer.timeout.connect(Callable(Log, "send_message"))
+	Log.message_timer.timeout.connect(Log.send_message)
 
 	return
 

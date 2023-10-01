@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ctaqw3rljh11c"]
 
 [ext_resource type="Texture2D" uid="uid://cphaxchw0bq02" path="res://Image/arrow.png" id="1_keqfv"]
-[ext_resource type="Script" path="res://Script/Dialog/General.gd" id="1_pkjt0"]
+[ext_resource type="Script" path="res://Script/Dialog/GeneralOptions.gd" id="1_oxga3"]
 
 [node name="General" type="Control"]
 layout_mode = 3
@@ -10,7 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_pkjt0")
+script = ExtResource("1_oxga3")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 1
@@ -33,20 +33,56 @@ layout_mode = 2
 theme_type_variation = &"HeaderLarge"
 text = "PREFERENCE"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+[node name="ScaleVBoxContainer" type="VBoxContainer" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
-[node name="VerbosityPanelContainer" type="PanelContainer" parent="ScrollContainer/VBoxContainer/HBoxContainer"]
+[node name="ScalePanelContainer" type="PanelContainer" parent="ScrollContainer/VBoxContainer/ScaleVBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/ScaleVBoxContainer/ScalePanelContainer"]
+layout_mode = 2
+text = "SCALE"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/ScaleVBoxContainer"]
+layout_mode = 2
+
+[node name="ScaleLabel" type="Label" parent="ScrollContainer/VBoxContainer/ScaleVBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "CURRENTSCALE"
+
+[node name="ScaleValueLabel" type="Label" parent="ScrollContainer/VBoxContainer/ScaleVBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0.1"
+
+[node name="ScaleHSlider" type="HSlider" parent="ScrollContainer/VBoxContainer/ScaleVBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 1.0
+max_value = 25.0
+value = 1.0
+rounded = true
+scrollable = false
+tick_count = 25
+ticks_on_borders = true
+
+[node name="VerbosityHBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="VerbosityPanelContainer" type="PanelContainer" parent="ScrollContainer/VBoxContainer/VerbosityHBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/VerbosityHBoxContainer/VerbosityPanelContainer"]
 layout_mode = 2
 text = "VERBOSITY"
 
-[node name="VerbosityMenuButton" type="MenuButton" parent="ScrollContainer/VBoxContainer/HBoxContainer"]
+[node name="VerbosityMenuButton" type="MenuButton" parent="ScrollContainer/VBoxContainer/VerbosityHBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3

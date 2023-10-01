@@ -1,0 +1,200 @@
+[gd_scene load_steps=2 format=3 uid="uid://dj6goni2ge76d"]
+
+[ext_resource type="Script" path="res://Script/Data/Ship.gd" id="1_4dpxo"]
+
+[node name="Ship" type="ScrollContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_4dpxo")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="DetailsPanelContainer" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/DetailsPanelContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderSmall"
+text = "DETAILS"
+
+[node name="DetailsGridContainer" type="GridContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+columns = 2
+
+[node name="SpaceHBoxContainer" type="HBoxContainer" parent="VBoxContainer/DetailsGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/DetailsGridContainer/SpaceHBoxContainer"]
+layout_mode = 2
+text = "SPACE"
+
+[node name="SpaceCountLabel" type="Label" parent="VBoxContainer/DetailsGridContainer/SpaceHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+
+[node name="CryoHBoxContainer" type="HBoxContainer" parent="VBoxContainer/DetailsGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/DetailsGridContainer/CryoHBoxContainer"]
+layout_mode = 2
+text = "CRYOPODS"
+
+[node name="CryoCountLabel" type="Label" parent="VBoxContainer/DetailsGridContainer/CryoHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+
+[node name="BatteryHBoxContainer" type="HBoxContainer" parent="VBoxContainer/DetailsGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/DetailsGridContainer/BatteryHBoxContainer"]
+layout_mode = 2
+text = "BATTERIES"
+
+[node name="BatteryCountLabel" type="Label" parent="VBoxContainer/DetailsGridContainer/BatteryHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+
+[node name="EnergyCapacityHBoxContainer" type="HBoxContainer" parent="VBoxContainer/DetailsGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/DetailsGridContainer/EnergyCapacityHBoxContainer"]
+layout_mode = 2
+text = "ENERGYCAPACITY"
+
+[node name="EnergyCapacityCountLabel" type="Label" parent="VBoxContainer/DetailsGridContainer/EnergyCapacityHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+
+[node name="GeneratorsPanelContainer" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/GeneratorsPanelContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderSmall"
+text = "GENERATORS"
+
+[node name="GeneratorsGridContainer" type="GridContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+columns = 3
+
+[node name="FusionHBoxContainer" type="HBoxContainer" parent="VBoxContainer/GeneratorsGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/GeneratorsGridContainer/FusionHBoxContainer"]
+layout_mode = 2
+text = "FUSIONGENERATOR"
+
+[node name="FusionGenCountLabel" type="Label" parent="VBoxContainer/GeneratorsGridContainer/FusionHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+
+[node name="OxygenHBoxContainer" type="HBoxContainer" parent="VBoxContainer/GeneratorsGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/GeneratorsGridContainer/OxygenHBoxContainer"]
+layout_mode = 2
+text = "OXYGENGENERATOR"
+
+[node name="OxygenGenCountLabel" type="Label" parent="VBoxContainer/GeneratorsGridContainer/OxygenHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+
+[node name="WaterHBoxContainer" type="HBoxContainer" parent="VBoxContainer/GeneratorsGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/GeneratorsGridContainer/WaterHBoxContainer"]
+layout_mode = 2
+text = "WATERGENERATOR"
+
+[node name="WaterGenCountLabel" type="Label" parent="VBoxContainer/GeneratorsGridContainer/WaterHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+
+[node name="WorkstationsPanelContainer" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/WorkstationsPanelContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderSmall"
+text = "WORKSTATIONS"
+
+[node name="WorkstationsGridContainer" type="GridContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+columns = 3
+
+[node name="FisheryHBoxContainer" type="HBoxContainer" parent="VBoxContainer/WorkstationsGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/WorkstationsGridContainer/FisheryHBoxContainer"]
+layout_mode = 2
+text = "FISHERY"
+
+[node name="FisheryCountLabel" type="Label" parent="VBoxContainer/WorkstationsGridContainer/FisheryHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+
+[node name="HydroponicsHBoxContainer" type="HBoxContainer" parent="VBoxContainer/WorkstationsGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/WorkstationsGridContainer/HydroponicsHBoxContainer"]
+layout_mode = 2
+text = "HYDROPONICS"
+
+[node name="HydroponicCountLabel" type="Label" parent="VBoxContainer/WorkstationsGridContainer/HydroponicsHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+
+[node name="AquaponicsHBoxContainer" type="HBoxContainer" parent="VBoxContainer/WorkstationsGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/WorkstationsGridContainer/AquaponicsHBoxContainer"]
+layout_mode = 2
+text = "AQUAPONICS"
+
+[node name="AquaponicCountLabel" type="Label" parent="VBoxContainer/WorkstationsGridContainer/AquaponicsHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"

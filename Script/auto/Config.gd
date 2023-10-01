@@ -3,6 +3,9 @@ extends Node
 ##
 ## Handle user preferences and settings
 
+## Quick reference for project scale
+const BASE_WINDOW_SCALE: int = 1024
+## Supported translations
 const LOCALES: Array = [
 	## English
 	"en",
@@ -39,6 +42,8 @@ const LOCALES: Array = [
 	## Ukrainian
 	"uk",
 ]
+## Max scale factor
+const MAX_SCALE: float = 2.5
 ## Path to user preference file
 const SAVE_FILE_PATH: String = "user://options.cfg"
 
@@ -48,12 +53,13 @@ var handler: ConfigFile
 var locale: int
 ## Track whether the user has chosen a locale
 var locale_chosen: bool
+## UI Scale (0.1 - Config.MAX_SCALE)
+var ui_scale: float
 ## Log verbosity level, corresponds to [enum Log.Level]
 var verbosity: int = Log.Level.Debug
 
 func _ready() -> void:
 	Config.reset()
-	# TODO: Figure out why this is freezing the game
 	Config.load_file()
 
 	return
@@ -160,6 +166,11 @@ func load_file_general() -> void:
 	if typeof(in_value) == TYPE_BOOL:
 		Config.locale_chosen = in_value
 
+	# UI Scale
+	in_value = Config.handler.get_value("General", "ui_scale", 1.0)
+	if typeof(in_value) == TYPE_FLOAT:
+		Config.set_ui_scale(in_value)
+
 	# Verbosity
 	in_value = Config.handler.get_value("General", "verbosity", Log.Level.Quiet)
 	if typeof(in_value) == TYPE_INT:
@@ -240,6 +251,7 @@ func save_file_general() -> void:
 	var fields: Dictionary = {
 		"locale": Config.locale,
 		"locale_chosen": Config.locale_chosen,
+		"ui_scale": Config.ui_scale,
 		"verbosity": Config.verbosity,
 	}
 
@@ -255,5 +267,17 @@ func save_to_file(fields: Dictionary, section: String) -> void:
 
 	for field in fields.keys():
 		Config.handler.set_value(section, field, fields[field])
+
+	return
+
+## Set UI Scale[br]
+## Expected value: 0.1 - Config.MAX_SCALE
+func set_ui_scale(value: float) -> void:
+	value = clampf(value, 0.1, Config.MAX_SCALE)
+	Config.ui_scale = value
+	get_tree().root.content_scale_size = Vector2i(
+		floori(self.BASE_WINDOW_SCALE * (1 / Config.ui_scale)),
+		floori(self.BASE_WINDOW_SCALE * (1 / Config.ui_scale))
+	)
 
 	return

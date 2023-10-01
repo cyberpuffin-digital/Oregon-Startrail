@@ -76,20 +76,56 @@ layout_mode = 2
 theme_type_variation = &"HeaderLarge"
 text = "FONT"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+[node name="FontDroidSansHBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
-[node name="URLPanelContainer" type="PanelContainer" parent="ScrollContainer/VBoxContainer/HBoxContainer2"]
+[node name="URLPanelContainer" type="PanelContainer" parent="ScrollContainer/VBoxContainer/FontDroidSansHBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/VBoxContainer/HBoxContainer2/URLPanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/VBoxContainer/FontDroidSansHBoxContainer/URLPanelContainer"]
 layout_mode = 2
 theme_type_variation = &"EvenMargin10"
 
-[node name="LinkButton" type="LinkButton" parent="ScrollContainer/VBoxContainer/HBoxContainer2/URLPanelContainer/MarginContainer"]
+[node name="LinkButton" type="LinkButton" parent="ScrollContainer/VBoxContainer/FontDroidSansHBoxContainer/URLPanelContainer/MarginContainer"]
+layout_mode = 2
+text = "Droid Sans"
+uri = "https://www.fontsquirrel.com/fonts/droid-sans"
+
+[node name="FontKawKabHBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="URLPanelContainer" type="PanelContainer" parent="ScrollContainer/VBoxContainer/FontKawKabHBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/VBoxContainer/FontKawKabHBoxContainer/URLPanelContainer"]
+layout_mode = 2
+theme_type_variation = &"EvenMargin10"
+
+[node name="LinkButton" type="LinkButton" parent="ScrollContainer/VBoxContainer/FontKawKabHBoxContainer/URLPanelContainer/MarginContainer"]
+layout_mode = 2
+text = "Kawkab"
+uri = "https://makkuk.com/kawkab-mono/"
+
+[node name="FontOpenDyslexicHBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="URLPanelContainer" type="PanelContainer" parent="ScrollContainer/VBoxContainer/FontOpenDyslexicHBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/VBoxContainer/FontOpenDyslexicHBoxContainer/URLPanelContainer"]
+layout_mode = 2
+theme_type_variation = &"EvenMargin10"
+
+[node name="LinkButton" type="LinkButton" parent="ScrollContainer/VBoxContainer/FontOpenDyslexicHBoxContainer/URLPanelContainer/MarginContainer"]
 layout_mode = 2
 text = "Open Dyslexic"
 uri = "https://opendyslexic.org/"

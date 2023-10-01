@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ba233g20j6wmu"]
 
-[ext_resource type="Script" path="res://Script/Dialog/Locale.gd" id="1_ebysk"]
+[ext_resource type="Script" path="res://Script/Dialog/LocaleOptions.gd" id="1_4yw0n"]
 [ext_resource type="Texture2D" uid="uid://cphaxchw0bq02" path="res://Image/arrow.png" id="1_isei8"]
 
 [node name="Locale" type="Control"]
@@ -12,7 +12,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource("1_ebysk")
+script = ExtResource("1_4yw0n")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 1

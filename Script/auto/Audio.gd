@@ -74,3 +74,9 @@ func send_to_tts(msg_in: String, queued: bool) -> void:
 	)
 
 	return
+
+func stop_tts() -> void:
+	DisplayServer.tts_stop()
+	Log.debug("TTS Server playback stopped.")
+
+	return

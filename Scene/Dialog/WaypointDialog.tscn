@@ -4,7 +4,7 @@
 [ext_resource type="Theme" uid="uid://ciciv61w8qmyy" path="res://Theme/MainTheme.tres" id="1_rm4wh"]
 [ext_resource type="Script" path="res://Script/Dialog/WaypointDialog.gd" id="2_xflw2"]
 
-[node name="GameDialog" type="AcceptDialog"]
+[node name="WaypointDialog" type="AcceptDialog"]
 position = Vector2i(0, 36)
 size = Vector2i(600, 600)
 visible = true
@@ -16,6 +16,8 @@ offset_left = 8.0
 offset_top = 8.0
 offset_right = 592.0
 offset_bottom = 542.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="TTSButtonHBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 unique_name_in_owner = true
@@ -41,15 +43,19 @@ size_flags_vertical = 3
 tabs_visible = false
 
 [node name="TravelDialog" type="ScrollContainer" parent="VBoxContainer/DialogTabContainer"]
-visible = false
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/DialogTabContainer/TravelDialog"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="VBoxContainer/DialogTabContainer/TravelDialog/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"SpokenDialog"
 text = "TRAVEL001"
+autowrap_mode = 3
 
 [node name="EarthDialog" type="ScrollContainer" parent="VBoxContainer/DialogTabContainer"]
 visible = false
@@ -62,7 +68,6 @@ size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="VBoxContainer/DialogTabContainer/EarthDialog/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_type_variation = &"SpokenDialog"
 text = "DIALOG001"
@@ -71,7 +76,6 @@ autowrap_mode = 3
 
 [node name="Label2" type="Label" parent="VBoxContainer/DialogTabContainer/EarthDialog/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_type_variation = &"SpokenDialog"
 text = "DIALOG002"
@@ -80,7 +84,6 @@ autowrap_mode = 3
 
 [node name="Label3" type="Label" parent="VBoxContainer/DialogTabContainer/EarthDialog/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_type_variation = &"SpokenDialog"
 text = "DIALOG003"
@@ -89,7 +92,6 @@ autowrap_mode = 3
 
 [node name="Label4" type="Label" parent="VBoxContainer/DialogTabContainer/EarthDialog/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_type_variation = &"SpokenDialog"
 text = "DIALOG004"
@@ -98,7 +100,6 @@ autowrap_mode = 3
 
 [node name="Label5" type="Label" parent="VBoxContainer/DialogTabContainer/EarthDialog/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_type_variation = &"SpokenDialog"
 text = "DIALOG005"
@@ -107,8 +108,7 @@ autowrap_mode = 3
 
 [node name="Label6" type="Label" parent="VBoxContainer/DialogTabContainer/EarthDialog/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 6
+size_flags_vertical = 3
 theme_type_variation = &"SpokenDialogSub"
 text = "DIALOG006"
 horizontal_alignment = 1
@@ -117,7 +117,6 @@ autowrap_mode = 3
 
 [node name="Label7" type="Label" parent="VBoxContainer/DialogTabContainer/EarthDialog/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_type_variation = &"SpokenDialog"
 text = "DIALOG007"
@@ -126,7 +125,6 @@ autowrap_mode = 3
 
 [node name="Label8" type="Label" parent="VBoxContainer/DialogTabContainer/EarthDialog/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_type_variation = &"SpokenDialogSub"
 text = "DIALOG008"
@@ -136,7 +134,6 @@ autowrap_mode = 3
 
 [node name="Label9" type="Label" parent="VBoxContainer/DialogTabContainer/EarthDialog/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_type_variation = &"SpokenDialog"
 text = "DIALOG009"
@@ -145,7 +142,6 @@ autowrap_mode = 3
 
 [node name="Label10" type="Label" parent="VBoxContainer/DialogTabContainer/EarthDialog/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_type_variation = &"SpokenDialog"
 text = "DIALOG010"
@@ -158,48 +154,80 @@ layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/DialogTabContainer/MoonDialog"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="VBoxContainer/DialogTabContainer/MoonDialog/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"SpokenDialog"
 text = "DIALOG011"
+autowrap_mode = 3
 
 [node name="Label2" type="Label" parent="VBoxContainer/DialogTabContainer/MoonDialog/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"SpokenDialog"
 text = "DIALOG012"
+autowrap_mode = 3
 
 [node name="Label3" type="Label" parent="VBoxContainer/DialogTabContainer/MoonDialog/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"SpokenDialog"
 text = "DIALOG013"
+autowrap_mode = 3
 
 [node name="Label4" type="Label" parent="VBoxContainer/DialogTabContainer/MoonDialog/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"SpokenDialog"
 text = "DIALOG014"
+autowrap_mode = 3
 
 [node name="Label5" type="Label" parent="VBoxContainer/DialogTabContainer/MoonDialog/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"SpokenDialog"
 text = "DIALOG015"
+autowrap_mode = 3
 
 [node name="MarsDialog" type="ScrollContainer" parent="VBoxContainer/DialogTabContainer"]
+visible = false
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/DialogTabContainer/MarsDialog"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="VBoxContainer/DialogTabContainer/MarsDialog/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"SpokenDialog"
 text = "DIALOG021"
+autowrap_mode = 3
 
 [node name="Label2" type="Label" parent="VBoxContainer/DialogTabContainer/MarsDialog/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"SpokenDialog"
 text = "DIALOG022"
+autowrap_mode = 3
 
 [node name="Label3" type="Label" parent="VBoxContainer/DialogTabContainer/MarsDialog/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"SpokenDialog"
 text = "DIALOG023"
+autowrap_mode = 3
 
 [node name="Label4" type="Label" parent="VBoxContainer/DialogTabContainer/MarsDialog/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"SpokenDialog"
 text = "DIALOG024"
+autowrap_mode = 3
 
 [node name="EuropaDialog" type="ScrollContainer" parent="VBoxContainer/DialogTabContainer"]
 visible = false
@@ -207,10 +235,15 @@ layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/DialogTabContainer/EuropaDialog"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="VBoxContainer/DialogTabContainer/EuropaDialog/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"SpokenDialog"
 text = "DIALOG031"
+autowrap_mode = 3
 
 [node name="KuiperBeltDialog" type="ScrollContainer" parent="VBoxContainer/DialogTabContainer"]
 visible = false
@@ -218,10 +251,15 @@ layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/DialogTabContainer/KuiperBeltDialog"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="VBoxContainer/DialogTabContainer/KuiperBeltDialog/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"SpokenDialog"
 text = "DIALOG041"
+autowrap_mode = 3
 
 [node name="Wolf1061cDialog" type="ScrollContainer" parent="VBoxContainer/DialogTabContainer"]
 visible = false
@@ -229,7 +267,12 @@ layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/DialogTabContainer/Wolf1061cDialog"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="VBoxContainer/DialogTabContainer/Wolf1061cDialog/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"SpokenDialog"
 text = "DIALOG051"
+autowrap_mode = 3

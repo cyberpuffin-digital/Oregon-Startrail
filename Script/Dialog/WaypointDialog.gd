@@ -31,6 +31,8 @@ func get_the_children() -> void:
 
 ## Cycle through active tab and send text to TTS
 func read_active_tab() -> void:
+	Audio.stop_tts()
+
 	for container in self.dialog_tab_container.get_current_tab_control().get_children():
 		if container is VBoxContainer:
 			for label in container.get_children():

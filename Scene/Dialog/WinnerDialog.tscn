@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://scl2smudbj4"]
+
+[ext_resource type="Script" path="res://Script/Dialog/WinnerDialog.gd" id="1_7pgqh"]
+[ext_resource type="Theme" uid="uid://ciciv61w8qmyy" path="res://Theme/MainTheme.tres" id="1_k4ssj"]
+
+[node name="WinnerDialog" type="AcceptDialog"]
+title = "WINNERTITLE"
+position = Vector2i(0, 36)
+size = Vector2i(500, 500)
+visible = true
+theme = ExtResource("1_k4ssj")
+ok_button_text = "MAINMENU"
+script = ExtResource("1_7pgqh")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 492.0
+offset_bottom = 442.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "WINNERDIALOG01"
+autowrap_mode = 3

@@ -1,0 +1,214 @@
+[gd_scene load_steps=2 format=3 uid="uid://ce5qhk5j6ni2"]
+
+[ext_resource type="Script" path="res://Script/Data/Resources.gd" id="1_7yudo"]
+
+[node name="Resources" type="ScrollContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_7yudo")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ActivePanelContainer" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/ActivePanelContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderSmall"
+text = "ACTIVE"
+
+[node name="ActiveGridContainer" type="GridContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+columns = 2
+
+[node name="HumansHBoxContainer" type="HBoxContainer" parent="VBoxContainer/ActiveGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/ActiveGridContainer/HumansHBoxContainer"]
+layout_mode = 2
+text = "HUMANS"
+
+[node name="HumanCountLabel" type="Label" parent="VBoxContainer/ActiveGridContainer/HumansHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+
+[node name="BotHBoxContainer" type="HBoxContainer" parent="VBoxContainer/ActiveGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/ActiveGridContainer/BotHBoxContainer"]
+layout_mode = 2
+text = "BOTS"
+
+[node name="BotCountLabel" type="Label" parent="VBoxContainer/ActiveGridContainer/BotHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+
+[node name="FishHBoxContainer" type="HBoxContainer" parent="VBoxContainer/ActiveGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/ActiveGridContainer/FishHBoxContainer"]
+layout_mode = 2
+text = "FISH"
+
+[node name="FishCountLabel" type="Label" parent="VBoxContainer/ActiveGridContainer/FishHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+
+[node name="PlantHBoxContainer" type="HBoxContainer" parent="VBoxContainer/ActiveGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/ActiveGridContainer/PlantHBoxContainer"]
+layout_mode = 2
+text = "PLANTS"
+
+[node name="PlantCountLabel" type="Label" parent="VBoxContainer/ActiveGridContainer/PlantHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+
+[node name="ConsumablePanelContainer" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/ConsumablePanelContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderSmall"
+text = "Consumable"
+
+[node name="ConsumableGridContainer" type="GridContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+columns = 4
+
+[node name="AirHBoxContainer" type="HBoxContainer" parent="VBoxContainer/ConsumableGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/ConsumableGridContainer/AirHBoxContainer"]
+layout_mode = 2
+text = "AIR"
+
+[node name="AirCountLabel" type="Label" parent="VBoxContainer/ConsumableGridContainer/AirHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+
+[node name="EnergyHBoxContainer" type="HBoxContainer" parent="VBoxContainer/ConsumableGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/ConsumableGridContainer/EnergyHBoxContainer"]
+layout_mode = 2
+text = "ENERGY"
+
+[node name="EnergyCountLabel" type="Label" parent="VBoxContainer/ConsumableGridContainer/EnergyHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+
+[node name="FoodHBoxContainer" type="HBoxContainer" parent="VBoxContainer/ConsumableGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/ConsumableGridContainer/FoodHBoxContainer"]
+layout_mode = 2
+text = "FOOD"
+
+[node name="FoodCountLabel" type="Label" parent="VBoxContainer/ConsumableGridContainer/FoodHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+
+[node name="FuelHBoxContainer" type="HBoxContainer" parent="VBoxContainer/ConsumableGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/ConsumableGridContainer/FuelHBoxContainer"]
+layout_mode = 2
+text = "FUEL"
+
+[node name="FuelCountLabel" type="Label" parent="VBoxContainer/ConsumableGridContainer/FuelHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+
+[node name="MoneyHBoxContainer" type="HBoxContainer" parent="VBoxContainer/ConsumableGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/ConsumableGridContainer/MoneyHBoxContainer"]
+layout_mode = 2
+text = "MONEY"
+
+[node name="MoneyCountLabel" type="Label" parent="VBoxContainer/ConsumableGridContainer/MoneyHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+
+[node name="SparePartsHBoxContainer" type="HBoxContainer" parent="VBoxContainer/ConsumableGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/ConsumableGridContainer/SparePartsHBoxContainer"]
+layout_mode = 2
+text = "SPAREPARTS"
+
+[node name="SparePartsCountLabel" type="Label" parent="VBoxContainer/ConsumableGridContainer/SparePartsHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+
+[node name="WasteHBoxContainer" type="HBoxContainer" parent="VBoxContainer/ConsumableGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/ConsumableGridContainer/WasteHBoxContainer"]
+layout_mode = 2
+text = "WASTE"
+
+[node name="WasteCountLabel" type="Label" parent="VBoxContainer/ConsumableGridContainer/WasteHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+
+[node name="WaterHBoxContainer" type="HBoxContainer" parent="VBoxContainer/ConsumableGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/ConsumableGridContainer/WaterHBoxContainer"]
+layout_mode = 2
+text = "WATER"
+
+[node name="WaterCountLabel" type="Label" parent="VBoxContainer/ConsumableGridContainer/WaterHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"

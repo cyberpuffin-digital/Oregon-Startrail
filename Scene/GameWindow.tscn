@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://d26onhpq6ltvc"]
+[gd_scene load_steps=16 format=3 uid="uid://d26onhpq6ltvc"]
 
+[ext_resource type="Theme" uid="uid://ciciv61w8qmyy" path="res://Theme/MainTheme.tres" id="1_0o5cg"]
 [ext_resource type="Script" path="res://Script/GameWindow.gd" id="1_hjc2e"]
 [ext_resource type="PackedScene" uid="uid://e3lqjtelwjpj" path="res://Scene/Waypoints/Earth.tscn" id="1_wvssu"]
 [ext_resource type="PackedScene" uid="uid://cqylecddk3ous" path="res://Scene/Waypoints/Travel.tscn" id="2_fiilq"]
@@ -9,6 +10,11 @@
 [ext_resource type="PackedScene" uid="uid://dp0g61jdbr7a2" path="res://Scene/Waypoints/Europa.tscn" id="6_n4lpd"]
 [ext_resource type="PackedScene" uid="uid://c6ehjbpcpufoh" path="res://Scene/Waypoints/KuiperBelt.tscn" id="7_hujt0"]
 [ext_resource type="PackedScene" uid="uid://4605eyxb15re" path="res://Scene/Waypoints/Wolf1061c.tscn" id="8_wk43q"]
+[ext_resource type="PackedScene" uid="uid://ce5qhk5j6ni2" path="res://Scene/Data/Resources.tscn" id="9_l8yu6"]
+[ext_resource type="PackedScene" uid="uid://dotoprkwi1au" path="res://Scene/Dialog/OptionsDialog.tscn" id="9_yuaw8"]
+[ext_resource type="PackedScene" uid="uid://scl2smudbj4" path="res://Scene/Dialog/WinnerDialog.tscn" id="10_irdnw"]
+[ext_resource type="PackedScene" uid="uid://dj6goni2ge76d" path="res://Scene/Data/Ship.tscn" id="10_ivg2a"]
+[ext_resource type="PackedScene" uid="uid://vtvbwlh1ednd" path="res://Scene/Data/Rates.tscn" id="11_udfd4"]
 
 [node name="GameWindow" type="MarginContainer"]
 anchors_preset = 15
@@ -18,6 +24,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = ExtResource("1_0o5cg")
 script = ExtResource("1_hjc2e")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
@@ -81,6 +88,27 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "DEPART"
 
+[node name="MainMenuButton" type="Button" parent="HBoxContainer/VBoxContainer/CommandsTabContainer/ScrollContainer/CommandsGridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "MAINMENU"
+
+[node name="StopTTS" type="Button" parent="HBoxContainer/VBoxContainer/CommandsTabContainer/ScrollContainer/CommandsGridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "STOPTTS"
+
+[node name="OptionsButton" type="Button" parent="HBoxContainer/VBoxContainer/CommandsTabContainer/ScrollContainer/CommandsGridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "OPTIONS"
+
 [node name="PauseButton" type="Button" parent="HBoxContainer/VBoxContainer/CommandsTabContainer/ScrollContainer/CommandsGridContainer"]
 unique_name_in_owner = true
 process_mode = 3
@@ -114,150 +142,35 @@ text = "TRADE"
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Resources" type="ScrollContainer" parent="HBoxContainer/VBoxContainer/DataTabContainer"]
+[node name="RESOURCES" parent="HBoxContainer/VBoxContainer/DataTabContainer" instance=ExtResource("9_l8yu6")]
 layout_mode = 2
 
-[node name="GridContainer" type="GridContainer" parent="HBoxContainer/VBoxContainer/DataTabContainer/Resources"]
+[node name="SHIP" parent="HBoxContainer/VBoxContainer/DataTabContainer" instance=ExtResource("10_ivg2a")]
+visible = false
+layout_mode = 2
+
+[node name="MESSAGES" type="ScrollContainer" parent="HBoxContainer/VBoxContainer/DataTabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="TextEdit" type="TextEdit" parent="HBoxContainer/VBoxContainer/DataTabContainer/MESSAGES"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-columns = 3
+editable = false
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
 
-[node name="HumanHBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/DataTabContainer/Resources/GridContainer"]
+[node name="RATES" parent="HBoxContainer/VBoxContainer/DataTabContainer" instance=ExtResource("11_udfd4")]
+visible = false
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/DataTabContainer/Resources/GridContainer/HumanHBoxContainer"]
-layout_mode = 2
-text = "HUMANS"
-
-[node name="Value" type="Label" parent="HBoxContainer/VBoxContainer/DataTabContainer/Resources/GridContainer/HumanHBoxContainer"]
-layout_mode = 2
-text = "0"
-
-[node name="AirHBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/DataTabContainer/Resources/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/DataTabContainer/Resources/GridContainer/AirHBoxContainer"]
-layout_mode = 2
-text = "AIR"
-
-[node name="Value" type="Label" parent="HBoxContainer/VBoxContainer/DataTabContainer/Resources/GridContainer/AirHBoxContainer"]
-layout_mode = 2
-text = "0"
-
-[node name="FoodHBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/DataTabContainer/Resources/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/DataTabContainer/Resources/GridContainer/FoodHBoxContainer"]
-layout_mode = 2
-text = "FOOD"
-
-[node name="Value" type="Label" parent="HBoxContainer/VBoxContainer/DataTabContainer/Resources/GridContainer/FoodHBoxContainer"]
-layout_mode = 2
-text = "0"
-
-[node name="WasteHBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/DataTabContainer/Resources/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/DataTabContainer/Resources/GridContainer/WasteHBoxContainer"]
-layout_mode = 2
-text = "WASTE"
-
-[node name="Value" type="Label" parent="HBoxContainer/VBoxContainer/DataTabContainer/Resources/GridContainer/WasteHBoxContainer"]
-layout_mode = 2
-text = "0"
-
-[node name="BotHBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/DataTabContainer/Resources/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/DataTabContainer/Resources/GridContainer/BotHBoxContainer"]
-layout_mode = 2
-text = "BOTS"
-
-[node name="Value" type="Label" parent="HBoxContainer/VBoxContainer/DataTabContainer/Resources/GridContainer/BotHBoxContainer"]
-layout_mode = 2
-text = "0"
-
-[node name="EnergyHBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/DataTabContainer/Resources/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/DataTabContainer/Resources/GridContainer/EnergyHBoxContainer"]
-layout_mode = 2
-text = "ENERGY"
-
-[node name="Value" type="Label" parent="HBoxContainer/VBoxContainer/DataTabContainer/Resources/GridContainer/EnergyHBoxContainer"]
-layout_mode = 2
-text = "0"
-
-[node name="FishHBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/DataTabContainer/Resources/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/DataTabContainer/Resources/GridContainer/FishHBoxContainer"]
-layout_mode = 2
-text = "FISH"
-
-[node name="Value" type="Label" parent="HBoxContainer/VBoxContainer/DataTabContainer/Resources/GridContainer/FishHBoxContainer"]
-layout_mode = 2
-text = "0"
-
-[node name="WaterHBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/DataTabContainer/Resources/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/DataTabContainer/Resources/GridContainer/WaterHBoxContainer"]
-layout_mode = 2
-text = "WATER"
-
-[node name="Value" type="Label" parent="HBoxContainer/VBoxContainer/DataTabContainer/Resources/GridContainer/WaterHBoxContainer"]
-layout_mode = 2
-text = "0"
-
-[node name="PlantHBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/DataTabContainer/Resources/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/DataTabContainer/Resources/GridContainer/PlantHBoxContainer"]
-layout_mode = 2
-text = "PLANTS"
-
-[node name="Value" type="Label" parent="HBoxContainer/VBoxContainer/DataTabContainer/Resources/GridContainer/PlantHBoxContainer"]
-layout_mode = 2
-text = "0"
-
-[node name="MoneyHBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/DataTabContainer/Resources/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/DataTabContainer/Resources/GridContainer/MoneyHBoxContainer"]
-layout_mode = 2
-text = "MONEY"
-
-[node name="Value" type="Label" parent="HBoxContainer/VBoxContainer/DataTabContainer/Resources/GridContainer/MoneyHBoxContainer"]
-layout_mode = 2
-text = "0"
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
 custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 
 [node name="TripProgressVSlider" type="VSlider" parent="HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"TravelVSlider"
 editable = false
@@ -268,5 +181,10 @@ layout_mode = 2
 
 [node name="Dialogs" type="Node" parent="."]
 
+[node name="OptionsDialog" parent="Dialogs" instance=ExtResource("9_yuaw8")]
+
 [node name="WaypointDialog" parent="Dialogs" instance=ExtResource("3_2pebf")]
+visible = false
+
+[node name="WinnerDialog" parent="Dialogs" instance=ExtResource("10_irdnw")]
 visible = false
