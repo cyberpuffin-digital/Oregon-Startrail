@@ -17,6 +17,7 @@ var tts_volume: int = 75
 
 func _ready() -> void:
 	Audio.configure_tts()
+	Log.quiet("Audio controller loaded.")
 
 	return
 
@@ -40,7 +41,7 @@ func configure_tts() -> void:
 		Log.error("TTS subsystem is not available.")
 
 		match OS.get_name():
-			"Android", "iOS", "macOS", "Windows", "Web":
+			"Android", "iOS", "macOS", "Windows":
 				Log.quiet("""
 				TTS Libraries should be installed by default.  Please open a
 				Github issue: https://github.com/cyberpuffin-digital/Oregon-Startrail/
@@ -58,6 +59,10 @@ func configure_tts() -> void:
 				See https://docs.godotengine.org/en/stable/tutorials/audio/text_to_speech.html#requirements-for-functionality
 				for more details.
 				""")
+			"Web":
+				Log.quiet("TTS is not configured.")
+			_:
+				Log.quiet("Unrecognized OS, TTS disabled.")
 	else:
 		if self.tts_voice_selected.is_empty():
 			self.tts_voice_selected = DisplayServer.tts_get_voices_for_language(

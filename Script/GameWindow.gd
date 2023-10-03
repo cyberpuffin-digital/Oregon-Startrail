@@ -1,18 +1,36 @@
 extends MarginContainer
+## Primary game window
+##
+## Main interface for player to play the game.  Aggregates dialogs and waypoint
+## scenes in a series of tab containers.
 
 ## Button to Depart from current stop / waypoint
 var depart_button: Button
+## Return to main menu
 var main_menu_button: Button
+## Show options dialog
 var options_button: Button
+## Pause game
 var pause_button: Button
+## Settle the destination
 var settle_button: Button
+## Button to show space dock
 var space_dock_button: Button
+## Space dock dialog for upgrading ship
+var space_dock_dialog: ConfirmationDialog
+## Button to show trade window
 var trade_button: Button
+## Trade dialog for buying and selling resources
 var trade_dialog: ConfirmationDialog
+## Slider to show current travel progress
 var travel_slider: VSlider
+## Tab container showing waypoints and travel
 var travel_tab_container: TabContainer
+## Button to burn fuel for resources
 var use_fuel_button: Button
+## Dialog window for interacting with people
 var waypoint_dialog: AcceptDialog
+## Dialog window for celebrating a new settlement
 var winner_dialog: AcceptDialog
 
 func _notification(what: int) -> void:
@@ -127,10 +145,11 @@ func get_the_children() -> void:
 
 	return
 
+## Callback handler for pause button
 func handle_pause_button() -> void:
-	if self.pause_button.text == tr("UNPAUSE"):
-		self.pause_button.text = tr("PAUSE")
+	if get_tree().paused:
 		Controller.set_pause_mode(false)
+		self.pause_button.text = tr("PAUSE")
 	else:
 		self.pause_button.text = tr("UNPAUSE")
 		Controller.set_pause_mode(true)

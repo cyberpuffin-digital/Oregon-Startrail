@@ -14,7 +14,8 @@ func check_key_input(event: InputEventKey) -> void:
 				match get_tree().current_scene.name:
 					"MainMenu":
 						Config.save_file()
-						get_tree().quit()
+						if OS.get_name() != "Web":
+							get_tree().quit()
 					"GameWindow":
 						get_tree().change_scene_to_file("res://Scene/MainMenu.tscn")
 					_:

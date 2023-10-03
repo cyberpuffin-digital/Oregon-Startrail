@@ -154,11 +154,11 @@ var energy: float
 ## Capacity of energy storage
 var energy_capacity: float
 ## Active fish
-var fish: int
+var fish: float
 ## Fishery to process fish
 var fishery: int
 ## Food for active humans
-var food: int
+var food: float
 ## Fuel to power energy generators and propulsion
 var fuel: int
 ## Fusion generator: consumes fuel, produces energy
@@ -166,13 +166,13 @@ var fusion_generator: int
 ## Hydroponic gardens to tend plants
 var hydroponic: int
 ## Active human workers
-var human: int
+var human: float
 ## Cash for trade
 var money: float
 ## Oxygen generator: consumes energy, produces oxygen
 var oxygen_generator: int
 ## Plants to grow for food and air
-var plant: int
+var plant: float
 ## Available space for stuff
 var space_available: float
 ## Spare parts for repairs

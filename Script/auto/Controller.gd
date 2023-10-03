@@ -244,6 +244,7 @@ func reset() -> void:
 		Controller.game_timers = GameTimers.new()
 		Controller.game_timers.configure_timers()
 		add_child(Controller.game_timers)
+	Log.verbose("Game controller reset.")
 
 	return
 

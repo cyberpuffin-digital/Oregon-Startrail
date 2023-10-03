@@ -20,13 +20,14 @@ func _ready() -> void:
 
 ## Connect to relevant signals in the scene
 func connect_to_signals() -> void:
-	self.continue_button.pressed.connect(continue_game)
-	self.exit_button.pressed.connect(exit_game)
-	self.options_button.pressed.connect(show_options)
-	self.start_button.pressed.connect(start_game)
+	self.continue_button.pressed.connect(self.continue_game)
+	self.exit_button.pressed.connect(self.exit_game)
+	self.options_button.pressed.connect(self.show_options)
+	self.start_button.pressed.connect(self.start_game)
 
 	return
 
+## Callback function for continue button
 func continue_game() -> void:
 	get_tree().change_scene_to_file("res://Scene/GameWindow.tscn")
 
@@ -52,10 +53,11 @@ func set_the_children() -> void:
 	self.continue_button.visible = !(
 		Controller.current_waypoint == 0 and Controller.last_waypoint == 0
 	)
+	self.exit_button.visible = OS.get_name() != "Web"
 
 	return
 
-## Show Options dialog
+## Callback function for options button
 func show_options() -> void:
 	Controller.show_options()
 

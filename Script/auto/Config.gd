@@ -44,6 +44,8 @@ const LOCALES: Array = [
 ]
 ## Max scale factor
 const MAX_SCALE: float = 2.5
+## Min scale factor
+const MIN_SCALE: float = 0.7
 ## Path to user preference file
 const SAVE_FILE_PATH: String = "user://options.cfg"
 
@@ -53,7 +55,7 @@ var handler: ConfigFile
 var locale: int
 ## Track whether the user has chosen a locale
 var locale_chosen: bool
-## UI Scale (0.7 - Config.MAX_SCALE)
+## UI Scale (Config.MIN_SCALE - Config.MAX_SCALE)
 var ui_scale: float
 ## Log verbosity level, corresponds to [enum Log.Level]
 var verbosity: int = Log.Level.Debug
@@ -61,6 +63,7 @@ var verbosity: int = Log.Level.Debug
 func _ready() -> void:
 	Config.reset()
 	Config.load_file()
+	Log.quiet("Configuration loaded.")
 
 	return
 
@@ -271,9 +274,9 @@ func save_to_file(fields: Dictionary, section: String) -> void:
 	return
 
 ## Set UI Scale[br]
-## Expected value: 0.7 - Config.MAX_SCALE
+## Expected value: Config.MAX_SCALE - Config.MAX_SCALE
 func set_ui_scale(value: float) -> void:
-	value = clampf(value, 0.7, Config.MAX_SCALE)
+	value = clampf(value, Config.MAX_SCALE, Config.MAX_SCALE)
 	Config.ui_scale = value
 	get_tree().root.content_scale_size = Vector2i(
 		floori(self.BASE_WINDOW_SCALE * (1 / Config.ui_scale)),
