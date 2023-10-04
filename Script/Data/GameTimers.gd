@@ -36,7 +36,7 @@ func configure_base_timer() -> void:
 	self.base.one_shot = false
 	self.base.paused = false
 	self.base.wait_time = self.base_interval
-	self.base.start()
+	self.base.call_deferred("start")
 	self.base.timeout.connect(Controller.process_default_resources)
 
 	return

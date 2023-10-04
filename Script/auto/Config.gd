@@ -276,11 +276,11 @@ func save_to_file(fields: Dictionary, section: String) -> void:
 ## Set UI Scale[br]
 ## Expected value: Config.MAX_SCALE - Config.MAX_SCALE
 func set_ui_scale(value: float) -> void:
-	value = clampf(value, Config.MAX_SCALE, Config.MAX_SCALE)
+	value = clampf(value, Config.MIN_SCALE, Config.MAX_SCALE)
 	Config.ui_scale = value
 	get_tree().root.content_scale_size = Vector2i(
-		floori(self.BASE_WINDOW_SCALE * (1 / Config.ui_scale)),
-		floori(self.BASE_WINDOW_SCALE * (1 / Config.ui_scale))
+		floori(Config.BASE_WINDOW_SCALE * (1 / Config.ui_scale)),
+		floori(Config.BASE_WINDOW_SCALE * (1 / Config.ui_scale))
 	)
 
 	return

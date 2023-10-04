@@ -15,6 +15,7 @@ func get_the_children() -> void:
 
 	return
 
+## Callback handler for Controller signal
 func show_dialog() -> void:
 	popup_centered_ratio()
 

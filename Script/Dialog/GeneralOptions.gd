@@ -51,7 +51,7 @@ func set_the_children() -> void:
 ## Scale UI for visibility from the slider[br]
 ## Expected input: 1 - Config.MAX_SCALE * 10
 func set_ui_scale(value: float) -> void:
-	value = clampf(round(value) / 10, 0.1, Config.MAX_SCALE)
+	value = clampf(round(value) / 10, Config.MIN_SCALE, Config.MAX_SCALE)
 	Config.set_ui_scale(value)
 	self.scale_value_label.text = "%.1f" % [value]
 	Controller.show_options()
