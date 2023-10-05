@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cet5igh22jawm"]
+[gd_scene load_steps=5 format=3 uid="uid://cet5igh22jawm"]
 
 [ext_resource type="Texture2D" uid="uid://dy71eladhmnwo" path="res://Image/star.png" id="1_psqnx"]
+[ext_resource type="Script" path="res://Script/Waypoints/Travel2D.gd" id="1_q4e3t"]
 [ext_resource type="Texture2D" uid="uid://bgteyxd4bdeay" path="res://Image/ship_jet_on.png" id="2_152hi"]
 
 [sub_resource type="Gradient" id="Gradient_km60s"]
@@ -9,8 +10,10 @@ offsets = PackedFloat32Array(0, 0.2, 0.4, 0.6)
 colors = PackedColorArray(1, 0, 0, 1, 0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1)
 
 [node name="Travel2D" type="Node2D"]
+script = ExtResource("1_q4e3t")
 
 [node name="StarCPUParticles2D" type="CPUParticles2D" parent="."]
+unique_name_in_owner = true
 position = Vector2(1124, 170)
 amount = 20
 lifetime = 5.0
@@ -28,8 +31,10 @@ scale_amount_min = 0.3
 scale_amount_max = 0.6
 color_initial_ramp = SubResource("Gradient_km60s")
 
-[node name="ShipJetOn" type="Sprite2D" parent="."]
+[node name="ShipSprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
 position = Vector2(150, 150)
 texture = ExtResource("2_152hi")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="ShipJetOn"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ShipSprite2D"]
+unique_name_in_owner = true

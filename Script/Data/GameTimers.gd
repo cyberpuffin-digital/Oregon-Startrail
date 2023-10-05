@@ -49,7 +49,7 @@ func configure_fish_timer() -> void:
 	self.fish.one_shot = false
 	self.fish.paused = false
 	self.fish.wait_time = self.fish_interval
-	self.fish.start()
+	self.fish.call_deferred("start")
 	self.fish.timeout.connect(Controller.process_resource.bind(Inventory.TrackedResources.Fish))
 
 	return
@@ -62,7 +62,7 @@ func configure_food_timer() -> void:
 	self.food.one_shot = false
 	self.food.paused = false
 	self.food.wait_time = self.food_interval
-	self.food.start()
+	self.food.call_deferred("start")
 	self.food.timeout.connect(Controller.process_resource.bind(Inventory.TrackedResources.Food))
 
 	return
@@ -75,7 +75,7 @@ func configure_fuel_timer() -> void:
 	self.fuel.one_shot = false
 	self.fuel.paused = false
 	self.fuel.wait_time = self.fuel_interval
-	self.fuel.start()
+	self.fuel.call_deferred("start")
 	self.fuel.timeout.connect(Controller.process_resource.bind(Inventory.TrackedResources.Fuel))
 
 	return

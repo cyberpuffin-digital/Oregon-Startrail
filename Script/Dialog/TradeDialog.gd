@@ -72,13 +72,13 @@ func complete_trade() -> void:
 		self.market.inventory[Controller.current_waypoint][Inventory.TrackedResources.Fish] = self.fish_available_label.text
 		Inventory.food = self.food_owned_spin_box.value
 		self.market.inventory[Controller.current_waypoint][Inventory.TrackedResources.Food] = self.food_available_label.text
-		Inventory.fuel = self.fuel_owned_spin_box.value
+		Inventory.fuel = int(self.fuel_owned_spin_box.value)
 		self.market.inventory[Controller.current_waypoint][Inventory.TrackedResources.Fuel] = self.fuel_available_label.text
 		Inventory.money -= self.current_trade[Inventory.TrackedResources.Money]
 		self.market.inventory[Controller.current_waypoint][Inventory.TrackedResources.Money] = self.money_available_spin_box.value
 		Inventory.plant = self.plant_owned_spin_box.value
 		self.market.inventory[Controller.current_waypoint][Inventory.TrackedResources.Plant] = self.plant_available_label.text
-		Inventory.spare_part = self.spare_part_owned_spin_box.value
+		Inventory.spare_part = int(self.spare_part_owned_spin_box.value)
 		self.market.inventory[Controller.current_waypoint][Inventory.TrackedResources.SparePart] = self.spare_part_available_label.text
 		Inventory.waste = self.waste_owned_spin_box.value
 		self.market.inventory[Controller.current_waypoint][Inventory.TrackedResources.Waste] = self.waste_available_label.text

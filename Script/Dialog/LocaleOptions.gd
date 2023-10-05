@@ -26,7 +26,7 @@ func get_the_children() -> void:
 	return
 
 func select_locale(id: int) -> void:
-	id = posmod(id, Config.LOCALES.size())
+	id = clamp(id, 0, Config.LOCALES.size())
 	Config.locale = id
 	Config.locale_chosen = true
 	TranslationServer.set_locale(Config.LOCALES[id])

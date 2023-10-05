@@ -3,6 +3,9 @@ extends Node
 ##
 ## Handle user preferences and settings
 
+## Scale change signal
+signal scale_updated
+
 ## Quick reference for project scale
 const BASE_WINDOW_SCALE: int = 1024
 ## Supported translations
@@ -184,9 +187,10 @@ func load_file_general() -> void:
 ## Reset configuration
 func reset() -> void:
 	Config.handler = ConfigFile.new()
-	Config.verbosity = Log.Level.Quiet
 	Config.locale = 0
 	Config.locale_chosen = false
+	Config.ui_scale = 1.0
+	Config.verbosity = Log.Level.Quiet
 
 	return
 
@@ -282,5 +286,6 @@ func set_ui_scale(value: float) -> void:
 		floori(Config.BASE_WINDOW_SCALE * (1 / Config.ui_scale)),
 		floori(Config.BASE_WINDOW_SCALE * (1 / Config.ui_scale))
 	)
+	self.scale_updated.emit()
 
 	return
