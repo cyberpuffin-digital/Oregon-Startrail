@@ -1,0 +1,385 @@
+[gd_scene load_steps=2 format=3 uid="uid://ddsonij07pxq0"]
+
+[ext_resource type="Script" path="res://Script/Data/Resources_graphical.gd" id="1_pxk8y"]
+
+[node name="Resources_graphical" type="ScrollContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_pxk8y")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="ConsumablePanelContainer" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/ConsumablePanelContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderSmall"
+text = "CONSUMABLE"
+
+[node name="ConsumablesGridContainer" type="GridContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+columns = 4
+
+[node name="AirGaugeVBoxContainer" type="VBoxContainer" parent="VBoxContainer/ConsumablesGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+tooltip_text = "TOOLTIP_RESOURCE_AIR"
+alignment = 1
+
+[node name="AirLabel" type="Label" parent="VBoxContainer/ConsumablesGridContainer/AirGaugeVBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "AIR"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="AirProgressBar" type="ProgressBar" parent="VBoxContainer/ConsumablesGridContainer/AirGaugeVBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+step = 1.0
+rounded = true
+fill_mode = 3
+
+[node name="AirStatusLabel" type="Label" parent="VBoxContainer/ConsumablesGridContainer/AirGaugeVBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "OK"
+horizontal_alignment = 1
+
+[node name="EnergyPodGaugeVBoxContainer" type="VBoxContainer" parent="VBoxContainer/ConsumablesGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+tooltip_text = "TOOLTIP_RESOURCE_BOT"
+alignment = 1
+
+[node name="EnergyLabel" type="Label" parent="VBoxContainer/ConsumablesGridContainer/EnergyPodGaugeVBoxContainer"]
+layout_mode = 2
+text = "ENERGY"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="EnergyProgressBar" type="ProgressBar" parent="VBoxContainer/ConsumablesGridContainer/EnergyPodGaugeVBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+step = 1.0
+rounded = true
+fill_mode = 3
+
+[node name="EnergyStatusLabel" type="Label" parent="VBoxContainer/ConsumablesGridContainer/EnergyPodGaugeVBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "OK"
+horizontal_alignment = 1
+
+[node name="FoodGaugeVBoxContainer" type="VBoxContainer" parent="VBoxContainer/ConsumablesGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+tooltip_text = "TOOLTIP_RESOURCE_FISH"
+alignment = 1
+
+[node name="FoodLabel" type="Label" parent="VBoxContainer/ConsumablesGridContainer/FoodGaugeVBoxContainer"]
+layout_mode = 2
+text = "FOOD"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="FoodProgressBar" type="ProgressBar" parent="VBoxContainer/ConsumablesGridContainer/FoodGaugeVBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+step = 1.0
+rounded = true
+fill_mode = 3
+
+[node name="FoodStatusLabel" type="Label" parent="VBoxContainer/ConsumablesGridContainer/FoodGaugeVBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "OK"
+horizontal_alignment = 1
+
+[node name="FuelGaugeVBoxContainer" type="VBoxContainer" parent="VBoxContainer/ConsumablesGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+tooltip_text = "TOOLTIP_RESOURCE_FISH"
+alignment = 1
+
+[node name="FuelLabel" type="Label" parent="VBoxContainer/ConsumablesGridContainer/FuelGaugeVBoxContainer"]
+layout_mode = 2
+text = "FUEL"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="FuelProgressBar" type="ProgressBar" parent="VBoxContainer/ConsumablesGridContainer/FuelGaugeVBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+step = 1.0
+rounded = true
+fill_mode = 3
+
+[node name="FuelStatusLabel" type="Label" parent="VBoxContainer/ConsumablesGridContainer/FuelGaugeVBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "OK"
+horizontal_alignment = 1
+
+[node name="MoneyGaugeVBoxContainer" type="VBoxContainer" parent="VBoxContainer/ConsumablesGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+tooltip_text = "TOOLTIP_RESOURCE_HUMAN"
+alignment = 1
+
+[node name="MoneyLabel" type="Label" parent="VBoxContainer/ConsumablesGridContainer/MoneyGaugeVBoxContainer"]
+layout_mode = 2
+text = "MONEY"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="MoneyProgressBar" type="ProgressBar" parent="VBoxContainer/ConsumablesGridContainer/MoneyGaugeVBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+step = 1.0
+rounded = true
+fill_mode = 3
+
+[node name="MoneyStatusLabel" type="Label" parent="VBoxContainer/ConsumablesGridContainer/MoneyGaugeVBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "OK"
+horizontal_alignment = 1
+
+[node name="SparePartsGaugeVBoxContainer" type="VBoxContainer" parent="VBoxContainer/ConsumablesGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+tooltip_text = "TOOLTIP_RESOURCE_HUMAN"
+alignment = 1
+
+[node name="SparePartsLabel" type="Label" parent="VBoxContainer/ConsumablesGridContainer/SparePartsGaugeVBoxContainer"]
+layout_mode = 2
+text = "SPAREPARTS"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="SparePartsProgressBar" type="ProgressBar" parent="VBoxContainer/ConsumablesGridContainer/SparePartsGaugeVBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+step = 1.0
+rounded = true
+fill_mode = 3
+
+[node name="SparePartsStatusLabel" type="Label" parent="VBoxContainer/ConsumablesGridContainer/SparePartsGaugeVBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "OK"
+horizontal_alignment = 1
+
+[node name="WaterGaugeVBoxContainer" type="VBoxContainer" parent="VBoxContainer/ConsumablesGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+tooltip_text = "TOOLTIP_RESOURCE_HUMAN"
+alignment = 1
+
+[node name="WaterLabel" type="Label" parent="VBoxContainer/ConsumablesGridContainer/WaterGaugeVBoxContainer"]
+layout_mode = 2
+text = "WATER"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="WaterProgressBar" type="ProgressBar" parent="VBoxContainer/ConsumablesGridContainer/WaterGaugeVBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+step = 1.0
+rounded = true
+fill_mode = 3
+
+[node name="WaterStatusLabel" type="Label" parent="VBoxContainer/ConsumablesGridContainer/WaterGaugeVBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "OK"
+horizontal_alignment = 1
+
+[node name="WasteGaugeVBoxContainer" type="VBoxContainer" parent="VBoxContainer/ConsumablesGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+tooltip_text = "TOOLTIP_RESOURCE_HUMAN"
+alignment = 1
+
+[node name="WasteLabel" type="Label" parent="VBoxContainer/ConsumablesGridContainer/WasteGaugeVBoxContainer"]
+layout_mode = 2
+text = "WASTE"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="WasteProgressBar" type="ProgressBar" parent="VBoxContainer/ConsumablesGridContainer/WasteGaugeVBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+step = 1.0
+rounded = true
+fill_mode = 3
+
+[node name="WasteStatusLabel" type="Label" parent="VBoxContainer/ConsumablesGridContainer/WasteGaugeVBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "OK"
+horizontal_alignment = 1
+
+[node name="ActivePanelContainer" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/ActivePanelContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderSmall"
+text = "ACTIVE"
+
+[node name="ActiveGridContainer" type="GridContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 2
+
+[node name="BotGaugeVBoxContainer" type="VBoxContainer" parent="VBoxContainer/ActiveGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+tooltip_text = "TOOLTIP_RESOURCE_BOT"
+alignment = 1
+
+[node name="BotLabel" type="Label" parent="VBoxContainer/ActiveGridContainer/BotGaugeVBoxContainer"]
+layout_mode = 2
+text = "BOTS"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="BotProgressBar" type="ProgressBar" parent="VBoxContainer/ActiveGridContainer/BotGaugeVBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+step = 1.0
+rounded = true
+fill_mode = 3
+
+[node name="BotStatusLabel" type="Label" parent="VBoxContainer/ActiveGridContainer/BotGaugeVBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "OK"
+horizontal_alignment = 1
+
+[node name="FishGaugeVBoxContainer" type="VBoxContainer" parent="VBoxContainer/ActiveGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+tooltip_text = "TOOLTIP_RESOURCE_FISH"
+alignment = 1
+
+[node name="FishLabel" type="Label" parent="VBoxContainer/ActiveGridContainer/FishGaugeVBoxContainer"]
+layout_mode = 2
+text = "FISH"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="FishProgressBar" type="ProgressBar" parent="VBoxContainer/ActiveGridContainer/FishGaugeVBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+step = 1.0
+rounded = true
+fill_mode = 3
+
+[node name="FishStatusLabel" type="Label" parent="VBoxContainer/ActiveGridContainer/FishGaugeVBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "OK"
+horizontal_alignment = 1
+
+[node name="HumanGaugeVBoxContainer" type="VBoxContainer" parent="VBoxContainer/ActiveGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+tooltip_text = "TOOLTIP_RESOURCE_HUMAN"
+alignment = 1
+
+[node name="HumanLabel" type="Label" parent="VBoxContainer/ActiveGridContainer/HumanGaugeVBoxContainer"]
+layout_mode = 2
+text = "HUMAN"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="HumanProgressBar" type="ProgressBar" parent="VBoxContainer/ActiveGridContainer/HumanGaugeVBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+step = 1.0
+rounded = true
+fill_mode = 3
+
+[node name="HumanStatusLabel" type="Label" parent="VBoxContainer/ActiveGridContainer/HumanGaugeVBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "OK"
+horizontal_alignment = 1
+
+[node name="PlantGaugeVBoxContainer" type="VBoxContainer" parent="VBoxContainer/ActiveGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+tooltip_text = "TOOLTIP_RESOURCE_HUMAN"
+alignment = 1
+
+[node name="PlantLabel" type="Label" parent="VBoxContainer/ActiveGridContainer/PlantGaugeVBoxContainer"]
+layout_mode = 2
+text = "PLANT"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="PlantProgressBar" type="ProgressBar" parent="VBoxContainer/ActiveGridContainer/PlantGaugeVBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+step = 1.0
+rounded = true
+fill_mode = 3
+
+[node name="PlantStatusLabel" type="Label" parent="VBoxContainer/ActiveGridContainer/PlantGaugeVBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "OK"
+horizontal_alignment = 1

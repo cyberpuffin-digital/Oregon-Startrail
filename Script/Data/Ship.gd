@@ -101,7 +101,7 @@ func update_ship_details() -> void:
 	self.water_generator_count_label.text = str(Inventory.water_generator)
 
 	# Workstations
-	self.aquaponic_count_label.text = str(Controller.count_aquaponic())
+	self.aquaponic_count_label.text = str(Inventory.count_aquaponic())
 	self.fishery_count_label.text = str(Inventory.fishery)
 	self.hydroponic_count_label.text = str(Inventory.hydroponic)
 

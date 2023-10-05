@@ -17,6 +17,9 @@ var fuel_interval: float = 60
 var random_bad: Timer
 var random_good: Timer
 var random_neutral: Timer
+## Water
+var water: Timer
+var water_interval: float = 5
 
 func configure_timers() -> void:
 	self.configure_base_timer()
@@ -37,7 +40,7 @@ func configure_base_timer() -> void:
 	self.base.paused = false
 	self.base.wait_time = self.base_interval
 	self.base.call_deferred("start")
-	self.base.timeout.connect(Controller.process_default_resources)
+	self.base.timeout.connect(Controller.process_default_resources.bind(self.base_interval))
 
 	return
 
@@ -77,6 +80,19 @@ func configure_fuel_timer() -> void:
 	self.fuel.wait_time = self.fuel_interval
 	self.fuel.call_deferred("start")
 	self.fuel.timeout.connect(Controller.process_resource.bind(Inventory.TrackedResources.Fuel))
+
+	return
+
+func configure_water_timer() -> void:
+	self.water = Timer.new()
+	self.water.name = "Fuel"
+	add_child(self.water)
+	self.water.autostart = true
+	self.water.one_shot = false
+	self.water.paused = false
+	self.water.wait_time = self.water_interval
+	self.water.call_deferred("start")
+	self.water.timeout.connect(Controller.process_resource.bind(Inventory.TrackedResources.Water))
 
 	return
 

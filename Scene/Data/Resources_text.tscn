@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://ce5qhk5j6ni2"]
 
-[ext_resource type="Script" path="res://Script/Data/Resources.gd" id="1_7yudo"]
+[ext_resource type="Script" path="res://Script/Data/Resources_text.gd" id="1_382wl"]
 
-[node name="Resources" type="ScrollContainer"]
+[node name="Resources_text" type="ScrollContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -10,7 +10,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource("1_7yudo")
+script = ExtResource("1_382wl")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2

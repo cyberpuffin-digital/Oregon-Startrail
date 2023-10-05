@@ -12,7 +12,6 @@ enum Converters {
 	Human,
 	Hydroponic,
 	OxygenGenerator,
-	Repair,
 	WaterGenerator,
 }
 
@@ -22,6 +21,7 @@ enum TrackedResources {
 	Aquaponic,
 	Battery,
 	Bot,
+	BotBench,
 	Cryopod,
 	Energy,
 	EnergyCapacity,
@@ -35,7 +35,7 @@ enum TrackedResources {
 	Money,
 	OxygenGenerator,
 	Plant,
-	Repair,
+	Recycling,
 	Space,
 	SparePart,
 	Waste,
@@ -111,21 +111,20 @@ const conversions: Dictionary = {
 		TrackedResources.Air: 100,
 		TrackedResources.Energy: -10,
 	},
-	Inventory.TrackedResources.Repair: {
-		TrackedResources.Work: -1,
-	},
 	Inventory.TrackedResources.WaterGenerator: {
 		TrackedResources.Water: 100,
 		TrackedResources.Energy: -10,
 	},
 }
 ## Space usage
-const space_use: Dictionary = {
+const required_space: Dictionary = {
 	Inventory.TrackedResources.Air: 0.001,
+	Inventory.TrackedResources.Aquaponic: 0,
 	Inventory.TrackedResources.Battery: 2,
 	Inventory.TrackedResources.Bot: 1,
 	Inventory.TrackedResources.Cryopod: 4,
 	Inventory.TrackedResources.Energy: 0,
+	Inventory.TrackedResources.EnergyCapacity: 0,
 	Inventory.TrackedResources.Fish: 0.1,
 	Inventory.TrackedResources.Fishery: 10,
 	Inventory.TrackedResources.Food: 0.1,
@@ -133,12 +132,15 @@ const space_use: Dictionary = {
 	Inventory.TrackedResources.FusionGenerator: 25,
 	Inventory.TrackedResources.Human: 2,
 	Inventory.TrackedResources.Hydroponic: 1,
+	Inventory.TrackedResources.Money: 0,
 	Inventory.TrackedResources.OxygenGenerator: 10,
 	Inventory.TrackedResources.Plant: 0.1,
+	Inventory.TrackedResources.Space: 0,
 	Inventory.TrackedResources.SparePart: 10,
 	Inventory.TrackedResources.Waste: 1,
 	Inventory.TrackedResources.Water: 2,
 	Inventory.TrackedResources.WaterGenerator: 10,
+	Inventory.TrackedResources.Work: 0,
 }
 
 ## Oxygen for active humans
@@ -160,7 +162,9 @@ var fishery: int
 ## Food for active humans
 var food: float
 ## Fuel to power energy generators and propulsion
-var fuel: int
+var fuel: float
+## Fuel burn rate during travel
+var fuel_burn_rate: float
 ## Fusion generator: consumes fuel, produces energy
 var fusion_generator: int
 ## Hydroponic gardens to tend plants
@@ -194,6 +198,13 @@ var water: float
 var water_generator: int
 ## Accumulated effort put forth by the workers
 var work: float
+## Workstation efficiency. Unmaintained workstations don't work as well
+var workstation_efficiency: Dictionary = {
+	Inventory.TrackedResources.Aquaponic: 1.0,
+	Inventory.TrackedResources.BotBench: 1.0,
+	Inventory.TrackedResources.Fishery: 1.0,
+	Inventory.TrackedResources.Hydroponic: 1.0,
+}
 
 func _init(
 	bots_in: int = self.starting_values[Inventory.TrackedResources.Bot],
@@ -216,22 +227,36 @@ func _init(
 func calculate_air_rate(by_time: float) -> float:
 	var air_per_time: float = 0
 
-	# Aquaponic adds air
-	air_per_time += Controller.count_aquaponic() * Inventory.conversions[
-		Inventory.TrackedResources.Aquaponic
-	][Inventory.TrackedResources.Air] / by_time
-
 	# Human consume air
 	air_per_time += Inventory.human * Inventory.conversions[
 		Inventory.TrackedResources.Human
-	][Inventory.TrackedResources.Air] / by_time
+	][Inventory.TrackedResources.Air] * Inventory.human / by_time
 
-	# Hydroponics add air
-	air_per_time += Inventory.hydroponic * Inventory.conversions[
-		Inventory.TrackedResources.Hydroponic
-	][Inventory.TrackedResources.Air] / by_time
+	# Oxygen generators creates air
+	air_per_time += Inventory.oxygen_generator * Inventory.conversions[
+		Inventory.TrackedResources.OxygenGenerator
+	][Inventory.TrackedResources.Air] * Inventory.oxygen_generator / by_time
 
-	# Oxygen generators creates air as fallback
+	if Inventory.plant > 0:
+		# Plants produce air
+		air_per_time += Inventory.plant / by_time
+
+		# Hydroponics add air
+		air_per_time += (
+			Inventory.plant * Inventory.hydroponic * \
+			Inventory.hydroponic_efficiency * Inventory.conversions[
+				Inventory.TrackedResources.Hydroponic
+			][Inventory.TrackedResources.Air] / by_time
+		)
+
+		# Aquaponic adds air
+		air_per_time += (
+			Inventory.count_aquaponic() * Inventory.plant * \
+			Inventory.aquaponic_efficiency * Inventory.conversions[
+				Inventory.TrackedResources.Aquaponic
+			][Inventory.TrackedResources.Air] / by_time
+		)
+
 
 	return air_per_time
 
@@ -244,12 +269,12 @@ func calculate_energy_rate(by_time: float) -> float:
 		Inventory.TrackedResources.Bot
 	][Inventory.TrackedResources.Energy] / by_time
 
-	# Human consume air
+	# Humans exercise, producing energy
 	energy_per_time += Inventory.human * Inventory.conversions[
 		Inventory.TrackedResources.Human
 	][Inventory.TrackedResources.Energy] / by_time
 
-	# Hydroponics add air
+	# Cryopods utilize energy
 	energy_per_time += Inventory.cryopod * Inventory.conversions[
 		Inventory.TrackedResources.Cryopod
 	][Inventory.TrackedResources.Energy] / by_time
@@ -260,17 +285,23 @@ func calculate_energy_rate(by_time: float) -> float:
 
 ## Calcuate Fish production / consumption based on time
 func calculate_fish_rate(by_time: float) -> float:
-	var fish_per_time: float = 0
+	if Inventory.fish <= 0:
+		return 0
+
+	var fish_per_time: float = Inventory.fish * by_time
 
 	# Aquaponic adds fish
-	fish_per_time += Controller.count_aquaponic() * Inventory.conversions[
+	fish_per_time += Inventory.count_aquaponic() * Inventory.conversions[
 		Inventory.TrackedResources.Aquaponic
-	][Inventory.TrackedResources.Fish] / by_time
+	][Inventory.TrackedResources.Fish] * Inventory.fish / by_time
 
 	# Fisheries add fish
 	fish_per_time += Inventory.fishery * Inventory.conversions[
 		Inventory.TrackedResources.Fishery
-	][Inventory.TrackedResources.Fish] / by_time
+	][Inventory.TrackedResources.Fish] * Inventory.fish / by_time
+
+	# Birth/Death rate
+	fish_per_time += fish_per_time * randf_range(-0.2, 0.2)
 
 	return fish_per_time
 
@@ -279,7 +310,7 @@ func calculate_food_rate(by_time: float) -> float:
 	var food_per_time: float = 0
 
 	# Aquaponics add food
-	food_per_time += Controller.count_aquaponic() * Inventory.conversions[
+	food_per_time += Inventory.count_aquaponic() * Inventory.conversions[
 		Inventory.TrackedResources.Aquaponic
 	][Inventory.TrackedResources.Food] / by_time
 
@@ -301,54 +332,57 @@ func calculate_food_rate(by_time: float) -> float:
 	return food_per_time
 
 ## Calcuate Fuel production / consumption based on time
-func calculate_fuel_rate(_by_time: float) -> float:
+func calculate_fuel_rate(by_time: float) -> float:
 	var fuel_per_time: float = 0
+
+	if Controller.travel_state == State.Traveling:
+		fuel_per_time += Inventory.fuel_burn_rate * by_time
 
 	return fuel_per_time
 
 ## Calcuate Plant production / consumption based on time
 func calculate_plant_rate(by_time: float) -> float:
+	if Inventory.plant <= 0:
+		return 0
+
 	var plant_per_time: float = 0
 
 	# Aquaponics add plants
-	plant_per_time += Controller.count_aquaponic() * Inventory.conversions[
+	plant_per_time += Inventory.count_aquaponic() * Inventory.conversions[
 		Inventory.TrackedResources.Aquaponic
-	][Inventory.TrackedResources.Plant] / by_time
+	][Inventory.TrackedResources.Plant] * Inventory.plant / by_time
 
 	# Hydroponics add plants
 	plant_per_time += Inventory.hydroponic * Inventory.conversions[
 		Inventory.TrackedResources.Hydroponic
-	][Inventory.TrackedResources.Plant] / by_time
+	][Inventory.TrackedResources.Plant] * Inventory.plant / by_time
+
+	# Birth/Death rate
+	plant_per_time += plant_per_time * randf_range(-0.2, 0.2)
 
 	return plant_per_time
-
-## Calcuate Repair production / consumption based on time
-func calculate_repair_rate(_by_time: float) -> float:
-	var repair_per_time: float = 0
-
-	return repair_per_time
 
 ## Calculate the amount of space currently used in the inventory
 func calculate_space() -> void:
 	var space_used: float = 0
 
-	space_used += Inventory.air * Inventory.space_use[Inventory.TrackedResources.Air]
-	space_used += Inventory.battery * Inventory.space_use[Inventory.TrackedResources.Battery]
-	space_used += Inventory.bot * Inventory.space_use[Inventory.TrackedResources.Bot]
-	space_used += Inventory.cryopod * Inventory.space_use[Inventory.TrackedResources.Cryopod]
-	space_used += Inventory.fish * Inventory.space_use[Inventory.TrackedResources.Fish]
-	space_used += Inventory.fishery * Inventory.space_use[Inventory.TrackedResources.Fishery]
-	space_used += Inventory.food * Inventory.space_use[Inventory.TrackedResources.Food]
-	space_used += Inventory.fuel * Inventory.space_use[Inventory.TrackedResources.Fuel]
-	space_used += Inventory.fusion_generator * Inventory.space_use[Inventory.TrackedResources.FusionGenerator]
-	space_used += Inventory.hydroponic * Inventory.space_use[Inventory.TrackedResources.Hydroponic]
-	space_used += Inventory.human * Inventory.space_use[Inventory.TrackedResources.Human]
-	space_used += Inventory.oxygen_generator * Inventory.space_use[Inventory.TrackedResources.OxygenGenerator]
-	space_used += Inventory.plant * Inventory.space_use[Inventory.TrackedResources.Plant]
-	space_used += Inventory.spare_part * Inventory.space_use[Inventory.TrackedResources.SparePart]
-	space_used += Inventory.waste * Inventory.space_use[Inventory.TrackedResources.Waste]
-	space_used += Inventory.water * Inventory.space_use[Inventory.TrackedResources.Water]
-	space_used += Inventory.water_generator * Inventory.space_use[Inventory.TrackedResources.WaterGenerator]
+	space_used += Inventory.air * Inventory.required_space[Inventory.TrackedResources.Air]
+	space_used += Inventory.battery * Inventory.required_space[Inventory.TrackedResources.Battery]
+	space_used += Inventory.bot * Inventory.required_space[Inventory.TrackedResources.Bot]
+	space_used += Inventory.cryopod * Inventory.required_space[Inventory.TrackedResources.Cryopod]
+	space_used += Inventory.fish * Inventory.required_space[Inventory.TrackedResources.Fish]
+	space_used += Inventory.fishery * Inventory.required_space[Inventory.TrackedResources.Fishery]
+	space_used += Inventory.food * Inventory.required_space[Inventory.TrackedResources.Food]
+	space_used += Inventory.fuel * Inventory.required_space[Inventory.TrackedResources.Fuel]
+	space_used += Inventory.fusion_generator * Inventory.required_space[Inventory.TrackedResources.FusionGenerator]
+	space_used += Inventory.hydroponic * Inventory.required_space[Inventory.TrackedResources.Hydroponic]
+	space_used += Inventory.human * Inventory.required_space[Inventory.TrackedResources.Human]
+	space_used += Inventory.oxygen_generator * Inventory.required_space[Inventory.TrackedResources.OxygenGenerator]
+	space_used += Inventory.plant * Inventory.required_space[Inventory.TrackedResources.Plant]
+	space_used += Inventory.spare_part * Inventory.required_space[Inventory.TrackedResources.SparePart]
+	space_used += Inventory.waste * Inventory.required_space[Inventory.TrackedResources.Waste]
+	space_used += Inventory.water * Inventory.required_space[Inventory.TrackedResources.Water]
+	space_used += Inventory.water_generator * Inventory.required_space[Inventory.TrackedResources.WaterGenerator]
 
 	Inventory.space_available = float(Inventory.starting_values[Inventory.TrackedResources.Space])
 	Inventory.space_available -= space_used
@@ -364,7 +398,7 @@ func calculate_waste_rate(by_time: float) -> float:
 	var waste_per_time: float = 0
 
 	# Aquaponic consume waste
-	waste_per_time += Controller.count_aquaponic() * Inventory.conversions[
+	waste_per_time += Inventory.count_aquaponic() * Inventory.conversions[
 		Inventory.TrackedResources.Aquaponic
 	][Inventory.TrackedResources.Waste] / by_time
 
@@ -390,7 +424,7 @@ func calculate_water_rate(by_time: float) -> float:
 	var water_per_time: float = 0
 
 	# Aquaponic consumes water
-	water_per_time += Controller.count_aquaponic() * Inventory.conversions[
+	water_per_time += Inventory.count_aquaponic() * Inventory.conversions[
 		Inventory.TrackedResources.Aquaponic
 	][Inventory.TrackedResources.Water] / by_time
 
@@ -442,6 +476,18 @@ func calculate_work_rate(by_time: float) -> float:
 
 	return work_per_time
 
+## How many combined fishery and hyrdoponic stations can we make
+func count_aquaponic() -> int:
+	# Empty workstations
+	if Inventory.fishery == 0 or Inventory.hydroponic == 0:
+		return 0
+
+	# No active fish or plants
+	if Controller.resource.fish == 0 or Inventory.plant == 0:
+		return 0
+
+	return min(Inventory.fishery, Inventory.hydroponic)
+
 ## Reset inventory to initial state
 func reset() -> void:
 	Inventory.air = 10
@@ -454,6 +500,7 @@ func reset() -> void:
 	Inventory.fishery = 0
 	Inventory.food = 10
 	Inventory.fuel = 5
+	Inventory.fuel_burn_rate = 1
 	Inventory.fusion_generator = 0
 	Inventory.hydroponic = 0
 	Inventory.human = Inventory.starting_values[Inventory.TrackedResources.Human]
@@ -467,5 +514,45 @@ func reset() -> void:
 	Inventory.water_generator = 0
 	Inventory.work = 0
 	Inventory.calculate_space()
+
+	return
+
+func use_resource(delta: float, resource: int) -> void:
+	var quantity: float
+
+	match resource:
+		Inventory.TrackedResources.Air:
+			quantity = Inventory.calculate_air_rate(delta)
+			Inventory.air -= quantity
+		Inventory.TrackedResources.Bot:
+			Log.debug("Handled in the controller.")
+
+			return
+		Inventory.TrackedResources.Energy:
+			quantity = Inventory.calculate_energy_rate(delta)
+			Inventory.energy -= quantity
+		Inventory.TrackedResources.Fish:
+			quantity = Inventory.calculate_fish_rate(delta)
+			Inventory.fish -= quantity
+		Inventory.TrackedResources.Food:
+			quantity = Inventory.calculate_food_rate(delta)
+			Inventory.food -= quantity
+		Inventory.TrackedResources.Fuel:
+			quantity = Inventory.calculate_fuel_rate(delta)
+			Inventory.fuel -= quantity
+		Inventory.TrackedResources.Human:
+			Log.debug("Handled in the controller.")
+
+			return
+		Inventory.TrackedResources.Plant:
+			quantity = Inventory.calculate_plant_rate(delta)
+			Inventory.plant -= quantity
+		Inventory.TrackedResources.Waste:
+			quantity = Inventory.calculate_waste_rate(delta)
+			Inventory.waste -= quantity
+		Inventory.TrackedResources.Water:
+			quantity = Inventory.calculate_water_rate(delta)
+			Inventory.water -= quantity
+	Inventory.space_available += quantity * Inventory.required_space[resource]
 
 	return

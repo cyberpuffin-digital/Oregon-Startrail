@@ -61,7 +61,7 @@ var locale_chosen: bool
 ## UI Scale (Config.MIN_SCALE - Config.MAX_SCALE)
 var ui_scale: float
 ## Log verbosity level, corresponds to [enum Log.Level]
-var verbosity: int = Log.Level.Debug
+var verbosity: int
 
 func _ready() -> void:
 	Config.reset()
@@ -178,7 +178,7 @@ func load_file_general() -> void:
 		Config.set_ui_scale(in_value)
 
 	# Verbosity
-	in_value = Config.handler.get_value("General", "verbosity", Log.Level.Quiet)
+	in_value = Config.handler.get_value("General", "verbosity", Log.Level.Debug)
 	if typeof(in_value) == TYPE_INT:
 		Config.verbosity = in_value
 

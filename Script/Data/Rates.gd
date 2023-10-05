@@ -16,8 +16,6 @@ var food_rate_label: Label
 var fuel_rate_label: Label
 # Rate label: Plant
 var plant_rate_label: Label
-# Rate label: Repair
-var repair_rate_label: Label
 # Rate label: Waste
 var waste_rate_label: Label
 # Rate label: Water
@@ -62,7 +60,6 @@ func get_the_children() -> void:
 	self.food_rate_label = get_node("%FoodRateLabel")
 	self.fuel_rate_label = get_node("%FuelRateLabel")
 	self.plant_rate_label = get_node("%PlantRateLabel")
-	self.repair_rate_label = get_node("%RepairRateLabel")
 	self.waste_rate_label = get_node("%WasteRateLabel")
 	self.water_rate_label = get_node("%WaterRateLabel")
 	self.work_rate_label = get_node("%WorkRateLabel")
@@ -89,7 +86,6 @@ func update_rates() -> void:
 	self.food_rate_label.text = str(Inventory.calculate_food_rate(1.0))
 	self.fuel_rate_label.text = str(Inventory.calculate_fuel_rate(1.0))
 	self.plant_rate_label.text = str(Inventory.calculate_plant_rate(1.0))
-	self.repair_rate_label.text = str(Inventory.calculate_repair_rate(1.0))
 	self.waste_rate_label.text = str(Inventory.calculate_waste_rate(1.0))
 	self.water_rate_label.text = str(Inventory.calculate_water_rate(1.0))
 	self.work_rate_label.text = str(Inventory.calculate_work_rate(1.0))

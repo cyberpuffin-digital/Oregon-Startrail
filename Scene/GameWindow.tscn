@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://d26onhpq6ltvc"]
+[gd_scene load_steps=19 format=3 uid="uid://d26onhpq6ltvc"]
 
 [ext_resource type="Theme" uid="uid://ciciv61w8qmyy" path="res://Theme/MainTheme.tres" id="1_0o5cg"]
 [ext_resource type="Script" path="res://Script/GameWindow.gd" id="1_hjc2e"]
@@ -10,10 +10,11 @@
 [ext_resource type="PackedScene" uid="uid://dp0g61jdbr7a2" path="res://Scene/Waypoints/Europa.tscn" id="6_n4lpd"]
 [ext_resource type="PackedScene" uid="uid://c6ehjbpcpufoh" path="res://Scene/Waypoints/KuiperBelt.tscn" id="7_hujt0"]
 [ext_resource type="PackedScene" uid="uid://4605eyxb15re" path="res://Scene/Waypoints/Wolf1061c.tscn" id="8_wk43q"]
-[ext_resource type="PackedScene" uid="uid://ce5qhk5j6ni2" path="res://Scene/Data/Resources.tscn" id="9_l8yu6"]
+[ext_resource type="PackedScene" uid="uid://ce5qhk5j6ni2" path="res://Scene/Data/Resources_text.tscn" id="9_l8yu6"]
 [ext_resource type="PackedScene" uid="uid://dotoprkwi1au" path="res://Scene/Dialog/OptionsDialog.tscn" id="9_yuaw8"]
 [ext_resource type="PackedScene" uid="uid://scl2smudbj4" path="res://Scene/Dialog/WinnerDialog.tscn" id="10_irdnw"]
 [ext_resource type="PackedScene" uid="uid://dj6goni2ge76d" path="res://Scene/Data/Ship.tscn" id="10_ivg2a"]
+[ext_resource type="PackedScene" uid="uid://ddsonij07pxq0" path="res://Scene/Data/Resources_graphical.tscn" id="11_m1gix"]
 [ext_resource type="PackedScene" uid="uid://vtvbwlh1ednd" path="res://Scene/Data/Rates.tscn" id="11_udfd4"]
 [ext_resource type="PackedScene" uid="uid://c3hwphsyo7366" path="res://Scene/Dialog/TradeDialog.tscn" id="14_yyl7r"]
 [ext_resource type="PackedScene" uid="uid://dhdg06jfccejt" path="res://Scene/Dialog/LossDialog.tscn" id="17_od683"]
@@ -103,12 +104,34 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 2
 
+[node name="SpaceDockButton" type="Button" parent="HBoxContainer/VBoxContainer/CommandsMarginContainer/CommandsPanelContainer/CommandsTabContainer/ScrollContainer/CommandsGridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "SPACEDOCK"
+
+[node name="TradeButton" type="Button" parent="HBoxContainer/VBoxContainer/CommandsMarginContainer/CommandsPanelContainer/CommandsTabContainer/ScrollContainer/CommandsGridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "TRADE"
+
 [node name="DepartButton" type="Button" parent="HBoxContainer/VBoxContainer/CommandsMarginContainer/CommandsPanelContainer/CommandsTabContainer/ScrollContainer/CommandsGridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "DEPART"
+
+[node name="PauseButton" type="Button" parent="HBoxContainer/VBoxContainer/CommandsMarginContainer/CommandsPanelContainer/CommandsTabContainer/ScrollContainer/CommandsGridContainer"]
+unique_name_in_owner = true
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "PAUSE"
 
 [node name="MainMenuButton" type="Button" parent="HBoxContainer/VBoxContainer/CommandsMarginContainer/CommandsPanelContainer/CommandsTabContainer/ScrollContainer/CommandsGridContainer"]
 unique_name_in_owner = true
@@ -124,34 +147,12 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "OPTIONS"
 
-[node name="PauseButton" type="Button" parent="HBoxContainer/VBoxContainer/CommandsMarginContainer/CommandsPanelContainer/CommandsTabContainer/ScrollContainer/CommandsGridContainer"]
-unique_name_in_owner = true
-process_mode = 3
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "PAUSE"
-
 [node name="SettleButton" type="Button" parent="HBoxContainer/VBoxContainer/CommandsMarginContainer/CommandsPanelContainer/CommandsTabContainer/ScrollContainer/CommandsGridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "SETTLE"
-
-[node name="SpaceDockButton" type="Button" parent="HBoxContainer/VBoxContainer/CommandsMarginContainer/CommandsPanelContainer/CommandsTabContainer/ScrollContainer/CommandsGridContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "SPACEDOCK"
-
-[node name="TradeButton" type="Button" parent="HBoxContainer/VBoxContainer/CommandsMarginContainer/CommandsPanelContainer/CommandsTabContainer/ScrollContainer/CommandsGridContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "TRADE"
 
 [node name="UseFuelButton" type="Button" parent="HBoxContainer/VBoxContainer/CommandsMarginContainer/CommandsPanelContainer/CommandsTabContainer/ScrollContainer/CommandsGridContainer"]
 unique_name_in_owner = true
@@ -168,8 +169,13 @@ theme_type_variation = &"EvenMargin10"
 [node name="DataTabContainer" type="TabContainer" parent="HBoxContainer/VBoxContainer/DataMarginContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+tab_alignment = 1
 
-[node name="RESOURCES" parent="HBoxContainer/VBoxContainer/DataMarginContainer/DataTabContainer" instance=ExtResource("9_l8yu6")]
+[node name="RESOURCESGRAPHICAL" parent="HBoxContainer/VBoxContainer/DataMarginContainer/DataTabContainer" instance=ExtResource("11_m1gix")]
+layout_mode = 2
+
+[node name="RESOURCESTEXT" parent="HBoxContainer/VBoxContainer/DataMarginContainer/DataTabContainer" instance=ExtResource("9_l8yu6")]
+visible = false
 layout_mode = 2
 
 [node name="SHIP" parent="HBoxContainer/VBoxContainer/DataMarginContainer/DataTabContainer" instance=ExtResource("10_ivg2a")]

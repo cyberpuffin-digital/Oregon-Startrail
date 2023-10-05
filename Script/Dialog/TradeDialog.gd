@@ -65,25 +65,54 @@ func _ready() -> void:
 func complete_trade() -> void:
 	if self.can_trade:
 		Inventory.air = self.air_owned_spin_box.value
-		self.market.inventory[Controller.current_waypoint][Inventory.TrackedResources.Air] = self.air_available_label.text
+		self.market.inventory[Controller.current_waypoint][
+			Inventory.TrackedResources.Air
+		] = int(self.air_available_label.text)
+
 		Inventory.energy = self.energy_owned_spin_box.value
-		self.market.inventory[Controller.current_waypoint][Inventory.TrackedResources.Energy] = self.energy_available_label.text
+		self.market.inventory[Controller.current_waypoint][
+			Inventory.TrackedResources.Energy
+		] = int(self.energy_available_label.text)
+
 		Inventory.fish = self.fish_owned_spin_box.value
-		self.market.inventory[Controller.current_waypoint][Inventory.TrackedResources.Fish] = self.fish_available_label.text
+		self.market.inventory[Controller.current_waypoint][
+			Inventory.TrackedResources.Fish
+		] = int(self.fish_available_label.text)
+
 		Inventory.food = self.food_owned_spin_box.value
-		self.market.inventory[Controller.current_waypoint][Inventory.TrackedResources.Food] = self.food_available_label.text
+		self.market.inventory[Controller.current_waypoint][
+			Inventory.TrackedResources.Food
+		] = int(self.food_available_label.text)
+
 		Inventory.fuel = int(self.fuel_owned_spin_box.value)
-		self.market.inventory[Controller.current_waypoint][Inventory.TrackedResources.Fuel] = self.fuel_available_label.text
+		self.market.inventory[Controller.current_waypoint][
+			Inventory.TrackedResources.Fuel
+		] = int(self.fuel_available_label.text)
+
 		Inventory.money -= self.current_trade[Inventory.TrackedResources.Money]
-		self.market.inventory[Controller.current_waypoint][Inventory.TrackedResources.Money] = self.money_available_spin_box.value
+		self.market.inventory[Controller.current_waypoint][
+			Inventory.TrackedResources.Money
+		] = int(self.money_available_spin_box.value)
+
 		Inventory.plant = self.plant_owned_spin_box.value
-		self.market.inventory[Controller.current_waypoint][Inventory.TrackedResources.Plant] = self.plant_available_label.text
+		self.market.inventory[Controller.current_waypoint][
+			Inventory.TrackedResources.Plant
+		] = int(self.plant_available_label.text)
+
 		Inventory.spare_part = int(self.spare_part_owned_spin_box.value)
-		self.market.inventory[Controller.current_waypoint][Inventory.TrackedResources.SparePart] = self.spare_part_available_label.text
+		self.market.inventory[Controller.current_waypoint][
+			Inventory.TrackedResources.SparePart
+		] = int(self.spare_part_available_label.text)
+
 		Inventory.waste = self.waste_owned_spin_box.value
-		self.market.inventory[Controller.current_waypoint][Inventory.TrackedResources.Waste] = self.waste_available_label.text
+		self.market.inventory[Controller.current_waypoint][
+			Inventory.TrackedResources.Waste
+		] = int(self.waste_available_label.text)
+
 		Inventory.water = self.water_owned_spin_box.value
-		self.market.inventory[Controller.current_waypoint][Inventory.TrackedResources.Water] = self.water_available_label.text
+		self.market.inventory[Controller.current_waypoint][
+			Inventory.TrackedResources.Water
+		] = int(self.water_available_label.text)
 	else:
 		Log.error("Unable to trade")
 
@@ -215,12 +244,12 @@ func trade_resource(value: float, item: int) -> void:
 		change = self.market.inventory[Controller.current_waypoint][item]
 
 	self.current_trade[Inventory.TrackedResources.Money] -= self.current_trade[item] * Inventory.base_cost[item]
-	self.current_trade[Inventory.TrackedResources.Space] -= self.current_trade[item] * Inventory.space_use[item]
+	self.current_trade[Inventory.TrackedResources.Space] -= self.current_trade[item] * Inventory.required_space[item]
 
 	self.current_trade[item] = change
 
 	self.current_trade[Inventory.TrackedResources.Money] += change * Inventory.base_cost[item]
-	self.current_trade[Inventory.TrackedResources.Space] += change * Inventory.space_use[item]
+	self.current_trade[Inventory.TrackedResources.Space] += change * Inventory.required_space[item]
 
 	self.money_owned_spin_box.set_value_no_signal(Inventory.money - self.current_trade[Inventory.TrackedResources.Money])
 	self.money_available_spin_box.set_value_no_signal(self.money_available_spin_box.value + self.current_trade[Inventory.TrackedResources.Money])
