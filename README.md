@@ -31,12 +31,12 @@ Reach your destination with as many living humans as you can to maximize the sur
 | Energy | Fundamental force of nature we've tricked into doing our work. | Bot, Bot Bench, Cryopod, Fishery, Hydroponic, Oxygen Generator, Water Generator | Fusion Generator, Human |
 | Fish | Edible aquatic animals that help process waste and help plants grow. | Human | Aquaponic, Fishery |
 | Food | Processed plant and animal matter; combined with synthetic aminos, vitamins and minerals.  Everything the body needs. | Human | Aquaponic, Fish, Fishery, Hydroponic, Plant |
-| Fuel | Dark matter.  Each pound of it weighs over then thousand pounds. | Travel, Fusion Generator | Recycling |
+| Fuel | Dark matter.  "Each pound of it weighs over then thousand pounds." - The Professor | Travel, Fusion Generator | Recycling |
 | Human | Carbon-based life "running" the show.  Backup units found in cryopods.  Warning: Starting a settlement with too few human will adversely affect biodiversity. | | |
-| Money | Root of all evil | Traders | Workers |
+| Money | Give to traders for resources (√evil). | Traders | Workers |
 | Plant | Alternative carbon-based life that form symbiotic waste consumption / production cycle with humans. | Human | Aquaponic, Hydroponic |
 | Spare Parts | Random pile of junk that usually spits out the part or component needed for repairs. | Bot bench, Repairs |
-| Waste | Everyone poos, except ~~you~~ bots.  Makes for good backup fertilizer. | Aquaponics, Fish, Fishery, Hydroponic, Plant | Fish, Human, Plant |
+| Waste | Everyone poos, except ~~you~~ bots.  Prime fertilizer material, may be recycled. | Aquaponics, Fish, Fishery, Hydroponic, Plant | Fish, Human, Plant |
 | Water | H2O?  Never touch the stuff.  Fish %#(^ in it. | Fish, Fishery, Human, Hydroponic, Plant | Recycling, Water Generator |
 | Work | Maintenance and upkeep requires effort.  | Bot Bench, Cryopod, Fishery, Hydroponic,  | Bot, Human |
 
