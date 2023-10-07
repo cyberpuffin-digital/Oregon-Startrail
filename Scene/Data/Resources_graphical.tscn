@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://ddsonij07pxq0"]
+[gd_scene load_steps=3 format=3 uid="uid://ddsonij07pxq0"]
 
 [ext_resource type="Script" path="res://Script/Data/Resources_graphical.gd" id="1_pxk8y"]
+[ext_resource type="Theme" uid="uid://ciciv61w8qmyy" path="res://Theme/MainTheme.tres" id="1_q42du"]
 
 [node name="Resources_graphical" type="ScrollContainer"]
 anchors_preset = 15
@@ -10,6 +11,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = ExtResource("1_q42du")
 script = ExtResource("1_pxk8y")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -32,14 +34,25 @@ layout_mode = 2
 size_flags_vertical = 3
 columns = 4
 
-[node name="AirGaugeVBoxContainer" type="VBoxContainer" parent="VBoxContainer/ConsumablesGridContainer"]
+[node name="AirMarginContainer" type="MarginContainer" parent="VBoxContainer/ConsumablesGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"EvenMargin10"
+
+[node name="AirPanel" type="Panel" parent="VBoxContainer/ConsumablesGridContainer/AirMarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"ResourcePanel"
+
+[node name="AirGaugeVBoxContainer" type="VBoxContainer" parent="VBoxContainer/ConsumablesGridContainer/AirMarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 tooltip_text = "TOOLTIP_RESOURCE_AIR"
 alignment = 1
 
-[node name="AirLabel" type="Label" parent="VBoxContainer/ConsumablesGridContainer/AirGaugeVBoxContainer"]
+[node name="AirLabel" type="Label" parent="VBoxContainer/ConsumablesGridContainer/AirMarginContainer/AirGaugeVBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "AIR"
@@ -47,7 +60,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="AirProgressBar" type="ProgressBar" parent="VBoxContainer/ConsumablesGridContainer/AirGaugeVBoxContainer"]
+[node name="AirProgressBar" type="ProgressBar" parent="VBoxContainer/ConsumablesGridContainer/AirMarginContainer/AirGaugeVBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
@@ -55,27 +68,38 @@ step = 1.0
 rounded = true
 fill_mode = 3
 
-[node name="AirStatusLabel" type="Label" parent="VBoxContainer/ConsumablesGridContainer/AirGaugeVBoxContainer"]
+[node name="AirStatusLabel" type="Label" parent="VBoxContainer/ConsumablesGridContainer/AirMarginContainer/AirGaugeVBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "OK"
 horizontal_alignment = 1
 
-[node name="EnergyPodGaugeVBoxContainer" type="VBoxContainer" parent="VBoxContainer/ConsumablesGridContainer"]
+[node name="EnergyMarginContainer" type="MarginContainer" parent="VBoxContainer/ConsumablesGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"EvenMargin10"
+
+[node name="EnergyPanel" type="Panel" parent="VBoxContainer/ConsumablesGridContainer/EnergyMarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"ResourcePanel"
+
+[node name="EnergyPodGaugeVBoxContainer" type="VBoxContainer" parent="VBoxContainer/ConsumablesGridContainer/EnergyMarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 tooltip_text = "TOOLTIP_RESOURCE_BOT"
 alignment = 1
 
-[node name="EnergyLabel" type="Label" parent="VBoxContainer/ConsumablesGridContainer/EnergyPodGaugeVBoxContainer"]
+[node name="EnergyLabel" type="Label" parent="VBoxContainer/ConsumablesGridContainer/EnergyMarginContainer/EnergyPodGaugeVBoxContainer"]
 layout_mode = 2
 text = "ENERGY"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="EnergyProgressBar" type="ProgressBar" parent="VBoxContainer/ConsumablesGridContainer/EnergyPodGaugeVBoxContainer"]
+[node name="EnergyProgressBar" type="ProgressBar" parent="VBoxContainer/ConsumablesGridContainer/EnergyMarginContainer/EnergyPodGaugeVBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
@@ -83,27 +107,38 @@ step = 1.0
 rounded = true
 fill_mode = 3
 
-[node name="EnergyStatusLabel" type="Label" parent="VBoxContainer/ConsumablesGridContainer/EnergyPodGaugeVBoxContainer"]
+[node name="EnergyStatusLabel" type="Label" parent="VBoxContainer/ConsumablesGridContainer/EnergyMarginContainer/EnergyPodGaugeVBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "OK"
 horizontal_alignment = 1
 
-[node name="FoodGaugeVBoxContainer" type="VBoxContainer" parent="VBoxContainer/ConsumablesGridContainer"]
+[node name="FoodMarginContainer" type="MarginContainer" parent="VBoxContainer/ConsumablesGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"EvenMargin10"
+
+[node name="FoodPanel" type="Panel" parent="VBoxContainer/ConsumablesGridContainer/FoodMarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"ResourcePanel"
+
+[node name="FoodGaugeVBoxContainer" type="VBoxContainer" parent="VBoxContainer/ConsumablesGridContainer/FoodMarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 tooltip_text = "TOOLTIP_RESOURCE_FISH"
 alignment = 1
 
-[node name="FoodLabel" type="Label" parent="VBoxContainer/ConsumablesGridContainer/FoodGaugeVBoxContainer"]
+[node name="FoodLabel" type="Label" parent="VBoxContainer/ConsumablesGridContainer/FoodMarginContainer/FoodGaugeVBoxContainer"]
 layout_mode = 2
 text = "FOOD"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="FoodProgressBar" type="ProgressBar" parent="VBoxContainer/ConsumablesGridContainer/FoodGaugeVBoxContainer"]
+[node name="FoodProgressBar" type="ProgressBar" parent="VBoxContainer/ConsumablesGridContainer/FoodMarginContainer/FoodGaugeVBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
@@ -111,27 +146,38 @@ step = 1.0
 rounded = true
 fill_mode = 3
 
-[node name="FoodStatusLabel" type="Label" parent="VBoxContainer/ConsumablesGridContainer/FoodGaugeVBoxContainer"]
+[node name="FoodStatusLabel" type="Label" parent="VBoxContainer/ConsumablesGridContainer/FoodMarginContainer/FoodGaugeVBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "OK"
 horizontal_alignment = 1
 
-[node name="FuelGaugeVBoxContainer" type="VBoxContainer" parent="VBoxContainer/ConsumablesGridContainer"]
+[node name="FuelMarginContainer" type="MarginContainer" parent="VBoxContainer/ConsumablesGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"EvenMargin10"
+
+[node name="FuelPanel" type="Panel" parent="VBoxContainer/ConsumablesGridContainer/FuelMarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"ResourcePanel"
+
+[node name="FuelGaugeVBoxContainer" type="VBoxContainer" parent="VBoxContainer/ConsumablesGridContainer/FuelMarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 tooltip_text = "TOOLTIP_RESOURCE_FISH"
 alignment = 1
 
-[node name="FuelLabel" type="Label" parent="VBoxContainer/ConsumablesGridContainer/FuelGaugeVBoxContainer"]
+[node name="FuelLabel" type="Label" parent="VBoxContainer/ConsumablesGridContainer/FuelMarginContainer/FuelGaugeVBoxContainer"]
 layout_mode = 2
 text = "FUEL"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="FuelProgressBar" type="ProgressBar" parent="VBoxContainer/ConsumablesGridContainer/FuelGaugeVBoxContainer"]
+[node name="FuelProgressBar" type="ProgressBar" parent="VBoxContainer/ConsumablesGridContainer/FuelMarginContainer/FuelGaugeVBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
@@ -139,27 +185,38 @@ step = 1.0
 rounded = true
 fill_mode = 3
 
-[node name="FuelStatusLabel" type="Label" parent="VBoxContainer/ConsumablesGridContainer/FuelGaugeVBoxContainer"]
+[node name="FuelStatusLabel" type="Label" parent="VBoxContainer/ConsumablesGridContainer/FuelMarginContainer/FuelGaugeVBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "OK"
 horizontal_alignment = 1
 
-[node name="MoneyGaugeVBoxContainer" type="VBoxContainer" parent="VBoxContainer/ConsumablesGridContainer"]
+[node name="MoneyMarginContainer" type="MarginContainer" parent="VBoxContainer/ConsumablesGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"EvenMargin10"
+
+[node name="MoneyPanel" type="Panel" parent="VBoxContainer/ConsumablesGridContainer/MoneyMarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"ResourcePanel"
+
+[node name="MoneyGaugeVBoxContainer" type="VBoxContainer" parent="VBoxContainer/ConsumablesGridContainer/MoneyMarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 tooltip_text = "TOOLTIP_RESOURCE_HUMAN"
 alignment = 1
 
-[node name="MoneyLabel" type="Label" parent="VBoxContainer/ConsumablesGridContainer/MoneyGaugeVBoxContainer"]
+[node name="MoneyLabel" type="Label" parent="VBoxContainer/ConsumablesGridContainer/MoneyMarginContainer/MoneyGaugeVBoxContainer"]
 layout_mode = 2
 text = "MONEY"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="MoneyProgressBar" type="ProgressBar" parent="VBoxContainer/ConsumablesGridContainer/MoneyGaugeVBoxContainer"]
+[node name="MoneyProgressBar" type="ProgressBar" parent="VBoxContainer/ConsumablesGridContainer/MoneyMarginContainer/MoneyGaugeVBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
@@ -167,27 +224,38 @@ step = 1.0
 rounded = true
 fill_mode = 3
 
-[node name="MoneyStatusLabel" type="Label" parent="VBoxContainer/ConsumablesGridContainer/MoneyGaugeVBoxContainer"]
+[node name="MoneyStatusLabel" type="Label" parent="VBoxContainer/ConsumablesGridContainer/MoneyMarginContainer/MoneyGaugeVBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "OK"
 horizontal_alignment = 1
 
-[node name="SparePartsGaugeVBoxContainer" type="VBoxContainer" parent="VBoxContainer/ConsumablesGridContainer"]
+[node name="SparePartsMarginContainer" type="MarginContainer" parent="VBoxContainer/ConsumablesGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"EvenMargin10"
+
+[node name="SparePartsPanel" type="Panel" parent="VBoxContainer/ConsumablesGridContainer/SparePartsMarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"ResourcePanel"
+
+[node name="SparePartsGaugeVBoxContainer" type="VBoxContainer" parent="VBoxContainer/ConsumablesGridContainer/SparePartsMarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 tooltip_text = "TOOLTIP_RESOURCE_HUMAN"
 alignment = 1
 
-[node name="SparePartsLabel" type="Label" parent="VBoxContainer/ConsumablesGridContainer/SparePartsGaugeVBoxContainer"]
+[node name="SparePartsLabel" type="Label" parent="VBoxContainer/ConsumablesGridContainer/SparePartsMarginContainer/SparePartsGaugeVBoxContainer"]
 layout_mode = 2
 text = "SPAREPARTS"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="SparePartsProgressBar" type="ProgressBar" parent="VBoxContainer/ConsumablesGridContainer/SparePartsGaugeVBoxContainer"]
+[node name="SparePartsProgressBar" type="ProgressBar" parent="VBoxContainer/ConsumablesGridContainer/SparePartsMarginContainer/SparePartsGaugeVBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
@@ -195,27 +263,38 @@ step = 1.0
 rounded = true
 fill_mode = 3
 
-[node name="SparePartsStatusLabel" type="Label" parent="VBoxContainer/ConsumablesGridContainer/SparePartsGaugeVBoxContainer"]
+[node name="SparePartsStatusLabel" type="Label" parent="VBoxContainer/ConsumablesGridContainer/SparePartsMarginContainer/SparePartsGaugeVBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "OK"
 horizontal_alignment = 1
 
-[node name="WaterGaugeVBoxContainer" type="VBoxContainer" parent="VBoxContainer/ConsumablesGridContainer"]
+[node name="WaterMarginContainer" type="MarginContainer" parent="VBoxContainer/ConsumablesGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"EvenMargin10"
+
+[node name="WaterPanel" type="Panel" parent="VBoxContainer/ConsumablesGridContainer/WaterMarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"ResourcePanel"
+
+[node name="WaterGaugeVBoxContainer" type="VBoxContainer" parent="VBoxContainer/ConsumablesGridContainer/WaterMarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 tooltip_text = "TOOLTIP_RESOURCE_HUMAN"
 alignment = 1
 
-[node name="WaterLabel" type="Label" parent="VBoxContainer/ConsumablesGridContainer/WaterGaugeVBoxContainer"]
+[node name="WaterLabel" type="Label" parent="VBoxContainer/ConsumablesGridContainer/WaterMarginContainer/WaterGaugeVBoxContainer"]
 layout_mode = 2
 text = "WATER"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="WaterProgressBar" type="ProgressBar" parent="VBoxContainer/ConsumablesGridContainer/WaterGaugeVBoxContainer"]
+[node name="WaterProgressBar" type="ProgressBar" parent="VBoxContainer/ConsumablesGridContainer/WaterMarginContainer/WaterGaugeVBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
@@ -223,27 +302,38 @@ step = 1.0
 rounded = true
 fill_mode = 3
 
-[node name="WaterStatusLabel" type="Label" parent="VBoxContainer/ConsumablesGridContainer/WaterGaugeVBoxContainer"]
+[node name="WaterStatusLabel" type="Label" parent="VBoxContainer/ConsumablesGridContainer/WaterMarginContainer/WaterGaugeVBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "OK"
 horizontal_alignment = 1
 
-[node name="WasteGaugeVBoxContainer" type="VBoxContainer" parent="VBoxContainer/ConsumablesGridContainer"]
+[node name="WasteMarginContainer" type="MarginContainer" parent="VBoxContainer/ConsumablesGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"EvenMargin10"
+
+[node name="WastePanel" type="Panel" parent="VBoxContainer/ConsumablesGridContainer/WasteMarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"ResourcePanel"
+
+[node name="WasteGaugeVBoxContainer" type="VBoxContainer" parent="VBoxContainer/ConsumablesGridContainer/WasteMarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 tooltip_text = "TOOLTIP_RESOURCE_HUMAN"
 alignment = 1
 
-[node name="WasteLabel" type="Label" parent="VBoxContainer/ConsumablesGridContainer/WasteGaugeVBoxContainer"]
+[node name="WasteLabel" type="Label" parent="VBoxContainer/ConsumablesGridContainer/WasteMarginContainer/WasteGaugeVBoxContainer"]
 layout_mode = 2
 text = "WASTE"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="WasteProgressBar" type="ProgressBar" parent="VBoxContainer/ConsumablesGridContainer/WasteGaugeVBoxContainer"]
+[node name="WasteProgressBar" type="ProgressBar" parent="VBoxContainer/ConsumablesGridContainer/WasteMarginContainer/WasteGaugeVBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
@@ -251,7 +341,7 @@ step = 1.0
 rounded = true
 fill_mode = 3
 
-[node name="WasteStatusLabel" type="Label" parent="VBoxContainer/ConsumablesGridContainer/WasteGaugeVBoxContainer"]
+[node name="WasteStatusLabel" type="Label" parent="VBoxContainer/ConsumablesGridContainer/WasteMarginContainer/WasteGaugeVBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "OK"
@@ -337,7 +427,7 @@ alignment = 1
 
 [node name="HumanLabel" type="Label" parent="VBoxContainer/ActiveGridContainer/HumanGaugeVBoxContainer"]
 layout_mode = 2
-text = "HUMAN"
+text = "HUMANS"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
@@ -365,7 +455,7 @@ alignment = 1
 
 [node name="PlantLabel" type="Label" parent="VBoxContainer/ActiveGridContainer/PlantGaugeVBoxContainer"]
 layout_mode = 2
-text = "PLANT"
+text = "PLANTS"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3

@@ -6,6 +6,8 @@ extends MarginContainer
 
 ## Button to Depart from current stop / waypoint
 var depart_button: Button
+## Override button to shorten travel time
+var depart_button_quick: Button
 ## Return to main menu
 var main_menu_button: Button
 ## Show options dialog
@@ -72,6 +74,7 @@ func arrive_at_waypoint() -> void:
 			return
 		Controller.Waypoint.Wolf1061c:
 			self.depart_button.visible = false
+			self.depart_button_quick.visible = false
 			self.main_menu_button.visible = false
 			self.settle_button.visible = true
 			self.space_dock_button.visible = false
@@ -81,6 +84,8 @@ func arrive_at_waypoint() -> void:
 			self.use_fuel_button.visible = false
 		_:
 			self.depart_button.visible = true
+			if OS.has_feature("editor") or Config.i_want_to_cheat:
+				self.depart_button_quick.visible = true
 			self.main_menu_button.visible = true
 			self.settle_button.visible = false
 			self.space_dock_button.visible = true
@@ -107,6 +112,7 @@ func check_start() -> void:
 ## Connect to relevant signals in the scene
 func connect_to_signals() -> void:
 	self.depart_button.pressed.connect(self.depart_waypoint)
+	self.depart_button_quick.pressed.connect(self.depart_waypoint.bind(true))
 	self.main_menu_button.pressed.connect(Controller.return_to_main_menu)
 	self.options_button.pressed.connect(Controller.show_options)
 	self.pause_button.pressed.connect(self.handle_pause_button)
@@ -117,9 +123,10 @@ func connect_to_signals() -> void:
 	return
 
 ## Leave current waypoint and travel to next
-func depart_waypoint() -> void:
-	Controller.depart_waypoint()
+func depart_waypoint(quick: bool = false) -> void:
+	Controller.depart_waypoint(quick)
 	self.depart_button.visible = false
+	self.depart_button_quick.visible = false
 	self.settle_button.visible = false
 	self.space_dock_button.visible = false
 	self.trade_button.visible = false
@@ -130,6 +137,7 @@ func depart_waypoint() -> void:
 ## Get the relevant children in the scene
 func get_the_children() -> void:
 	self.depart_button = get_node("%DepartButton")
+	self.depart_button_quick = get_node("%DepartQuickButton")
 	self.main_menu_button = get_node("%MainMenuButton")
 	self.options_button = get_node("%OptionsButton")
 	self.pause_button = get_node("%PauseButton")

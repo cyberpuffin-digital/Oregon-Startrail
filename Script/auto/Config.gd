@@ -54,6 +54,8 @@ const SAVE_FILE_PATH: String = "user://options.cfg"
 
 ## Config file handler
 var handler: ConfigFile
+## Cheating cheaters
+var i_want_to_cheat: bool
 ## Language / locale of choice
 var locale: int
 ## Track whether the user has chosen a locale
@@ -161,6 +163,11 @@ func load_file_controller() -> void:
 func load_file_general() -> void:
 	var in_value
 
+	# I want to cheat
+	in_value = Config.handler.get_value("General", "i_want_to_cheat", false)
+	if typeof(in_value) == TYPE_BOOL:
+		Config.i_want_to_cheat = in_value
+
 	# Locale
 	in_value = Config.handler.get_value("General", "locale", 0)
 	if typeof(in_value) == TYPE_INT:
@@ -187,6 +194,7 @@ func load_file_general() -> void:
 ## Reset configuration
 func reset() -> void:
 	Config.handler = ConfigFile.new()
+	Config.i_want_to_cheat = false
 	Config.locale = 0
 	Config.locale_chosen = false
 	Config.ui_scale = 1.0
@@ -256,6 +264,7 @@ func save_file_general() -> void:
 		return
 
 	var fields: Dictionary = {
+		"i_want_to_cheat": Config.i_want_to_cheat,
 		"locale": Config.locale,
 		"locale_chosen": Config.locale_chosen,
 		"ui_scale": Config.ui_scale,

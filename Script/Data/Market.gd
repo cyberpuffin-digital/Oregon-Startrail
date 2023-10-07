@@ -1,6 +1,20 @@
 extends Node
 ## Market data
 
+## Base cost for tracked resource
+const base_cost: Dictionary = {
+	Inventory.ShipResource.Air: 0.1,
+	Inventory.ShipResource.Energy: 0.05,
+	Inventory.ShipResource.Fish: 2,
+	Inventory.ShipResource.Food: 2,
+	Inventory.ShipResource.Fuel: 10,
+	Inventory.ShipResource.Money: 1,
+	Inventory.ShipResource.Plant: 2,
+	Inventory.ShipResource.SparePart: 5,
+	Inventory.ShipResource.Waste: 1,
+	Inventory.ShipResource.Water: 5,
+}
+
 ## Market rates
 const data: Dictionary = {
 	Controller.Waypoint.Travel: {
@@ -12,42 +26,42 @@ const data: Dictionary = {
 		"fluctuation": 0,
 		"multiplier": 1,
 		"specials": [
-			Inventory.TrackedResources.Air,
-			Inventory.TrackedResources.Fish,
-			Inventory.TrackedResources.SparePart,
-			Inventory.TrackedResources.Waste
+			Inventory.ShipResource.Air,
+			Inventory.ShipResource.Fish,
+			Inventory.ShipResource.SparePart,
+			Inventory.ShipResource.Waste
 		],
 	},
 	Controller.Waypoint.Moon: {
 		"fluctuation": 0.1,
 		"multiplier": 1.2,
 		"specials": [
-			Inventory.TrackedResources.Fuel
+			Inventory.ShipResource.Fuel
 		],
 	},
 	Controller.Waypoint.Mars: {
 		"fluctuation": 0.2,
 		"multiplier": 1.4,
 		"specials": [
-			Inventory.TrackedResources.Energy,
-			Inventory.TrackedResources.Waste
+			Inventory.ShipResource.Energy,
+			Inventory.ShipResource.Waste
 		],
 	},
 	Controller.Waypoint.Europa: {
 		"fluctuation": 0.4,
 		"multiplier": 1.5,
 		"specials": [
-			Inventory.TrackedResources.Fish,
-			Inventory.TrackedResources.Food,
-			Inventory.TrackedResources.Water,
+			Inventory.ShipResource.Fish,
+			Inventory.ShipResource.Food,
+			Inventory.ShipResource.Water,
 		],
 	},
 	Controller.Waypoint.KuiperBelt: {
 		"fluctuation": 0.5,
 		"multiplier": 2,
 		"specials": [
-			Inventory.TrackedResources.Bot,
-			Inventory.TrackedResources.SparePart
+			Inventory.ShipResource.Bot,
+			Inventory.ShipResource.SparePart
 		],
 	},
 }
@@ -55,78 +69,83 @@ const data: Dictionary = {
 ## Market inventory at the various waystops
 var inventory: Dictionary
 
+func remove_inventory(waypoint: int, resource: int, quantity: float) -> void:
+	self.inventory[waypoint][resource] -= quantity
+
+	return
+
 func reset() -> void:
 	self.inventory = {
 		Controller.Waypoint.Travel: {
-			Inventory.TrackedResources.Air: 0,
-			Inventory.TrackedResources.Energy: 0,
-			Inventory.TrackedResources.Fish: 0,
-			Inventory.TrackedResources.Food: 0,
-			Inventory.TrackedResources.Fuel: 0,
-			Inventory.TrackedResources.Money: 0,
-			Inventory.TrackedResources.Plant: 0,
-			Inventory.TrackedResources.SparePart: 0,
-			Inventory.TrackedResources.Waste: 0,
-			Inventory.TrackedResources.Water: 0,
+			Inventory.ShipResource.Air: 0,
+			Inventory.ShipResource.Energy: 0,
+			Inventory.ShipResource.Fish: 0,
+			Inventory.ShipResource.Food: 0,
+			Inventory.ShipResource.Fuel: 0,
+			Inventory.ShipResource.Money: 0,
+			Inventory.ShipResource.Plant: 0,
+			Inventory.ShipResource.SparePart: 0,
+			Inventory.ShipResource.Waste: 0,
+			Inventory.ShipResource.Water: 0,
 		},
 		Controller.Waypoint.Earth: {
-			Inventory.TrackedResources.Air: 100,
-			Inventory.TrackedResources.Energy: 1000,
-			Inventory.TrackedResources.Fish: 1000,
-			Inventory.TrackedResources.Food: 100,
-			Inventory.TrackedResources.Fuel: 50,
-			Inventory.TrackedResources.Money: 10000,
-			Inventory.TrackedResources.Plant: 1000,
-			Inventory.TrackedResources.SparePart: 200,
-			Inventory.TrackedResources.Waste: 10000,
-			Inventory.TrackedResources.Water: 250,
+			Inventory.ShipResource.Air: 10000,
+			Inventory.ShipResource.Energy: 1000,
+			Inventory.ShipResource.Fish: 1000,
+			Inventory.ShipResource.Food: 100,
+			Inventory.ShipResource.Fuel: 50,
+			Inventory.ShipResource.Money: 10000,
+			Inventory.ShipResource.Plant: 1000,
+			Inventory.ShipResource.SparePart: 200,
+			Inventory.ShipResource.Waste: 10000,
+			Inventory.ShipResource.Water: 250,
 		},
 		Controller.Waypoint.Moon: {
-			Inventory.TrackedResources.Air: 10,
-			Inventory.TrackedResources.Energy: 100,
-			Inventory.TrackedResources.Fish: 5,
-			Inventory.TrackedResources.Food: 10,
-			Inventory.TrackedResources.Fuel: 500,
-			Inventory.TrackedResources.Money: 5000,
-			Inventory.TrackedResources.Plant: 5,
-			Inventory.TrackedResources.SparePart: 100,
-			Inventory.TrackedResources.Waste: 200,
-			Inventory.TrackedResources.Water: 100
+			Inventory.ShipResource.Air: 1000,
+			Inventory.ShipResource.Energy: 100,
+			Inventory.ShipResource.Fish: 5,
+			Inventory.ShipResource.Food: 10,
+			Inventory.ShipResource.Fuel: 500,
+			Inventory.ShipResource.Money: 5000,
+			Inventory.ShipResource.Plant: 5,
+			Inventory.ShipResource.SparePart: 100,
+			Inventory.ShipResource.Waste: 200,
+			Inventory.ShipResource.Water: 100
 		},
 		Controller.Waypoint.Mars: {
-			Inventory.TrackedResources.Air: 25,
-			Inventory.TrackedResources.Energy: 500,
-			Inventory.TrackedResources.Fish: 25,
-			Inventory.TrackedResources.Food: 100,
-			Inventory.TrackedResources.Fuel: 50,
-			Inventory.TrackedResources.Money: 2500,
-			Inventory.TrackedResources.Plant: 10,
-			Inventory.TrackedResources.SparePart: 200,
-			Inventory.TrackedResources.Waste: 0,
-			Inventory.TrackedResources.Water: 100
+			Inventory.ShipResource.Air: 2500,
+			Inventory.ShipResource.Energy: 500,
+			Inventory.ShipResource.Fish: 25,
+			Inventory.ShipResource.Food: 100,
+			Inventory.ShipResource.Fuel: 50,
+			Inventory.ShipResource.Money: 2500,
+			Inventory.ShipResource.Plant: 10,
+			Inventory.ShipResource.SparePart: 200,
+			Inventory.ShipResource.Waste: 0,
+			Inventory.ShipResource.Water: 100
 		},
 		Controller.Waypoint.Europa: {
-			Inventory.TrackedResources.Air: 25,
-			Inventory.TrackedResources.Energy: 100,
-			Inventory.TrackedResources.Fish: 100,
-			Inventory.TrackedResources.Food: 100,
-			Inventory.TrackedResources.Fuel: 25,
-			Inventory.TrackedResources.Money: 1000,
-			Inventory.TrackedResources.Plant: 10,
-			Inventory.TrackedResources.SparePart: 10,
-			Inventory.TrackedResources.Waste: 100,
-			Inventory.TrackedResources.Water: 1000
+			Inventory.ShipResource.Air: 1000,
+			Inventory.ShipResource.Energy: 100,
+			Inventory.ShipResource.Fish: 100,
+			Inventory.ShipResource.Food: 100,
+			Inventory.ShipResource.Fuel: 25,
+			Inventory.ShipResource.Money: 1000,
+			Inventory.ShipResource.Plant: 10,
+			Inventory.ShipResource.SparePart: 10,
+			Inventory.ShipResource.Waste: 100,
+			Inventory.ShipResource.Water: 1000
 		},
 		Controller.Waypoint.KuiperBelt: {
-			Inventory.TrackedResources.Air: 10,
-			Inventory.TrackedResources.Energy: 50,
-			Inventory.TrackedResources.Fish: 10,
-			Inventory.TrackedResources.Food: 25,
-			Inventory.TrackedResources.Fuel: 10,
-			Inventory.TrackedResources.Money: 500,
-			Inventory.TrackedResources.Plant: 10,
-			Inventory.TrackedResources.SparePart: 100,
-			Inventory.TrackedResources.Waste: 100,
-			Inventory.TrackedResources.Water: 100
+			Inventory.ShipResource.Air: 1000,
+			Inventory.ShipResource.Energy: 50,
+			Inventory.ShipResource.Fish: 10,
+			Inventory.ShipResource.Food: 25,
+			Inventory.ShipResource.Fuel: 10,
+			Inventory.ShipResource.Money: 500,
+			Inventory.ShipResource.Plant: 10,
+			Inventory.ShipResource.SparePart: 100,
+			Inventory.ShipResource.Waste: 100,
+			Inventory.ShipResource.Water: 100
 		},
 	}

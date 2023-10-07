@@ -57,17 +57,17 @@ func set_dialog_tab(index: int = Controller.current_waypoint) -> void:
 			get_ok_button().text = tr("THANKSHUNGUP")
 			self.title = tr("FAREWELLMOON")
 		Controller.Waypoint.Mars:
-			get_ok_button().text = tr("THANKS")
+			get_ok_button().text = tr("NEATTHANKS")
 			self.title = tr("BYERED")
 		Controller.Waypoint.Europa:
-			get_ok_button().text = tr("NEATTHANKS")
-			self.title = tr("KEEPWARM")
+			get_ok_button().text = tr("THANKS")
+			self.title = tr("OXYGENDONTGROW")
 		Controller.Waypoint.KuiperBelt:
 			get_ok_button().text = tr("GREATTHANKS")
-			self.title = tr("LIVELONGANDPROSPER")
+			self.title = tr("KEEPWARM")
 		Controller.Waypoint.Wolf1061c:
 			get_ok_button().text = tr("DOOURBEST")
-			self.title = tr("SETTLE")
+			self.title = tr("LIVELONGANDPROSPER")
 		_:
 			Log.error("Unknown dialog tab requested: %s" % [index])
 

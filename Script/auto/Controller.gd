@@ -1,6 +1,23 @@
 extends Node
 ## Game controller
 
+## Out of air
+signal out_of_air
+## Out of energ
+signal out_of_energy
+## Out of food
+signal out_of_food
+## Out of fuel
+signal out_of_fuel
+## Out of humans
+signal out_of_human
+## Out of water
+signal out_of_water
+## Ready to start playing
+signal ready_to_start
+## Show Options dialog
+signal show_options_dialog
+
 ## Waypoints found along the way, corresponds to list of tabs in GameWindow
 enum Waypoint {
 	## Travelling between waypoints
@@ -18,23 +35,6 @@ enum Waypoint {
 	## Destination planet
 	Wolf1061c,
 }
-
-## Out of air
-signal out_of_air
-## Out of energ
-signal out_of_energy
-## Out of food
-signal out_of_food
-## Out of fuel
-signal out_of_fuel
-## Out of humans
-signal out_of_human
-## Out of water
-signal out_of_water
-## Ready to start playing
-signal ready_to_start
-## Show Options dialog
-signal show_options_dialog
 
 const GameTimers = preload("res://Script/Data/GameTimers.gd")
 
@@ -70,8 +70,8 @@ func arrive_at_waypoint() -> void:
 	return
 
 ## Calculate the time to arrive at the next waypoint
-func calculate_travel_time() -> void:
-	if OS.has_feature("editor"):
+func calculate_travel_time(quick: bool = false) -> void:
+	if quick:
 		Controller.travel_time = 5
 		Controller.travel_timer = 5
 
@@ -86,14 +86,14 @@ func calculate_travel_time() -> void:
 	return
 
 ## Handle Controller actions when departing a waypoint
-func depart_waypoint() -> void:
+func depart_waypoint(quick: bool = false) -> void:
 	Controller.travel_state = State.Traveling
 	Controller.last_waypoint = Controller.current_waypoint
 	Controller.next_waypoint = clampi(
 		Controller.current_waypoint + 1, 0, Controller.Waypoint.size()
 	)
 	Controller.current_waypoint = Controller.Waypoint.Travel
-	Controller.calculate_travel_time()
+	Controller.calculate_travel_time(quick)
 	Controller.game_timers.pause_all(false)
 
 	return
@@ -101,11 +101,11 @@ func depart_waypoint() -> void:
 ## Process the resources running on base timer
 func process_default_resources(delta: float) -> void:
 	for resource in [
-		Inventory.TrackedResources.Air, Inventory.TrackedResources.Bot,
-		Inventory.TrackedResources.Cryopod, Inventory.TrackedResources.Energy,
-		Inventory.TrackedResources.Human, Inventory.TrackedResources.Plant,
-		Inventory.TrackedResources.Waste, Inventory.TrackedResources.Water,
-		Inventory.TrackedResources.Work
+		Inventory.ShipResource.Air, Inventory.ShipResource.Bot,
+		Inventory.ShipResource.Cryopod, Inventory.ShipResource.Energy,
+		Inventory.ShipResource.Human, Inventory.ShipResource.Plant,
+		Inventory.ShipResource.Waste, Inventory.ShipResource.Water,
+		Inventory.ShipResource.Work
 	]:
 		Controller.process_resource(delta, resource)
 
@@ -115,56 +115,35 @@ func process_default_resources(delta: float) -> void:
 func process_resource(delta: float, item: int) -> void:
 	var change: float = 0
 
-	Inventory.use_resource(delta, item)
+	Inventory.use_resource_by_time(delta, item)
 	match item:
-		Inventory.TrackedResources.Air:
+		Inventory.ShipResource.Air:
 			if Inventory.air <= 0:
 				out_of_air.emit()
-		Inventory.TrackedResources.Bot:
+		Inventory.ShipResource.Bot:
 			pass
-		Inventory.TrackedResources.Cryopod:
-			pass
-		Inventory.TrackedResources.Energy:
+		Inventory.ShipResource.Energy:
 			if Inventory.energy <= 0:
 				out_of_energy.emit()
-		Inventory.TrackedResources.Fish:
-			pass
-		Inventory.TrackedResources.Food:
+		Inventory.ShipResource.Food:
 			if Inventory.food <= 0:
 				out_of_food.emit()
-		Inventory.TrackedResources.Fuel:
+		Inventory.ShipResource.Fuel:
 			if Inventory.fuel <= 0:
 				out_of_fuel.emit()
-		Inventory.TrackedResources.Human:
-			change -= randf_range(0, 0.05)
-
-			Inventory.human -= change
-			Inventory.space_available -= change * Inventory.required_space[Inventory.TrackedResources.Human]
-
+		Inventory.ShipResource.Human:
 			if Inventory.human <= 0:
 				if Inventory.cryopod <= 0:
-					out_of_human.emit()
-				elif Inventory.cryopod < 5:
-					Inventory.human = Inventory.cryopod
-					Inventory.space_available += Inventory.cryopod * Inventory.required_space[Inventory.TrackedResources.Human]
-					Inventory.cryopod = 0
+					Controller.out_of_human.emit()
 				else:
-					Inventory.human = 5
-					Inventory.space_available += 5 * Inventory.required_space[Inventory.TrackedResources.Human]
-					Inventory.cryopod -= 5
-		Inventory.TrackedResources.Plant:
-			pass
-		Inventory.TrackedResources.Waste:
-			pass
-		Inventory.TrackedResources.Water:
+					Inventory.use_set_resource(Inventory.cryopod, 5)
+		Inventory.ShipResource.Water:
 			if Inventory.water < 0:
 				out_of_water.emit()
-		Inventory.TrackedResources.Work:
+		Inventory.ShipResource.Work:
 			Inventory.work += Inventory.bot
 			Inventory.work += Inventory.human
 			Inventory.work -= Inventory.cryopod * 0.1
-		_:
-			Log.error("Unknown resource: %s" % [item])
 
 	return
 
@@ -219,12 +198,12 @@ func start_new_game() -> void:
 func use_fuel() -> void:
 	if Inventory.fuel >= 1:
 		Inventory.fuel -= 1
-		Inventory.space_available -= Inventory.required_space[Inventory.TrackedResources.Fuel]
+		Inventory.space_available -= Inventory.required_space[Inventory.ShipResource.Fuel]
 		Inventory.energy += 1000
-		Inventory.space_available += 1000 * Inventory.required_space[Inventory.TrackedResources.Energy]
+		Inventory.space_available += 1000 * Inventory.required_space[Inventory.ShipResource.Energy]
 		Inventory.water += 100
-		Inventory.space_available += 100 * Inventory.required_space[Inventory.TrackedResources.Water]
+		Inventory.space_available += 100 * Inventory.required_space[Inventory.ShipResource.Water]
 		Inventory.air += 50
-		Inventory.space_available += 50 * Inventory.required_space[Inventory.TrackedResources.Air]
+		Inventory.space_available += 50 * Inventory.required_space[Inventory.ShipResource.Air]
 
 	return

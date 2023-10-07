@@ -125,6 +125,13 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "DEPART"
 
+[node name="DepartQuickButton" type="Button" parent="HBoxContainer/VBoxContainer/CommandsMarginContainer/CommandsPanelContainer/CommandsTabContainer/ScrollContainer/CommandsGridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "DEPARTQUICK"
+
 [node name="PauseButton" type="Button" parent="HBoxContainer/VBoxContainer/CommandsMarginContainer/CommandsPanelContainer/CommandsTabContainer/ScrollContainer/CommandsGridContainer"]
 unique_name_in_owner = true
 process_mode = 3

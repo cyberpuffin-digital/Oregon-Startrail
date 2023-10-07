@@ -1,6 +1,8 @@
 extends Control
 ## General Options menu
 
+## I want to cheat Checkbox
+var i_want_to_cheat_check_box: CheckBox
 ## Global scale value label
 var scale_value_label: Label
 ## Global scale slider
@@ -17,13 +19,15 @@ func _ready() -> void:
 
 ## Connect to relevant signals in the scene
 func connect_to_signals() -> void:
-	self.verbosity_menu_button.get_popup().id_pressed.connect(self.select_verbosity)
+#	self.i_want_to_cheat_check_box.toggled.connect
 	self.scale_slider.value_changed.connect(self.set_ui_scale)
+	self.verbosity_menu_button.get_popup().id_pressed.connect(self.select_verbosity)
 
 	return
 
 ## Get the relevant children in the scene
 func get_the_children() -> void:
+	self.i_want_to_cheat_check_box = get_node("%LetMeCheatCheckBox")
 	self.scale_value_label = get_node("%ScaleValueLabel")
 	self.scale_slider = get_node("%ScaleHSlider")
 	self.verbosity_menu_button = get_node("%VerbosityMenuButton")

@@ -99,3 +99,8 @@ popup/item_2/text = "DEBUG"
 popup/item_2/id = 2
 popup/item_3/text = "SILLY"
 popup/item_3/id = 3
+
+[node name="LetMeCheatCheckBox" type="CheckBox" parent="ScrollContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "LETMECHEAT"

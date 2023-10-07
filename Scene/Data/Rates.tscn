@@ -35,142 +35,172 @@ layout_mode = 2
 size_flags_vertical = 3
 columns = 5
 
-[node name="AirHBoxContainer" type="HBoxContainer" parent="VBoxContainer/ConversionGridContainer"]
+[node name="AirVBoxContainer" type="VBoxContainer" parent="VBoxContainer/ConversionGridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+alignment = 1
 
-[node name="Label" type="Label" parent="VBoxContainer/ConversionGridContainer/AirHBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer/ConversionGridContainer/AirVBoxContainer"]
 layout_mode = 2
 text = "AIR"
+horizontal_alignment = 1
 
-[node name="AirRateLabel" type="Label" parent="VBoxContainer/ConversionGridContainer/AirHBoxContainer"]
+[node name="AirRateLabel" type="Label" parent="VBoxContainer/ConversionGridContainer/AirVBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "0"
+horizontal_alignment = 1
 
-[node name="EnergyHBoxContainer" type="HBoxContainer" parent="VBoxContainer/ConversionGridContainer"]
+[node name="EnergyVBoxContainer" type="VBoxContainer" parent="VBoxContainer/ConversionGridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+alignment = 1
 
-[node name="Label" type="Label" parent="VBoxContainer/ConversionGridContainer/EnergyHBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer/ConversionGridContainer/EnergyVBoxContainer"]
 layout_mode = 2
 text = "ENERGY"
+horizontal_alignment = 1
 
-[node name="EnergyRateLabel" type="Label" parent="VBoxContainer/ConversionGridContainer/EnergyHBoxContainer"]
+[node name="EnergyRateLabel" type="Label" parent="VBoxContainer/ConversionGridContainer/EnergyVBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "0"
+horizontal_alignment = 1
 
-[node name="FishHBoxContainer" type="HBoxContainer" parent="VBoxContainer/ConversionGridContainer"]
+[node name="FishVBoxContainer" type="VBoxContainer" parent="VBoxContainer/ConversionGridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+alignment = 1
 
-[node name="Label" type="Label" parent="VBoxContainer/ConversionGridContainer/FishHBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer/ConversionGridContainer/FishVBoxContainer"]
 layout_mode = 2
 text = "FISH"
+horizontal_alignment = 1
 
-[node name="FishRateLabel" type="Label" parent="VBoxContainer/ConversionGridContainer/FishHBoxContainer"]
+[node name="FishRateLabel" type="Label" parent="VBoxContainer/ConversionGridContainer/FishVBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "0"
+horizontal_alignment = 1
 
-[node name="FoodHBoxContainer" type="HBoxContainer" parent="VBoxContainer/ConversionGridContainer"]
+[node name="FoodVBoxContainer" type="VBoxContainer" parent="VBoxContainer/ConversionGridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+alignment = 1
 
-[node name="Label" type="Label" parent="VBoxContainer/ConversionGridContainer/FoodHBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer/ConversionGridContainer/FoodVBoxContainer"]
 layout_mode = 2
 text = "FOOD"
+horizontal_alignment = 1
 
-[node name="FoodRateLabel" type="Label" parent="VBoxContainer/ConversionGridContainer/FoodHBoxContainer"]
+[node name="FoodRateLabel" type="Label" parent="VBoxContainer/ConversionGridContainer/FoodVBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "0"
+horizontal_alignment = 1
 
-[node name="FuelHBoxContainer" type="HBoxContainer" parent="VBoxContainer/ConversionGridContainer"]
+[node name="FuelVBoxContainer" type="VBoxContainer" parent="VBoxContainer/ConversionGridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+alignment = 1
 
-[node name="Label" type="Label" parent="VBoxContainer/ConversionGridContainer/FuelHBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer/ConversionGridContainer/FuelVBoxContainer"]
 layout_mode = 2
 text = "FUEL"
+horizontal_alignment = 1
 
-[node name="FuelRateLabel" type="Label" parent="VBoxContainer/ConversionGridContainer/FuelHBoxContainer"]
+[node name="FuelRateLabel" type="Label" parent="VBoxContainer/ConversionGridContainer/FuelVBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "0"
+horizontal_alignment = 1
 
-[node name="PlantHBoxContainer" type="HBoxContainer" parent="VBoxContainer/ConversionGridContainer"]
+[node name="PlantVBoxContainer" type="VBoxContainer" parent="VBoxContainer/ConversionGridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+alignment = 1
 
-[node name="Label" type="Label" parent="VBoxContainer/ConversionGridContainer/PlantHBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer/ConversionGridContainer/PlantVBoxContainer"]
 layout_mode = 2
 text = "PLANTS"
+horizontal_alignment = 1
 
-[node name="PlantRateLabel" type="Label" parent="VBoxContainer/ConversionGridContainer/PlantHBoxContainer"]
+[node name="PlantRateLabel" type="Label" parent="VBoxContainer/ConversionGridContainer/PlantVBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "0"
+horizontal_alignment = 1
 
-[node name="RepairHBoxContainer" type="HBoxContainer" parent="VBoxContainer/ConversionGridContainer"]
+[node name="RepairVBoxContainer" type="VBoxContainer" parent="VBoxContainer/ConversionGridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+alignment = 1
 
-[node name="Label" type="Label" parent="VBoxContainer/ConversionGridContainer/RepairHBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer/ConversionGridContainer/RepairVBoxContainer"]
 layout_mode = 2
 text = "REPAIR"
+horizontal_alignment = 1
 
-[node name="RepairRateLabel" type="Label" parent="VBoxContainer/ConversionGridContainer/RepairHBoxContainer"]
+[node name="RepairRateLabel" type="Label" parent="VBoxContainer/ConversionGridContainer/RepairVBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "0"
+horizontal_alignment = 1
 
-[node name="WasteHBoxContainer" type="HBoxContainer" parent="VBoxContainer/ConversionGridContainer"]
+[node name="WasteVBoxContainer" type="VBoxContainer" parent="VBoxContainer/ConversionGridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+alignment = 1
 
-[node name="Label" type="Label" parent="VBoxContainer/ConversionGridContainer/WasteHBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer/ConversionGridContainer/WasteVBoxContainer"]
 layout_mode = 2
 text = "WASTE"
+horizontal_alignment = 1
 
-[node name="WasteRateLabel" type="Label" parent="VBoxContainer/ConversionGridContainer/WasteHBoxContainer"]
+[node name="WasteRateLabel" type="Label" parent="VBoxContainer/ConversionGridContainer/WasteVBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "0"
+horizontal_alignment = 1
 
-[node name="WaterHBoxContainer" type="HBoxContainer" parent="VBoxContainer/ConversionGridContainer"]
+[node name="WaterVBoxContainer" type="VBoxContainer" parent="VBoxContainer/ConversionGridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+alignment = 1
 
-[node name="Label" type="Label" parent="VBoxContainer/ConversionGridContainer/WaterHBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer/ConversionGridContainer/WaterVBoxContainer"]
 layout_mode = 2
 text = "WATER"
+horizontal_alignment = 1
 
-[node name="WaterRateLabel" type="Label" parent="VBoxContainer/ConversionGridContainer/WaterHBoxContainer"]
+[node name="WaterRateLabel" type="Label" parent="VBoxContainer/ConversionGridContainer/WaterVBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "0"
+horizontal_alignment = 1
 
-[node name="WorkHBoxContainer" type="HBoxContainer" parent="VBoxContainer/ConversionGridContainer"]
+[node name="WorkVBoxContainer" type="VBoxContainer" parent="VBoxContainer/ConversionGridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+alignment = 1
 
-[node name="Label" type="Label" parent="VBoxContainer/ConversionGridContainer/WorkHBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer/ConversionGridContainer/WorkVBoxContainer"]
 layout_mode = 2
 text = "WORK"
+horizontal_alignment = 1
 
-[node name="WorkRateLabel" type="Label" parent="VBoxContainer/ConversionGridContainer/WorkHBoxContainer"]
+[node name="WorkRateLabel" type="Label" parent="VBoxContainer/ConversionGridContainer/WorkVBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "0"
+horizontal_alignment = 1

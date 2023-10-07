@@ -285,6 +285,13 @@ theme_type_variation = &"SpokenDialog"
 text = "DIALOG035"
 autowrap_mode = 3
 
+[node name="Label6" type="Label" parent="VBoxContainer/DialogTabContainer/EuropaDialog/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"SpokenDialog"
+text = "DIALOG036"
+autowrap_mode = 3
+
 [node name="KuiperBeltDialog" type="ScrollContainer" parent="VBoxContainer/DialogTabContainer"]
 visible = false
 layout_mode = 2
