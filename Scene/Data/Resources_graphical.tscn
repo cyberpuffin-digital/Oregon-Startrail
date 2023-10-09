@@ -66,7 +66,7 @@ layout_mode = 2
 size_flags_vertical = 3
 step = 1.0
 rounded = true
-fill_mode = 3
+allow_greater = true
 
 [node name="AirStatusLabel" type="Label" parent="VBoxContainer/ConsumablesGridContainer/AirMarginContainer/AirGaugeVBoxContainer"]
 unique_name_in_owner = true
@@ -105,7 +105,7 @@ layout_mode = 2
 size_flags_vertical = 3
 step = 1.0
 rounded = true
-fill_mode = 3
+allow_greater = true
 
 [node name="EnergyStatusLabel" type="Label" parent="VBoxContainer/ConsumablesGridContainer/EnergyMarginContainer/EnergyPodGaugeVBoxContainer"]
 unique_name_in_owner = true
@@ -144,7 +144,7 @@ layout_mode = 2
 size_flags_vertical = 3
 step = 1.0
 rounded = true
-fill_mode = 3
+allow_greater = true
 
 [node name="FoodStatusLabel" type="Label" parent="VBoxContainer/ConsumablesGridContainer/FoodMarginContainer/FoodGaugeVBoxContainer"]
 unique_name_in_owner = true
@@ -183,7 +183,7 @@ layout_mode = 2
 size_flags_vertical = 3
 step = 1.0
 rounded = true
-fill_mode = 3
+allow_greater = true
 
 [node name="FuelStatusLabel" type="Label" parent="VBoxContainer/ConsumablesGridContainer/FuelMarginContainer/FuelGaugeVBoxContainer"]
 unique_name_in_owner = true
@@ -222,7 +222,7 @@ layout_mode = 2
 size_flags_vertical = 3
 step = 1.0
 rounded = true
-fill_mode = 3
+allow_greater = true
 
 [node name="MoneyStatusLabel" type="Label" parent="VBoxContainer/ConsumablesGridContainer/MoneyMarginContainer/MoneyGaugeVBoxContainer"]
 unique_name_in_owner = true
@@ -261,7 +261,7 @@ layout_mode = 2
 size_flags_vertical = 3
 step = 1.0
 rounded = true
-fill_mode = 3
+allow_greater = true
 
 [node name="SparePartsStatusLabel" type="Label" parent="VBoxContainer/ConsumablesGridContainer/SparePartsMarginContainer/SparePartsGaugeVBoxContainer"]
 unique_name_in_owner = true
@@ -300,7 +300,7 @@ layout_mode = 2
 size_flags_vertical = 3
 step = 1.0
 rounded = true
-fill_mode = 3
+allow_greater = true
 
 [node name="WaterStatusLabel" type="Label" parent="VBoxContainer/ConsumablesGridContainer/WaterMarginContainer/WaterGaugeVBoxContainer"]
 unique_name_in_owner = true
@@ -339,7 +339,7 @@ layout_mode = 2
 size_flags_vertical = 3
 step = 1.0
 rounded = true
-fill_mode = 3
+allow_greater = true
 
 [node name="WasteStatusLabel" type="Label" parent="VBoxContainer/ConsumablesGridContainer/WasteMarginContainer/WasteGaugeVBoxContainer"]
 unique_name_in_owner = true
@@ -382,7 +382,7 @@ layout_mode = 2
 size_flags_vertical = 3
 step = 1.0
 rounded = true
-fill_mode = 3
+allow_greater = true
 
 [node name="BotStatusLabel" type="Label" parent="VBoxContainer/ActiveGridContainer/BotGaugeVBoxContainer"]
 unique_name_in_owner = true
@@ -410,7 +410,7 @@ layout_mode = 2
 size_flags_vertical = 3
 step = 1.0
 rounded = true
-fill_mode = 3
+allow_greater = true
 
 [node name="FishStatusLabel" type="Label" parent="VBoxContainer/ActiveGridContainer/FishGaugeVBoxContainer"]
 unique_name_in_owner = true
@@ -438,7 +438,7 @@ layout_mode = 2
 size_flags_vertical = 3
 step = 1.0
 rounded = true
-fill_mode = 3
+allow_greater = true
 
 [node name="HumanStatusLabel" type="Label" parent="VBoxContainer/ActiveGridContainer/HumanGaugeVBoxContainer"]
 unique_name_in_owner = true
@@ -466,7 +466,7 @@ layout_mode = 2
 size_flags_vertical = 3
 step = 1.0
 rounded = true
-fill_mode = 3
+allow_greater = true
 
 [node name="PlantStatusLabel" type="Label" parent="VBoxContainer/ActiveGridContainer/PlantGaugeVBoxContainer"]
 unique_name_in_owner = true

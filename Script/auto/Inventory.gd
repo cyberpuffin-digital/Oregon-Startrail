@@ -237,6 +237,8 @@ func add_resource(resource: int, quantity: float) -> bool:
 			Inventory.fuel += quantity
 		Inventory.ShipResource.Human:
 			Inventory.human += quantity
+		Inventory.ShipResource.Money:
+			Inventory.money += quantity
 		Inventory.ShipResource.Plant:
 			Inventory.plant += quantity
 		Inventory.ShipResource.SparePart:
