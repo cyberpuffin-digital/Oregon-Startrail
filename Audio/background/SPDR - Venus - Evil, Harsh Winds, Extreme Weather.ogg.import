@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dq10t3ubnpu61"
+path="res://.godot/imported/SPDR - Venus - Evil, Harsh Winds, Extreme Weather.ogg-c2fecd304f9f2082bab77e06f017652f.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/background/SPDR - Venus - Evil, Harsh Winds, Extreme Weather.ogg"
+dest_files=["res://.godot/imported/SPDR - Venus - Evil, Harsh Winds, Extreme Weather.ogg-c2fecd304f9f2082bab77e06f017652f.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

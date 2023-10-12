@@ -35,6 +35,11 @@ var waypoint_dialog: AcceptDialog
 ## Dialog window for celebrating a new settlement
 var winner_dialog: AcceptDialog
 
+func _exit_tree() -> void:
+	Controller.game_timers = null
+
+	return
+
 func _notification(what: int) -> void:
 	match what:
 		Node.NOTIFICATION_APPLICATION_FOCUS_OUT:
@@ -45,17 +50,7 @@ func _notification(what: int) -> void:
 	return
 
 func _process(delta) -> void:
-	if !Controller.playing:
-		return
-
-	if Controller.current_waypoint != Controller.Waypoint.Travel:
-		return
-
-	Controller.travel_timer -= delta
-	if Controller.travel_timer <= 0.0:
-		self.arrive_at_waypoint()
-	else:
-		self.set_travel_slider(Controller.travel_timer)
+	self.travel(delta)
 
 	return
 
@@ -195,5 +190,23 @@ func show_trade() -> void:
 ## Begin the colony
 func start_colony() -> void:
 	self.winner_dialog.popup_centered_ratio()
+
+	return
+
+func travel(delta: float) -> void:
+	if !Controller.playing:
+		return
+
+	if Controller.current_waypoint != Controller.Waypoint.Travel:
+		return
+
+	if Inventory.fuel > 0:
+		pass
+
+	Controller.travel_timer -= delta
+	if Controller.travel_timer <= 0.0:
+		self.arrive_at_waypoint()
+	else:
+		self.set_travel_slider(Controller.travel_timer)
 
 	return

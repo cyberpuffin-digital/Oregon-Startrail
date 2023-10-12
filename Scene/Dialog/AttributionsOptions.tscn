@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://b0pqu44orkplc"]
+[gd_scene load_steps=6 format=3 uid="uid://b0pqu44orkplc"]
 
 [ext_resource type="FontFile" uid="uid://d3jte8jtm2dg1" path="res://Resource/Font/OpenDyslexic/OpenDyslexic3-Bold.ttf" id="1_mcvqf"]
 [ext_resource type="FontFile" uid="uid://djt5kh4dbd58h" path="res://Resource/Font/OpenDyslexic/OpenDyslexic3-Regular.ttf" id="2_4l17j"]
 [ext_resource type="FontFile" uid="uid://dhscbuhslqiuq" path="res://Resource/Font/OpenDyslexic/OpenDyslexicMono-Regular.otf" id="3_nkkpn"]
+[ext_resource type="Texture2D" uid="uid://b4yr3g26rhlq" path="res://Resource/Animation/EarthAnimatedTexture.tres" id="4_ir7jy"]
 
 [sub_resource type="Theme" id="Theme_p8gx6"]
 EvenMargin10/constants/margin_bottom = 10
@@ -50,129 +51,153 @@ layout_mode = 2
 theme_type_variation = &"HeaderLarge"
 text = "SOURCEREPO"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+[node name="SourceCodeVBoxContainer" type="VBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GithubHBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/SourceCodeVBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
-[node name="URLPanelContainer" type="PanelContainer" parent="ScrollContainer/VBoxContainer/HBoxContainer"]
+[node name="URLPanelContainer" type="PanelContainer" parent="ScrollContainer/VBoxContainer/SourceCodeVBoxContainer/GithubHBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/VBoxContainer/HBoxContainer/URLPanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/VBoxContainer/SourceCodeVBoxContainer/GithubHBoxContainer/URLPanelContainer"]
 layout_mode = 2
 theme_type_variation = &"EvenMargin10"
 
-[node name="LinkButton" type="LinkButton" parent="ScrollContainer/VBoxContainer/HBoxContainer/URLPanelContainer/MarginContainer"]
+[node name="LinkButton" type="LinkButton" parent="ScrollContainer/VBoxContainer/SourceCodeVBoxContainer/GithubHBoxContainer/URLPanelContainer/MarginContainer"]
 layout_mode = 2
 text = "Cyber Puffin @ Github"
 uri = "https://github.com/cyberpuffin-digital/Oregon-Startrail/"
 
-[node name="FontHeaderContainer2" type="PanelContainer" parent="ScrollContainer/VBoxContainer"]
+[node name="FontHeaderContainer" type="PanelContainer" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="FontHeaderLabel" type="Label" parent="ScrollContainer/VBoxContainer/FontHeaderContainer2"]
+[node name="FontHeaderLabel" type="Label" parent="ScrollContainer/VBoxContainer/FontHeaderContainer"]
 layout_mode = 2
 theme_type_variation = &"HeaderLarge"
 text = "FONT"
 
-[node name="FontDroidSansHBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+[node name="FontVBoxContainer" type="VBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="FontDroidSansHBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/FontVBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
-[node name="URLPanelContainer" type="PanelContainer" parent="ScrollContainer/VBoxContainer/FontDroidSansHBoxContainer"]
+[node name="URLPanelContainer" type="PanelContainer" parent="ScrollContainer/VBoxContainer/FontVBoxContainer/FontDroidSansHBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/VBoxContainer/FontDroidSansHBoxContainer/URLPanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/VBoxContainer/FontVBoxContainer/FontDroidSansHBoxContainer/URLPanelContainer"]
 layout_mode = 2
 theme_type_variation = &"EvenMargin10"
 
-[node name="LinkButton" type="LinkButton" parent="ScrollContainer/VBoxContainer/FontDroidSansHBoxContainer/URLPanelContainer/MarginContainer"]
+[node name="LinkButton" type="LinkButton" parent="ScrollContainer/VBoxContainer/FontVBoxContainer/FontDroidSansHBoxContainer/URLPanelContainer/MarginContainer"]
 layout_mode = 2
 text = "Droid Sans"
 uri = "https://www.fontsquirrel.com/fonts/droid-sans"
 
-[node name="FontKawKabHBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+[node name="FontKawKabHBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/FontVBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
-[node name="URLPanelContainer" type="PanelContainer" parent="ScrollContainer/VBoxContainer/FontKawKabHBoxContainer"]
+[node name="URLPanelContainer" type="PanelContainer" parent="ScrollContainer/VBoxContainer/FontVBoxContainer/FontKawKabHBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/VBoxContainer/FontKawKabHBoxContainer/URLPanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/VBoxContainer/FontVBoxContainer/FontKawKabHBoxContainer/URLPanelContainer"]
 layout_mode = 2
 theme_type_variation = &"EvenMargin10"
 
-[node name="LinkButton" type="LinkButton" parent="ScrollContainer/VBoxContainer/FontKawKabHBoxContainer/URLPanelContainer/MarginContainer"]
+[node name="LinkButton" type="LinkButton" parent="ScrollContainer/VBoxContainer/FontVBoxContainer/FontKawKabHBoxContainer/URLPanelContainer/MarginContainer"]
 layout_mode = 2
 text = "Kawkab"
 uri = "https://makkuk.com/kawkab-mono/"
 
-[node name="FontOpenDyslexicHBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+[node name="FontOpenDyslexicHBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/FontVBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
-[node name="URLPanelContainer" type="PanelContainer" parent="ScrollContainer/VBoxContainer/FontOpenDyslexicHBoxContainer"]
+[node name="URLPanelContainer" type="PanelContainer" parent="ScrollContainer/VBoxContainer/FontVBoxContainer/FontOpenDyslexicHBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/VBoxContainer/FontOpenDyslexicHBoxContainer/URLPanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/VBoxContainer/FontVBoxContainer/FontOpenDyslexicHBoxContainer/URLPanelContainer"]
 layout_mode = 2
 theme_type_variation = &"EvenMargin10"
 
-[node name="LinkButton" type="LinkButton" parent="ScrollContainer/VBoxContainer/FontOpenDyslexicHBoxContainer/URLPanelContainer/MarginContainer"]
+[node name="LinkButton" type="LinkButton" parent="ScrollContainer/VBoxContainer/FontVBoxContainer/FontOpenDyslexicHBoxContainer/URLPanelContainer/MarginContainer"]
 layout_mode = 2
 text = "Open Dyslexic"
 uri = "https://opendyslexic.org/"
 
-[node name="SFXHeaderContainer" type="PanelContainer" parent="ScrollContainer/VBoxContainer"]
+[node name="GraphicsHeaderContainer" type="PanelContainer" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="SFXHeaderLabel" type="Label" parent="ScrollContainer/VBoxContainer/SFXHeaderContainer"]
+[node name="GraphicsHeaderLabel" type="Label" parent="ScrollContainer/VBoxContainer/GraphicsHeaderContainer"]
 layout_mode = 2
 theme_type_variation = &"HeaderLarge"
-text = "SOUNDEFFECT"
+text = "GRAPHICS"
 
-[node name="SfxrHBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+[node name="GraphicsVBoxContainer" type="VBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="OpenGameArtHBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/GraphicsVBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
-[node name="URLPanelContainer" type="PanelContainer" parent="ScrollContainer/VBoxContainer/SfxrHBoxContainer"]
+[node name="URLPanelContainer" type="PanelContainer" parent="ScrollContainer/VBoxContainer/GraphicsVBoxContainer/OpenGameArtHBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/VBoxContainer/SfxrHBoxContainer/URLPanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/VBoxContainer/GraphicsVBoxContainer/OpenGameArtHBoxContainer/URLPanelContainer"]
 layout_mode = 2
 theme_type_variation = &"EvenMargin10"
 
-[node name="LinkButton" type="LinkButton" parent="ScrollContainer/VBoxContainer/SfxrHBoxContainer/URLPanelContainer/MarginContainer"]
+[node name="LinkButton" type="LinkButton" parent="ScrollContainer/VBoxContainer/GraphicsVBoxContainer/OpenGameArtHBoxContainer/URLPanelContainer/MarginContainer"]
 layout_mode = 2
-text = "SFXR"
-uri = "http://www.drpetter.se/project_sfxr.html"
+text = "OpenGameArt.org"
+uri = "https://opengameart.org"
 
-[node name="BfxrHBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+[node name="EarthHBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/GraphicsVBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-alignment = 1
 
-[node name="URLPanelContainer" type="PanelContainer" parent="ScrollContainer/VBoxContainer/BfxrHBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/GraphicsVBoxContainer/EarthHBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("4_ir7jy")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/GraphicsVBoxContainer/EarthHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "EARTH"
+
+[node name="PanelContainer" type="PanelContainer" parent="ScrollContainer/VBoxContainer/GraphicsVBoxContainer/EarthHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
 size_flags_vertical = 4
 
-[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/VBoxContainer/BfxrHBoxContainer/URLPanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/VBoxContainer/GraphicsVBoxContainer/EarthHBoxContainer/PanelContainer"]
 layout_mode = 2
 theme_type_variation = &"EvenMargin10"
 
-[node name="LinkButton" type="LinkButton" parent="ScrollContainer/VBoxContainer/BfxrHBoxContainer/URLPanelContainer/MarginContainer"]
+[node name="LinkButton" type="LinkButton" parent="ScrollContainer/VBoxContainer/GraphicsVBoxContainer/EarthHBoxContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
-text = "BFXR"
-uri = "https://www.bfxr.net/"
+text = "OpenGameArt.org"
+uri = "https://opengameart.org/content/earth"
 
 [node name="ScienceHeaderContainer" type="PanelContainer" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
@@ -182,24 +207,112 @@ layout_mode = 2
 theme_type_variation = &"HeaderLarge"
 text = "SCIENCE"
 
-[node name="Wolf1061cHBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+[node name="ScienceVBoxContainer" type="VBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Wolf1061cHBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/ScienceVBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
-[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/Wolf1061cHBoxContainer"]
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/ScienceVBoxContainer/Wolf1061cHBoxContainer"]
 layout_mode = 2
 text = "WOLF1061C"
 
-[node name="URLPanelContainer" type="PanelContainer" parent="ScrollContainer/VBoxContainer/Wolf1061cHBoxContainer"]
+[node name="URLPanelContainer" type="PanelContainer" parent="ScrollContainer/VBoxContainer/ScienceVBoxContainer/Wolf1061cHBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/VBoxContainer/Wolf1061cHBoxContainer/URLPanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/VBoxContainer/ScienceVBoxContainer/Wolf1061cHBoxContainer/URLPanelContainer"]
 layout_mode = 2
 theme_type_variation = &"EvenMargin10"
 
-[node name="LinkButton" type="LinkButton" parent="ScrollContainer/VBoxContainer/Wolf1061cHBoxContainer/URLPanelContainer/MarginContainer"]
+[node name="LinkButton" type="LinkButton" parent="ScrollContainer/VBoxContainer/ScienceVBoxContainer/Wolf1061cHBoxContainer/URLPanelContainer/MarginContainer"]
 layout_mode = 2
 text = "Nasa.gov"
 uri = "https://exoplanets.nasa.gov/news/240/the-nearest-potentially-habitable-planet-to-earth/"
+
+[node name="SoundsHeaderContainer" type="PanelContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="SoundsHeaderLabel" type="Label" parent="ScrollContainer/VBoxContainer/SoundsHeaderContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "SOUNDS"
+
+[node name="SoundsVBoxContainer" type="VBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="AudacityHBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/SoundsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="URLPanelContainer" type="PanelContainer" parent="ScrollContainer/VBoxContainer/SoundsVBoxContainer/AudacityHBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/VBoxContainer/SoundsVBoxContainer/AudacityHBoxContainer/URLPanelContainer"]
+layout_mode = 2
+theme_type_variation = &"EvenMargin10"
+
+[node name="LinkButton" type="LinkButton" parent="ScrollContainer/VBoxContainer/SoundsVBoxContainer/AudacityHBoxContainer/URLPanelContainer/MarginContainer"]
+layout_mode = 2
+text = "Audacity"
+uri = "https://www.audacityteam.org/"
+
+[node name="SonnissHBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/SoundsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="URLPanelContainer" type="PanelContainer" parent="ScrollContainer/VBoxContainer/SoundsVBoxContainer/SonnissHBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/VBoxContainer/SoundsVBoxContainer/SonnissHBoxContainer/URLPanelContainer"]
+layout_mode = 2
+theme_type_variation = &"EvenMargin10"
+
+[node name="LinkButton" type="LinkButton" parent="ScrollContainer/VBoxContainer/SoundsVBoxContainer/SonnissHBoxContainer/URLPanelContainer/MarginContainer"]
+layout_mode = 2
+text = "Sonniss.com"
+uri = "https://sonniss.com/gameaudiogdc"
+
+[node name="SfxrHBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/SoundsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="URLPanelContainer" type="PanelContainer" parent="ScrollContainer/VBoxContainer/SoundsVBoxContainer/SfxrHBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/VBoxContainer/SoundsVBoxContainer/SfxrHBoxContainer/URLPanelContainer"]
+layout_mode = 2
+theme_type_variation = &"EvenMargin10"
+
+[node name="LinkButton" type="LinkButton" parent="ScrollContainer/VBoxContainer/SoundsVBoxContainer/SfxrHBoxContainer/URLPanelContainer/MarginContainer"]
+layout_mode = 2
+text = "SFXR"
+uri = "http://www.drpetter.se/project_sfxr.html"
+
+[node name="BfxrHBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/SoundsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="URLPanelContainer" type="PanelContainer" parent="ScrollContainer/VBoxContainer/SoundsVBoxContainer/BfxrHBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/VBoxContainer/SoundsVBoxContainer/BfxrHBoxContainer/URLPanelContainer"]
+layout_mode = 2
+theme_type_variation = &"EvenMargin10"
+
+[node name="LinkButton" type="LinkButton" parent="ScrollContainer/VBoxContainer/SoundsVBoxContainer/BfxrHBoxContainer/URLPanelContainer/MarginContainer"]
+layout_mode = 2
+text = "BFXR"
+uri = "https://www.bfxr.net/"

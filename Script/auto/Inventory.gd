@@ -304,6 +304,15 @@ func calculate_bot_rate(by_time: float) -> float:
 
 	return bot_per_time
 
+## Calculate CryoPod breakdown rate
+func calculate_cryopod_rate(by_time: float) -> float:
+	var pod_per_time: float = 0
+
+	if Controller.travel_state == State.Traveling:
+		pod_per_time += randf_range(0.0, 0.01) * by_time
+
+	return pod_per_time
+
 ## Calcuate Energy production / consumption based on time
 func calculate_energy_rate(by_time: float) -> float:
 	var energy_per_time: float = 0
@@ -572,42 +581,50 @@ func reset() -> void:
 
 func use_resource_by_time(delta: float, resource: int) -> void:
 	var quantity: float
+	var resource_key: String = Inventory.ShipResource.keys()[resource]
 
 	match resource:
 		Inventory.ShipResource.Air:
 			quantity = Inventory.calculate_air_rate(delta)
-			Inventory.air -= quantity
+			Inventory.air += quantity
 		Inventory.ShipResource.Bot:
 			quantity = Inventory.calculate_bot_rate(delta)
-			Inventory.bot -= quantity
+			Inventory.bot += quantity
+		Inventory.ShipResource.Cryopod:
+			quantity = Inventory.calculate_cryopod_rate(delta)
+			Inventory.cryopod += quantity
 		Inventory.ShipResource.Energy:
 			quantity = Inventory.calculate_energy_rate(delta)
-			Inventory.energy -= quantity
+			Inventory.energy += quantity
 		Inventory.ShipResource.Fish:
 			quantity = Inventory.calculate_fish_rate(delta)
-			Inventory.fish -= quantity
+			Inventory.fish += quantity
 		Inventory.ShipResource.Food:
 			quantity = Inventory.calculate_food_rate(delta)
-			Inventory.food -= quantity
+			Inventory.food += quantity
 		Inventory.ShipResource.Fuel:
 			quantity = Inventory.calculate_fuel_rate(delta)
-			Inventory.fuel -= quantity
+			Inventory.fuel += quantity
 		Inventory.ShipResource.Human:
 			quantity = Inventory.calculate_human_rate(delta)
-			Inventory.human -= quantity
+			Inventory.human += quantity
 		Inventory.ShipResource.Plant:
 			quantity = Inventory.calculate_plant_rate(delta)
-			Inventory.plant -= quantity
+			Inventory.plant += quantity
 		Inventory.ShipResource.Waste:
 			quantity = Inventory.calculate_waste_rate(delta)
-			Inventory.waste -= quantity
+			Inventory.waste += quantity
 		Inventory.ShipResource.Water:
 			quantity = Inventory.calculate_water_rate(delta)
-			Inventory.water -= quantity
+			Inventory.water += quantity
+		Inventory.ShipResource.Work:
+			quantity = Inventory.calculate_work_rate(delta)
+			Inventory.work += quantity
 		_:
 			Log.error("Unknown resource: %s" % [resource])
 	Inventory.space_available += quantity * Inventory.required_space[resource]
 	Inventory.resource_consumed.emit(resource, quantity)
+	Log.debug("Use %s units of %s." % [quantity, resource_key])
 
 	return
 

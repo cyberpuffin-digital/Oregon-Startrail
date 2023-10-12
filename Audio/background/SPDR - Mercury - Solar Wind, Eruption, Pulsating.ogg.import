@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cuwmrhlseicaf"
+path="res://.godot/imported/SPDR - Mercury - Solar Wind, Eruption, Pulsating.ogg-69a52fa2b4a44944b4fefd6698372eb3.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/background/SPDR - Mercury - Solar Wind, Eruption, Pulsating.ogg"
+dest_files=["res://.godot/imported/SPDR - Mercury - Solar Wind, Eruption, Pulsating.ogg-69a52fa2b4a44944b4fefd6698372eb3.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c5l8u17cchtwc"
+path="res://.godot/imported/SPDR - Space Chatter 4 - Radio, Mission Control.ogg-c7fc44338dfefc78f456dd86cc43b28e.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/background/SPDR - Space Chatter 4 - Radio, Mission Control.ogg"
+dest_files=["res://.godot/imported/SPDR - Space Chatter 4 - Radio, Mission Control.ogg-c7fc44338dfefc78f456dd86cc43b28e.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

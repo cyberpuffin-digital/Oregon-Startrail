@@ -18,6 +18,12 @@ signal ready_to_start
 ## Show Options dialog
 signal show_options_dialog
 
+enum RandomEvent {
+	Bad,
+	Good,
+	Neutral,
+}
+
 ## Waypoints found along the way, corresponds to list of tabs in GameWindow
 enum Waypoint {
 	## Travelling between waypoints
@@ -41,7 +47,7 @@ const GameTimers = preload("res://Script/Data/GameTimers.gd")
 ## Current waypoint
 var current_waypoint: int
 ## Game timers to process resources
-var game_timers: GameTimers
+var game_timers: Node
 ## Most recent waypoint
 var last_waypoint: int
 ## Next target waypoint
@@ -118,12 +124,22 @@ func process_resource(delta: float, item: int) -> void:
 	Inventory.use_resource_by_time(delta, item)
 	match item:
 		Inventory.ShipResource.Air:
-			if Inventory.air <= 0:
+			if Inventory.air <= 0 and Inventory.oxygen_generator > 0:
+				if Inventory.fuel >= 1:
+					Inventory.calculate_air_generation(1)
+				elif Inventory.fuel > 0 and Inventory.fuel < 1:
+					Inventory.calculate_air_generation(Inventory.fuel)
+				else:
+					out_of_air.emit()
+			else:
 				out_of_air.emit()
-		Inventory.ShipResource.Bot:
-			pass
 		Inventory.ShipResource.Energy:
-			if Inventory.energy <= 0:
+			if Inventory.energy <= 0 and Inventory.fusion_generator > 0:
+				if Inventory.fuel > 0:
+					Inventory.calculate_energy_generation(min(1, Inventory.fuel))
+				else:
+					out_of_energy.emit()
+			else:
 				out_of_energy.emit()
 		Inventory.ShipResource.Food:
 			if Inventory.food <= 0:
@@ -138,12 +154,31 @@ func process_resource(delta: float, item: int) -> void:
 				else:
 					Inventory.use_set_resource(Inventory.cryopod, 5)
 		Inventory.ShipResource.Water:
-			if Inventory.water < 0:
+			if Inventory.water < 0 and Inventory.water_generator > 0:
+				if Inventory.fuel > 0:
+					Inventory.calculate_water_generation(min(1, Inventory.fuel))
+				else:
+					out_of_water.emit()
+			else:
 				out_of_water.emit()
-		Inventory.ShipResource.Work:
-			Inventory.work += Inventory.bot
-			Inventory.work += Inventory.human
-			Inventory.work -= Inventory.cryopod * 0.1
+
+	return
+
+## Random events
+func random_event(event_type: Controller.RandomEvent) -> void:
+	match event_type:
+		Controller.RandomEvent.Bad:
+			pass
+		Controller.RandomEvent.Good:
+			pass
+		Controller.RandomEvent.Neutral:
+			pass
+
+	return
+
+## GameWindow timers register with the controller
+func register_timers(timers: Node) -> void:
+	Controller.game_timers = timers
 
 	return
 
@@ -157,10 +192,6 @@ func reset() -> void:
 	Controller.travel_time_base = 5
 	Controller.travel_time_multiplier = 1.5
 	Inventory.reset()
-	if !Controller.game_timers:
-		Controller.game_timers = GameTimers.new()
-		Controller.game_timers.configure_timers()
-		add_child(Controller.game_timers)
 	Log.verbose("Game controller reset.")
 
 	return
@@ -197,13 +228,9 @@ func start_new_game() -> void:
 ## Use fuel to regain resources
 func use_fuel() -> void:
 	if Inventory.fuel >= 1:
-		Inventory.fuel -= 1
-		Inventory.space_available -= Inventory.required_space[Inventory.ShipResource.Fuel]
-		Inventory.energy += 1000
-		Inventory.space_available += 1000 * Inventory.required_space[Inventory.ShipResource.Energy]
-		Inventory.water += 100
-		Inventory.space_available += 100 * Inventory.required_space[Inventory.ShipResource.Water]
-		Inventory.air += 50
-		Inventory.space_available += 50 * Inventory.required_space[Inventory.ShipResource.Air]
+		Inventory.use_set_resource(Inventory.ShipResource.Fuel, 1)
+		Inventory.add_resource(Inventory.ShipResource.Energy, 1000)
+		Inventory.add_resource(Inventory.ShipResource.Water, 100)
+		Inventory.add_resource(Inventory.ShipResource.Air, 50)
 
 	return

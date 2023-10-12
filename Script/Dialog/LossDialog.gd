@@ -17,7 +17,7 @@ func connect_to_signals() -> void:
 	Controller.out_of_air.connect(self.game_over.bind("AIR"))
 	Controller.out_of_energy.connect(self.game_over.bind("ENERGY"))
 	Controller.out_of_food.connect(self.game_over.bind("FOOD"))
-	Controller.out_of_fuel.connect(self.game_over.bind("FUEL"))
+#	Controller.out_of_fuel.connect(self.game_over.bind("FUEL"))
 	Controller.out_of_human.connect(self.game_over.bind("HUMAN"))
 	Controller.out_of_water.connect(self.game_over.bind("WATER"))
 

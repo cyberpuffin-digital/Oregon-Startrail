@@ -32,7 +32,7 @@ layout_mode = 2
 [node name="TTSTitleLabel" type="Label" parent="ScrollContainer/VBoxContainer/TTSHeaderContainer"]
 layout_mode = 2
 theme_type_variation = &"HeaderLarge"
-text = "PREFERENCE"
+text = "TTS"
 
 [node name="TTSEnabledCheckBox" type="CheckBox" parent="ScrollContainer/VBoxContainer"]
 unique_name_in_owner = true
