@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://c3hwphsyo7366"]
+[gd_scene load_steps=7 format=3 uid="uid://c3hwphsyo7366"]
 
 [ext_resource type="Theme" uid="uid://ciciv61w8qmyy" path="res://Theme/MainTheme.tres" id="1_c7eq5"]
 [ext_resource type="Script" path="res://Script/Dialog/TradeDialog.gd" id="2_hihif"]
+[ext_resource type="Texture2D" uid="uid://dmcq5a0wdvgao" path="res://Image/Arrows/arrow_left.png" id="3_hv4xj"]
+[ext_resource type="Texture2D" uid="uid://c6n1g3oovtaua" path="res://Image/Arrows/arrow_left_pressed.png" id="4_cjhns"]
+[ext_resource type="Texture2D" uid="uid://buc4e2upd0uct" path="res://Image/Arrows/arrow_right.png" id="5_o37td"]
+[ext_resource type="Texture2D" uid="uid://2vlx214adpcw" path="res://Image/Arrows/arrow_right_pressed.png" id="6_l5t3w"]
 
 [node name="Trade" type="ConfirmationDialog"]
 process_mode = 3
@@ -50,11 +54,21 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="SpaceUsedSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/SpaceHBoxContainer"]
+[node name="SpaceUsedPanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/SpaceHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+
+[node name="SpaceUsedColorRect" type="ColorRect" parent="MarginContainer/VBoxContainer/SpaceHBoxContainer/SpaceUsedPanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+color = Color(1, 0, 0, 0.47451)
+
+[node name="SpaceUsedSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/SpaceHBoxContainer/SpaceUsedPanelContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-max_value = 10000.0
+theme_type_variation = &"NoArrows"
+max_value = 1e+06
 alignment = 1
 editable = false
 
@@ -63,11 +77,16 @@ layout_mode = 2
 size_flags_horizontal = 6
 text = "SPACE"
 
-[node name="SpaceAvailableSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/SpaceHBoxContainer"]
+[node name="SpaceAvailablePanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/SpaceHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+
+[node name="SpaceAvailableSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/SpaceHBoxContainer/SpaceAvailablePanelContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-max_value = 10000.0
+theme_type_variation = &"NoArrows"
+max_value = 1e+06
 alignment = 1
 editable = false
 
@@ -93,13 +112,35 @@ size_flags_vertical = 3
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-max_value = 10000.0
+theme_type_variation = &"NoArrows"
+max_value = 100000.0
 alignment = 1
+select_all_on_focus = true
+
+[node name="AirBuyTextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/AirHBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 10
+texture_normal = ExtResource("3_hv4xj")
+texture_pressed = ExtResource("4_cjhns")
+ignore_texture_size = true
+stretch_mode = 5
 
 [node name="AirLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/AirHBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
 text = "AIR"
+
+[node name="AirSellTextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/AirHBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 2
+texture_normal = ExtResource("5_o37td")
+texture_pressed = ExtResource("6_l5t3w")
+ignore_texture_size = true
+stretch_mode = 5
 
 [node name="AirAvailableLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/AirHBoxContainer"]
 unique_name_in_owner = true
@@ -120,6 +161,7 @@ size_flags_vertical = 3
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme_type_variation = &"NoArrows"
 max_value = 10000.0
 alignment = 1
 
@@ -147,6 +189,7 @@ size_flags_vertical = 3
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme_type_variation = &"NoArrows"
 max_value = 10000.0
 alignment = 1
 
@@ -174,6 +217,7 @@ size_flags_vertical = 3
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme_type_variation = &"NoArrows"
 max_value = 10000.0
 alignment = 1
 
@@ -201,6 +245,7 @@ size_flags_vertical = 3
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme_type_variation = &"NoArrows"
 max_value = 10000.0
 alignment = 1
 
@@ -228,6 +273,7 @@ size_flags_vertical = 3
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme_type_variation = &"NoArrows"
 max_value = 10000.0
 alignment = 1
 
@@ -255,6 +301,7 @@ size_flags_vertical = 3
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme_type_variation = &"NoArrows"
 max_value = 10000.0
 alignment = 1
 
@@ -282,6 +329,7 @@ size_flags_vertical = 3
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme_type_variation = &"NoArrows"
 max_value = 10000.0
 alignment = 1
 
@@ -309,6 +357,7 @@ size_flags_vertical = 3
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme_type_variation = &"NoArrows"
 max_value = 10000.0
 alignment = 1
 
@@ -331,11 +380,21 @@ autowrap_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="MoneyOwnedSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/MoneyHBoxContainer"]
+[node name="MoneyOwnedPanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/MoneyHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+
+[node name="MoneyOwnedColorRect" type="ColorRect" parent="MarginContainer/VBoxContainer/MoneyHBoxContainer/MoneyOwnedPanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+color = Color(1, 0, 0, 0.47451)
+
+[node name="MoneyOwnedSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/MoneyHBoxContainer/MoneyOwnedPanelContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-max_value = 10000.0
+theme_type_variation = &"NoArrows"
+max_value = 1e+06
 alignment = 1
 editable = false
 
@@ -344,10 +403,20 @@ layout_mode = 2
 size_flags_horizontal = 6
 text = "MONEY"
 
-[node name="MoneyAvailableSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/MoneyHBoxContainer"]
+[node name="MoneyAvailablePanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/MoneyHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+
+[node name="MoneyAvailableColorRect" type="ColorRect" parent="MarginContainer/VBoxContainer/MoneyHBoxContainer/MoneyAvailablePanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+color = Color(1, 0, 0, 0.47451)
+
+[node name="MoneyAvailableSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/MoneyHBoxContainer/MoneyAvailablePanelContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-max_value = 10000.0
+theme_type_variation = &"NoArrows"
+max_value = 1e+06
 alignment = 1
 editable = false

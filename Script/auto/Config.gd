@@ -104,6 +104,26 @@ func load_file() -> void:
 func load_file_audio() -> void:
 	var in_value
 
+	## Music muted
+	in_value = Config.handler.get_value("Audio", "music_muted", false)
+	if typeof(in_value) == TYPE_BOOL:
+		AudioServer.set_bus_mute(AudioServer.get_bus_index("Music"), in_value)
+
+	## Music volume
+	in_value = Config.handler.get_value("Audio", "music_volume", 0.6)
+	if typeof(in_value) == TYPE_FLOAT:
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), in_value)
+
+	## Sfx muted
+	in_value = Config.handler.get_value("Audio", "sfx_muted", false)
+	if typeof(in_value) == TYPE_BOOL:
+		AudioServer.set_bus_mute(AudioServer.get_bus_index("Sfx"), in_value)
+
+	## Sfx volume
+	in_value = Config.handler.get_value("Audio", "sfx_volume", 0.6)
+	if typeof(in_value) == TYPE_FLOAT:
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Sfx"), in_value)
+
 	# TTS Enabled
 	in_value = Config.handler.get_value("Audio", "tts_enabled", true)
 	if typeof(in_value) == TYPE_BOOL:
@@ -229,6 +249,10 @@ func save_file_audio() -> void:
 		return
 
 	var fields: Dictionary = {
+		"music_muted": AudioServer.is_bus_mute(AudioServer.get_bus_index("Music")),
+		"music_volume": AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Music")),
+		"sfx_muted": AudioServer.is_bus_mute(AudioServer.get_bus_index("Sfx")),
+		"sfx_volume": AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Sfx")),
 		"tts_enabled": Audio.tts_enabled,
 		"tts_pitch": Audio.tts_pitch,
 		"tts_rate": Audio.tts_rate,

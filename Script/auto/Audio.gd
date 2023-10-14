@@ -1,9 +1,55 @@
-extends Node
+extends AudioStreamPlayer2D
 ## Audio controller
 
 ## Used to signal a change in the TTS system
 signal tts_is(enabled: bool)
 
+## List of Background songs
+enum BgSongs {
+	## Going Home Again
+	EARTH,
+	## Happy House Hunters
+	WOLF_1061C,
+	## SPDR - Jupiter
+	EUROPA,
+	## SPDR - Mercury
+	MARS,
+	## SPDR - Space Chatter
+	MOON,
+	## SPDR - Venus
+	KUIPER_BELT,
+	## Tech Time
+	TRAVEL,
+}
+
+## Paths for background music
+const BgPaths: Array = [
+	## Earth
+	"res://Audio/background/Going_Home_Again_130bpm_120s.ogg",
+	## Worlf_1061C
+	"res://Audio/background/Happy_House_Hunters_128bpm_122s.ogg",
+	## Europa
+	"res://Audio/background/SPDR - Jupiter - Massive, Heavy Wind, Big.ogg",
+	## Mars
+	"res://Audio/background/SPDR - Mercury - Solar Wind, Eruption, Pulsating.ogg",
+	## Moon
+	"res://Audio/background/SPDR - Space Chatter 4 - Radio, Mission Control.ogg",
+	## Kuiper Belt
+	"res://Audio/background/SPDR - Venus - Evil, Harsh Winds, Extreme Weather.ogg",
+	## Travel
+	"res://Audio/background/Tech_Time_146bpm_120s.ogg",
+]
+
+## Music muted
+var music_muted: bool
+## Music volume (db)
+var music_volume: float
+## Current music selection
+var selection: int
+## SFX muted
+var sfx_muted: bool
+## SFX volume (db)
+var sfx_volume: float
 ## Track whether to enable TTS
 var tts_enabled: bool = true
 ## Voice pitch
@@ -17,7 +63,18 @@ var tts_volume: int = 75
 
 func _ready() -> void:
 	Audio.configure_tts()
+	Audio.selection = 0
+	Audio.stream = load(Audio.BgPaths[Audio.selection])
+	Audio.play.call_deferred()
 	Log.quiet("Audio controller loaded.")
+
+	return
+
+## Change music to the [direction]
+func change_music_to_the(direction: String = "right") -> void:
+	Audio.set_background_music(
+		Audio.selection + (-1 if direction.to_lower() == "left" else 1)
+	)
 
 	return
 
@@ -71,6 +128,7 @@ func configure_tts() -> void:
 
 	return
 
+## Send message to TTS Server
 func send_to_tts(msg_in: String, queued: bool) -> void:
 	Log.debug("Sending \"%s\" to TTS" % [msg_in])
 	DisplayServer.tts_speak(
@@ -80,6 +138,51 @@ func send_to_tts(msg_in: String, queued: bool) -> void:
 
 	return
 
+## Set the background music [to] selection
+func set_background_music(to: BgSongs) -> void:
+	Audio.selection = to
+	Audio.stop()
+	Audio.stream = load(Audio.BgPaths[Audio.selection])
+	Audio.play()
+
+	return
+
+func set_mute(muted: bool, which_bus: String) -> void:
+	match which_bus.to_lower():
+		"music":
+			Audio.music_muted = muted
+			AudioServer.set_bus_mute(AudioServer.get_bus_index("Music"), muted)
+		"sfx":
+			Audio.sfx_muted = muted
+			AudioServer.set_bus_mute(AudioServer.get_bus_index("Sfx"), muted)
+		_:
+			Log.error("Unknown bus: %s" % [which_bus])
+	Log.verbose("Set %s bus mute: %s" % [which_bus, muted])
+
+	return
+
+## Set the volume on a bus, volume_in is expected in decibel (-inf - 0.0)
+func set_volume(volume_in: float, which_bus: String) -> void:
+	match which_bus.to_lower():
+		"music":
+			Audio.music_volume = volume_in
+			AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), Audio.music_volume)
+		"sfx":
+			Audio.sfx_volume = volume_in
+			AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Sfx"), Audio.sfx_volume)
+		_:
+			Log.error("Unknown bus: %s" % [which_bus])
+	Log.verbose("Set %s bus volume to %s" % [which_bus, volume_in])
+
+	return
+
+## Set audio bus from linear value
+func set_volume_from_linear(volume_in: float, which_bus: String) -> void:
+	Audio.set_volume(linear_to_db(volume_in), which_bus)
+
+	return
+
+## Stop TTS playback
 func stop_tts() -> void:
 	DisplayServer.tts_stop()
 	Log.debug("TTS Server playback stopped.")

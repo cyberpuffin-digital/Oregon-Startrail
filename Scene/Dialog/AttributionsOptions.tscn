@@ -233,13 +233,13 @@ layout_mode = 2
 text = "Nasa.gov"
 uri = "https://exoplanets.nasa.gov/news/240/the-nearest-potentially-habitable-planet-to-earth/"
 
-[node name="SoundsHeaderContainer" type="PanelContainer" parent="ScrollContainer/VBoxContainer"]
+[node name="AudioHeaderContainer" type="PanelContainer" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="SoundsHeaderLabel" type="Label" parent="ScrollContainer/VBoxContainer/SoundsHeaderContainer"]
+[node name="AudioHeaderLabel" type="Label" parent="ScrollContainer/VBoxContainer/AudioHeaderContainer"]
 layout_mode = 2
 theme_type_variation = &"HeaderLarge"
-text = "SOUNDS"
+text = "AUDIO"
 
 [node name="SoundsVBoxContainer" type="VBoxContainer" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
@@ -280,6 +280,24 @@ theme_type_variation = &"EvenMargin10"
 layout_mode = 2
 text = "Sonniss.com"
 uri = "https://sonniss.com/gameaudiogdc"
+
+[node name="BackgroundMusicHBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/SoundsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="URLPanelContainer" type="PanelContainer" parent="ScrollContainer/VBoxContainer/SoundsVBoxContainer/BackgroundMusicHBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/VBoxContainer/SoundsVBoxContainer/BackgroundMusicHBoxContainer/URLPanelContainer"]
+layout_mode = 2
+theme_type_variation = &"EvenMargin10"
+
+[node name="LinkButton" type="LinkButton" parent="ScrollContainer/VBoxContainer/SoundsVBoxContainer/BackgroundMusicHBoxContainer/URLPanelContainer/MarginContainer"]
+layout_mode = 2
+text = "Joel Steudler"
+uri = "http://www.joelsteudlermusic.com/"
 
 [node name="SfxrHBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/SoundsVBoxContainer"]
 layout_mode = 2

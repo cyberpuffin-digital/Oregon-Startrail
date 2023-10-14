@@ -119,8 +119,6 @@ func process_default_resources(delta: float) -> void:
 
 ## Run the numbers for the requested resource
 func process_resource(delta: float, item: int) -> void:
-	var change: float = 0
-
 	Inventory.use_resource_by_time(delta, item)
 	match item:
 		Inventory.ShipResource.Air:
@@ -152,7 +150,7 @@ func process_resource(delta: float, item: int) -> void:
 				if Inventory.cryopod <= 0:
 					Controller.out_of_human.emit()
 				else:
-					Inventory.use_set_resource(Inventory.cryopod, 5)
+					Inventory.use_set_resource(Inventory.ShipResource.Cryopod, 5)
 		Inventory.ShipResource.Water:
 			if Inventory.water < 0 and Inventory.water_generator > 0:
 				if Inventory.fuel > 0:

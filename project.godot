@@ -18,13 +18,14 @@ config/icon="res://icon.svg"
 
 [audio]
 
+buses/default_bus_layout="res://Resource/AudioBus/MainLayout.tres"
 general/text_to_speech=true
 
 [autoload]
 
 Log="*res://Script/auto/Log.gd"
-Audio="*res://Script/auto/Audio.gd"
 Controller="*res://Script/auto/Controller.gd"
+Audio="*res://Scene/auto/Audio.tscn"
 Config="*res://Script/auto/Config.gd"
 Inventory="*res://Script/auto/Inventory.gd"
 State="*res://Script/auto/State.gd"

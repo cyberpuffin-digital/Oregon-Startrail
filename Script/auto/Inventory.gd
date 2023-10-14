@@ -138,11 +138,11 @@ const required_space: Dictionary = {
 ## Oxygen for active humans
 var air: float
 ## Energy storage device
-var battery: int
+var battery: float
 ## Worker bots
-var bot: int
+var bot: float
 ## Inactive humands
-var cryopod: int
+var cryopod: float
 ## Electricty
 var energy: float
 ## Capacity of energy storage
@@ -150,7 +150,7 @@ var energy_capacity: float
 ## Active fish
 var fish: float
 ## Fishery to process fish
-var fishery: int
+var fishery: float
 ## Food for active humans
 var food: float
 ## Fuel to power energy generators and propulsion
@@ -158,21 +158,21 @@ var fuel: float
 ## Fuel burn rate during travel
 var fuel_burn_rate: float
 ## Fusion generator: consumes fuel, produces energy
-var fusion_generator: int
+var fusion_generator: float
 ## Hydroponic gardens to tend plants
-var hydroponic: int
+var hydroponic: float
 ## Active human workers
 var human: float
 ## Cash for trade
 var money: float
 ## Oxygen generator: consumes energy, produces oxygen
-var oxygen_generator: int
+var oxygen_generator: float
 ## Plants to grow for food and air
 var plant: float
 ## Available space for stuff
 var space_available: float
 ## Spare parts for repairs
-var spare_part: int
+var spare_part: float
 ## Starting values
 var starting_values: Dictionary = {
 	Inventory.ShipResource.Bot: 1,
@@ -187,7 +187,7 @@ var waste: float
 ## Water for active humans, plants, and fish
 var water: float
 ## Water generator: consumes energy, produces water
-var water_generator: int
+var water_generator: float
 ## Accumulated effort put forth by the workers
 var work: float
 ## Workstation efficiency. Unmaintained workstations don't work as well
@@ -629,7 +629,7 @@ func use_resource_by_time(delta: float, resource: int) -> void:
 	return
 
 ## Use a set amount of a resource
-func use_set_resource(resource: int, quantity: float) -> void:
+func use_set_resource(resource: Inventory.ShipResource, quantity: float) -> void:
 	match resource:
 		Inventory.ShipResource.Cryopod:
 			if Inventory.cryopod < quantity:

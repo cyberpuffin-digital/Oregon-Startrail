@@ -241,7 +241,7 @@
 
 [resource]
 frames = 238
-speed_scale = 5.0
+speed_scale = 10.0
 frame_0/texture = ExtResource("1_bnoh7")
 frame_1/texture = ExtResource("2_hnwwj")
 frame_1/duration = 1.0

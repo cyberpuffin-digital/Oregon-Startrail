@@ -42,8 +42,8 @@ func get_the_children() -> void:
 ## Handle changes to the UI scale
 func update_for_scale() -> void:
 	var working: float = 1 / Config.ui_scale
-	self.particles.emission_rect_extents = Vector2i(0, self.EMITTER_Y * working)
-	self.particles.position = Vector2i(self.EMITTER_X * working, self.EMITTER_Y)
+	self.particles.emission_rect_extents = Vector2i(0, int(self.EMITTER_Y * working))
+	self.particles.position = Vector2i(int(self.EMITTER_X * working), self.EMITTER_Y)
 	self.ship.scale = Vector2(working, working)
 	self.ship.position = Vector2(self.SHIP_POS_X, self.SHIP_POS_Y * pow(working, 2))
 
