@@ -54,6 +54,8 @@ var last_waypoint: int
 var next_waypoint: int
 ## Track when we're playing the game
 var playing: bool
+## Trader has credit
+var trader_credit: bool
 ## Current state of travel
 var travel_state: int
 ## Show current travel time total
@@ -67,6 +69,7 @@ var travel_timer: float
 
 ## Handle Controller actions when arriving at a waypoint
 func arrive_at_waypoint() -> void:
+	Controller.trader_credit = false
 	Controller.travel_state = State.Stopped_At_Waypoint
 	if Controller.last_waypoint == 0:
 		Controller.last_waypoint = Controller.current_waypoint

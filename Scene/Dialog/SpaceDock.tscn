@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dl0xo5fwf5q6s"]
 
 [ext_resource type="Theme" uid="uid://ciciv61w8qmyy" path="res://Theme/MainTheme.tres" id="1_kkndg"]
-[ext_resource type="Script" path="res://Script/Dialog/TradeDialog.gd" id="2_iphci"]
+[ext_resource type="Script" path="res://Script/Dialog/SpaceDock.gd" id="2_yf1ve"]
 
 [node name="SpaceDock" type="ConfirmationDialog"]
 process_mode = 3
@@ -12,7 +12,7 @@ visible = true
 theme = ExtResource("1_kkndg")
 ok_button_text = "UPGRADE"
 cancel_button_text = "CANCEL"
-script = ExtResource("2_iphci")
+script = ExtResource("2_yf1ve")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 offset_left = 8.0
@@ -34,10 +34,13 @@ layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 text = "UNDERCONSTRUCTION"
+horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
