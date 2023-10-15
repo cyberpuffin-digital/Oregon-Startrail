@@ -75,7 +75,7 @@ editable = false
 [node name="SpaceLabel" type="Label" parent="MarginContainer/VBoxContainer/SpaceHBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
-text = "SPACE"
+text = "CARGOSPACE"
 
 [node name="SpaceAvailablePanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/SpaceHBoxContainer"]
 layout_mode = 2
@@ -165,10 +165,30 @@ theme_type_variation = &"NoArrows"
 max_value = 10000.0
 alignment = 1
 
+[node name="EnergyBuyTextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/EnergyHBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 10
+texture_normal = ExtResource("3_hv4xj")
+texture_pressed = ExtResource("4_cjhns")
+ignore_texture_size = true
+stretch_mode = 5
+
 [node name="EnergyLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/EnergyHBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
 text = "ENERGY"
+
+[node name="EnergySellTextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/EnergyHBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 2
+texture_normal = ExtResource("5_o37td")
+texture_pressed = ExtResource("6_l5t3w")
+ignore_texture_size = true
+stretch_mode = 5
 
 [node name="EnergyAvailableLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/EnergyHBoxContainer"]
 unique_name_in_owner = true
@@ -193,10 +213,30 @@ theme_type_variation = &"NoArrows"
 max_value = 10000.0
 alignment = 1
 
+[node name="FishBuyTextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/FishHBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 10
+texture_normal = ExtResource("3_hv4xj")
+texture_pressed = ExtResource("4_cjhns")
+ignore_texture_size = true
+stretch_mode = 5
+
 [node name="FishLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/FishHBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
 text = "FISH"
+
+[node name="FishSellTextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/FishHBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 2
+texture_normal = ExtResource("5_o37td")
+texture_pressed = ExtResource("6_l5t3w")
+ignore_texture_size = true
+stretch_mode = 5
 
 [node name="FishAvailableLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/FishHBoxContainer"]
 unique_name_in_owner = true
@@ -221,10 +261,30 @@ theme_type_variation = &"NoArrows"
 max_value = 10000.0
 alignment = 1
 
+[node name="FoodBuyTextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/FoodHBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 10
+texture_normal = ExtResource("3_hv4xj")
+texture_pressed = ExtResource("4_cjhns")
+ignore_texture_size = true
+stretch_mode = 5
+
 [node name="FoodLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/FoodHBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
 text = "FOOD"
+
+[node name="FoodSellTextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/FoodHBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 2
+texture_normal = ExtResource("5_o37td")
+texture_pressed = ExtResource("6_l5t3w")
+ignore_texture_size = true
+stretch_mode = 5
 
 [node name="FoodAvailableLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/FoodHBoxContainer"]
 unique_name_in_owner = true
@@ -249,10 +309,30 @@ theme_type_variation = &"NoArrows"
 max_value = 10000.0
 alignment = 1
 
+[node name="FuelBuyTextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/FuelHBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 10
+texture_normal = ExtResource("3_hv4xj")
+texture_pressed = ExtResource("4_cjhns")
+ignore_texture_size = true
+stretch_mode = 5
+
 [node name="FuelLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/FuelHBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
 text = "FUEL"
+
+[node name="FuelSellTextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/FuelHBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 2
+texture_normal = ExtResource("5_o37td")
+texture_pressed = ExtResource("6_l5t3w")
+ignore_texture_size = true
+stretch_mode = 5
 
 [node name="FuelAvailableLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/FuelHBoxContainer"]
 unique_name_in_owner = true
@@ -277,10 +357,30 @@ theme_type_variation = &"NoArrows"
 max_value = 10000.0
 alignment = 1
 
+[node name="PlantBuyTextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/PlantHBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 10
+texture_normal = ExtResource("3_hv4xj")
+texture_pressed = ExtResource("4_cjhns")
+ignore_texture_size = true
+stretch_mode = 5
+
 [node name="PlantLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/PlantHBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
 text = "PLANTS"
+
+[node name="PlantSellTextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/PlantHBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 2
+texture_normal = ExtResource("5_o37td")
+texture_pressed = ExtResource("6_l5t3w")
+ignore_texture_size = true
+stretch_mode = 5
 
 [node name="PlantAvailableLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/PlantHBoxContainer"]
 unique_name_in_owner = true
@@ -305,10 +405,30 @@ theme_type_variation = &"NoArrows"
 max_value = 10000.0
 alignment = 1
 
+[node name="SparePartBuyTextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/SparePartHBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 10
+texture_normal = ExtResource("3_hv4xj")
+texture_pressed = ExtResource("4_cjhns")
+ignore_texture_size = true
+stretch_mode = 5
+
 [node name="SparePartLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/SparePartHBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
 text = "SPAREPARTS"
+
+[node name="SparePartSellTextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/SparePartHBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 2
+texture_normal = ExtResource("5_o37td")
+texture_pressed = ExtResource("6_l5t3w")
+ignore_texture_size = true
+stretch_mode = 5
 
 [node name="SparePartAvailableLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/SparePartHBoxContainer"]
 unique_name_in_owner = true
@@ -333,10 +453,30 @@ theme_type_variation = &"NoArrows"
 max_value = 10000.0
 alignment = 1
 
+[node name="WasteBuyTextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/WasteHBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 10
+texture_normal = ExtResource("3_hv4xj")
+texture_pressed = ExtResource("4_cjhns")
+ignore_texture_size = true
+stretch_mode = 5
+
 [node name="WasteLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/WasteHBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
 text = "WASTE"
+
+[node name="WasteSellTextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/WasteHBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 2
+texture_normal = ExtResource("5_o37td")
+texture_pressed = ExtResource("6_l5t3w")
+ignore_texture_size = true
+stretch_mode = 5
 
 [node name="WasteAvailableLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/WasteHBoxContainer"]
 unique_name_in_owner = true
@@ -361,10 +501,30 @@ theme_type_variation = &"NoArrows"
 max_value = 10000.0
 alignment = 1
 
+[node name="WaterBuyTextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/WaterHBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 10
+texture_normal = ExtResource("3_hv4xj")
+texture_pressed = ExtResource("4_cjhns")
+ignore_texture_size = true
+stretch_mode = 5
+
 [node name="WaterLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/WaterHBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
 text = "WATER"
+
+[node name="WaterSellTextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/WaterHBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 2
+texture_normal = ExtResource("5_o37td")
+texture_pressed = ExtResource("6_l5t3w")
+ignore_texture_size = true
+stretch_mode = 5
 
 [node name="WaterAvailableLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/WaterHBoxContainer"]
 unique_name_in_owner = true
@@ -417,6 +577,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_type_variation = &"NoArrows"
+min_value = -10000.0
 max_value = 1e+06
 alignment = 1
 editable = false

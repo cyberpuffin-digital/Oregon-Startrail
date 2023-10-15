@@ -69,7 +69,7 @@ const data: Dictionary = {
 ## Market inventory at the various waystops
 var inventory: Dictionary
 
-func remove_inventory(waypoint: int, resource: int, quantity: float) -> void:
+func remove_inventory(waypoint: int, resource: Inventory.ShipResource, quantity: float) -> void:
 	self.inventory[waypoint][resource] -= quantity
 
 	return
@@ -94,7 +94,7 @@ func reset() -> void:
 			Inventory.ShipResource.Fish: 1000,
 			Inventory.ShipResource.Food: 100,
 			Inventory.ShipResource.Fuel: 50,
-			Inventory.ShipResource.Money: 10000,
+			Inventory.ShipResource.Money: -200,
 			Inventory.ShipResource.Plant: 1000,
 			Inventory.ShipResource.SparePart: 200,
 			Inventory.ShipResource.Waste: 10000,

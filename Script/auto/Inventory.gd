@@ -216,7 +216,7 @@ func _init(
 	return
 
 ## Add a specified resource to the Inventory
-func add_resource(resource: int, quantity: float) -> bool:
+func add_resource(resource: Inventory.ShipResource, quantity: float) -> bool:
 	if Inventory.space_available < Inventory.calculate_space_used_by(resource, quantity):
 		return false
 
@@ -263,7 +263,7 @@ func calculate_air_rate(by_time: float) -> float:
 	var air_per_time: float = 0
 
 	# Human consume air
-	air_per_time += Inventory.human * Inventory.conversions[
+	air_per_time -= Inventory.human * Inventory.conversions[
 		Inventory.ShipResource.Human
 	][Inventory.ShipResource.Air] * Inventory.human * by_time
 

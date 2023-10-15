@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://d26onhpq6ltvc"]
+[gd_scene load_steps=22 format=3 uid="uid://d26onhpq6ltvc"]
 
 [ext_resource type="Theme" uid="uid://ciciv61w8qmyy" path="res://Theme/MainTheme.tres" id="1_0o5cg"]
 [ext_resource type="Script" path="res://Script/GameWindow.gd" id="1_hjc2e"]
@@ -18,7 +18,9 @@
 [ext_resource type="PackedScene" uid="uid://vtvbwlh1ednd" path="res://Scene/Data/Rates.tscn" id="11_udfd4"]
 [ext_resource type="PackedScene" uid="uid://c3hwphsyo7366" path="res://Scene/Dialog/TradeDialog.tscn" id="14_yyl7r"]
 [ext_resource type="PackedScene" uid="uid://dhdg06jfccejt" path="res://Scene/Dialog/LossDialog.tscn" id="17_od683"]
+[ext_resource type="PackedScene" uid="uid://dl0xo5fwf5q6s" path="res://Scene/Dialog/SpaceDock.tscn" id="19_fpoxs"]
 [ext_resource type="Script" path="res://Script/Data/GameTimers.gd" id="19_vqu30"]
+[ext_resource type="PackedScene" uid="uid://dcn5dvsxelg43" path="res://Scene/Dialog/ForceDepart.tscn" id="20_ojrje"]
 
 [node name="GameWindow" type="MarginContainer"]
 anchors_preset = 15
@@ -81,9 +83,47 @@ layout_mode = 2
 visible = false
 layout_mode = 2
 
+[node name="DataMarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"EvenMargin10"
+
+[node name="DataTabContainer" type="TabContainer" parent="HBoxContainer/VBoxContainer/DataMarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+tab_alignment = 1
+
+[node name="RESOURCESGRAPHICAL" parent="HBoxContainer/VBoxContainer/DataMarginContainer/DataTabContainer" instance=ExtResource("11_m1gix")]
+layout_mode = 2
+
+[node name="RESOURCESTEXT" parent="HBoxContainer/VBoxContainer/DataMarginContainer/DataTabContainer" instance=ExtResource("9_l8yu6")]
+visible = false
+layout_mode = 2
+
+[node name="SHIP" parent="HBoxContainer/VBoxContainer/DataMarginContainer/DataTabContainer" instance=ExtResource("10_ivg2a")]
+visible = false
+layout_mode = 2
+
+[node name="MESSAGES" type="ScrollContainer" parent="HBoxContainer/VBoxContainer/DataMarginContainer/DataTabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="TextEdit" type="TextEdit" parent="HBoxContainer/VBoxContainer/DataMarginContainer/DataTabContainer/MESSAGES"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+editable = false
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+
+[node name="RATES" parent="HBoxContainer/VBoxContainer/DataMarginContainer/DataTabContainer" instance=ExtResource("11_udfd4")]
+visible = false
+layout_mode = 2
+
 [node name="CommandsMarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+size_flags_stretch_ratio = 0.6
 theme_type_variation = &"EvenMargin10"
 
 [node name="CommandsPanelContainer" type="PanelContainer" parent="HBoxContainer/VBoxContainer/CommandsMarginContainer"]
@@ -143,6 +183,7 @@ text = "PAUSE"
 
 [node name="MainMenuButton" type="Button" parent="HBoxContainer/VBoxContainer/CommandsMarginContainer/CommandsPanelContainer/CommandsTabContainer/ScrollContainer/CommandsGridContainer"]
 unique_name_in_owner = true
+process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -150,6 +191,7 @@ text = "MAINMENU"
 
 [node name="OptionsButton" type="Button" parent="HBoxContainer/VBoxContainer/CommandsMarginContainer/CommandsPanelContainer/CommandsTabContainer/ScrollContainer/CommandsGridContainer"]
 unique_name_in_owner = true
+process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -164,47 +206,19 @@ text = "SETTLE"
 
 [node name="UseFuelButton" type="Button" parent="HBoxContainer/VBoxContainer/CommandsMarginContainer/CommandsPanelContainer/CommandsTabContainer/ScrollContainer/CommandsGridContainer"]
 unique_name_in_owner = true
+process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "USEFUEL"
 
-[node name="DataMarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_type_variation = &"EvenMargin10"
-
-[node name="DataTabContainer" type="TabContainer" parent="HBoxContainer/VBoxContainer/DataMarginContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-tab_alignment = 1
-
-[node name="RESOURCESGRAPHICAL" parent="HBoxContainer/VBoxContainer/DataMarginContainer/DataTabContainer" instance=ExtResource("11_m1gix")]
-layout_mode = 2
-
-[node name="RESOURCESTEXT" parent="HBoxContainer/VBoxContainer/DataMarginContainer/DataTabContainer" instance=ExtResource("9_l8yu6")]
-visible = false
-layout_mode = 2
-
-[node name="SHIP" parent="HBoxContainer/VBoxContainer/DataMarginContainer/DataTabContainer" instance=ExtResource("10_ivg2a")]
-visible = false
-layout_mode = 2
-
-[node name="MESSAGES" type="ScrollContainer" parent="HBoxContainer/VBoxContainer/DataMarginContainer/DataTabContainer"]
-visible = false
-layout_mode = 2
-
-[node name="TextEdit" type="TextEdit" parent="HBoxContainer/VBoxContainer/DataMarginContainer/DataTabContainer/MESSAGES"]
+[node name="UseOxygenGenerator" type="Button" parent="HBoxContainer/VBoxContainer/CommandsMarginContainer/CommandsPanelContainer/CommandsTabContainer/ScrollContainer/CommandsGridContainer"]
+unique_name_in_owner = true
+process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-editable = false
-virtual_keyboard_enabled = false
-middle_mouse_paste_enabled = false
-
-[node name="RATES" parent="HBoxContainer/VBoxContainer/DataMarginContainer/DataTabContainer" instance=ExtResource("11_udfd4")]
-visible = false
-layout_mode = 2
+text = "USEOXYGENGENERATOR"
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
 custom_minimum_size = Vector2(10, 0)
@@ -234,6 +248,12 @@ visible = false
 visible = false
 
 [node name="LossDialog" parent="Dialogs" instance=ExtResource("17_od683")]
+visible = false
+
+[node name="SpaceDock" parent="Dialogs" instance=ExtResource("19_fpoxs")]
+visible = false
+
+[node name="DepartTraderCreditDialog" parent="Dialogs" instance=ExtResource("20_ojrje")]
 visible = false
 
 [node name="GameTimers" type="Node" parent="."]
