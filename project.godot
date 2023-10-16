@@ -27,9 +27,10 @@ Log="*res://Script/auto/Log.gd"
 Controller="*res://Script/auto/Controller.gd"
 Audio="*res://Scene/auto/Audio.tscn"
 Config="*res://Script/auto/Config.gd"
-Inventory="*res://Script/auto/Inventory.gd"
 State="*res://Script/auto/State.gd"
 UserInput="*res://Script/auto/UserInput.gd"
+Inventory="*res://Script/auto/Inventory.gd"
+Market="*res://Scene/Data/Market.tscn"
 
 [display]
 

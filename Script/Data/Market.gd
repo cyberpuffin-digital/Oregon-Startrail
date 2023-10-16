@@ -1,7 +1,9 @@
 extends Node
-## Market data
+## Trade Market
+##
+## Manage and track market information for and between waypoints
 
-## Base cost for tracked resource
+## Base cost for resources
 const base_cost: Dictionary = {
 	Inventory.ShipResource.Air: 0.1,
 	Inventory.ShipResource.Energy: 0.05,
@@ -15,7 +17,7 @@ const base_cost: Dictionary = {
 	Inventory.ShipResource.Water: 5,
 }
 
-## Market rates
+## Waypoint-specific fluctuations
 const data: Dictionary = {
 	Controller.Waypoint.Travel: {
 		"fluctuation": 0.25,
@@ -66,14 +68,42 @@ const data: Dictionary = {
 	},
 }
 
-## Market inventory at the various waystops
+## Tracking dictionary for waypoint inventory.
 var inventory: Dictionary
 
-func remove_inventory(waypoint: int, resource: Inventory.ShipResource, quantity: float) -> void:
-	self.inventory[waypoint][resource] -= quantity
+func _ready() -> void:
+	Market.reset()
 
 	return
 
+## Check is there is a credit in the current waypoint
+func has_credit(waypoint: int = Controller.current_waypoint) -> bool:
+
+	return Market.inventory[waypoint][Inventory.ShipResource.Money] < 0
+
+## Remove resource from waypoint's market inventory
+func remove_inventory(
+	waypoint: Controller.Waypoint, resource: Inventory.ShipResource, quantity: float
+) -> void:
+	if quantity == 0:
+		return
+
+	if Market.inventory[waypoint][resource] >= quantity:
+		Market.inventory[waypoint][resource] -= quantity
+		Log.verbose("Bots from %s transfer %s unit(s) of %s to the Space Wagon." % [
+			Controller.Waypoint.keys()[waypoint], quantity,
+			Inventory.ShipResource.keys()[resource],
+		])
+
+		return
+	Log.error("%s refuses to transfer %s unit(s) of %s to the Space Wagon." % [
+		Controller.Waypoint.keys()[waypoint], quantity,
+		Inventory.ShipResource.keys()[resource],
+	])
+
+	return
+
+## Reset Market to starting conditions
 func reset() -> void:
 	self.inventory = {
 		Controller.Waypoint.Travel: {
