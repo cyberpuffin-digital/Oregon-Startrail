@@ -83,7 +83,7 @@ func arrive_at_waypoint() -> void:
 			self.depart_button.visible = true
 			if OS.has_feature("editor") or Config.i_want_to_cheat:
 				self.depart_button_quick.visible = true
-			Controller.trader_credit = self.trade_dialog.has_credit()
+			Controller.trader_credit = Market.has_credit()
 			self.main_menu_button.visible = true
 			self.settle_button.visible = false
 			self.space_dock_button.visible = true
@@ -134,6 +134,7 @@ func depart_waypoint(quick: bool = false, force_depart: bool = false) -> void:
 
 	self.trade_dialog.hide()
 	Controller.depart_waypoint(quick)
+	Market.reset_current_pricing()
 	self.depart_button.visible = false
 	self.depart_button_quick.visible = false
 	self.settle_button.visible = false

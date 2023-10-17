@@ -1,17 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://c3hwphsyo7366"]
+[gd_scene load_steps=9 format=3 uid="uid://c3hwphsyo7366"]
 
 [ext_resource type="Theme" uid="uid://ciciv61w8qmyy" path="res://Theme/MainTheme.tres" id="1_c7eq5"]
 [ext_resource type="Script" path="res://Script/Dialog/TradeDialog.gd" id="2_hihif"]
 [ext_resource type="Texture2D" uid="uid://dmcq5a0wdvgao" path="res://Image/Arrows/arrow_left.png" id="3_hv4xj"]
 [ext_resource type="Texture2D" uid="uid://c6n1g3oovtaua" path="res://Image/Arrows/arrow_left_pressed.png" id="4_cjhns"]
 [ext_resource type="Texture2D" uid="uid://buc4e2upd0uct" path="res://Image/Arrows/arrow_right.png" id="5_o37td"]
+[ext_resource type="Texture2D" uid="uid://badgihbswirhq" path="res://Image/Arrows/arrow_left_highlight.png" id="5_wbch0"]
 [ext_resource type="Texture2D" uid="uid://2vlx214adpcw" path="res://Image/Arrows/arrow_right_pressed.png" id="6_l5t3w"]
+[ext_resource type="Texture2D" uid="uid://bw6xyi33v6gtd" path="res://Image/Arrows/arrow_right_highlight.png" id="8_v5jc6"]
 
 [node name="Trade" type="ConfirmationDialog"]
 process_mode = 3
 title = "WANTTOTRADE"
 position = Vector2i(0, 36)
-size = Vector2i(600, 600)
+size = Vector2i(1000, 1000)
 visible = true
 theme = ExtResource("1_c7eq5")
 ok_button_text = "TRADE"
@@ -21,8 +23,8 @@ script = ExtResource("2_hihif")
 [node name="MarginContainer" type="MarginContainer" parent="."]
 offset_left = 8.0
 offset_top = 8.0
-offset_right = 592.0
-offset_bottom = 542.0
+offset_right = 992.0
+offset_bottom = 942.0
 theme_type_variation = &"EvenMargin10"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
@@ -124,13 +126,27 @@ layout_mode = 2
 size_flags_horizontal = 10
 texture_normal = ExtResource("3_hv4xj")
 texture_pressed = ExtResource("4_cjhns")
+texture_hover = ExtResource("5_wbch0")
+texture_focused = ExtResource("5_wbch0")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="AirLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/AirHBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/AirHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"TradeLabelVBox"
+
+[node name="AirLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/AirHBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
 text = "AIR"
+
+[node name="AirCostLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/AirHBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"Subtext"
+text = "¤0"
+horizontal_alignment = 1
 
 [node name="AirSellTextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/AirHBoxContainer"]
 unique_name_in_owner = true
@@ -139,6 +155,8 @@ layout_mode = 2
 size_flags_horizontal = 2
 texture_normal = ExtResource("5_o37td")
 texture_pressed = ExtResource("6_l5t3w")
+texture_hover = ExtResource("8_v5jc6")
+texture_focused = ExtResource("8_v5jc6")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -172,13 +190,26 @@ layout_mode = 2
 size_flags_horizontal = 10
 texture_normal = ExtResource("3_hv4xj")
 texture_pressed = ExtResource("4_cjhns")
+texture_hover = ExtResource("5_wbch0")
+texture_focused = ExtResource("5_wbch0")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="EnergyLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/EnergyHBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/EnergyHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"TradeLabelVBox"
+
+[node name="EnergyLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/EnergyHBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
 text = "ENERGY"
+
+[node name="EnergyCostLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/EnergyHBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "¤0"
+horizontal_alignment = 1
 
 [node name="EnergySellTextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/EnergyHBoxContainer"]
 unique_name_in_owner = true
@@ -187,6 +218,8 @@ layout_mode = 2
 size_flags_horizontal = 2
 texture_normal = ExtResource("5_o37td")
 texture_pressed = ExtResource("6_l5t3w")
+texture_hover = ExtResource("8_v5jc6")
+texture_focused = ExtResource("8_v5jc6")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -220,13 +253,26 @@ layout_mode = 2
 size_flags_horizontal = 10
 texture_normal = ExtResource("3_hv4xj")
 texture_pressed = ExtResource("4_cjhns")
+texture_hover = ExtResource("5_wbch0")
+texture_focused = ExtResource("5_wbch0")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="FishLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/FishHBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/FishHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"TradeLabelVBox"
+
+[node name="FishLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/FishHBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
 text = "FISH"
+
+[node name="FishCostLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/FishHBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "¤0"
+horizontal_alignment = 1
 
 [node name="FishSellTextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/FishHBoxContainer"]
 unique_name_in_owner = true
@@ -235,6 +281,8 @@ layout_mode = 2
 size_flags_horizontal = 2
 texture_normal = ExtResource("5_o37td")
 texture_pressed = ExtResource("6_l5t3w")
+texture_hover = ExtResource("8_v5jc6")
+texture_focused = ExtResource("8_v5jc6")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -268,13 +316,26 @@ layout_mode = 2
 size_flags_horizontal = 10
 texture_normal = ExtResource("3_hv4xj")
 texture_pressed = ExtResource("4_cjhns")
+texture_hover = ExtResource("5_wbch0")
+texture_focused = ExtResource("5_wbch0")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="FoodLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/FoodHBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/FoodHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"TradeLabelVBox"
+
+[node name="FoodLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/FoodHBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
 text = "FOOD"
+
+[node name="FoodCostLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/FoodHBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "¤0"
+horizontal_alignment = 1
 
 [node name="FoodSellTextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/FoodHBoxContainer"]
 unique_name_in_owner = true
@@ -283,6 +344,8 @@ layout_mode = 2
 size_flags_horizontal = 2
 texture_normal = ExtResource("5_o37td")
 texture_pressed = ExtResource("6_l5t3w")
+texture_hover = ExtResource("8_v5jc6")
+texture_focused = ExtResource("8_v5jc6")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -316,13 +379,26 @@ layout_mode = 2
 size_flags_horizontal = 10
 texture_normal = ExtResource("3_hv4xj")
 texture_pressed = ExtResource("4_cjhns")
+texture_hover = ExtResource("5_wbch0")
+texture_focused = ExtResource("5_wbch0")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="FuelLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/FuelHBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/FuelHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"TradeLabelVBox"
+
+[node name="FuelLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/FuelHBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
 text = "FUEL"
+
+[node name="FuelCostLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/FuelHBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "¤0"
+horizontal_alignment = 1
 
 [node name="FuelSellTextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/FuelHBoxContainer"]
 unique_name_in_owner = true
@@ -331,6 +407,8 @@ layout_mode = 2
 size_flags_horizontal = 2
 texture_normal = ExtResource("5_o37td")
 texture_pressed = ExtResource("6_l5t3w")
+texture_hover = ExtResource("8_v5jc6")
+texture_focused = ExtResource("8_v5jc6")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -364,13 +442,26 @@ layout_mode = 2
 size_flags_horizontal = 10
 texture_normal = ExtResource("3_hv4xj")
 texture_pressed = ExtResource("4_cjhns")
+texture_hover = ExtResource("5_wbch0")
+texture_focused = ExtResource("5_wbch0")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="PlantLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/PlantHBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/PlantHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"TradeLabelVBox"
+
+[node name="PlantLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/PlantHBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
 text = "PLANTS"
+
+[node name="PlantCostLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/PlantHBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "¤0"
+horizontal_alignment = 1
 
 [node name="PlantSellTextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/PlantHBoxContainer"]
 unique_name_in_owner = true
@@ -379,6 +470,8 @@ layout_mode = 2
 size_flags_horizontal = 2
 texture_normal = ExtResource("5_o37td")
 texture_pressed = ExtResource("6_l5t3w")
+texture_hover = ExtResource("8_v5jc6")
+texture_focused = ExtResource("8_v5jc6")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -412,13 +505,26 @@ layout_mode = 2
 size_flags_horizontal = 10
 texture_normal = ExtResource("3_hv4xj")
 texture_pressed = ExtResource("4_cjhns")
+texture_hover = ExtResource("5_wbch0")
+texture_focused = ExtResource("5_wbch0")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="SparePartLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/SparePartHBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/SparePartHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"TradeLabelVBox"
+
+[node name="SparePartLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/SparePartHBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
 text = "SPAREPARTS"
+
+[node name="SparePartCostLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/SparePartHBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "¤0"
+horizontal_alignment = 1
 
 [node name="SparePartSellTextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/SparePartHBoxContainer"]
 unique_name_in_owner = true
@@ -427,6 +533,8 @@ layout_mode = 2
 size_flags_horizontal = 2
 texture_normal = ExtResource("5_o37td")
 texture_pressed = ExtResource("6_l5t3w")
+texture_hover = ExtResource("8_v5jc6")
+texture_focused = ExtResource("8_v5jc6")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -460,13 +568,26 @@ layout_mode = 2
 size_flags_horizontal = 10
 texture_normal = ExtResource("3_hv4xj")
 texture_pressed = ExtResource("4_cjhns")
+texture_hover = ExtResource("5_wbch0")
+texture_focused = ExtResource("5_wbch0")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="WasteLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/WasteHBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/WasteHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"TradeLabelVBox"
+
+[node name="WasteLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/WasteHBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
 text = "WASTE"
+
+[node name="WasteCostLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/WasteHBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "¤0"
+horizontal_alignment = 1
 
 [node name="WasteSellTextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/WasteHBoxContainer"]
 unique_name_in_owner = true
@@ -475,6 +596,8 @@ layout_mode = 2
 size_flags_horizontal = 2
 texture_normal = ExtResource("5_o37td")
 texture_pressed = ExtResource("6_l5t3w")
+texture_hover = ExtResource("8_v5jc6")
+texture_focused = ExtResource("8_v5jc6")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -508,13 +631,26 @@ layout_mode = 2
 size_flags_horizontal = 10
 texture_normal = ExtResource("3_hv4xj")
 texture_pressed = ExtResource("4_cjhns")
+texture_hover = ExtResource("5_wbch0")
+texture_focused = ExtResource("5_wbch0")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="WaterLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/WaterHBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/WaterHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"TradeLabelVBox"
+
+[node name="WaterLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/WaterHBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
 text = "WATER"
+
+[node name="WaterCostLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/WaterHBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "¤0"
+horizontal_alignment = 1
 
 [node name="WaterSellTextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/WaterHBoxContainer"]
 unique_name_in_owner = true
@@ -523,6 +659,8 @@ layout_mode = 2
 size_flags_horizontal = 2
 texture_normal = ExtResource("5_o37td")
 texture_pressed = ExtResource("6_l5t3w")
+texture_hover = ExtResource("8_v5jc6")
+texture_focused = ExtResource("8_v5jc6")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -535,6 +673,22 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="DescriptionLineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups."
+alignment = 1
+editable = false
+expand_to_text_length = true
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+select_all_on_focus = true
 
 [node name="MoneyHBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -549,7 +703,15 @@ unique_name_in_owner = true
 layout_mode = 2
 color = Color(1, 0, 0, 0.47451)
 
-[node name="MoneyOwnedSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/MoneyHBoxContainer/MoneyOwnedPanelContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MoneyHBoxContainer/MoneyOwnedPanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MoneyHBoxContainer/MoneyOwnedPanelContainer/HBoxContainer"]
+layout_mode = 2
+text = "¤"
+
+[node name="MoneyOwnedSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/MoneyHBoxContainer/MoneyOwnedPanelContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -572,7 +734,15 @@ unique_name_in_owner = true
 layout_mode = 2
 color = Color(1, 0, 0, 0.47451)
 
-[node name="MoneyAvailableSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/MoneyHBoxContainer/MoneyAvailablePanelContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MoneyHBoxContainer/MoneyAvailablePanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MoneyHBoxContainer/MoneyAvailablePanelContainer/HBoxContainer"]
+layout_mode = 2
+text = "¤"
+
+[node name="MoneyAvailableSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/MoneyHBoxContainer/MoneyAvailablePanelContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3

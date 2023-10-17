@@ -278,20 +278,17 @@ func calculate_air_rate(by_time: float) -> float:
 
 		# Hydroponics add air
 		air_per_time += (
-			Inventory.plant * Inventory.hydroponic * \
-			Inventory.hydroponic_efficiency * Inventory.conversions[
-				Inventory.ShipResource.Hydroponic
-			][Inventory.ShipResource.Air] * by_time
+			Inventory.plant * Inventory.hydroponic * by_time * \
+			Inventory.workstation_efficiency[Inventory.ShipResource.Hydroponic] * \
+			Inventory.conversions[Inventory.ShipResource.Hydroponic][Inventory.ShipResource.Air]
 		)
 
 		# Aquaponic adds air
 		air_per_time += (
-			Inventory.count_aquaponic() * Inventory.plant * \
-			Inventory.aquaponic_efficiency * Inventory.conversions[
-				Inventory.ShipResource.Aquaponic
-			][Inventory.ShipResource.Air] * by_time
+			Inventory.count_aquaponic() * Inventory.plant * by_time * \
+			Inventory.workstation_efficiency[Inventory.ShipResource.Hydroponic] * \
+			Inventory.conversions[Inventory.ShipResource.Aquaponic][Inventory.ShipResource.Air]
 		)
-
 
 	return air_per_time
 
