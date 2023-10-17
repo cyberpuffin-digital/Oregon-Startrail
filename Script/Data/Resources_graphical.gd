@@ -134,10 +134,10 @@ func set_the_children() -> void:
 
 func update_all_resources() -> void:
 	for resource in [
-		Inventory.ShipResource.Air, Inventory.ShipResource.Energy,
-		Inventory.ShipResource.Food, Inventory.ShipResource.Fuel,
-		Inventory.ShipResource.Money, Inventory.ShipResource.SparePart,
-		Inventory.ShipResource.Waste, Inventory.ShipResource.Water
+		Inventory.Type.Air, Inventory.Type.Energy,
+		Inventory.Type.Food, Inventory.Type.Fuel,
+		Inventory.Type.Money, Inventory.Type.SparePart,
+		Inventory.Type.Waste, Inventory.Type.Water
 	]:
 		self.update_resource(resource, 0)
 
@@ -150,7 +150,7 @@ func update_resource(resource: int, _quantity: float) -> void:
 	var status_label: Label
 
 	match resource:
-		Inventory.ShipResource.Air:
+		Inventory.Type.Air:
 			indicator_panel = self.air_panel
 			status_label = self.air_status
 			rate = abs(Inventory.calculate_air_rate(5))
@@ -161,7 +161,7 @@ func update_resource(resource: int, _quantity: float) -> void:
 			else:
 				status = 0
 			self.air_progress.set_value(floori(Inventory.air / (rate * 3)))
-		Inventory.ShipResource.Energy:
+		Inventory.Type.Energy:
 			indicator_panel = self.energy_panel
 			status_label = self.energy_status
 			rate = abs(Inventory.calculate_energy_rate(5))
@@ -172,7 +172,7 @@ func update_resource(resource: int, _quantity: float) -> void:
 			else:
 				status = 0
 			self.energy_progress.set_value(floori(Inventory.energy / rate * 3))
-		Inventory.ShipResource.Food:
+		Inventory.Type.Food:
 			indicator_panel = self.food_panel
 			status_label = self.food_status
 			rate = abs(Inventory.calculate_food_rate(5))
@@ -183,7 +183,7 @@ func update_resource(resource: int, _quantity: float) -> void:
 			else:
 				status = 0
 			self.food_progress.set_value(floori(Inventory.food / rate * 3))
-		Inventory.ShipResource.Fuel:
+		Inventory.Type.Fuel:
 			indicator_panel = self.fuel_panel
 			status_label = self.fuel_status
 			rate = abs(Inventory.calculate_fuel_rate(5))
@@ -194,7 +194,7 @@ func update_resource(resource: int, _quantity: float) -> void:
 			else:
 				status = 0
 			self.fuel_progress.set_value(floori(Inventory.fuel / rate * 3))
-		Inventory.ShipResource.Money:
+		Inventory.Type.Money:
 			indicator_panel = self.money_panel
 			status_label = self.money_status
 			if Inventory.money <= 0:
@@ -204,7 +204,7 @@ func update_resource(resource: int, _quantity: float) -> void:
 			else:
 				status = 0
 			self.money_progress.set_value(floori(Inventory.money))
-		Inventory.ShipResource.SparePart:
+		Inventory.Type.SparePart:
 			indicator_panel = self.spare_parts_panel
 			status_label = self.spare_parts_status
 			if Inventory.spare_part <= 0:
@@ -214,7 +214,7 @@ func update_resource(resource: int, _quantity: float) -> void:
 			else:
 				status = 0
 			self.spare_parts_progress.set_value(floori(Inventory.spare_part * 15))
-		Inventory.ShipResource.Water:
+		Inventory.Type.Water:
 			indicator_panel = self.water_panel
 			status_label = self.water_status
 			rate = abs(Inventory.calculate_water_rate(5))
@@ -225,7 +225,7 @@ func update_resource(resource: int, _quantity: float) -> void:
 			else:
 				status = 0
 			self.water_progress.set_value(floori(Inventory.water / rate * 3))
-		Inventory.ShipResource.Waste:
+		Inventory.Type.Waste:
 			indicator_panel = self.waste_panel
 			status_label = self.waste_status
 			rate = abs(Inventory.calculate_waste_rate(5))

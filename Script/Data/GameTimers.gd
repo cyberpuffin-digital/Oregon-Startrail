@@ -89,7 +89,7 @@ func configure_fish_timer() -> void:
 	self.fish.wait_time = self.fish_interval
 	self.fish.call_deferred("start")
 	self.fish.timeout.connect(Controller.process_resource.bind(
-		self.fish_interval, Inventory.ShipResource.Fish
+		self.fish_interval, Inventory.Type.Fish
 	))
 
 	return
@@ -105,7 +105,7 @@ func configure_food_timer() -> void:
 	self.food.wait_time = self.food_interval
 	self.food.call_deferred("start")
 	self.food.timeout.connect(Controller.process_resource.bind(
-		self.food_interval, Inventory.ShipResource.Food
+		self.food_interval, Inventory.Type.Food
 	))
 
 	return
@@ -121,7 +121,7 @@ func configure_fuel_timer() -> void:
 	self.fuel.wait_time = self.fuel_interval
 	self.fuel.call_deferred("start")
 	self.fuel.timeout.connect(Controller.process_resource.bind(
-		self.fuel_interval, Inventory.ShipResource.Fuel
+		self.fuel_interval, Inventory.Type.Fuel
 	))
 
 	return
@@ -185,7 +185,7 @@ func configure_water_timer() -> void:
 	self.water.wait_time = self.water_interval
 	self.water.call_deferred("start")
 	self.water.timeout.connect(Controller.process_resource.bind(
-		self.water_interval, Inventory.ShipResource.Water
+		self.water_interval, Inventory.Type.Water
 	))
 
 	return

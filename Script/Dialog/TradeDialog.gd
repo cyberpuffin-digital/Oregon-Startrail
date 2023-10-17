@@ -122,97 +122,97 @@ func _ready() -> void:
 	return
 
 ## Update current trade in-memory object to reflect incoming change
-func adjust_current_trade(quantity: float, item: Inventory.ShipResource) -> void:
+func adjust_current_trade(quantity: float, item: Inventory.Type) -> void:
 	# Remove values of [item] from current_trade
-	self.current_trade[Inventory.ShipResource.Money] -= self.current_trade[item] * Market.current_pricing[item]
-	self.current_trade[Inventory.ShipResource.Space] -= self.current_trade[item] * Inventory.required_space[item]
+	self.current_trade[Inventory.Type.Money] -= self.current_trade[item] * Market.current_pricing[item]
+	self.current_trade[Inventory.Type.Space] -= self.current_trade[item] * Inventory.required_space[item]
 
 	# Update the resource
 	self.current_trade[item] = quantity
 
 	# Add values of [item] from current trade
-	self.current_trade[Inventory.ShipResource.Money] += quantity * Market.current_pricing[item]
-	self.current_trade[Inventory.ShipResource.Space] += quantity * Inventory.required_space[item]
+	self.current_trade[Inventory.Type.Money] += quantity * Market.current_pricing[item]
+	self.current_trade[Inventory.Type.Space] += quantity * Inventory.required_space[item]
 
 	return
 
 ## Adjust values for player and market inventories
-func adjust_trade_dialog(quantity: float, item: Inventory.ShipResource) -> void:
+func adjust_trade_dialog(quantity: float, item: Inventory.Type) -> void:
 	self.adjust_trade_dialog_space()
 
 	# Update trade dialog entries
 	match item:
-		Inventory.ShipResource.Air:
+		Inventory.Type.Air:
 			self.air_owned_spin_box.set_value_no_signal(Inventory.air + quantity)
 			self.air_available_label.set_text(str(
-				Market.inventory[Controller.current_waypoint][Inventory.ShipResource.Air] - quantity
+				Market.inventory[Controller.current_waypoint][Inventory.Type.Air] - quantity
 			))
-		Inventory.ShipResource.Energy:
+		Inventory.Type.Energy:
 			self.energy_owned_spin_box.set_value_no_signal(Inventory.energy + quantity)
 			self.energy_available_label.set_text(str(
-				Market.inventory[Controller.current_waypoint][Inventory.ShipResource.Energy] - quantity
+				Market.inventory[Controller.current_waypoint][Inventory.Type.Energy] - quantity
 			))
-		Inventory.ShipResource.Fish:
+		Inventory.Type.Fish:
 			self.fish_owned_spin_box.set_value_no_signal(Inventory.fish + quantity)
 			self.fish_available_label.set_text(str(
-				Market.inventory[Controller.current_waypoint][Inventory.ShipResource.Fish] - quantity
+				Market.inventory[Controller.current_waypoint][Inventory.Type.Fish] - quantity
 			))
-		Inventory.ShipResource.Food:
+		Inventory.Type.Food:
 			self.food_owned_spin_box.set_value_no_signal(Inventory.food + quantity)
 			self.food_available_label.set_text(str(
-				Market.inventory[Controller.current_waypoint][Inventory.ShipResource.Food] - quantity
+				Market.inventory[Controller.current_waypoint][Inventory.Type.Food] - quantity
 			))
-		Inventory.ShipResource.Fuel:
+		Inventory.Type.Fuel:
 			self.fuel_owned_spin_box.set_value_no_signal(Inventory.fuel + quantity)
 			self.fuel_available_label.set_text(str(
-				Market.inventory[Controller.current_waypoint][Inventory.ShipResource.Fuel] - quantity
+				Market.inventory[Controller.current_waypoint][Inventory.Type.Fuel] - quantity
 			))
-		Inventory.ShipResource.Plant:
+		Inventory.Type.Plant:
 			self.plant_owned_spin_box.set_value_no_signal(Inventory.plant + quantity)
 			self.plant_available_label.set_text(str(
-				Market.inventory[Controller.current_waypoint][Inventory.ShipResource.Plant] - quantity
+				Market.inventory[Controller.current_waypoint][Inventory.Type.Plant] - quantity
 			))
-		Inventory.ShipResource.SparePart:
+		Inventory.Type.SparePart:
 			self.spare_part_owned_spin_box.set_value_no_signal(Inventory.spare_part + quantity)
 			self.spare_part_available_label.set_text(str(
-				Market.inventory[Controller.current_waypoint][Inventory.ShipResource.SparePart] - quantity
+				Market.inventory[Controller.current_waypoint][Inventory.Type.SparePart] - quantity
 			))
-		Inventory.ShipResource.Waste:
+		Inventory.Type.Waste:
 			self.waste_owned_spin_box.set_value_no_signal(Inventory.waste + quantity)
 			self.waste_available_label.set_text(str(
-				Market.inventory[Controller.current_waypoint][Inventory.ShipResource.Waste] - quantity
+				Market.inventory[Controller.current_waypoint][Inventory.Type.Waste] - quantity
 			))
-		Inventory.ShipResource.Water:
+		Inventory.Type.Water:
 			self.water_owned_spin_box.set_value_no_signal(Inventory.water + quantity)
 			self.water_available_label.set_text(str(
-				Market.inventory[Controller.current_waypoint][Inventory.ShipResource.Water] - quantity
+				Market.inventory[Controller.current_waypoint][Inventory.Type.Water] - quantity
 			))
 		_:
 			Log.error("Unknown trade resource: %s" % [item])
 
 	# Set money values
 	# Buy
-	if self.current_trade[Inventory.ShipResource.Money] > 0:
+	if self.current_trade[Inventory.Type.Money] > 0:
 		# Credit available
-		if Market.inventory[Controller.current_waypoint][Inventory.ShipResource.Money] < 0:
+		if Market.inventory[Controller.current_waypoint][Inventory.Type.Money] < 0:
 			# Purchase is bigger than credit
-			if -Market.inventory[Controller.current_waypoint][Inventory.ShipResource.Money] <= self.current_trade[Inventory.ShipResource.Money]:
+			if -Market.inventory[Controller.current_waypoint][Inventory.Type.Money] <= self.current_trade[Inventory.Type.Money]:
 				self.money_owned_spin_box.set_value_no_signal(snappedf(
 					Inventory.money - (
-						self.current_trade[Inventory.ShipResource.Money] + \
-						Market.inventory[Controller.current_waypoint][Inventory.ShipResource.Money]
+						self.current_trade[Inventory.Type.Money] + \
+						Market.inventory[Controller.current_waypoint][Inventory.Type.Money]
 					), 0.01
 				))
 
 		self.money_available_spin_box.set_value_no_signal(snappedf(
-			Market.inventory[Controller.current_waypoint][Inventory.ShipResource.Money] + \
-			self.current_trade[Inventory.ShipResource.Money], 0.01
+			Market.inventory[Controller.current_waypoint][Inventory.Type.Money] + \
+			self.current_trade[Inventory.Type.Money], 0.01
 		))
 	# Sale
 	else:
 		self.money_available_spin_box.set_value_no_signal(snappedf(
-			Market.inventory[Controller.current_waypoint][Inventory.ShipResource.Money] - \
-			self.current_trade[Inventory.ShipResource.Money], 0.01
+			Market.inventory[Controller.current_waypoint][Inventory.Type.Money] - \
+			self.current_trade[Inventory.Type.Money], 0.01
 		))
 
 	if self.money_owned_spin_box.value <= 0:
@@ -231,27 +231,27 @@ func adjust_trade_dialog(quantity: float, item: Inventory.ShipResource) -> void:
 func adjust_trade_dialog_space() -> void:
 	# Set space values
 	self.space_available_spin_box.set_value_no_signal(
-		Inventory.space_available - self.current_trade[Inventory.ShipResource.Space]
+		Inventory.space_available - self.current_trade[Inventory.Type.Space]
 	)
-	if Inventory.space_available - self.current_trade[Inventory.ShipResource.Space] < 0:
+	if Inventory.space_available - self.current_trade[Inventory.Type.Space] < 0:
 		self.space_used_warning_rect.set_color(self.WarningColor)
 	else:
 		self.space_used_warning_rect.set_color(Color.TRANSPARENT)
 	self.space_used_spin_box.set_value_no_signal(
-		Inventory.starting_values[Inventory.ShipResource.Space] - \
-		Inventory.space_available + self.current_trade[Inventory.ShipResource.Space]
+		Inventory.starting_values[Inventory.Type.Space] - \
+		Inventory.space_available + self.current_trade[Inventory.Type.Space]
 	)
 
 	return
 
 ## Check if trade can proceed
 func check_tradable() -> void:
-	if Inventory.space_available < self.current_trade[Inventory.ShipResource.Space]:
+	if Inventory.space_available < self.current_trade[Inventory.Type.Space]:
 		Log.verbose("Cannot trade, space not available.")
 		self.can_trade = false
-	elif self.current_trade[Inventory.ShipResource.Money] + min(
+	elif self.current_trade[Inventory.Type.Money] + min(
 		# potential trader credit
-		0, Market.inventory[Controller.current_waypoint][Inventory.ShipResource.Money]
+		0, Market.inventory[Controller.current_waypoint][Inventory.Type.Money]
 	) > Inventory.money:
 		Log.verbose("Cannot trade, not enough money.")
 		self.can_trade = false
@@ -261,28 +261,28 @@ func check_tradable() -> void:
 	return
 
 ## Calculate the difference from [value] and current inventory of [item]
-func calculate_change_from_inventory(value: float, item: Inventory.ShipResource) -> float:
+func calculate_change_from_inventory(value: float, item: Inventory.Type) -> float:
 	var change: float = 0
 
 	# Calculate change in resource from current inventory
 	match item:
-		Inventory.ShipResource.Air:
+		Inventory.Type.Air:
 			change = value - Inventory.air
-		Inventory.ShipResource.Energy:
+		Inventory.Type.Energy:
 			change = value - Inventory.energy
-		Inventory.ShipResource.Fish:
+		Inventory.Type.Fish:
 			change = value - Inventory.fish
-		Inventory.ShipResource.Food:
+		Inventory.Type.Food:
 			change = value - Inventory.food
-		Inventory.ShipResource.Fuel:
+		Inventory.Type.Fuel:
 			change = value - Inventory.fuel
-		Inventory.ShipResource.Plant:
+		Inventory.Type.Plant:
 			change = value - Inventory.plant
-		Inventory.ShipResource.SparePart:
+		Inventory.Type.SparePart:
 			change = value - Inventory.spare_part
-		Inventory.ShipResource.Waste:
+		Inventory.Type.Waste:
 			change = value - Inventory.waste
-		Inventory.ShipResource.Water:
+		Inventory.Type.Water:
 			change = value - Inventory.water
 		_:
 			Log.error("Unknown trade resource: %s" % [item])
@@ -306,11 +306,11 @@ func complete_trade() -> void:
 
 		# Pay remainder of the bill
 		Inventory.add_resource(
-			Inventory.ShipResource.Money, -self.current_trade[Inventory.ShipResource.Money]
+			Inventory.Type.Money, -self.current_trade[Inventory.Type.Money]
 		)
 		Market.remove_inventory(
-			Controller.current_waypoint, Inventory.ShipResource.Money,
-			-self.current_trade[Inventory.ShipResource.Money]
+			Controller.current_waypoint, Inventory.Type.Money,
+			-self.current_trade[Inventory.Type.Money]
 		)
 
 		# Mark if credit remains
@@ -324,17 +324,17 @@ func complete_trade() -> void:
 func complete_trade_handle_credits() -> void:
 	if self.can_trade:
 		# Current trade is a player buy
-		if self.current_trade[Inventory.ShipResource.Money] > 0 and \
+		if self.current_trade[Inventory.Type.Money] > 0 and \
 		# Trader has a credit available
-		Market.inventory[Controller.current_waypoint][Inventory.ShipResource.Money] < 0:
+		Market.inventory[Controller.current_waypoint][Inventory.Type.Money] < 0:
 			# If the credit is greater than the value of the current trade
-			if -Market.inventory[Controller.current_waypoint][Inventory.ShipResource.Money] > self.current_trade[Inventory.ShipResource.Money]:
-				Market.inventory[Controller.current_waypoint][Inventory.ShipResource.Money] += self.current_trade[Inventory.ShipResource.Money]
-				self.current_trade[Inventory.ShipResource.Money] = 0
+			if -Market.inventory[Controller.current_waypoint][Inventory.Type.Money] > self.current_trade[Inventory.Type.Money]:
+				Market.inventory[Controller.current_waypoint][Inventory.Type.Money] += self.current_trade[Inventory.Type.Money]
+				self.current_trade[Inventory.Type.Money] = 0
 			# else the credit just reduces the bill
 			else:
-				self.current_trade[Inventory.ShipResource.Money] += Market.inventory[Controller.current_waypoint][Inventory.ShipResource.Money]
-				Market.inventory[Controller.current_waypoint][Inventory.ShipResource.Money] = 0
+				self.current_trade[Inventory.Type.Money] += Market.inventory[Controller.current_waypoint][Inventory.Type.Money]
+				Market.inventory[Controller.current_waypoint][Inventory.Type.Money] = 0
 
 	return
 
@@ -342,11 +342,11 @@ func complete_trade_handle_credits() -> void:
 func complete_trade_resources() -> void:
 	if self.can_trade:
 		for resource in [
-			Inventory.ShipResource.Air, Inventory.ShipResource.Energy,
-			Inventory.ShipResource.Fish, Inventory.ShipResource.Food,
-			Inventory.ShipResource.Fuel, Inventory.ShipResource.Plant,
-			Inventory.ShipResource.SparePart, Inventory.ShipResource.Waste,
-			Inventory.ShipResource.Water,
+			Inventory.Type.Air, Inventory.Type.Energy,
+			Inventory.Type.Fish, Inventory.Type.Food,
+			Inventory.Type.Fuel, Inventory.Type.Plant,
+			Inventory.Type.SparePart, Inventory.Type.Waste,
+			Inventory.Type.Water,
 		]:
 			Inventory.add_resource(resource, self.current_trade[resource])
 			Market.remove_inventory(
@@ -361,139 +361,139 @@ func connect_to_signals() -> void:
 	get_ok_button().pressed.connect(self.complete_trade)
 
 	self.air_left_arrow.pressed.connect(
-		self.trade_resource_by.bind(Inventory.ShipResource.Air, 10)
+		self.trade_resource_by.bind(Inventory.Type.Air, 10)
 	)
 	self.air_owned_spin_box.focus_entered.connect(
-		self.set_description.bind(Inventory.ShipResource.Air)
+		self.set_description.bind(Inventory.Type.Air)
 	)
 	self.air_owned_spin_box.mouse_entered.connect(
-		self.set_description.bind(Inventory.ShipResource.Air)
+		self.set_description.bind(Inventory.Type.Air)
 	)
 	self.air_owned_spin_box.value_changed.connect(
-		self.trade_resource.bind(Inventory.ShipResource.Air)
+		self.trade_resource.bind(Inventory.Type.Air)
 	)
 	self.air_right_arrow.pressed.connect(
-		self.trade_resource_by.bind(Inventory.ShipResource.Air, -10)
+		self.trade_resource_by.bind(Inventory.Type.Air, -10)
 	)
 	self.energy_left_arrow.pressed.connect(
-		self.trade_resource_by.bind(Inventory.ShipResource.Energy, 10)
+		self.trade_resource_by.bind(Inventory.Type.Energy, 10)
 	)
 	self.energy_owned_spin_box.focus_entered.connect(
-		self.set_description.bind(Inventory.ShipResource.Energy)
+		self.set_description.bind(Inventory.Type.Energy)
 	)
 	self.energy_owned_spin_box.mouse_entered.connect(
-		self.set_description.bind(Inventory.ShipResource.Energy)
+		self.set_description.bind(Inventory.Type.Energy)
 	)
 	self.energy_owned_spin_box.value_changed.connect(
-		self.trade_resource.bind(Inventory.ShipResource.Energy)
+		self.trade_resource.bind(Inventory.Type.Energy)
 	)
 	self.energy_right_arrow.pressed.connect(
-		self.trade_resource_by.bind(Inventory.ShipResource.Energy, -10)
+		self.trade_resource_by.bind(Inventory.Type.Energy, -10)
 	)
 	self.fish_left_arrow.pressed.connect(
-		self.trade_resource_by.bind(Inventory.ShipResource.Fish, 10)
+		self.trade_resource_by.bind(Inventory.Type.Fish, 10)
 	)
 	self.fish_owned_spin_box.focus_entered.connect(
-		self.set_description.bind(Inventory.ShipResource.Fish)
+		self.set_description.bind(Inventory.Type.Fish)
 	)
 	self.fish_owned_spin_box.mouse_entered.connect(
-		self.set_description.bind(Inventory.ShipResource.Fish)
+		self.set_description.bind(Inventory.Type.Fish)
 	)
 	self.fish_owned_spin_box.value_changed.connect(
-		self.trade_resource.bind(Inventory.ShipResource.Fish)
+		self.trade_resource.bind(Inventory.Type.Fish)
 	)
 	self.fish_right_arrow.pressed.connect(
-		self.trade_resource_by.bind(Inventory.ShipResource.Fish, -10)
+		self.trade_resource_by.bind(Inventory.Type.Fish, -10)
 	)
 	self.food_left_arrow.pressed.connect(
-		self.trade_resource_by.bind(Inventory.ShipResource.Food, 10)
+		self.trade_resource_by.bind(Inventory.Type.Food, 10)
 	)
 	self.food_owned_spin_box.focus_entered.connect(
-		self.set_description.bind(Inventory.ShipResource.Food)
+		self.set_description.bind(Inventory.Type.Food)
 	)
 	self.food_owned_spin_box.mouse_entered.connect(
-		self.set_description.bind(Inventory.ShipResource.Food)
+		self.set_description.bind(Inventory.Type.Food)
 	)
 	self.food_owned_spin_box.value_changed.connect(
-		self.trade_resource.bind(Inventory.ShipResource.Food)
+		self.trade_resource.bind(Inventory.Type.Food)
 	)
 	self.food_right_arrow.pressed.connect(
-		self.trade_resource_by.bind(Inventory.ShipResource.Food, -10)
+		self.trade_resource_by.bind(Inventory.Type.Food, -10)
 	)
 	self.fuel_left_arrow.pressed.connect(
-		self.trade_resource_by.bind(Inventory.ShipResource.Fuel, 10)
+		self.trade_resource_by.bind(Inventory.Type.Fuel, 10)
 	)
 	self.fuel_owned_spin_box.focus_entered.connect(
-		self.set_description.bind(Inventory.ShipResource.Fuel)
+		self.set_description.bind(Inventory.Type.Fuel)
 	)
 	self.fuel_owned_spin_box.mouse_entered.connect(
-		self.set_description.bind(Inventory.ShipResource.Fuel)
+		self.set_description.bind(Inventory.Type.Fuel)
 	)
 	self.fuel_owned_spin_box.value_changed.connect(
-		self.trade_resource.bind(Inventory.ShipResource.Fuel)
+		self.trade_resource.bind(Inventory.Type.Fuel)
 	)
 	self.fuel_right_arrow.pressed.connect(
-		self.trade_resource_by.bind(Inventory.ShipResource.Fuel, -10)
+		self.trade_resource_by.bind(Inventory.Type.Fuel, -10)
 	)
 	self.plant_left_arrow.pressed.connect(
-		self.trade_resource_by.bind(Inventory.ShipResource.Plant, 10)
+		self.trade_resource_by.bind(Inventory.Type.Plant, 10)
 	)
 	self.plant_owned_spin_box.focus_entered.connect(
-		self.set_description.bind(Inventory.ShipResource.Plant)
+		self.set_description.bind(Inventory.Type.Plant)
 	)
 	self.plant_owned_spin_box.mouse_entered.connect(
-		self.set_description.bind(Inventory.ShipResource.Plant)
+		self.set_description.bind(Inventory.Type.Plant)
 	)
 	self.plant_owned_spin_box.value_changed.connect(
-		self.trade_resource.bind(Inventory.ShipResource.Plant)
+		self.trade_resource.bind(Inventory.Type.Plant)
 	)
 	self.plant_right_arrow.pressed.connect(
-		self.trade_resource_by.bind(Inventory.ShipResource.Plant, -10)
+		self.trade_resource_by.bind(Inventory.Type.Plant, -10)
 	)
 	self.spare_part_left_arrow.pressed.connect(
-		self.trade_resource_by.bind(Inventory.ShipResource.SparePart, 10)
+		self.trade_resource_by.bind(Inventory.Type.SparePart, 10)
 	)
 	self.spare_part_owned_spin_box.focus_entered.connect(
-		self.set_description.bind(Inventory.ShipResource.SparePart)
+		self.set_description.bind(Inventory.Type.SparePart)
 	)
 	self.spare_part_owned_spin_box.mouse_entered.connect(
-		self.set_description.bind(Inventory.ShipResource.SparePart)
+		self.set_description.bind(Inventory.Type.SparePart)
 	)
 	self.spare_part_owned_spin_box.value_changed.connect(
-		self.trade_resource.bind(Inventory.ShipResource.SparePart)
+		self.trade_resource.bind(Inventory.Type.SparePart)
 	)
 	self.spare_part_right_arrow.pressed.connect(
-		self.trade_resource_by.bind(Inventory.ShipResource.SparePart, -10)
+		self.trade_resource_by.bind(Inventory.Type.SparePart, -10)
 	)
 	self.waste_left_arrow.pressed.connect(
-		self.trade_resource_by.bind(Inventory.ShipResource.Waste, 10)
+		self.trade_resource_by.bind(Inventory.Type.Waste, 10)
 	)
 	self.waste_owned_spin_box.focus_entered.connect(
-		self.set_description.bind(Inventory.ShipResource.Waste)
+		self.set_description.bind(Inventory.Type.Waste)
 	)
 	self.waste_owned_spin_box.mouse_entered.connect(
-		self.set_description.bind(Inventory.ShipResource.Waste)
+		self.set_description.bind(Inventory.Type.Waste)
 	)
 	self.waste_owned_spin_box.value_changed.connect(
-		self.trade_resource.bind(Inventory.ShipResource.Waste)
+		self.trade_resource.bind(Inventory.Type.Waste)
 	)
 	self.waste_right_arrow.pressed.connect(
-		self.trade_resource_by.bind(Inventory.ShipResource.Waste, -10)
+		self.trade_resource_by.bind(Inventory.Type.Waste, -10)
 	)
 	self.water_left_arrow.pressed.connect(
-		self.trade_resource_by.bind(Inventory.ShipResource.Water, 10)
+		self.trade_resource_by.bind(Inventory.Type.Water, 10)
 	)
 	self.water_owned_spin_box.focus_entered.connect(
-		self.set_description.bind(Inventory.ShipResource.Water)
+		self.set_description.bind(Inventory.Type.Water)
 	)
 	self.water_owned_spin_box.mouse_entered.connect(
-		self.set_description.bind(Inventory.ShipResource.Water)
+		self.set_description.bind(Inventory.Type.Water)
 	)
 	self.water_owned_spin_box.value_changed.connect(
-		self.trade_resource.bind(Inventory.ShipResource.Water)
+		self.trade_resource.bind(Inventory.Type.Water)
 	)
 	self.water_right_arrow.pressed.connect(
-		self.trade_resource_by.bind(Inventory.ShipResource.Water, -10)
+		self.trade_resource_by.bind(Inventory.Type.Water, -10)
 	)
 
 	return
@@ -559,43 +559,43 @@ func get_the_children() -> void:
 ## Reset current trade staging area
 func reset_current_trade() -> void:
 	self.current_trade = {
-		Inventory.ShipResource.Air: 0,
-		Inventory.ShipResource.Energy: 0,
-		Inventory.ShipResource.Fish: 0,
-		Inventory.ShipResource.Food: 0,
-		Inventory.ShipResource.Fuel: 0,
-		Inventory.ShipResource.Money: 0,
-		Inventory.ShipResource.Plant: 0,
-		Inventory.ShipResource.Space: 0,
-		Inventory.ShipResource.SparePart: 0,
-		Inventory.ShipResource.Waste: 0,
-		Inventory.ShipResource.Water: 0,
+		Inventory.Type.Air: 0,
+		Inventory.Type.Energy: 0,
+		Inventory.Type.Fish: 0,
+		Inventory.Type.Food: 0,
+		Inventory.Type.Fuel: 0,
+		Inventory.Type.Money: 0,
+		Inventory.Type.Plant: 0,
+		Inventory.Type.Space: 0,
+		Inventory.Type.SparePart: 0,
+		Inventory.Type.Waste: 0,
+		Inventory.Type.Water: 0,
 	}
 
 	return
 
 ## Set the descriptive text for the resource
-func set_description(resource: Inventory.ShipResource = Inventory.ShipResource.Human) -> void:
+func set_description(resource: Inventory.Type = Inventory.Type.Human) -> void:
 	match resource:
-		Inventory.ShipResource.Air:
+		Inventory.Type.Air:
 			self.description.text = "%s: %s" % [tr("AIR"), tr("TOOLTIP_RESOURCE_AIR")]
-		Inventory.ShipResource.Energy:
+		Inventory.Type.Energy:
 			self.description.text = "%s: %s" % [tr("ENERGY"), tr("TOOLTIP_RESOURCE_ENERGY")]
-		Inventory.ShipResource.Fish:
+		Inventory.Type.Fish:
 			self.description.text = "%s: %s" % [tr("FISH"), tr("TOOLTIP_RESOURCE_FISH")]
-		Inventory.ShipResource.Food:
+		Inventory.Type.Food:
 			self.description.text = "%s: %s" % [tr("FOOD"), tr("TOOLTIP_RESOURCE_FOOD")]
-		Inventory.ShipResource.Fuel:
+		Inventory.Type.Fuel:
 			self.description.text = "%s: %s" % [tr("FUEL"), tr("TOOLTIP_RESOURCE_FUEL")]
-		Inventory.ShipResource.Human:
+		Inventory.Type.Human:
 			self.description.text = "%s: %s" % [tr("HUMANS"), tr("TOOLTIP_RESOURCE_HUMAN")]
-		Inventory.ShipResource.Plant:
+		Inventory.Type.Plant:
 			self.description.text = "%s: %s" % [tr("PLANTS"), tr("TOOLTIP_RESOURCE_PLANT")]
-		Inventory.ShipResource.SparePart:
+		Inventory.Type.SparePart:
 			self.description.text = "%s: %s" % [tr("SPAREPARTS"), tr("TOOLTIP_RESOURCE_SPARE_PART")]
-		Inventory.ShipResource.Waste:
+		Inventory.Type.Waste:
 			self.description.text = "%s: %s" % [tr("WASTE"), tr("TOOLTIP_RESOURCE_WASTE")]
-		Inventory.ShipResource.Water:
+		Inventory.Type.Water:
 			self.description.text = "%s: %s" % [tr("WATER"), tr("TOOLTIP_RESOURCE_WATER")]
 		_:
 			self.description.text = ""
@@ -610,7 +610,7 @@ func set_the_children() -> void:
 	return
 
 ## Callback handler for label changes on tradable
-func trade_string_resource(value_in: String, item: Inventory.ShipResource) -> void:
+func trade_string_resource(value_in: String, item: Inventory.Type) -> void:
 	self.trade_resource(float(value_in), item)
 
 	return
@@ -618,8 +618,8 @@ func trade_string_resource(value_in: String, item: Inventory.ShipResource) -> vo
 ## Callback handler for spin box changes on tradeable resources[br]
 ## [b]Input[/b]:[br]
 ##   value (float): New value of calling spinbox
-##   item (int): Inventory.ShipResource to trade
-func trade_resource(value: float, item: Inventory.ShipResource) -> void:
+##   item (int): Inventory.Type to trade
+func trade_resource(value: float, item: Inventory.Type) -> void:
 	var change: float = self.calculate_change_from_inventory(value, item)
 	self.adjust_current_trade(change, item)
 	self.adjust_trade_dialog(change, item)
@@ -627,52 +627,52 @@ func trade_resource(value: float, item: Inventory.ShipResource) -> void:
 
 	return
 
-func trade_resource_by(resource: Inventory.ShipResource, quantity: float) -> void:
+func trade_resource_by(resource: Inventory.Type, quantity: float) -> void:
 	if quantity < 0:
 		# check player spin box
 		match resource:
-			Inventory.ShipResource.Air:
+			Inventory.Type.Air:
 				self.trade_resource(
 					self.air_owned_spin_box.value - (min(
 						self.air_owned_spin_box.value, -quantity
 					)), resource)
-			Inventory.ShipResource.Energy:
+			Inventory.Type.Energy:
 				self.trade_resource(
 					self.energy_owned_spin_box.value - (min(
 						self.energy_owned_spin_box.value, -quantity
 					)), resource)
-			Inventory.ShipResource.Fish:
+			Inventory.Type.Fish:
 				self.trade_resource(
 					self.fish_owned_spin_box.value - (min(
 						self.fish_owned_spin_box.value, -quantity
 					)), resource)
-			Inventory.ShipResource.Food:
+			Inventory.Type.Food:
 				self.trade_resource(
 					self.food_owned_spin_box.value - (min(
 						self.food_owned_spin_box.value, -quantity
 					)), resource)
-			Inventory.ShipResource.Fuel:
+			Inventory.Type.Fuel:
 				self.trade_resource(
 					self.fuel_owned_spin_box.value - (min(
 						self.fuel_owned_spin_box.value, -quantity
 					)), resource
 				)
-			Inventory.ShipResource.Plant:
+			Inventory.Type.Plant:
 				self.trade_resource(
 					self.plant_owned_spin_box.value - (min(
 						self.plant_owned_spin_box.value, -quantity
 					)), resource)
-			Inventory.ShipResource.SparePart:
+			Inventory.Type.SparePart:
 				self.trade_resource(
 					self.spare_part_owned_spin_box.value - (min(
 						self.spare_part_owned_spin_box.value, -quantity
 					)), resource)
-			Inventory.ShipResource.Waste:
+			Inventory.Type.Waste:
 				self.trade_resource(
 					self.waste_owned_spin_box.value - (min(
 						self.waste_owned_spin_box.value, -quantity
 					)), resource)
-			Inventory.ShipResource.Water:
+			Inventory.Type.Water:
 				self.trade_resource(
 					self.water_owned_spin_box.value - (min(
 						self.water_owned_spin_box.value, -quantity
@@ -682,40 +682,40 @@ func trade_resource_by(resource: Inventory.ShipResource, quantity: float) -> voi
 	else:
 		# check market label
 		match resource:
-			Inventory.ShipResource.Air:
+			Inventory.Type.Air:
 				self.trade_resource(self.air_owned_spin_box.value + min(
 					float(self.air_available_label.text), quantity
 				), resource)
-			Inventory.ShipResource.Energy:
+			Inventory.Type.Energy:
 				self.trade_resource(self.energy_owned_spin_box.value + min(
 					float(self.energy_available_label.text), quantity
 				), resource)
-			Inventory.ShipResource.Fish:
+			Inventory.Type.Fish:
 				self.trade_resource(self.fish_owned_spin_box.value + min(
 					float(self.fish_available_label.text), quantity
 				), resource)
-			Inventory.ShipResource.Food:
+			Inventory.Type.Food:
 				self.trade_resource(self.food_owned_spin_box.value + min(
 					float(self.food_available_label.text), quantity
 				), resource)
-			Inventory.ShipResource.Fuel:
+			Inventory.Type.Fuel:
 				self.trade_resource(
 					self.fuel_owned_spin_box.value + min(
 						float(self.fuel_available_label.text), quantity
 					), resource)
-			Inventory.ShipResource.Plant:
+			Inventory.Type.Plant:
 				self.trade_resource(self.plant_owned_spin_box.value + min(
 					float(self.plant_available_label.text), quantity
 				), resource)
-			Inventory.ShipResource.SparePart:
+			Inventory.Type.SparePart:
 				self.trade_resource(self.spare_part_owned_spin_box.value + min(
 					float(self.spare_part_available_label.text), quantity
 				), resource)
-			Inventory.ShipResource.Waste:
+			Inventory.Type.Waste:
 				self.trade_resource(self.waste_owned_spin_box.value + min(
 					float(self.waste_available_label.text), quantity
 				), resource)
-			Inventory.ShipResource.Water:
+			Inventory.Type.Water:
 				self.trade_resource(self.water_owned_spin_box.value + min(
 					float(self.water_available_label.text), quantity
 				), resource)
@@ -738,15 +738,15 @@ func update_inventory() -> void:
 
 ## Update the trade window with the current waypoint's pricing
 func update_inventory_costs() -> void:
-	self.air_cost_label.text = "¤%s" % [Market.calculate_resource_cost(Inventory.ShipResource.Air)]
-	self.energy_cost_label.text = "¤%s" % [Market.calculate_resource_cost(Inventory.ShipResource.Energy)]
-	self.fish_cost_label.text = "¤%s" % [Market.calculate_resource_cost(Inventory.ShipResource.Fish)]
-	self.food_cost_label.text = "¤%s" % [Market.calculate_resource_cost(Inventory.ShipResource.Food)]
-	self.fuel_cost_label.text = "¤%s" % [Market.calculate_resource_cost(Inventory.ShipResource.Fuel)]
-	self.plant_cost_label.text = "¤%s" % [Market.calculate_resource_cost(Inventory.ShipResource.Plant)]
-	self.spare_part_cost_label.text = "¤%s" % [Market.calculate_resource_cost(Inventory.ShipResource.SparePart)]
-	self.waste_cost_label.text = "¤%s" % [Market.calculate_resource_cost(Inventory.ShipResource.Waste)]
-	self.water_cost_label.text = "¤%s" % [Market.calculate_resource_cost(Inventory.ShipResource.Water)]
+	self.air_cost_label.text = "¤%s" % [Market.calculate_resource_cost(Inventory.Type.Air)]
+	self.energy_cost_label.text = "¤%s" % [Market.calculate_resource_cost(Inventory.Type.Energy)]
+	self.fish_cost_label.text = "¤%s" % [Market.calculate_resource_cost(Inventory.Type.Fish)]
+	self.food_cost_label.text = "¤%s" % [Market.calculate_resource_cost(Inventory.Type.Food)]
+	self.fuel_cost_label.text = "¤%s" % [Market.calculate_resource_cost(Inventory.Type.Fuel)]
+	self.plant_cost_label.text = "¤%s" % [Market.calculate_resource_cost(Inventory.Type.Plant)]
+	self.spare_part_cost_label.text = "¤%s" % [Market.calculate_resource_cost(Inventory.Type.SparePart)]
+	self.waste_cost_label.text = "¤%s" % [Market.calculate_resource_cost(Inventory.Type.Waste)]
+	self.water_cost_label.text = "¤%s" % [Market.calculate_resource_cost(Inventory.Type.Water)]
 
 	return
 
@@ -765,7 +765,7 @@ func update_inventory_player() -> void:
 	self.plant_owned_spin_box.set_value_no_signal(Inventory.plant)
 	self.space_available_spin_box.set_value_no_signal(round(Inventory.space_available))
 	self.space_used_spin_box.set_value_no_signal(round(
-		Inventory.starting_values[Inventory.ShipResource.Space] - \
+		Inventory.starting_values[Inventory.Type.Space] - \
 		Inventory.space_available
 	))
 	if Inventory.space_available <= 0:
@@ -781,38 +781,38 @@ func update_inventory_player() -> void:
 ## Update inventory spin boxes with waypoint inventory
 func update_inventory_waypoint() -> void:
 	self.air_available_label.set_text(
-		str(Market.inventory[Controller.current_waypoint][Inventory.ShipResource.Air])
+		str(Market.inventory[Controller.current_waypoint][Inventory.Type.Air])
 	)
 	self.energy_available_label.set_text(
-		str(Market.inventory[Controller.current_waypoint][Inventory.ShipResource.Energy])
+		str(Market.inventory[Controller.current_waypoint][Inventory.Type.Energy])
 	)
 	self.fish_available_label.set_text(
-		str(Market.inventory[Controller.current_waypoint][Inventory.ShipResource.Fish])
+		str(Market.inventory[Controller.current_waypoint][Inventory.Type.Fish])
 	)
 	self.food_available_label.set_text(
-		str(Market.inventory[Controller.current_waypoint][Inventory.ShipResource.Food])
+		str(Market.inventory[Controller.current_waypoint][Inventory.Type.Food])
 	)
 	self.fuel_available_label.set_text(
-		str(Market.inventory[Controller.current_waypoint][Inventory.ShipResource.Fuel])
+		str(Market.inventory[Controller.current_waypoint][Inventory.Type.Fuel])
 	)
 	self.money_available_spin_box.set_value_no_signal(
-		Market.inventory[Controller.current_waypoint][Inventory.ShipResource.Money]
+		Market.inventory[Controller.current_waypoint][Inventory.Type.Money]
 	)
-	if Market.inventory[Controller.current_waypoint][Inventory.ShipResource.Money] <= 0:
+	if Market.inventory[Controller.current_waypoint][Inventory.Type.Money] <= 0:
 		self.money_available_warning_rect.set_color(self.WarningColor)
 	else:
 		self.money_available_warning_rect.set_color(Color.TRANSPARENT)
 	self.plant_available_label.set_text(
-		str(Market.inventory[Controller.current_waypoint][Inventory.ShipResource.Plant])
+		str(Market.inventory[Controller.current_waypoint][Inventory.Type.Plant])
 	)
 	self.spare_part_available_label.set_text(
-		str(Market.inventory[Controller.current_waypoint][Inventory.ShipResource.SparePart])
+		str(Market.inventory[Controller.current_waypoint][Inventory.Type.SparePart])
 	)
 	self.waste_available_label.set_text(
-		str(Market.inventory[Controller.current_waypoint][Inventory.ShipResource.Waste])
+		str(Market.inventory[Controller.current_waypoint][Inventory.Type.Waste])
 	)
 	self.water_available_label.set_text(
-		str(Market.inventory[Controller.current_waypoint][Inventory.ShipResource.Water])
+		str(Market.inventory[Controller.current_waypoint][Inventory.Type.Water])
 	)
 
 	return

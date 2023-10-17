@@ -110,11 +110,11 @@ func depart_waypoint(quick: bool = false) -> void:
 ## Process the resources running on base timer
 func process_default_resources(delta: float) -> void:
 	for resource in [
-		Inventory.ShipResource.Air, Inventory.ShipResource.Bot,
-		Inventory.ShipResource.Cryopod, Inventory.ShipResource.Energy,
-		Inventory.ShipResource.Human, Inventory.ShipResource.Plant,
-		Inventory.ShipResource.Waste, Inventory.ShipResource.Water,
-		Inventory.ShipResource.Work
+		Inventory.Type.Air, Inventory.Type.Bot,
+		Inventory.Type.Cryopod, Inventory.Type.Energy,
+		Inventory.Type.Human, Inventory.Type.Plant,
+		Inventory.Type.Waste, Inventory.Type.Water,
+		Inventory.Type.Work
 	]:
 		Controller.process_resource(delta, resource)
 
@@ -124,7 +124,7 @@ func process_default_resources(delta: float) -> void:
 func process_resource(delta: float, item: int) -> void:
 	Inventory.use_resource_by_time(delta, item)
 	match item:
-		Inventory.ShipResource.Air:
+		Inventory.Type.Air:
 			if Inventory.air <= 0 and Inventory.oxygen_generator > 0:
 				if Inventory.fuel >= 1:
 					Inventory.calculate_air_generation(1)
@@ -134,7 +134,7 @@ func process_resource(delta: float, item: int) -> void:
 					out_of_air.emit()
 			else:
 				out_of_air.emit()
-		Inventory.ShipResource.Energy:
+		Inventory.Type.Energy:
 			if Inventory.energy <= 0 and Inventory.fusion_generator > 0:
 				if Inventory.fuel > 0:
 					Inventory.calculate_energy_generation(min(1, Inventory.fuel))
@@ -142,19 +142,19 @@ func process_resource(delta: float, item: int) -> void:
 					out_of_energy.emit()
 			else:
 				out_of_energy.emit()
-		Inventory.ShipResource.Food:
+		Inventory.Type.Food:
 			if Inventory.food <= 0:
 				out_of_food.emit()
-		Inventory.ShipResource.Fuel:
+		Inventory.Type.Fuel:
 			if Inventory.fuel <= 0:
 				out_of_fuel.emit()
-		Inventory.ShipResource.Human:
+		Inventory.Type.Human:
 			if Inventory.human <= 0:
 				if Inventory.cryopod <= 0:
 					Controller.out_of_human.emit()
 				else:
-					Inventory.use_set_resource(Inventory.ShipResource.Cryopod, 5)
-		Inventory.ShipResource.Water:
+					Inventory.use_set_resource(Inventory.Type.Cryopod, 5)
+		Inventory.Type.Water:
 			if Inventory.water < 0 and Inventory.water_generator > 0:
 				if Inventory.fuel > 0:
 					Inventory.calculate_water_generation(min(1, Inventory.fuel))
@@ -229,9 +229,9 @@ func start_new_game() -> void:
 ## Use fuel to regain resources
 func use_fuel() -> void:
 	if Inventory.fuel >= 1:
-		Inventory.use_set_resource(Inventory.ShipResource.Fuel, 1)
-		Inventory.add_resource(Inventory.ShipResource.Energy, 1000)
-		Inventory.add_resource(Inventory.ShipResource.Water, 100)
-		Inventory.add_resource(Inventory.ShipResource.Air, 50)
+		Inventory.use_set_resource(Inventory.Type.Fuel, 1)
+		Inventory.add_resource(Inventory.Type.Energy, 1000)
+		Inventory.add_resource(Inventory.Type.Water, 100)
+		Inventory.add_resource(Inventory.Type.Air, 50)
 
 	return
