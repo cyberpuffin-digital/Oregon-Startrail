@@ -134,6 +134,7 @@ func depart_waypoint(quick: bool = false, force_depart: bool = false) -> void:
 
 	self.trade_dialog.hide()
 	Controller.depart_waypoint(quick)
+	Market.reset_current_pricing()
 	self.depart_button.visible = false
 	self.depart_button_quick.visible = false
 	self.settle_button.visible = false
