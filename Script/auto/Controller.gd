@@ -42,8 +42,6 @@ enum Waypoint {
 	Wolf1061c,
 }
 
-const GameTimers = preload("res://Script/Data/GameTimers.gd")
-
 ## Current waypoint
 var current_waypoint: int
 ## Game timers to process resources
@@ -113,8 +111,7 @@ func process_default_resources(delta: float) -> void:
 		Inventory.Type.Air, Inventory.Type.Bot,
 		Inventory.Type.Cryopod, Inventory.Type.Energy,
 		Inventory.Type.Human, Inventory.Type.Plant,
-		Inventory.Type.Waste, Inventory.Type.Water,
-		Inventory.Type.Work
+		Inventory.Type.Waste, Inventory.Type.Work
 	]:
 		Controller.process_resource(delta, resource)
 

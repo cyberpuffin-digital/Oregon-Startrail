@@ -258,3 +258,27 @@ visible = false
 
 [node name="GameTimers" type="Node" parent="."]
 script = ExtResource("19_vqu30")
+
+[node name="Base" type="Timer" parent="GameTimers"]
+autostart = true
+
+[node name="Fish" type="Timer" parent="GameTimers"]
+autostart = true
+
+[node name="Food" type="Timer" parent="GameTimers"]
+autostart = true
+
+[node name="Fuel" type="Timer" parent="GameTimers"]
+autostart = true
+
+[node name="RandomBad" type="Timer" parent="GameTimers"]
+autostart = true
+
+[node name="RandomGood" type="Timer" parent="GameTimers"]
+autostart = true
+
+[node name="RandomNeutral" type="Timer" parent="GameTimers"]
+autostart = true
+
+[node name="Water" type="Timer" parent="GameTimers"]
+autostart = true
