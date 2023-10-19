@@ -2,7 +2,7 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://djt5kh4dbd58h"
+uid="uid://fscx4lafskxs"
 path="res://.godot/imported/OpenDyslexic3-Regular.ttf-3c231e1d63bc78e2d6072dfd6f61744e.fontdata"
 
 [deps]
@@ -24,16 +24,10 @@ hinting=1
 subpixel_positioning=1
 oversampling=0.0
 Fallbacks=null
-fallbacks=[Resource("res://Resource/Font/Kawkab/KawkabMono-Regular.otf"), Resource("res://Resource/Font/Droid Sans/DroidSans.ttf")]
+fallbacks=[]
 Compress=null
 compress=true
-preload=[{
-"chars": [],
-"glyphs": [],
-"name": "New Configuration",
-"size": Vector2i(16, 0),
-"variation_embolden": 0.0
-}]
+preload=[]
 language_support={}
 script_support={}
 opentype_features={}

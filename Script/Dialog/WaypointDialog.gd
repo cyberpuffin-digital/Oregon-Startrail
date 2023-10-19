@@ -18,9 +18,12 @@ func _ready() -> void:
 
 ## Connect to relevant signals in the scene
 func connect_to_signals() -> void:
+	canceled.connect(Audio.play_sfx)
+	confirmed.connect(Audio.play_sfx)
 	Audio.tts_is.connect(self.toggle_tts)
 	self.tts_start_button.pressed.connect(self.read_active_tab)
 	self.tts_stop_button.pressed.connect(Audio.stop_tts)
+	self.tts_stop_button.pressed.connect(Audio.play_sfx)
 
 	return
 

@@ -1,4 +1,4 @@
-extends AudioStreamPlayer2D
+extends AudioStreamPlayer
 ## Audio controller
 
 ## Used to signal a change in the TTS system
@@ -40,6 +40,13 @@ const BgPaths: Array = [
 	"res://Audio/background/Tech_Time_146bpm_120s.ogg",
 ]
 
+## Sound Effects
+const SfxPaths: Array = [
+	"res://Audio/sfx/select1.wav",
+	"res://Audio/sfx/select2.wav",
+	"res://Audio/sfx/select3.wav"
+]
+
 ## Music muted
 var music_muted: bool
 ## Music volume (db)
@@ -48,6 +55,10 @@ var music_volume: float
 var selection: int
 ## SFX muted
 var sfx_muted: bool
+## SFX selected
+var sfx_selection: int
+## SFX player
+var sfx_stream_player: AudioStreamPlayer
 ## SFX volume (db)
 var sfx_volume: float
 ## Track whether to enable TTS
@@ -62,11 +73,30 @@ var tts_voice_selected: String
 var tts_volume: int = 75
 
 func _ready() -> void:
-	Audio.configure_tts()
-	Audio.selection = 0
-	Audio.stream = load(Audio.BgPaths[Audio.selection])
-	Audio.play.call_deferred()
+	Audio.get_the_children()
+	Audio.connect_to_signals()
+	Audio.set_the_children()
 	Log.quiet("Audio controller loaded.")
+
+	return
+
+## Find and connect to SFX elements in the scene
+func add_sfx_to_tree() -> void:
+	if !get_tree():
+		return
+
+	var sfx_callable: Callable
+
+	for sfx_child in get_tree().get_nodes_in_group("sfx"):
+		sfx_callable = Callable(Audio.play_sfx)
+
+		if sfx_child.has_method("is_pressed"):
+			if !sfx_child.pressed.is_connected(sfx_callable):
+				if sfx_child.pressed.connect(sfx_callable) != OK:
+					Log.error("Failed to connect %s to SFX check" % [sfx_child.name])
+
+					continue
+				Log.silly("Connected %s to SFX check" % [sfx_child.name])
 
 	return
 
@@ -128,6 +158,29 @@ func configure_tts() -> void:
 
 	return
 
+## Connect to relevant signals
+func connect_to_signals() -> void:
+	get_tree().tree_changed.connect(Audio.add_sfx_to_tree)
+
+	return
+
+## Connect to nodes within the scene
+func get_the_children() -> void:
+	Audio.sfx_stream_player = get_node("EffectsAudioStreamPlayer")
+
+	return
+
+## Play sound effect
+func play_sfx() -> void:
+	if Audio.sfx_muted:
+		return
+	Audio.sfx_stream_player.play()
+
+	return
+
+func play_sfx_with_useless_argument(_useless) -> void:
+	Audio.play_sfx()
+
 ## Send message to TTS Server
 func send_to_tts(msg_in: String, queued: bool) -> void:
 	Log.debug("Sending \"%s\" to TTS" % [msg_in])
@@ -147,6 +200,7 @@ func set_background_music(to: BgSongs) -> void:
 
 	return
 
+## (Un)Mute the bus
 func set_mute(muted: bool, which_bus: String) -> void:
 	match which_bus.to_lower():
 		"music":
@@ -158,6 +212,22 @@ func set_mute(muted: bool, which_bus: String) -> void:
 		_:
 			Log.error("Unknown bus: %s" % [which_bus])
 	Log.verbose("Set %s bus mute: %s" % [which_bus, muted])
+
+	return
+
+## Set the children to their initial state
+func set_the_children() -> void:
+	# BG Music
+	Audio.selection = 0
+	Audio.set_stream(load(Audio.BgPaths[Audio.selection]))
+	Audio.play.call_deferred()
+
+	# SFX
+	Audio.sfx_selection = 2
+	Audio.sfx_stream_player.set_stream(load(Audio.SfxPaths[Audio.sfx_selection]))
+
+	# TTS
+	Audio.configure_tts()
 
 	return
 

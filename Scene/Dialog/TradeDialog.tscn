@@ -119,7 +119,7 @@ max_value = 100000.0
 alignment = 1
 select_all_on_focus = true
 
-[node name="AirBuyTextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/AirHBoxContainer"]
+[node name="AirBuyTextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/AirHBoxContainer" groups=["sfx"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -148,7 +148,7 @@ theme_type_variation = &"Subtext"
 text = "¤0"
 horizontal_alignment = 1
 
-[node name="AirSellTextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/AirHBoxContainer"]
+[node name="AirSellTextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/AirHBoxContainer" groups=["sfx"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -183,7 +183,7 @@ theme_type_variation = &"NoArrows"
 max_value = 10000.0
 alignment = 1
 
-[node name="EnergyBuyTextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/EnergyHBoxContainer"]
+[node name="EnergyBuyTextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/EnergyHBoxContainer" groups=["sfx"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -211,7 +211,7 @@ layout_mode = 2
 text = "¤0"
 horizontal_alignment = 1
 
-[node name="EnergySellTextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/EnergyHBoxContainer"]
+[node name="EnergySellTextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/EnergyHBoxContainer" groups=["sfx"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -246,7 +246,7 @@ theme_type_variation = &"NoArrows"
 max_value = 10000.0
 alignment = 1
 
-[node name="FishBuyTextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/FishHBoxContainer"]
+[node name="FishBuyTextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/FishHBoxContainer" groups=["sfx"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -274,7 +274,7 @@ layout_mode = 2
 text = "¤0"
 horizontal_alignment = 1
 
-[node name="FishSellTextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/FishHBoxContainer"]
+[node name="FishSellTextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/FishHBoxContainer" groups=["sfx"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -309,7 +309,7 @@ theme_type_variation = &"NoArrows"
 max_value = 10000.0
 alignment = 1
 
-[node name="FoodBuyTextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/FoodHBoxContainer"]
+[node name="FoodBuyTextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/FoodHBoxContainer" groups=["sfx"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -337,7 +337,7 @@ layout_mode = 2
 text = "¤0"
 horizontal_alignment = 1
 
-[node name="FoodSellTextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/FoodHBoxContainer"]
+[node name="FoodSellTextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/FoodHBoxContainer" groups=["sfx"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -372,7 +372,7 @@ theme_type_variation = &"NoArrows"
 max_value = 10000.0
 alignment = 1
 
-[node name="FuelBuyTextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/FuelHBoxContainer"]
+[node name="FuelBuyTextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/FuelHBoxContainer" groups=["sfx"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -400,7 +400,7 @@ layout_mode = 2
 text = "¤0"
 horizontal_alignment = 1
 
-[node name="FuelSellTextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/FuelHBoxContainer"]
+[node name="FuelSellTextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/FuelHBoxContainer" groups=["sfx"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -435,7 +435,7 @@ theme_type_variation = &"NoArrows"
 max_value = 10000.0
 alignment = 1
 
-[node name="PlantBuyTextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/PlantHBoxContainer"]
+[node name="PlantBuyTextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/PlantHBoxContainer" groups=["sfx"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -463,7 +463,7 @@ layout_mode = 2
 text = "¤0"
 horizontal_alignment = 1
 
-[node name="PlantSellTextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/PlantHBoxContainer"]
+[node name="PlantSellTextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/PlantHBoxContainer" groups=["sfx"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -498,7 +498,7 @@ theme_type_variation = &"NoArrows"
 max_value = 10000.0
 alignment = 1
 
-[node name="SparePartBuyTextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/SparePartHBoxContainer"]
+[node name="SparePartBuyTextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/SparePartHBoxContainer" groups=["sfx"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -526,7 +526,7 @@ layout_mode = 2
 text = "¤0"
 horizontal_alignment = 1
 
-[node name="SparePartSellTextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/SparePartHBoxContainer"]
+[node name="SparePartSellTextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/SparePartHBoxContainer" groups=["sfx"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -561,7 +561,7 @@ theme_type_variation = &"NoArrows"
 max_value = 10000.0
 alignment = 1
 
-[node name="WasteBuyTextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/WasteHBoxContainer"]
+[node name="WasteBuyTextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/WasteHBoxContainer" groups=["sfx"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -589,7 +589,7 @@ layout_mode = 2
 text = "¤0"
 horizontal_alignment = 1
 
-[node name="WasteSellTextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/WasteHBoxContainer"]
+[node name="WasteSellTextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/WasteHBoxContainer" groups=["sfx"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -624,7 +624,7 @@ theme_type_variation = &"NoArrows"
 max_value = 10000.0
 alignment = 1
 
-[node name="WaterBuyTextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/WaterHBoxContainer"]
+[node name="WaterBuyTextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/WaterHBoxContainer" groups=["sfx"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -652,7 +652,7 @@ layout_mode = 2
 text = "¤0"
 horizontal_alignment = 1
 
-[node name="WaterSellTextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/WaterHBoxContainer"]
+[node name="WaterSellTextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/WaterHBoxContainer" groups=["sfx"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2

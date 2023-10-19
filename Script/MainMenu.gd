@@ -22,7 +22,7 @@ func _ready() -> void:
 func connect_to_signals() -> void:
 	self.continue_button.pressed.connect(self.continue_game)
 	self.exit_button.pressed.connect(self.exit_game)
-	self.options_button.pressed.connect(self.show_options)
+	self.options_button.pressed.connect(Controller.show_options)
 	self.start_button.pressed.connect(self.start_game)
 
 	return
@@ -54,12 +54,6 @@ func set_the_children() -> void:
 		Controller.current_waypoint == 0 and Controller.last_waypoint == 0
 	)
 	self.exit_button.visible = OS.get_name() != "Web"
-
-	return
-
-## Callback function for options button
-func show_options() -> void:
-	Controller.show_options()
 
 	return
 

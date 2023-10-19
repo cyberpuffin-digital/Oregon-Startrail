@@ -95,22 +95,22 @@ theme_type_variation = &"CommandsContainer"
 layout_mode = 2
 theme_override_constants/separation = 25
 
-[node name="StartGame" type="Button" parent="MarginContainer/VBoxContainer/CommandsMarginContainer/CommandsPanelContainer/VBoxContainer"]
+[node name="StartGame" type="Button" parent="MarginContainer/VBoxContainer/CommandsMarginContainer/CommandsPanelContainer/VBoxContainer" groups=["sfx"]]
 unique_name_in_owner = true
 layout_mode = 2
 text = "START"
 
-[node name="Continue" type="Button" parent="MarginContainer/VBoxContainer/CommandsMarginContainer/CommandsPanelContainer/VBoxContainer"]
+[node name="Continue" type="Button" parent="MarginContainer/VBoxContainer/CommandsMarginContainer/CommandsPanelContainer/VBoxContainer" groups=["sfx"]]
 unique_name_in_owner = true
 layout_mode = 2
 text = "CONTINUE"
 
-[node name="Options" type="Button" parent="MarginContainer/VBoxContainer/CommandsMarginContainer/CommandsPanelContainer/VBoxContainer"]
+[node name="Options" type="Button" parent="MarginContainer/VBoxContainer/CommandsMarginContainer/CommandsPanelContainer/VBoxContainer" groups=["sfx"]]
 unique_name_in_owner = true
 layout_mode = 2
 text = "OPTIONS"
 
-[node name="ExitGame" type="Button" parent="MarginContainer/VBoxContainer/CommandsMarginContainer/CommandsPanelContainer/VBoxContainer"]
+[node name="ExitGame" type="Button" parent="MarginContainer/VBoxContainer/CommandsMarginContainer/CommandsPanelContainer/VBoxContainer" groups=["sfx"]]
 unique_name_in_owner = true
 layout_mode = 2
 text = "EXIT"

@@ -20,7 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://dhdg06jfccejt" path="res://Scene/Dialog/LossDialog.tscn" id="17_od683"]
 [ext_resource type="PackedScene" uid="uid://dl0xo5fwf5q6s" path="res://Scene/Dialog/SpaceDock.tscn" id="19_fpoxs"]
 [ext_resource type="Script" path="res://Script/Data/GameTimers.gd" id="19_vqu30"]
-[ext_resource type="PackedScene" uid="uid://dcn5dvsxelg43" path="res://Scene/Dialog/ForceDepart.tscn" id="20_ojrje"]
+[ext_resource type="PackedScene" uid="uid://dcn5dvsxelg43" path="res://Scene/Dialog/DepartTraderCreditDialog.tscn" id="20_ojrje"]
 
 [node name="GameWindow" type="MarginContainer"]
 anchors_preset = 15
@@ -89,6 +89,7 @@ size_flags_vertical = 3
 theme_type_variation = &"EvenMargin10"
 
 [node name="DataTabContainer" type="TabContainer" parent="HBoxContainer/VBoxContainer/DataMarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 tab_alignment = 1
@@ -145,35 +146,35 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 2
 
-[node name="SpaceDockButton" type="Button" parent="HBoxContainer/VBoxContainer/CommandsMarginContainer/CommandsPanelContainer/CommandsTabContainer/ScrollContainer/CommandsGridContainer"]
+[node name="SpaceDockButton" type="Button" parent="HBoxContainer/VBoxContainer/CommandsMarginContainer/CommandsPanelContainer/CommandsTabContainer/ScrollContainer/CommandsGridContainer" groups=["sfx"]]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "SPACEDOCK"
 
-[node name="TradeButton" type="Button" parent="HBoxContainer/VBoxContainer/CommandsMarginContainer/CommandsPanelContainer/CommandsTabContainer/ScrollContainer/CommandsGridContainer"]
+[node name="TradeButton" type="Button" parent="HBoxContainer/VBoxContainer/CommandsMarginContainer/CommandsPanelContainer/CommandsTabContainer/ScrollContainer/CommandsGridContainer" groups=["sfx"]]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "TRADE"
 
-[node name="DepartButton" type="Button" parent="HBoxContainer/VBoxContainer/CommandsMarginContainer/CommandsPanelContainer/CommandsTabContainer/ScrollContainer/CommandsGridContainer"]
+[node name="DepartButton" type="Button" parent="HBoxContainer/VBoxContainer/CommandsMarginContainer/CommandsPanelContainer/CommandsTabContainer/ScrollContainer/CommandsGridContainer" groups=["sfx"]]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "DEPART"
 
-[node name="DepartQuickButton" type="Button" parent="HBoxContainer/VBoxContainer/CommandsMarginContainer/CommandsPanelContainer/CommandsTabContainer/ScrollContainer/CommandsGridContainer"]
+[node name="DepartQuickButton" type="Button" parent="HBoxContainer/VBoxContainer/CommandsMarginContainer/CommandsPanelContainer/CommandsTabContainer/ScrollContainer/CommandsGridContainer" groups=["sfx"]]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "DEPARTQUICK"
 
-[node name="PauseButton" type="Button" parent="HBoxContainer/VBoxContainer/CommandsMarginContainer/CommandsPanelContainer/CommandsTabContainer/ScrollContainer/CommandsGridContainer"]
+[node name="PauseButton" type="Button" parent="HBoxContainer/VBoxContainer/CommandsMarginContainer/CommandsPanelContainer/CommandsTabContainer/ScrollContainer/CommandsGridContainer" groups=["sfx"]]
 unique_name_in_owner = true
 process_mode = 3
 layout_mode = 2
@@ -181,7 +182,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "PAUSE"
 
-[node name="MainMenuButton" type="Button" parent="HBoxContainer/VBoxContainer/CommandsMarginContainer/CommandsPanelContainer/CommandsTabContainer/ScrollContainer/CommandsGridContainer"]
+[node name="MainMenuButton" type="Button" parent="HBoxContainer/VBoxContainer/CommandsMarginContainer/CommandsPanelContainer/CommandsTabContainer/ScrollContainer/CommandsGridContainer" groups=["sfx"]]
 unique_name_in_owner = true
 process_mode = 3
 layout_mode = 2
@@ -189,7 +190,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "MAINMENU"
 
-[node name="OptionsButton" type="Button" parent="HBoxContainer/VBoxContainer/CommandsMarginContainer/CommandsPanelContainer/CommandsTabContainer/ScrollContainer/CommandsGridContainer"]
+[node name="OptionsButton" type="Button" parent="HBoxContainer/VBoxContainer/CommandsMarginContainer/CommandsPanelContainer/CommandsTabContainer/ScrollContainer/CommandsGridContainer" groups=["sfx"]]
 unique_name_in_owner = true
 process_mode = 3
 layout_mode = 2
@@ -197,28 +198,20 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "OPTIONS"
 
-[node name="SettleButton" type="Button" parent="HBoxContainer/VBoxContainer/CommandsMarginContainer/CommandsPanelContainer/CommandsTabContainer/ScrollContainer/CommandsGridContainer"]
+[node name="SettleButton" type="Button" parent="HBoxContainer/VBoxContainer/CommandsMarginContainer/CommandsPanelContainer/CommandsTabContainer/ScrollContainer/CommandsGridContainer" groups=["sfx"]]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "SETTLE"
 
-[node name="UseFuelButton" type="Button" parent="HBoxContainer/VBoxContainer/CommandsMarginContainer/CommandsPanelContainer/CommandsTabContainer/ScrollContainer/CommandsGridContainer"]
+[node name="UseFuelButton" type="Button" parent="HBoxContainer/VBoxContainer/CommandsMarginContainer/CommandsPanelContainer/CommandsTabContainer/ScrollContainer/CommandsGridContainer" groups=["sfx"]]
 unique_name_in_owner = true
 process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "USEFUEL"
-
-[node name="UseOxygenGenerator" type="Button" parent="HBoxContainer/VBoxContainer/CommandsMarginContainer/CommandsPanelContainer/CommandsTabContainer/ScrollContainer/CommandsGridContainer"]
-unique_name_in_owner = true
-process_mode = 3
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "USEOXYGENGENERATOR"
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
 custom_minimum_size = Vector2(10, 0)

@@ -20,8 +20,12 @@ func _ready() -> void:
 ## Connect to relevant signals in the scene
 func connect_to_signals() -> void:
 	self.music_mute_check_box.toggled.connect(self.toggle_mute.bind("music"))
+	self.music_mute_check_box.pressed.connect(Audio.play_sfx)
+	self.music_volume_slider.value_changed.connect(Audio.play_sfx_with_useless_argument)
 	self.music_volume_slider.value_changed.connect(self.set_volume_slider.bind("music"))
+	self.sfx_mute_check_box.pressed.connect(Audio.play_sfx)
 	self.sfx_mute_check_box.toggled.connect(self.toggle_mute.bind("sfx"))
+	self.sfx_volume_slider.value_changed.connect(Audio.play_sfx_with_useless_argument)
 	self.sfx_volume_slider.value_changed.connect(self.set_volume_slider.bind("sfx"))
 
 	return

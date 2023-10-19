@@ -13,6 +13,8 @@ func _ready() -> void:
 
 ## Connect to relevant signals in the scene
 func connect_to_signals() -> void:
+	canceled.connect(Audio.play_sfx)
+	confirmed.connect(Audio.play_sfx)
 	confirmed.connect(Controller.return_to_main_menu.bind(true))
 	Controller.out_of_air.connect(self.game_over.bind("AIR"))
 	Controller.out_of_energy.connect(self.game_over.bind("ENERGY"))

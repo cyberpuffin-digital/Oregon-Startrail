@@ -4,11 +4,13 @@ extends MarginContainer
 ## Main interface for player to play the game.  Aggregates dialogs and waypoint
 ## scenes in a series of tab containers.
 
+## Tab container holding game details
+var data_tab_container: TabContainer
 ## Button to Depart from current stop / waypoint
 var depart_button: Button
 ## Override button to shorten travel time
 var depart_button_quick: Button
-##
+## Dialog to indicate when player is about to lose the trader credit by departing
 var depart_trader_credit: ConfirmationDialog
 ## Return to main menu
 var main_menu_button: Button
@@ -39,6 +41,8 @@ var winner_dialog: AcceptDialog
 
 func _exit_tree() -> void:
 	Controller.game_timers = null
+	if get_tree().paused:
+		Controller.set_pause_mode(false)
 
 	return
 
@@ -109,9 +113,10 @@ func check_start() -> void:
 
 ## Connect to relevant signals in the scene
 func connect_to_signals() -> void:
+	self.data_tab_container.tab_clicked.connect(Audio.play_sfx_with_useless_argument)
 	self.depart_button.pressed.connect(self.depart_waypoint)
 	self.depart_button_quick.pressed.connect(self.depart_waypoint.bind(true))
-	self.depart_trader_credit.get_ok_button().pressed.connect(
+	self.depart_trader_credit.confirmed.connect(
 		self.depart_waypoint.bind(OS.has_feature("editor") or Config.i_want_to_cheat, true)
 	)
 	self.main_menu_button.pressed.connect(Controller.return_to_main_menu)
@@ -146,6 +151,7 @@ func depart_waypoint(quick: bool = false, force_depart: bool = false) -> void:
 
 ## Get the relevant children in the scene
 func get_the_children() -> void:
+	self.data_tab_container = get_node("%DataTabContainer")
 	self.depart_button = get_node("%DepartButton")
 	self.depart_button_quick = get_node("%DepartQuickButton")
 	self.depart_trader_credit = get_node("Dialogs/DepartTraderCreditDialog")

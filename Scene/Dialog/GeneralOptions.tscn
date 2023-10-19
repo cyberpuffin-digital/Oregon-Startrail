@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ctaqw3rljh11c"]
 
 [ext_resource type="Script" path="res://Script/Dialog/GeneralOptions.gd" id="1_oxga3"]
-[ext_resource type="Texture2D" uid="uid://cphaxchw0bq02" path="res://Image/Arrows/arrow.png" id="2_rlqmg"]
+[ext_resource type="Texture2D" uid="uid://i5o004bhuprd" path="res://Image/Arrows/arrow_down.png" id="2_exgqf"]
 
 [node name="General" type="Control"]
 layout_mode = 3
@@ -37,7 +37,7 @@ text = "LOCALESET"
 unique_name_in_owner = true
 layout_mode = 2
 text = "PICKLOCALEFROMLIST"
-icon = ExtResource("2_rlqmg")
+icon = ExtResource("2_exgqf")
 icon_alignment = 2
 expand_icon = true
 item_count = 17
@@ -155,7 +155,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 text = "LEVEL"
-icon = ExtResource("2_rlqmg")
+icon = ExtResource("2_exgqf")
 icon_alignment = 2
 item_count = 4
 popup/item_0/text = "QUIET"

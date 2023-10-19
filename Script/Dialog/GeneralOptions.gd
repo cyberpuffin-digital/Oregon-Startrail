@@ -24,10 +24,16 @@ func _ready() -> void:
 
 ## Connect to relevant signals in the scene
 func connect_to_signals() -> void:
-#	self.i_want_to_cheat_check_box.toggled.connect
+	self.i_want_to_cheat_check_box.pressed.connect(Audio.play_sfx)
+	self.i_want_to_cheat_check_box.toggled.connect(self.set_cheat_mode)
 	self.locale_menu_button.get_popup().id_pressed.connect(select_locale)
+	self.locale_menu_button.get_popup().popup_hide.connect(Audio.play_sfx)
+	self.locale_menu_button.pressed.connect(Audio.play_sfx)
 	self.scale_slider.value_changed.connect(self.set_ui_scale)
+	self.scale_slider.value_changed.connect(Audio.play_sfx_with_useless_argument)
 	self.verbosity_menu_button.get_popup().id_pressed.connect(self.select_verbosity)
+	self.verbosity_menu_button.get_popup().popup_hide.connect(Audio.play_sfx)
+	self.verbosity_menu_button.pressed.connect(Audio.play_sfx)
 
 	return
 
@@ -49,7 +55,6 @@ func select_locale(id: int) -> void:
 	Config.locale_chosen = true
 	TranslationServer.set_locale(Config.LOCALES[id])
 	self.set_current_locale_label()
-	Config.save_file()
 
 	return
 
@@ -59,7 +64,13 @@ func select_verbosity(id: int) -> void:
 	Config.verbosity = id
 	self.set_verbosity_button_text()
 	Log.quiet("Verbosity set to %s" % Log.Level.keys()[Config.verbosity])
-	Config.save_file()
+
+	return
+
+## Set cheat mode
+func set_cheat_mode(button_pressed: bool) -> void:
+	Config.i_want_to_cheat = button_pressed
+	Log.verbose("Cheat mode %sabled." % ["En" if button_pressed else "Dis"])
 
 	return
 

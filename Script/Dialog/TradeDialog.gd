@@ -358,7 +358,9 @@ func complete_trade_resources() -> void:
 ## Connect to relevant signals in the scene
 func connect_to_signals() -> void:
 	about_to_popup.connect(self.update_inventory)
-	get_ok_button().pressed.connect(self.complete_trade)
+	canceled.connect(Audio.play_sfx)
+	confirmed.connect(Audio.play_sfx)
+	confirmed.connect(self.complete_trade)
 
 	self.air_left_arrow.pressed.connect(
 		self.trade_resource_by.bind(Inventory.Type.Air, 10)
