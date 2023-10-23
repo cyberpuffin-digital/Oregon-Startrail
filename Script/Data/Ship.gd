@@ -4,6 +4,8 @@ extends ScrollContainer
 ## Interval between resource data updates
 const UPDATE_INTERVAL: float = 2.0
 
+## Ship detail resource label: Air Generator
+var air_generator_count_label: Label
 ## Ship detail resource label: Aquaponic
 var aquaponic_count_label: Label
 ## Ship detail resource label: Battery
@@ -18,8 +20,6 @@ var fishery_count_label: Label
 var fusion_generator_count_label: Label
 ## Ship detail resource label: Hydroponic
 var hydroponic_count_label: Label
-## Ship detail resource label: Oxygen Generator
-var oxygen_generator_count_label: Label
 ## Ship detail resource label: Space available
 var space_count_label: Label
 ## Timer to delay between data updates
@@ -64,7 +64,7 @@ func get_the_children() -> void:
 
 	# Generators
 	self.fusion_generator_count_label = get_node("%FusionGenCountLabel")
-	self.oxygen_generator_count_label = get_node("%OxygenGenCountLabel")
+	self.air_generator_count_label = get_node("%AirGenCountLabel")
 	self.water_generator_count_label = get_node("%WaterGenCountLabel")
 
 	# Workstations
@@ -96,8 +96,8 @@ func update_ship_details() -> void:
 	self.space_count_label.text = str(Inventory.space_available)
 
 	# Generators
+	self.air_generator_count_label.text = str(Inventory.air_generator)
 	self.fusion_generator_count_label.text = str(Inventory.fusion_generator)
-	self.oxygen_generator_count_label.text = str(Inventory.oxygen_generator)
 	self.water_generator_count_label.text = str(Inventory.water_generator)
 
 	# Workstations

@@ -122,7 +122,7 @@ func process_resource(delta: float, item: int) -> void:
 	Inventory.use_resource_by_time(delta, item)
 	match item:
 		Inventory.Type.Air:
-			if Inventory.air <= 0 and Inventory.oxygen_generator > 0:
+			if Inventory.air <= 0 and Inventory.air_generator > 0:
 				if Inventory.fuel >= 1:
 					Inventory.calculate_air_generation(1)
 				elif Inventory.fuel > 0 and Inventory.fuel < 1:

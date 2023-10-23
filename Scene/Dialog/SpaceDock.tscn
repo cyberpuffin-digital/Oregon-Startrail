@@ -1,7 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://dl0xo5fwf5q6s"]
+[gd_scene load_steps=10 format=3 uid="uid://dl0xo5fwf5q6s"]
 
 [ext_resource type="Theme" uid="uid://ciciv61w8qmyy" path="res://Theme/MainTheme.tres" id="1_kkndg"]
 [ext_resource type="Script" path="res://Script/Dialog/SpaceDock.gd" id="2_yf1ve"]
+[ext_resource type="Texture2D" uid="uid://dmcq5a0wdvgao" path="res://Image/Arrows/arrow_left.png" id="3_g5kmj"]
+[ext_resource type="Texture2D" uid="uid://b083lhgyd8brv" path="res://Image/Workstations/AirGenerator.png" id="3_wimch"]
+[ext_resource type="Texture2D" uid="uid://c6n1g3oovtaua" path="res://Image/Arrows/arrow_left_pressed.png" id="4_1pxjh"]
+[ext_resource type="Texture2D" uid="uid://badgihbswirhq" path="res://Image/Arrows/arrow_left_highlight.png" id="5_fek6p"]
+[ext_resource type="Texture2D" uid="uid://buc4e2upd0uct" path="res://Image/Arrows/arrow_right.png" id="7_xqdff"]
+[ext_resource type="Texture2D" uid="uid://2vlx214adpcw" path="res://Image/Arrows/arrow_right_pressed.png" id="8_3llqm"]
+[ext_resource type="Texture2D" uid="uid://bw6xyi33v6gtd" path="res://Image/Arrows/arrow_right_highlight.png" id="9_6lmyw"]
 
 [node name="SpaceDock" type="ConfirmationDialog"]
 process_mode = 3
@@ -42,14 +49,45 @@ layout_mode = 2
 text = "UNDERCONSTRUCTION"
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer"]
+[node name="AirGeneratorHBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="AirGeneratorInstalledSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/AirGeneratorHBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"NoArrows"
+alignment = 1
+
+[node name="AirGeneratorBuyTextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/AirGeneratorHBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("3_g5kmj")
+texture_pressed = ExtResource("4_1pxjh")
+texture_hover = ExtResource("5_fek6p")
+texture_focused = ExtResource("5_fek6p")
+stretch_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/AirGeneratorHBoxContainer"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+[node name="AirGeneratorTextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/AirGeneratorHBoxContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("3_wimch")
+stretch_mode = 4
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+[node name="AirGeneratorLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/AirGeneratorHBoxContainer/VBoxContainer"]
 layout_mode = 2
+text = "AIRGENERATORDESCRIPTION"
 
-[node name="SpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+[node name="AirGeneratorSellTextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/AirGeneratorHBoxContainer"]
 layout_mode = 2
+texture_normal = ExtResource("7_xqdff")
+texture_pressed = ExtResource("8_3llqm")
+texture_hover = ExtResource("9_6lmyw")
+texture_focused = ExtResource("9_6lmyw")
+stretch_mode = 3
+
+[node name="AirGeneratorAvailableSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/AirGeneratorHBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"NoArrows"
+alignment = 1
