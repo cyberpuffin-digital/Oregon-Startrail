@@ -105,6 +105,11 @@ func depart_waypoint(quick: bool = false) -> void:
 
 	return
 
+## Return the game time from the timers child
+func get_game_time() -> float:
+
+	return self.game_timers.game_timer
+
 ## Process the resources running on base timer
 func process_default_resources(delta: float) -> void:
 	for resource in [

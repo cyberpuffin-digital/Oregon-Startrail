@@ -3,7 +3,7 @@
 [ext_resource type="Theme" uid="uid://ciciv61w8qmyy" path="res://Theme/MainTheme.tres" id="1_kkndg"]
 [ext_resource type="Script" path="res://Script/Dialog/SpaceDock.gd" id="2_yf1ve"]
 [ext_resource type="Texture2D" uid="uid://dmcq5a0wdvgao" path="res://Image/Arrows/arrow_left.png" id="3_g5kmj"]
-[ext_resource type="Texture2D" uid="uid://b083lhgyd8brv" path="res://Image/Workstations/AirGenerator.png" id="3_wimch"]
+[ext_resource type="Texture2D" uid="uid://cyv77drs2ynbe" path="res://Image/Workstations/AirGenerator.png" id="3_wimch"]
 [ext_resource type="Texture2D" uid="uid://c6n1g3oovtaua" path="res://Image/Arrows/arrow_left_pressed.png" id="4_1pxjh"]
 [ext_resource type="Texture2D" uid="uid://badgihbswirhq" path="res://Image/Arrows/arrow_left_highlight.png" id="5_fek6p"]
 [ext_resource type="Texture2D" uid="uid://buc4e2upd0uct" path="res://Image/Arrows/arrow_right.png" id="7_xqdff"]

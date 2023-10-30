@@ -197,7 +197,7 @@ func set_travel_slider(_value: float = 0.0) -> void:
 ## Adjust travel tab container based on current state
 func set_travel_view() -> void:
 	self.travel_tab_container.set_current_tab(Controller.current_waypoint)
-	Log.verbose("Travel tab set to %s" % [Controller.current_waypoint])
+	Log.debug("Travel tab set to %s" % [Controller.current_waypoint])
 
 	return
 

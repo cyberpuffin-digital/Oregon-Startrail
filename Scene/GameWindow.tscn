@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://d26onhpq6ltvc"]
+[gd_scene load_steps=23 format=3 uid="uid://d26onhpq6ltvc"]
 
 [ext_resource type="Theme" uid="uid://ciciv61w8qmyy" path="res://Theme/MainTheme.tres" id="1_0o5cg"]
 [ext_resource type="Script" path="res://Script/GameWindow.gd" id="1_hjc2e"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://dj6goni2ge76d" path="res://Scene/Data/Ship.tscn" id="10_ivg2a"]
 [ext_resource type="PackedScene" uid="uid://ddsonij07pxq0" path="res://Scene/Data/Resources_graphical.tscn" id="11_m1gix"]
 [ext_resource type="PackedScene" uid="uid://vtvbwlh1ednd" path="res://Scene/Data/Rates.tscn" id="11_udfd4"]
+[ext_resource type="PackedScene" uid="uid://bnxq2ty468o3q" path="res://Scene/Data/Messages.tscn" id="14_h7afd"]
 [ext_resource type="PackedScene" uid="uid://c3hwphsyo7366" path="res://Scene/Dialog/TradeDialog.tscn" id="14_yyl7r"]
 [ext_resource type="PackedScene" uid="uid://dhdg06jfccejt" path="res://Scene/Dialog/LossDialog.tscn" id="17_od683"]
 [ext_resource type="PackedScene" uid="uid://dl0xo5fwf5q6s" path="res://Scene/Dialog/SpaceDock.tscn" id="19_fpoxs"]
@@ -105,19 +106,11 @@ layout_mode = 2
 visible = false
 layout_mode = 2
 
-[node name="MESSAGES" type="ScrollContainer" parent="HBoxContainer/VBoxContainer/DataMarginContainer/DataTabContainer"]
+[node name="RATES" parent="HBoxContainer/VBoxContainer/DataMarginContainer/DataTabContainer" instance=ExtResource("11_udfd4")]
 visible = false
 layout_mode = 2
 
-[node name="TextEdit" type="TextEdit" parent="HBoxContainer/VBoxContainer/DataMarginContainer/DataTabContainer/MESSAGES"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-editable = false
-virtual_keyboard_enabled = false
-middle_mouse_paste_enabled = false
-
-[node name="RATES" parent="HBoxContainer/VBoxContainer/DataMarginContainer/DataTabContainer" instance=ExtResource("11_udfd4")]
+[node name="MESSAGES" parent="HBoxContainer/VBoxContainer/DataMarginContainer/DataTabContainer" instance=ExtResource("14_h7afd")]
 visible = false
 layout_mode = 2
 
