@@ -129,6 +129,8 @@ func reset() -> void:
 		},
 		Controller.Waypoint.Earth: {
 			Inventory.Type.Air: 10000,
+			Inventory.Type.AirGenerator: 2,
+			Inventory.Type.BotBench: 2,
 			Inventory.Type.Energy: 1000,
 			Inventory.Type.Fish: 1000,
 			Inventory.Type.Food: 100,

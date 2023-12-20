@@ -17,6 +17,8 @@ var food: Timer
 var fuel: Timer
 ## Fuel timer interval in seconds
 @export var fuel_interval: float = 60
+## Game run timer
+var game_timer: float
 ## Random events
 var random_bad: Timer
 ## Max time for bad random events randomized interval, in seconds
@@ -31,6 +33,9 @@ var random_neutral: Timer
 var water: Timer
 ## Water timer interval in seconds
 @export var water_interval: float = 5
+
+func _process(delta):
+	self.game_timer += delta
 
 func _ready() -> void:
 	Controller.register_timers(self)
@@ -110,6 +115,7 @@ func random_interval(max_interval: float) -> float:
 func reset() -> void:
 	self.stop_all()
 	self.set_wait_time()
+	self.game_timer = 0
 
 	return
 

@@ -3,6 +3,8 @@ extends Node
 ##
 ## Handle logging and message delivery.
 
+signal message_logged(msg: String)
+
 ## Log send interval
 const OUTPUT_MIN_INTERVAL: float = 0.1
 
@@ -129,7 +131,7 @@ func send_message() -> void:
 		print_rich(Log.stack_to_string(Log.msg_first.stack, true))
 
 	# Push to messages
-	# TODO: Add messages tab to data area
+	message_logged.emit(Log.msg_first.message)
 
 	# Clear message
 	Log.msg_first.queue_free()

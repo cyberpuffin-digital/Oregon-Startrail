@@ -8,6 +8,7 @@ signal resource_consumed(resource: int, quantity: float)
 
 ## List resources that have an entry in the conversions dictionary
 enum Converters {
+	AirGenerator,
 	Aquaponic,
 	Battery,
 	Bot,
@@ -16,13 +17,13 @@ enum Converters {
 	FusionGenerator,
 	Human,
 	Hydroponic,
-	OxygenGenerator,
 	WaterGenerator,
 }
 
 ## List of tracked resources
 enum Type {
 	Air,
+	AirGenerator,
 	Aquaponic,
 	Battery,
 	Bot,
@@ -38,7 +39,6 @@ enum Type {
 	Hydroponic,
 	Human,
 	Money,
-	OxygenGenerator,
 	Plant,
 	Recycling,
 	Space,
@@ -98,7 +98,7 @@ const conversions: Dictionary = {
 		Inventory.Type.Water: -2,
 		Inventory.Type.Work: -1,
 	},
-	Inventory.Type.OxygenGenerator: {
+	Inventory.Type.AirGenerator: {
 		Inventory.Type.Air: 100,
 		Inventory.Type.Energy: -10,
 	},
@@ -125,7 +125,7 @@ const required_space: Dictionary = {
 	Inventory.Type.Human: 2,
 	Inventory.Type.Hydroponic: 1,
 	Inventory.Type.Money: 0,
-	Inventory.Type.OxygenGenerator: 10,
+	Inventory.Type.AirGenerator: 10,
 	Inventory.Type.Plant: 0.1,
 	Inventory.Type.Space: 0,
 	Inventory.Type.SparePart: 10,
@@ -137,6 +137,8 @@ const required_space: Dictionary = {
 
 ## Oxygen for active humans
 var air: float
+## Oxygen generator: consumes energy, produces oxygen
+var air_generator: float
 ## Energy storage device
 var battery: float
 ## Worker bots
@@ -165,8 +167,6 @@ var hydroponic: float
 var human: float
 ## Cash for trade
 var money: float
-## Oxygen generator: consumes energy, produces oxygen
-var oxygen_generator: float
 ## Plants to grow for food and air
 var plant: float
 ## Available space for stuff
@@ -268,9 +268,9 @@ func calculate_air_rate(by_time: float) -> float:
 	][Inventory.Type.Air] * Inventory.human * by_time
 
 	# Oxygen generators creates air
-	air_per_time += Inventory.oxygen_generator * Inventory.conversions[
-		Inventory.Type.OxygenGenerator
-	][Inventory.Type.Air] * Inventory.oxygen_generator * by_time
+	air_per_time += Inventory.air_generator * Inventory.conversions[
+		Inventory.Type.AirGenerator
+	][Inventory.Type.Air] * Inventory.air_generator * by_time
 
 	if Inventory.plant > 0:
 		# Plants produce air
@@ -436,7 +436,7 @@ func calculate_space() -> void:
 	space_used += Inventory.fusion_generator * Inventory.required_space[Inventory.Type.FusionGenerator]
 	space_used += Inventory.hydroponic * Inventory.required_space[Inventory.Type.Hydroponic]
 	space_used += Inventory.human * Inventory.required_space[Inventory.Type.Human]
-	space_used += Inventory.oxygen_generator * Inventory.required_space[Inventory.Type.OxygenGenerator]
+	space_used += Inventory.air_generator * Inventory.required_space[Inventory.Type.AirGenerator]
 	space_used += Inventory.plant * Inventory.required_space[Inventory.Type.Plant]
 	space_used += Inventory.spare_part * Inventory.required_space[Inventory.Type.SparePart]
 	space_used += Inventory.waste * Inventory.required_space[Inventory.Type.Waste]
@@ -564,7 +564,7 @@ func reset() -> void:
 	Inventory.hydroponic = 0
 	Inventory.human = Inventory.starting_values[Inventory.Type.Human]
 	Inventory.money = Inventory.starting_values[Inventory.Type.Money]
-	Inventory.oxygen_generator = 0
+	Inventory.air_generator = 0
 	Inventory.plant = 0
 	Inventory.space_available = Inventory.starting_values[Inventory.Type.Space]
 	Inventory.spare_part = 0

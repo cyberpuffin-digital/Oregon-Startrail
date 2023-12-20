@@ -36,6 +36,13 @@ func get_the_children() -> void:
 
 	return
 
+## Convert the current dialog message into a log message
+func log_current_message() -> void:
+	for child_node in self.dialog_tab_container.get_current_tab_control().find_children("*", "Label"):
+		Log.verbose("\"%s\"" % tr(child_node.text))
+
+	return
+
 ## Cycle through active tab and send text to TTS
 func read_active_tab() -> void:
 	Audio.stop_tts()
@@ -73,6 +80,7 @@ func set_dialog_tab(index: int = Controller.current_waypoint) -> void:
 			self.title = tr("LIVELONGANDPROSPER")
 		_:
 			Log.error("Unknown dialog tab requested: %s" % [index])
+	self.log_current_message()
 
 	return
 

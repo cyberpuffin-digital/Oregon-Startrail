@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://dj6goni2ge76d" path="res://Scene/Data/Ship.tscn" id="10_ivg2a"]
 [ext_resource type="PackedScene" uid="uid://ddsonij07pxq0" path="res://Scene/Data/Resources_graphical.tscn" id="11_m1gix"]
 [ext_resource type="PackedScene" uid="uid://vtvbwlh1ednd" path="res://Scene/Data/Rates.tscn" id="11_udfd4"]
+[ext_resource type="PackedScene" uid="uid://bnxq2ty468o3q" path="res://Scene/Data/Messages.tscn" id="14_h7afd"]
 [ext_resource type="PackedScene" uid="uid://c3hwphsyo7366" path="res://Scene/Dialog/TradeDialog.tscn" id="14_yyl7r"]
 [ext_resource type="Texture2D" uid="uid://bsneyumy4avab" path="res://Image/Humble Bundle/070.png" id="15_w85nr"]
 [ext_resource type="Texture2D" uid="uid://7th3b73hfh71" path="res://Image/Humble Bundle/071.png" id="17_a5yqe"]

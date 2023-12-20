@@ -1,0 +1,13 @@
+[gd_resource type="CodeHighlighter" format=3 uid="uid://cw84jhcmrpbr5"]
+
+[resource]
+number_color = Color(0.596078, 0.811765, 0.682353, 1)
+symbol_color = Color(0.752941, 0.752941, 0.752941, 1)
+function_color = Color(0.752941, 0.752941, 0.752941, 1)
+member_variable_color = Color(0.752941, 0.752941, 0.752941, 1)
+member_keyword_colors = {
+"Air": Color(0, 1, 1, 1)
+}
+color_regions = {
+"[]": Color(1, 0, 0, 1)
+}
