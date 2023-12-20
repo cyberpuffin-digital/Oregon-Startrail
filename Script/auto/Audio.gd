@@ -42,6 +42,7 @@ const BgPaths: Array = [
 
 ## Sound Effects
 const SfxPaths: Array = [
+	"res://Audio/sfx/scifi_ui_beep_button_01.wav",
 	"res://Audio/sfx/select1.wav",
 	"res://Audio/sfx/select2.wav",
 	"res://Audio/sfx/select3.wav"
@@ -223,7 +224,7 @@ func set_the_children() -> void:
 	Audio.play.call_deferred()
 
 	# SFX
-	Audio.sfx_selection = 2
+	Audio.sfx_selection = 0
 	Audio.sfx_stream_player.set_stream(load(Audio.SfxPaths[Audio.sfx_selection]))
 
 	# TTS

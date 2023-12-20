@@ -1,0 +1,10 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://df0qq50aufv3l"]
+
+[ext_resource type="Texture2D" uid="uid://ik0ghjymykrr" path="res://Image/Humble Bundle/031.png" id="1_13g74"]
+
+[resource]
+content_margin_left = 5.0
+content_margin_top = 2.0
+content_margin_right = 5.0
+content_margin_bottom = 2.0
+texture = ExtResource("1_13g74")

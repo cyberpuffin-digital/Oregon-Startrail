@@ -1,4 +1,4 @@
-extends MarginContainer
+extends Control
 ## Primary game window
 ##
 ## Main interface for player to play the game.  Aggregates dialogs and waypoint

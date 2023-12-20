@@ -1,9 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://buqwhd0m1l4my"]
+[gd_scene load_steps=10 format=3 uid="uid://buqwhd0m1l4my"]
 
 [ext_resource type="Theme" uid="uid://ciciv61w8qmyy" path="res://Theme/MainTheme.tres" id="1_sd8ip"]
 [ext_resource type="Script" path="res://Script/MainMenu.gd" id="2_f0djs"]
 [ext_resource type="PackedScene" uid="uid://cet5igh22jawm" path="res://Scene/Waypoints/Travel2D.tscn" id="3_cay7c"]
+[ext_resource type="Texture2D" uid="uid://15lggv50cvq0" path="res://Image/Humble Bundle/window_grid.png" id="3_tsyp7"]
 [ext_resource type="PackedScene" uid="uid://dotoprkwi1au" path="res://Scene/Dialog/OptionsDialog.tscn" id="3_wai8n"]
+[ext_resource type="Texture2D" uid="uid://f5q6xvkdifhq" path="res://Image/Humble Bundle/small_icon_play.png" id="5_ql4ec"]
+[ext_resource type="Texture2D" uid="uid://7th3b73hfh71" path="res://Image/Humble Bundle/071.png" id="6_0k64a"]
+[ext_resource type="Texture2D" uid="uid://6fbnt71bp8o8" path="res://Image/Humble Bundle/086.png" id="7_ckfak"]
+[ext_resource type="Texture2D" uid="uid://22rbp4d01rwi" path="res://Image/Humble Bundle/072.png" id="8_tsyd8"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -24,6 +29,18 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -121.0
+offset_right = 121.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_tsyp7")
+stretch_mode = 1
+
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -40,24 +57,38 @@ alignment = 1
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
 
-[node name="TitleLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="TitlePanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"TitlePanel"
+
+[node name="TitleLabel" type="Label" parent="MarginContainer/VBoxContainer/TitlePanelContainer"]
 layout_mode = 2
 theme_type_variation = &"HeaderLarge"
 text = "TITLE"
 horizontal_alignment = 1
 
-[node name="AuthorLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="AuthorPanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"SubtitlePanel"
+
+[node name="AuthorLabel" type="Label" parent="MarginContainer/VBoxContainer/AuthorPanelContainer"]
 layout_mode = 2
 theme_type_variation = &"HeaderMedium"
 text = "AUTHOR"
 horizontal_alignment = 1
 
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 2.0
-theme_type_variation = &"DecoratedContainer"
+size_flags_stretch_ratio = 5.0
+theme_type_variation = &"SpaceViewContainer"
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="MarginContainer/VBoxContainer/PanelContainer"]
 clip_contents = true
@@ -70,20 +101,34 @@ transparent_bg = true
 handle_input_locally = false
 snap_2d_transforms_to_pixel = true
 snap_2d_vertices_to_pixel = true
-size = Vector2i(2, 2)
-size_2d_override_stretch = true
+size = Vector2i(968, 237)
 render_target_update_mode = 4
 
 [node name="Travel2D" parent="MarginContainer/VBoxContainer/PanelContainer/SubViewportContainer/SubViewport" instance=ExtResource("3_cay7c")]
 
-[node name="ThemeLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="SubtitlePanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"SubtitlePanel"
+
+[node name="ThemeLabel" type="Label" parent="MarginContainer/VBoxContainer/SubtitlePanelContainer"]
 layout_mode = 2
 theme_type_variation = &"HeaderSmall"
 text = "SUBTITLE"
 horizontal_alignment = 1
 
+[node name="MarginContainer4" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+
 [node name="CommandsMarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 3
 theme_type_variation = &"EvenMargin10"
 
@@ -97,27 +142,48 @@ theme_override_constants/separation = 25
 
 [node name="StartGame" type="Button" parent="MarginContainer/VBoxContainer/CommandsMarginContainer/CommandsPanelContainer/VBoxContainer" groups=["sfx"]]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 text = "START"
+icon = ExtResource("5_ql4ec")
+alignment = 0
+icon_alignment = 2
+expand_icon = true
 
 [node name="Continue" type="Button" parent="MarginContainer/VBoxContainer/CommandsMarginContainer/CommandsPanelContainer/VBoxContainer" groups=["sfx"]]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 text = "CONTINUE"
+icon = ExtResource("6_0k64a")
+alignment = 0
+icon_alignment = 2
+expand_icon = true
 
 [node name="Options" type="Button" parent="MarginContainer/VBoxContainer/CommandsMarginContainer/CommandsPanelContainer/VBoxContainer" groups=["sfx"]]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 text = "OPTIONS"
+icon = ExtResource("7_ckfak")
+alignment = 0
+icon_alignment = 2
+expand_icon = true
 
 [node name="ExitGame" type="Button" parent="MarginContainer/VBoxContainer/CommandsMarginContainer/CommandsPanelContainer/VBoxContainer" groups=["sfx"]]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 text = "EXIT"
+icon = ExtResource("8_tsyd8")
+alignment = 0
+icon_alignment = 2
+expand_icon = true
 
-[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+[node name="MarginContainer5" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
 
 [node name="Dialogs" type="Control" parent="."]
 anchors_preset = 0

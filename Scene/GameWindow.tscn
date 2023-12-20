@@ -1,10 +1,11 @@
-[gd_scene load_steps=22 format=3 uid="uid://d26onhpq6ltvc"]
+[gd_scene load_steps=31 format=3 uid="uid://d26onhpq6ltvc"]
 
 [ext_resource type="Theme" uid="uid://ciciv61w8qmyy" path="res://Theme/MainTheme.tres" id="1_0o5cg"]
 [ext_resource type="Script" path="res://Script/GameWindow.gd" id="1_hjc2e"]
 [ext_resource type="PackedScene" uid="uid://e3lqjtelwjpj" path="res://Scene/Waypoints/Earth.tscn" id="1_wvssu"]
 [ext_resource type="PackedScene" uid="uid://cqylecddk3ous" path="res://Scene/Waypoints/Travel.tscn" id="2_fiilq"]
 [ext_resource type="PackedScene" uid="uid://u6w1w68im386" path="res://Scene/Dialog/WaypointDialog.tscn" id="3_2pebf"]
+[ext_resource type="Texture2D" uid="uid://15lggv50cvq0" path="res://Image/Humble Bundle/window_grid.png" id="3_keyag"]
 [ext_resource type="PackedScene" uid="uid://iy8we5rhlsg2" path="res://Scene/Waypoints/Moon.tscn" id="4_7j5hv"]
 [ext_resource type="PackedScene" uid="uid://dysk2sjj7ljgf" path="res://Scene/Waypoints/Mars.tscn" id="5_44t4a"]
 [ext_resource type="PackedScene" uid="uid://dp0g61jdbr7a2" path="res://Scene/Waypoints/Europa.tscn" id="6_n4lpd"]
@@ -17,12 +18,21 @@
 [ext_resource type="PackedScene" uid="uid://ddsonij07pxq0" path="res://Scene/Data/Resources_graphical.tscn" id="11_m1gix"]
 [ext_resource type="PackedScene" uid="uid://vtvbwlh1ednd" path="res://Scene/Data/Rates.tscn" id="11_udfd4"]
 [ext_resource type="PackedScene" uid="uid://c3hwphsyo7366" path="res://Scene/Dialog/TradeDialog.tscn" id="14_yyl7r"]
+[ext_resource type="Texture2D" uid="uid://bsneyumy4avab" path="res://Image/Humble Bundle/070.png" id="15_w85nr"]
+[ext_resource type="Texture2D" uid="uid://7th3b73hfh71" path="res://Image/Humble Bundle/071.png" id="17_a5yqe"]
 [ext_resource type="PackedScene" uid="uid://dhdg06jfccejt" path="res://Scene/Dialog/LossDialog.tscn" id="17_od683"]
+[ext_resource type="Texture2D" uid="uid://0ojjufcdely1" path="res://Image/Humble Bundle/078.png" id="18_dw85b"]
+[ext_resource type="Texture2D" uid="uid://da2bboq6fox2e" path="res://Image/Humble Bundle/083.png" id="18_uhus3"]
 [ext_resource type="PackedScene" uid="uid://dl0xo5fwf5q6s" path="res://Scene/Dialog/SpaceDock.tscn" id="19_fpoxs"]
 [ext_resource type="Script" path="res://Script/Data/GameTimers.gd" id="19_vqu30"]
+[ext_resource type="Texture2D" uid="uid://22rbp4d01rwi" path="res://Image/Humble Bundle/072.png" id="20_3ur8x"]
 [ext_resource type="PackedScene" uid="uid://dcn5dvsxelg43" path="res://Scene/Dialog/DepartTraderCreditDialog.tscn" id="20_ojrje"]
+[ext_resource type="Texture2D" uid="uid://6fbnt71bp8o8" path="res://Image/Humble Bundle/086.png" id="20_qm73w"]
+[ext_resource type="Texture2D" uid="uid://cgpf3kmjhrq2r" path="res://Image/Humble Bundle/081.png" id="22_7qt6u"]
+[ext_resource type="Texture2D" uid="uid://clin8wq8boong" path="res://Image/Humble Bundle/079.png" id="23_pj08a"]
 
-[node name="GameWindow" type="MarginContainer"]
+[node name="GameWindow" type="Control"]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -33,83 +43,122 @@ size_flags_vertical = 3
 theme = ExtResource("1_0o5cg")
 script = ExtResource("1_hjc2e")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_keyag")
+stretch_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TravelMarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]
+[node name="TravelMarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"EvenMargin10"
 
-[node name="TravelPanelContainer" type="PanelContainer" parent="HBoxContainer/VBoxContainer/TravelMarginContainer"]
+[node name="TravelPanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/TravelMarginContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_type_variation = &"DecoratedContainer"
+theme_type_variation = &"SpaceViewContainer"
 
-[node name="TravelTabContainer" type="TabContainer" parent="HBoxContainer/VBoxContainer/TravelMarginContainer/TravelPanelContainer"]
+[node name="TravelTabContainer" type="TabContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/TravelMarginContainer/TravelPanelContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 tabs_visible = false
 
-[node name="TravelMarginContainer" parent="HBoxContainer/VBoxContainer/TravelMarginContainer/TravelPanelContainer/TravelTabContainer" instance=ExtResource("2_fiilq")]
+[node name="TravelMarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/TravelMarginContainer/TravelPanelContainer/TravelTabContainer" instance=ExtResource("2_fiilq")]
 layout_mode = 2
 
-[node name="EarthMarginContainer" parent="HBoxContainer/VBoxContainer/TravelMarginContainer/TravelPanelContainer/TravelTabContainer" instance=ExtResource("1_wvssu")]
+[node name="EarthMarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/TravelMarginContainer/TravelPanelContainer/TravelTabContainer" instance=ExtResource("1_wvssu")]
 visible = false
 layout_mode = 2
 
-[node name="MoonMarginContainer" parent="HBoxContainer/VBoxContainer/TravelMarginContainer/TravelPanelContainer/TravelTabContainer" instance=ExtResource("4_7j5hv")]
+[node name="MoonMarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/TravelMarginContainer/TravelPanelContainer/TravelTabContainer" instance=ExtResource("4_7j5hv")]
 visible = false
 layout_mode = 2
 
-[node name="MarsMarginContainer" parent="HBoxContainer/VBoxContainer/TravelMarginContainer/TravelPanelContainer/TravelTabContainer" instance=ExtResource("5_44t4a")]
+[node name="MarsMarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/TravelMarginContainer/TravelPanelContainer/TravelTabContainer" instance=ExtResource("5_44t4a")]
 visible = false
 layout_mode = 2
 
-[node name="EuropaMarginContainer" parent="HBoxContainer/VBoxContainer/TravelMarginContainer/TravelPanelContainer/TravelTabContainer" instance=ExtResource("6_n4lpd")]
+[node name="EuropaMarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/TravelMarginContainer/TravelPanelContainer/TravelTabContainer" instance=ExtResource("6_n4lpd")]
 visible = false
 layout_mode = 2
 
-[node name="KuiperBeltMarginContainer" parent="HBoxContainer/VBoxContainer/TravelMarginContainer/TravelPanelContainer/TravelTabContainer" instance=ExtResource("7_hujt0")]
+[node name="KuiperBeltMarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/TravelMarginContainer/TravelPanelContainer/TravelTabContainer" instance=ExtResource("7_hujt0")]
 visible = false
 layout_mode = 2
 
-[node name="Wolf1061cMarginContainer" parent="HBoxContainer/VBoxContainer/TravelMarginContainer/TravelPanelContainer/TravelTabContainer" instance=ExtResource("8_wk43q")]
+[node name="Wolf1061cMarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/TravelMarginContainer/TravelPanelContainer/TravelTabContainer" instance=ExtResource("8_wk43q")]
 visible = false
 layout_mode = 2
 
-[node name="DataMarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]
+[node name="DataMarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"EvenMargin10"
 
-[node name="DataTabContainer" type="TabContainer" parent="HBoxContainer/VBoxContainer/DataMarginContainer"]
+[node name="DataTabContainer" type="TabContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/DataMarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 tab_alignment = 1
 
-[node name="RESOURCESGRAPHICAL" parent="HBoxContainer/VBoxContainer/DataMarginContainer/DataTabContainer" instance=ExtResource("11_m1gix")]
+[node name="RESOURCESGRAPHICAL" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/DataMarginContainer/DataTabContainer" instance=ExtResource("11_m1gix")]
 layout_mode = 2
 
-[node name="RESOURCESTEXT" parent="HBoxContainer/VBoxContainer/DataMarginContainer/DataTabContainer" instance=ExtResource("9_l8yu6")]
+[node name="RESOURCESTEXT" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/DataMarginContainer/DataTabContainer" instance=ExtResource("9_l8yu6")]
 visible = false
 layout_mode = 2
 
-[node name="SHIP" parent="HBoxContainer/VBoxContainer/DataMarginContainer/DataTabContainer" instance=ExtResource("10_ivg2a")]
+[node name="SHIP" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/DataMarginContainer/DataTabContainer" instance=ExtResource("10_ivg2a")]
 visible = false
 layout_mode = 2
 
-[node name="MESSAGES" type="ScrollContainer" parent="HBoxContainer/VBoxContainer/DataMarginContainer/DataTabContainer"]
+[node name="MESSAGES" type="ScrollContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/DataMarginContainer/DataTabContainer"]
 visible = false
 layout_mode = 2
 
-[node name="TextEdit" type="TextEdit" parent="HBoxContainer/VBoxContainer/DataMarginContainer/DataTabContainer/MESSAGES"]
+[node name="TextEdit" type="TextEdit" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/DataMarginContainer/DataTabContainer/MESSAGES"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -117,114 +166,155 @@ editable = false
 virtual_keyboard_enabled = false
 middle_mouse_paste_enabled = false
 
-[node name="RATES" parent="HBoxContainer/VBoxContainer/DataMarginContainer/DataTabContainer" instance=ExtResource("11_udfd4")]
+[node name="RATES" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/DataMarginContainer/DataTabContainer" instance=ExtResource("11_udfd4")]
 visible = false
 layout_mode = 2
 
-[node name="CommandsMarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 3
-size_flags_stretch_ratio = 0.6
-theme_type_variation = &"EvenMargin10"
 
-[node name="CommandsPanelContainer" type="PanelContainer" parent="HBoxContainer/VBoxContainer/CommandsMarginContainer"]
+[node name="CommandsPanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"CommandsContainer"
 
-[node name="CommandsTabContainer" type="TabContainer" parent="HBoxContainer/VBoxContainer/CommandsMarginContainer/CommandsPanelContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-tabs_visible = false
-
-[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/VBoxContainer/CommandsMarginContainer/CommandsPanelContainer/CommandsTabContainer"]
-layout_mode = 2
-
-[node name="CommandsGridContainer" type="GridContainer" parent="HBoxContainer/VBoxContainer/CommandsMarginContainer/CommandsPanelContainer/CommandsTabContainer/ScrollContainer"]
+[node name="CommandsGridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/CommandsPanelContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-columns = 2
+theme_override_constants/h_separation = 10
+columns = 3
 
-[node name="SpaceDockButton" type="Button" parent="HBoxContainer/VBoxContainer/CommandsMarginContainer/CommandsPanelContainer/CommandsTabContainer/ScrollContainer/CommandsGridContainer" groups=["sfx"]]
+[node name="SpaceDockButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/CommandsPanelContainer/CommandsGridContainer" groups=["sfx"]]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_vertical = 6
 text = "SPACEDOCK"
+icon = ExtResource("15_w85nr")
+alignment = 0
+icon_alignment = 2
+expand_icon = true
 
-[node name="TradeButton" type="Button" parent="HBoxContainer/VBoxContainer/CommandsMarginContainer/CommandsPanelContainer/CommandsTabContainer/ScrollContainer/CommandsGridContainer" groups=["sfx"]]
+[node name="TradeButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/CommandsPanelContainer/CommandsGridContainer" groups=["sfx"]]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_horizontal = 6
+size_flags_vertical = 6
 text = "TRADE"
+icon = ExtResource("18_dw85b")
+alignment = 0
+icon_alignment = 2
+expand_icon = true
 
-[node name="DepartButton" type="Button" parent="HBoxContainer/VBoxContainer/CommandsMarginContainer/CommandsPanelContainer/CommandsTabContainer/ScrollContainer/CommandsGridContainer" groups=["sfx"]]
+[node name="DepartButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/CommandsPanelContainer/CommandsGridContainer" groups=["sfx"]]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_horizontal = 6
+size_flags_vertical = 6
 text = "DEPART"
+icon = ExtResource("17_a5yqe")
+alignment = 0
+icon_alignment = 2
+expand_icon = true
 
-[node name="DepartQuickButton" type="Button" parent="HBoxContainer/VBoxContainer/CommandsMarginContainer/CommandsPanelContainer/CommandsTabContainer/ScrollContainer/CommandsGridContainer" groups=["sfx"]]
+[node name="DepartQuickButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/CommandsPanelContainer/CommandsGridContainer" groups=["sfx"]]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_horizontal = 6
+size_flags_vertical = 6
 text = "DEPARTQUICK"
+icon = ExtResource("18_dw85b")
+alignment = 0
+icon_alignment = 2
+expand_icon = true
 
-[node name="PauseButton" type="Button" parent="HBoxContainer/VBoxContainer/CommandsMarginContainer/CommandsPanelContainer/CommandsTabContainer/ScrollContainer/CommandsGridContainer" groups=["sfx"]]
+[node name="PauseButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/CommandsPanelContainer/CommandsGridContainer" groups=["sfx"]]
 unique_name_in_owner = true
 process_mode = 3
+custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_horizontal = 6
+size_flags_vertical = 6
 text = "PAUSE"
+icon = ExtResource("18_uhus3")
+alignment = 0
+icon_alignment = 2
+expand_icon = true
 
-[node name="MainMenuButton" type="Button" parent="HBoxContainer/VBoxContainer/CommandsMarginContainer/CommandsPanelContainer/CommandsTabContainer/ScrollContainer/CommandsGridContainer" groups=["sfx"]]
+[node name="MainMenuButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/CommandsPanelContainer/CommandsGridContainer" groups=["sfx"]]
 unique_name_in_owner = true
 process_mode = 3
+custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_horizontal = 6
+size_flags_vertical = 6
 text = "MAINMENU"
+icon = ExtResource("20_3ur8x")
+alignment = 0
+icon_alignment = 2
+expand_icon = true
 
-[node name="OptionsButton" type="Button" parent="HBoxContainer/VBoxContainer/CommandsMarginContainer/CommandsPanelContainer/CommandsTabContainer/ScrollContainer/CommandsGridContainer" groups=["sfx"]]
+[node name="OptionsButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/CommandsPanelContainer/CommandsGridContainer" groups=["sfx"]]
 unique_name_in_owner = true
 process_mode = 3
+custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_horizontal = 6
+size_flags_vertical = 6
 text = "OPTIONS"
+icon = ExtResource("20_qm73w")
+alignment = 0
+icon_alignment = 2
+expand_icon = true
 
-[node name="SettleButton" type="Button" parent="HBoxContainer/VBoxContainer/CommandsMarginContainer/CommandsPanelContainer/CommandsTabContainer/ScrollContainer/CommandsGridContainer" groups=["sfx"]]
+[node name="SettleButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/CommandsPanelContainer/CommandsGridContainer" groups=["sfx"]]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_horizontal = 6
+size_flags_vertical = 6
 text = "SETTLE"
+icon = ExtResource("22_7qt6u")
+alignment = 0
+icon_alignment = 2
+expand_icon = true
 
-[node name="UseFuelButton" type="Button" parent="HBoxContainer/VBoxContainer/CommandsMarginContainer/CommandsPanelContainer/CommandsTabContainer/ScrollContainer/CommandsGridContainer" groups=["sfx"]]
+[node name="UseFuelButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/CommandsPanelContainer/CommandsGridContainer" groups=["sfx"]]
 unique_name_in_owner = true
 process_mode = 3
+custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_horizontal = 6
+size_flags_vertical = 6
 text = "USEFUEL"
+icon = ExtResource("23_pj08a")
+alignment = 0
+icon_alignment = 2
+expand_icon = true
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 
-[node name="TripProgressVSlider" type="VSlider" parent="HBoxContainer"]
+[node name="TripProgressVSlider" type="VSlider" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"TravelVSlider"
 editable = false
 
-[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer"]
+[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 
 [node name="Dialogs" type="Node" parent="."]

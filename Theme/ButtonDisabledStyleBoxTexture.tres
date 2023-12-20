@@ -1,0 +1,9 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://1ehhn26jt4ln"]
+
+[ext_resource type="Texture2D" uid="uid://dottbe7mec18s" path="res://Image/Humble Bundle/032.png" id="1_grto3"]
+
+[resource]
+content_margin_left = 5.0
+content_margin_right = 5.0
+texture = ExtResource("1_grto3")
+modulate_color = Color(0, 0.498039, 1, 1)
